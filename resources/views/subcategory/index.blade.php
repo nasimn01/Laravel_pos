@@ -33,13 +33,11 @@
                                     <td>{{$sub->category?->category}}</td>
                                     <td>{{$sub->name}}</td>
                                     <td class="white-space-nowrap">
-                                        <a href="{{route('subcategory.edit',$sub->id)}}">
+                                        <a href="{{route(currentUser().'.subcategory.edit',encryptor('encrypt',$sub->id))}}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-                                        <a href="javascript:void()" onclick="$('#form{{$sub->id}}').submit()">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
-                                        <form id="form{{$sub->id}}" action="{{route('subcategory.destroy',$sub->id)}}" method="post">
+                                       
+                                        <form id="form{{$sub->id}}" action="{{route(currentUser().'.subcategory.destroy',encryptor('encrypt',$sub->id))}}" method="post">
                                             @csrf
                                             @method('delete')
                                             

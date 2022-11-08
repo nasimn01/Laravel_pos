@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.app')
 
 @section('pageTitle','Edit Subcategory')
 @section('pageSubTitle','Create')
@@ -11,9 +11,10 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" action="{{route('subcategory.update',$subcategory->id)}}">
+                        <form class="form" method="post" action="{{route(currentUser().'.subcategory.update',encryptor('encrypt',$subcategory->id))}}">
                             @csrf
                             @method('patch')
+                            <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$subcategory->id)}}">
                             <div class="row">
 
                                 <div class="col-md-6 col-12">
@@ -21,7 +22,7 @@
                                         <label for="category">Category</label>
                                         <select class="form-control" name="category" id="category">
                                             <option value="">Select Category</option>
-                                            @forelse($categories as $cat)
+                                            @forelse($category as $cat)
                                                 <option value="{{$cat->id}}" {{ old('category',$subcategory->category_id)==$cat->id?"selected":""}}> {{ $cat->category}}</option>
                                             @empty
                                                 <option value="">No Category found</option>

@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Products;
 use App\Http\Controllers\Controller;
 
 use App\Models\Products\Subcategory;
+use App\Models\Products\Category;
 use App\Http\Requests\Subcategory\AddNewRequest;
 use App\Http\Requests\Subcategory\UpdateRequest;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
+use Exception;
 
 class SubcategoryController extends Controller
 {
@@ -31,7 +33,8 @@ class SubcategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('subcategory.create',compact('categories'));
     }
 
     /**
@@ -40,9 +43,20 @@ class SubcategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
-        //
+        try{
+            $subcat= new Subcategory;
+            $subcat->category_id=$request->category;
+            $subcat->name=$request->subCat;
+            if($subcat->save())
+                return redirect()->route(currentUser().'.subcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**
@@ -51,7 +65,7 @@ class SubcategoryController extends Controller
      * @param  \App\Models\Products\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Subcategory $subcategory)
+    public function show($id)
     {
         //
     }
@@ -62,9 +76,11 @@ class SubcategoryController extends Controller
      * @param  \App\Models\Products\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subcategory $subcategory)
+    public function edit($id)
     {
-        //
+        $category=Category::all();
+        $subcategory= Subcategory::findOrFail(encryptor('decrypt',$id));
+        return view('subcategory.edit',compact('subcategory','category'));
     }
 
     /**
@@ -74,9 +90,20 @@ class SubcategoryController extends Controller
      * @param  \App\Models\Products\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subcategory $subcategory)
+    public function update(UpdateRequest $request, $id)
     {
-        //
+        try{
+            $subcat=Subcategory::findOrFail(encryptor('decrypt',$id));
+            $subcat->category_id=$request->category;
+            $subcat->name=$request->subCat;
+            if($subcat->save())
+                return redirect()->route(currentUser().'.subcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**

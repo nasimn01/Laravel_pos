@@ -13,7 +13,7 @@ class AddNewRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class AddNewRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'category' => 'required',
+            'subCat' => 'required'
+        ];
+    }
+    public function messages(){
+        return [
+            'required' => "The :attribute filed is required"
         ];
     }
 }

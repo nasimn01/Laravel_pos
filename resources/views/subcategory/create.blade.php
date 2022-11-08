@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.app')
 
 @section('pageTitle','Create Subcategory')
 @section('pageSubTitle','Create')
@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" action="{{route('subcategory.store')}}">
+                        <form class="form" method="post" action="{{route(currentUser().'.subcategory.store')}}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 col-12">
@@ -30,7 +30,7 @@
                                 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="subCat">Name</label>
+                                        <label for="subCat">Sub Category</label>
                                         <input type="text" id="subCat" class="form-control"
                                             placeholder="Subcategory Name" value="{{ old('subCat')}}" name="subCat">
                                     </div>
