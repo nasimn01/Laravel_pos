@@ -7,9 +7,10 @@ use App\Http\Controllers\Settings\UserController as user;
 use App\Http\Controllers\Settings\AdminUserController as admin;
 use App\Http\Controllers\Settings\Location\CountryController as country;
 use App\Http\Controllers\Settings\Location\DivisionController as division;
+use App\Http\Controllers\Settings\Location\DistrictController as district;
 use App\Http\Controllers\Products\CategoryController;
 use App\Http\Controllers\Products\SubcategoryController;
-use App\Http\Controllers\Products\ProductController;
+
 
 /* Middleware */
 use App\Http\Middleware\isAdmin;
@@ -43,6 +44,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::resource('admin',admin::class,['as'=>'admin']);
         Route::resource('country',country::class,['as'=>'admin']);
         Route::resource('division',division::class,['as'=>'admin']);
+        Route::resource('district',district::class,['as'=>'admin']);
         
     });
 });

@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Products;
 use App\Http\Controllers\Controller;
 
 use App\Models\Products\Subcategory;
+use App\Http\Requests\Subcategory\AddNewRequest;
+use App\Http\Requests\Subcategory\UpdateRequest;
 use Illuminate\Http\Request;
+use App\Http\Traits\ResponseTrait;
 
 class SubcategoryController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,8 @@ class SubcategoryController extends Controller
      */
     public function index()
     {
-        //
+        $subcategories=Subcategory::paginate(10);
+        return view('subcategory.index',compact('subcategories'));
     }
 
     /**

@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Settings\Location;
 
-use App\Models\District;
+use App\Http\Controllers\Controller;
+
+use App\Models\Settings\Location\District;
 use Illuminate\Http\Request;
 
 class DistrictController extends Controller

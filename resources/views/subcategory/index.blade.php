@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.app')
 @section('pageTitle','Subcategory List')
 @section('pageSubTitle','List')
 
@@ -15,7 +15,7 @@
                     <!-- table bordered -->
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-                            <a class="btn btn-sm btn-primary float-end" href="{{route('subcategory.create')}}">Add new</a>
+                            <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.subcategory.create')}}">Add new</a>
                             <thead>
                                 <tr>
                                     <th scope="col">#SL</th>

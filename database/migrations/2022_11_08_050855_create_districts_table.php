@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('districts', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->string('name_bn')->nullable();
+            $table->unsignedBigInteger('division_id')->nullable()->index();
+            $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
