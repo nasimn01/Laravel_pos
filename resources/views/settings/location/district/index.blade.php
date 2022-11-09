@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('pageTitle',trans('Division List'))
+@section('pageTitle',trans('District List'))
 @section('pageSubTitle',trans('List'))
 
 @section('content')

@@ -4,11 +4,16 @@ namespace App\Http\Controllers\Settings\Location;
 
 use App\Http\Controllers\Controller;
 
+use App\Models\Settings\Location\Division;
 use App\Models\Settings\Location\District;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\District\AddNewRequest;
+use App\Http\Requests\District\UpdateRequest;
+use App\Http\Traits\ResponseTrait;
+use Exception;
 class DistrictController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,8 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        //
+       $district=District::all();
+       return view('setting.location.district.index',compact('districts'));
     }
 
     /**
@@ -26,7 +32,8 @@ class DistrictController extends Controller
      */
     public function create()
     {
-        //
+       $divisions=division::all();
+       return view('settings.location.district.create',compact('divitions'));
     }
 
     /**
@@ -37,7 +44,19 @@ class DistrictController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $district=new division;
+            $district->division_id=$request->division_id;
+            $district->name=$request->districtName;
+            $district->name_bn=$request->districtBn;
+            if($district->save())
+                return redirect()->route(currentUser().'district.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','please try again'));    
+        }catch(Exception $e){
+            dd($e);
+            return redirect()->back->withInput()->with($this->resMessageHtml(false,'error','please try again'));
+        }
     }
 
     /**
@@ -46,7 +65,7 @@ class DistrictController extends Controller
      * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function show(District $district)
+    public function show($district)
     {
         //
     }
@@ -57,9 +76,11 @@ class DistrictController extends Controller
      * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function edit(District $district)
+    public function edit($district)
     {
-        //
+       $divisions=Division::all();
+       $district=district::findOrFail(encryptor('decrypt',$district));
+       return view('settings.location.district.edit',compact('district','divisions'));
     }
 
     /**
@@ -69,9 +90,11 @@ class DistrictController extends Controller
      * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, District $district)
+    public function update(Request $request, $district)
     {
-        //
+        try{
+            $district=District::findOrFail(encryptor('decrypt'))
+        }
     }
 
     /**
