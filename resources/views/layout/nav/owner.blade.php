@@ -53,6 +53,12 @@
                                                     <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.subcategory.create')}}">{{__('Add New')}}</a></li>
                                                 </ul>
                                             </li>
+                                            <li class="submenu-item"><a href="{{route(currentUser().'.childcategory.index')}}" class='submenu-link'>{{__('Child Category')}}</a>
+                                                <ul class="subsubmenu">
+                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.childcategory.index')}}">{{__('List')}}</a></li>
+                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.childcategory.create')}}">{{__('Add New')}}</a></li>
+                                                </ul>
+                                            </li>
                                         </ul>  
                                     </div>
                                 </div>

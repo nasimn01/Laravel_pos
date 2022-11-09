@@ -8,8 +8,9 @@ use App\Http\Controllers\Settings\AdminUserController as admin;
 use App\Http\Controllers\Settings\Location\CountryController as country;
 use App\Http\Controllers\Settings\Location\DivisionController as division;
 use App\Http\Controllers\Settings\Location\DistrictController as district;
-use App\Http\Controllers\Products\CategoryController;
-use App\Http\Controllers\Products\SubcategoryController;
+use App\Http\Controllers\Products\CategoryController as category;
+use App\Http\Controllers\Products\SubcategoryController as subcat;
+use App\Http\Controllers\Products\ChildcategoryController as childcat;
 
 
 /* Middleware */
@@ -53,8 +54,9 @@ Route::group(['middleware'=>isOwner::class],function(){
     Route::prefix('owner')->group(function(){
         Route::get('/dashboard', [dash::class,'ownerDashboard'])->name('owner.dashboard');
         Route::resource('users',user::class,['as'=>'owner']);
-        Route::resource('category',CategoryController::class,['as'=>'owner']);
-        Route::resource('subcategory',SubcategoryController::class,['as'=>'owner']);
+        Route::resource('category',category::class,['as'=>'owner']);
+        Route::resource('subcategory',subcat::class,['as'=>'owner']);
+        Route::resource('childcategory',childcat::class,['as'=>'owner']);
     });
 });
 

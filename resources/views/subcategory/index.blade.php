@@ -15,7 +15,7 @@
                     <!-- table bordered -->
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-                            <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.subcategory.create')}}">Add new</a>
+                            <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.subcategory.create')}}"><i class="bi bi-pencil-square"></i></a>
                             <thead>
                                 <tr>
                                     <th scope="col">#SL</th>

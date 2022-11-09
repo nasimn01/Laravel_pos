@@ -5,10 +5,16 @@ namespace App\Http\Controllers\Products;
 use App\Http\Controllers\Controller;
 
 use App\Models\Products\Childcategory;
+use App\Models\Products\Subcategory;
+use App\Http\Requests\Childcategory\AddNewRequest;
+use App\Http\Requests\Childcategory\UpdateRequest;
 use Illuminate\Http\Request;
+use App\Http\Traits\ResponseTrait;
+use Exception;
 
 class ChildcategoryController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,8 @@ class ChildcategoryController extends Controller
      */
     public function index()
     {
-        //
+        $childcategories = Childcategory::paginate(10);
+        return view('childcategory.index',compact('childcategories'));
     }
 
     /**
@@ -26,7 +33,8 @@ class ChildcategoryController extends Controller
      */
     public function create()
     {
-        //
+        $subcategories = Subcategory::all();
+        return view('childcategory.create',compact('subcategories'));
     }
 
     /**
@@ -35,9 +43,20 @@ class ChildcategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
-        //
+        try{
+            $childcat= new Childcategory;
+            $childcat->subcategory_id=$request->subcategory;
+            $childcat->name=$request->childcat;
+            if($childcat->save())
+                return redirect()->route(currentUser().'.childcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**
@@ -46,7 +65,7 @@ class ChildcategoryController extends Controller
      * @param  \App\Models\Products\Childcategory  $childcategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Childcategory $childcategory)
+    public function show($id)
     {
         //
     }
@@ -57,9 +76,11 @@ class ChildcategoryController extends Controller
      * @param  \App\Models\Products\Childcategory  $childcategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Childcategory $childcategory)
+    public function edit($id)
     {
-        //
+        $subcategory=Subcategory::all();
+        $childcategory= Childcategory::findOrFail(encryptor('decrypt',$id));
+        return view('childcategory.edit',compact('childcategory','subcategory'));
     }
 
     /**
@@ -69,9 +90,20 @@ class ChildcategoryController extends Controller
      * @param  \App\Models\Products\Childcategory  $childcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Childcategory $childcategory)
+    public function update(UpdateRequest $request, $id)
     {
-        //
+        try{
+            $childcat=Childcategory::findOrFail(encryptor('decrypt',$id));
+            $childcat->subcategory_id=$request->subcategory;
+            $childcat->name=$request->childcat;
+            if($childcat->save())
+                return redirect()->route(currentUser().'.childcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**

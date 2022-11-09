@@ -1,7 +1,7 @@
-@extends('app')
+@extends('layout.app')
 
-@section('pageTitle','Edit Subcategory')
-@section('pageSubTitle','Create')
+@section('pageTitle','Update Childcategory')
+@section('pageSubTitle','Update')
 
 @section('content')
 <!-- // Basic multiple Column Form section start -->
@@ -11,16 +11,30 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" action="{{route('childcategory.update',$childcategory->id)}}">
+                        <form class="form" method="post" action="{{route(currentUser().'.childcategory.update',encryptor('encrypt',$childcategory->id))}}">
                             @csrf
                             @method('patch')
+                            <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$childcategory->id)}}">
                             <div class="row">
-                                
+
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="childCat">Name</label>
-                                        <input type="text" id="childCat" class="form-control"
-                                            placeholder="Childcategory Name" value="{{ old('childCat',$childcategory->name)}}" name="childCat">
+                                        <label for="subcategory">Sub Category</label>
+                                        <select class="form-control" name="subcategory" id="subcategory">
+                                            <option value="">Select Category</option>
+                                            @forelse($subcategory as $sub)
+                                                <option value="{{$sub->id}}" {{ old('subcategory',$childcategory->subcategory_id)==$sub->id?"selected":""}}> {{ $sub->name}}</option>
+                                            @empty
+                                                <option value="">No Category found</option>
+                                            @endforelse
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="childcat">Name</label>
+                                        <input type="text" id="childcat" class="form-control"
+                                            placeholder="Childcategory Name" value="{{ old('childcat',$childcategory->name)}}" name="childcat">
                                     </div>
                                 </div>
 

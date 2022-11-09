@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.app')
 @section('pageTitle','Childcategory List')
 @section('pageSubTitle','List')
 
@@ -11,13 +11,17 @@
             <div class="card">
                     <!-- table bordered -->
                     <div class="table-responsive">
+                        <?php 
+                        
+                        //print_r($childcategories);
+                        ?>
                         <table class="table table-bordered mb-0">
-                            <a class="btn btn-sm btn-primary float-end" href="{{route('childcategory.create')}}">Add new</a>
+                            <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.childcategory.create')}}"><i class="bi bi-pencil-square"></i></a>
                             <thead>
                                 <tr>
                                     <th scope="col">#SL</th>
                                     <th scope="col">Sub Category</th>
-                                    <th scope="col">Name</th>
+                                    <th scope="col">Child Category</th>
                                     <th class="white-space-nowrap">ACTION</th>
                                 </tr>
                             </thead>
@@ -28,17 +32,17 @@
                                     <td>{{$child->subcategory?->name}}</td>
                                     <td>{{$child->name}}</td>
                                     <td class="white-space-nowrap">
-                                        <a href="{{route('childcategory.edit',$child->id)}}">
+                                        <a href="{{route(currentUser().'.childcategory.edit',encryptor('encrypt',$child->id))}}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-                                        <a href="javascript:void()" onclick="$('#form{{$child->id}}').submit()">
+                                        <!-- <a href="javascript:void()" onclick="$('#form{{$child->id}}').submit()">
                                             <i class="bi bi-trash"></i>
-                                        </a>
-                                        <form id="form{{$child->id}}" action="{{route('childcategory.destroy',$child->id)}}" method="post">
+                                        </a> -->
+                                        <!-- <form id="form{{$child->id}}" action="{{route(currentUser().'.childcategory.destroy',encryptor('encrypt',$child->id))}}" method="post">
                                             @csrf
                                             @method('delete')
                                             
-                                        </form>
+                                        </form> -->
                                     </td>
                                 </tr>
                                 @empty

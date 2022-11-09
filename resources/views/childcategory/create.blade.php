@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.app')
 
 @section('pageTitle','Create Childcategory')
 @section('pageSubTitle','Create')
@@ -11,16 +11,16 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" action="{{route('childcategory.store')}}">
+                        <form class="form" method="post" action="{{route(currentUser().'.childcategory.store')}}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="subCat">Sub Category</label>
-                                        <select class="form-control" name="subCat" id="subCat">
+                                        <label for="subcategory">Sub Category</label>
+                                        <select class="form-control" name="subcategory" id="subcategory">
                                             <option value="">Select Category</option>
                                             @forelse($subcategories as $sub)
-                                                <option value="{{$sub->id}}" {{ old('subCat')==$sub->id?"selected":""}}> {{ $sub->subCat}}</option>
+                                                <option value="{{$sub->id}}" {{ old('subcategory')==$sub->id?"selected":""}}> {{ $sub->name}}</option>
                                             @empty
                                                 <option value="">No Category found</option>
                                             @endforelse
@@ -30,9 +30,9 @@
                                 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="childCat">Name</label>
-                                        <input type="text" id="childCat" class="form-control"
-                                            placeholder="Childcategory Name" value="{{ old('childCat')}}" name="childCat">
+                                        <label for="childcat">Child Category</label>
+                                        <input type="text" id="childcat" class="form-control"
+                                            placeholder="Childcategory Name" value="{{ old('childcat')}}" name="childcat">
                                     </div>
                                 </div>
 
