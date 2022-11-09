@@ -21,8 +21,8 @@ class DistrictController extends Controller
      */
     public function index()
     {
-       $district=District::all();
-       return view('setting.location.district.index',compact('districts'));
+       $districts=District::all();
+       return view('settings.location.district.index',compact('districts'));
     }
 
     /**
@@ -32,8 +32,8 @@ class DistrictController extends Controller
      */
     public function create()
     {
-       $divisions=division::all();
-       return view('settings.location.district.create',compact('divitions'));
+       $divisions=Division::all();
+       return view('settings.location.district.create',compact('divisions'));
     }
 
     /**
@@ -45,17 +45,17 @@ class DistrictController extends Controller
     public function store(Request $request)
     {
         try{
-            $district=new division;
+            $district=new district;
             $district->division_id=$request->division_id;
             $district->name=$request->districtName;
             $district->name_bn=$request->districtBn;
             if($district->save())
-                return redirect()->route(currentUser().'district.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route(currentUser().'.district.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','please try again'));    
         }catch(Exception $e){
             dd($e);
-            return redirect()->back->withInput()->with($this->resMessageHtml(false,'error','please try again'));
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }
     }
 
@@ -93,7 +93,17 @@ class DistrictController extends Controller
     public function update(Request $request, $district)
     {
         try{
-            $district=District::findOrFail(encryptor('decrypt'))
+            $district=district::findOrFail(encryptor('decrypt',$district));
+            $district->division_id=$request->division_id;
+            $district->name=$request->districtName;
+            $district->name_bn=$request->districtBn;
+            if($district->save())
+                return redirect()->route(currentUser().'.district.index')->with($this->resMessageHtml(true,null,'Successfully update'));
+                else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }
     }
 

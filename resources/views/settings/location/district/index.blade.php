@@ -14,7 +14,7 @@
                     {!!Session::get('response')['message']!!}
                 @endif
                 <div>
-                    <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.division.create')}}"><i class="bi bi-pencil-square"></i></a>
+                    <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.district.create')}}"><i class="bi bi-pencil-square"></i></a>
                 </div>
                 <!-- table bordered -->
                 <div class="table-responsive">
@@ -22,21 +22,21 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{__('#SL')}}</th>
-                                <th scope="col">{{__('Country')}}</th>
                                 <th scope="col">{{__('Division')}}</th>
-                                <th scope="col">{{__('Division bn')}}</th>
+                                <th scope="col">{{__('District')}}</th>
+                                <th scope="col">{{__('District bn')}}</th>
                                 <th class="white-space-nowrap">{{__('Action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($divisions as $d)
+                            @forelse($districts as $d)
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
-                                <td>{{$d->country?->name}}</td>
+                                <td>{{$d->division?->name}}</td>
                                 <td>{{$d->name}}</td>
                                 <td>{{$d->name_bn}}</td>
                                 <td class="white-space-nowrap">
-                                    <a href="{{route(currentUser().'.division.edit',encryptor('encrypt',$d->id))}}">
+                                    <a href="{{route(currentUser().'.district.edit',encryptor('encrypt',$d->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
                                     <!--<a href="javascript:void()" onclick="$('#form{{$d->id}}').submit()">
