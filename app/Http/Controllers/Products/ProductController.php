@@ -101,7 +101,8 @@ class ProductController extends Controller
         $childcategories = Childcategory::all();
         $brands = Brand::all();
         $units = Unit::all();
-        return view('product.edit',compact('categories','subcategories','childcategories','brands','units'));
+        $product= Product::findOrFail(encryptor('decrypt',$id));
+        return view('product.edit',compact('categories','subcategories','childcategories','brands','units','product'));
     }
 
     /**
