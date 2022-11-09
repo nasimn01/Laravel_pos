@@ -40,6 +40,12 @@
                                                     <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.district.create')}}">{{__('Add New')}}</a></li>
                                                 </ul>
                                             </li>
+                                            <li class="submenu-item"><a href="#" class='submenu-link'>{{__('Upazila')}}</a>
+                                                <ul class="subsubmenu">
+                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.upazila.index')}}">{{__('List')}}</a></li>
+                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.upazila.create')}}">{{__('Add New')}}</a></li>
+                                                </ul>
+                                            </li>
                                         </ul>  
                                     </div>
                                 </div>
