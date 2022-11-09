@@ -1,7 +1,7 @@
-@extends('app')
+@extends('layout.app')
 
-@section('pageTitle','Edit Unit')
-@section('pageSubTitle','Create')
+@section('pageTitle','Update Unit')
+@section('pageSubTitle','Update')
 
 @section('content')
 <!-- // Basic multiple Column Form section start -->
@@ -11,16 +11,17 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" action="{{route('unit.update',$unit->id)}}">
+                        <form class="form" method="post" action="{{route(currentUser().'.unit.update',encryptor('encrypt',$unit->id))}}">
                             @csrf
                             @method('patch')
+                            <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$unit->id)}}">
                             <div class="row">
                                 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="unit">Name</label>
-                                        <input type="text" id="unit" class="form-control"
-                                            placeholder="Unit Name" value="{{ old('unit',$unit->name)}}" name="childCat">
+                                        <label for="unitName">Name</label>
+                                        <input type="text" id="unitName" class="form-control"
+                                            placeholder="Unit Name" value="{{ old('unitName',$unit->name)}}" name="unitName">
                                     </div>
                                 </div>
 

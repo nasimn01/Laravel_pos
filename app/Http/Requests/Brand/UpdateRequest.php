@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Product;
+namespace App\Http\Requests\Brand;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,12 @@ class AddRequest extends FormRequest
     public function rules()
     {
         return [
-            'category' =>'required',
-            'productName' => 'required',
-            'price' => 'required',
-            
+            'brandName' => 'required'
         ];
     }
-    /**
-     * Rules custome message
-     */
-
-    public function message(){
+    public function messages(){
         return [
-            'required' => "The :attribute field is required"
+            'required' => "The :attribute filed is required"
         ];
     }
 }

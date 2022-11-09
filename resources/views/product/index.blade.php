@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.app')
 @section('pageTitle','Product List')
 @section('pageSubTitle','List')
 
@@ -12,7 +12,7 @@
                     <!-- table bordered -->
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-                            <a class="btn btn-sm btn-primary float-end" href="{{route('product.create')}}">Add new</a>
+                            <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.product.create')}}"><i class="bi bi-pencil-square"></i></a>
                             <thead>
                                 <tr>
                                     <th scope="col">#SL</th>
@@ -36,7 +36,7 @@
                                 <th scope="row">{{ ++$loop->index }}</th>
                                     <td>{{$p->bar_code}}</td>
                                     <td>{{$p->product_name}}</td>
-                                    <td>{{$p->name?->name}}</td>
+                                    <td>{{$p->brand?->name}}</td>
                                     <td>{{$p->category?->category}}</td>
                                     <td>{{$p->subcategory?->name}}</td>
                                     <td>{{$p->childcategory?->name}}</td>
@@ -47,13 +47,13 @@
                                     <td>@if($p->status == 1) Active @else Inactive @endif</td>
                                     <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
                                     <td class="white-space-nowrap">
-                                        <a href="{{route('product.edit',$p->id)}}">
+                                        <a href="{{route(currentUser().'.product.edit',encryptor('encrypt',$p->id))}}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
                                         <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                             <i class="bi bi-trash"></i>
                                         </a>
-                                        <form id="form{{$p->id}}" action="{{route('product.destroy',$p->id)}}" method="post">
+                                        <form id="form{{$p->id}}" action="{{route(currentUser().'.product.destroy',encryptor('encrypt',$p->id))}}" method="post">
                                             @csrf
                                             @method('delete')
                                             

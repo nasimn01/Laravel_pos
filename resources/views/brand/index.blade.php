@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.app')
 @section('pageTitle','Brand List')
 @section('pageSubTitle','List')
 
@@ -12,7 +12,7 @@
                     <!-- table bordered -->
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-                            <a class="btn btn-sm btn-primary float-end" href="{{route('brand.create')}}">Add new</a>
+                            <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.brand.create')}}"><i class="bi bi-pencil-square"></i></a>
                             <thead>
                                 <tr>
                                     <th scope="col">#SL</th>
@@ -26,17 +26,17 @@
                                 <th scope="row">{{ ++$loop->index }}</th>
                                     <td>{{$b->name}}</td>
                                     <td class="white-space-nowrap">
-                                        <a href="{{route('brand.edit',$b->id)}}">
+                                        <a href="{{route(currentUser().'.brand.edit',encryptor('encrypt',$b->id))}}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-                                        <a href="javascript:void()" onclick="$('#form{{$b->id}}').submit()">
+                                        {{-- <a href="javascript:void()" onclick="$('#form{{$b->id}}').submit()">
                                             <i class="bi bi-trash"></i>
                                         </a>
                                         <form id="form{{$b->id}}" action="{{route('brand.destroy',$b->id)}}" method="post">
                                             @csrf
                                             @method('delete')
                                             
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
                                 @empty

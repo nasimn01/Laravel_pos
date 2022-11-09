@@ -1,7 +1,7 @@
-@extends('app')
+@extends('layout.app')
 
-@section('pageTitle','Edit Brand')
-@section('pageSubTitle','Create')
+@section('pageTitle','Update Brand')
+@section('pageSubTitle','Update')
 
 @section('content')
 <!-- // Basic multiple Column Form section start -->
@@ -11,9 +11,10 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" action="{{route('brand.update',$brand->id)}}">
+                        <form class="form" method="post" action="{{route(currentUser().'.brand.update',encryptor('encrypt',$brand->id))}}">
                             @csrf
                             @method('patch')
+                            <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$brand->id)}}">
                             <div class="row">
                                 
                                 <div class="col-md-6 col-12">

@@ -6,9 +6,14 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Products\Brand;
 use Illuminate\Http\Request;
+use App\Http\Requests\Brand\AddNewRequest;
+use App\Http\Requests\Brand\UpdateRequest;
+use App\Http\Traits\ResponseTrait;
+use Exception;
 
 class BrandController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::paginate(10);
+        return view('brand.index',compact('brands'));
     }
 
     /**
@@ -26,7 +32,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('brand.create');
     }
 
     /**
@@ -35,9 +41,19 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
-        //
+        try{
+            $b= new Brand;
+            $b->name=$request->brandName;
+            if($b->save())
+                return redirect()->route(currentUser().'.brand.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**
@@ -46,7 +62,7 @@ class BrandController extends Controller
      * @param  \App\Models\Products\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brand)
+    public function show($id)
     {
         //
     }
@@ -57,9 +73,10 @@ class BrandController extends Controller
      * @param  \App\Models\Products\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
+    public function edit($id)
     {
-        //
+        $brand=Brand::findOrFail(encryptor('decrypt',$id));
+        return view('brand.edit',compact('brand'));
     }
 
     /**
@@ -69,9 +86,19 @@ class BrandController extends Controller
      * @param  \App\Models\Products\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brand)
+    public function update(UpdateRequest $request, $id)
     {
-        //
+        try{
+            $b= Brand::findOrFail(encryptor('decrypt',$id));
+            $b->name=$request->brandName;
+            if($b->save())
+                return redirect()->route(currentUser().'.brand.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**

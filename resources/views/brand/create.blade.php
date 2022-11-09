@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.app')
 
 @section('pageTitle','Create Brand')
 @section('pageSubTitle','Create')
@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" action="{{route('brand.store')}}">
+                        <form class="form" method="post" action="{{route(currentUser().'.brand.store')}}">
                             @csrf
                             <div class="row">
                                 

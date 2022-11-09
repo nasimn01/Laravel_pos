@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.app')
 
 @section('pageTitle','Edit Product')
 @section('pageSubTitle','Edit')
@@ -12,9 +12,10 @@
               <div class="card">
                   <div class="card-content">
                       <div class="card-body">
-                          <form class="form" method="post" enctype="multipart/form-data" action="{{route('product.update',$product->id)}}">
+                          <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.product.update',encryptor('encrypt',$product->id))}}">
                               @csrf
                               @method('patch')
+                              <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$product->id)}}">
                               <div class="row">
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
@@ -22,7 +23,7 @@
                                           <select class="form-control" name="category" id="category">
                                               <option value="">Select Category</option>
                                               @forelse($categories as $cat)
-                                                  <option value="{{$cat->id}}" {{ old('category',$product->category_id)==$cat->id?"selected":""}}> {{ $cat->category}}</option>
+                                                  <option value="{{$cat->id}}" {{ old('category',$subcategory->category_id)==$cat->id?"selected":""}}> {{ $cat->category}}</option>
                                               @empty
                                                   <option value="">No Category found</option>
                                               @endforelse

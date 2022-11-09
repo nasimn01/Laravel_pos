@@ -6,9 +6,15 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Products\Unit;
 use Illuminate\Http\Request;
+use App\Http\Requests\Unit\AddNewRequest;
+use App\Http\Requests\Unit\UpdateRequest;
+use App\Http\Traits\ResponseTrait;
+use Exception;
+
 
 class UnitController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,8 @@ class UnitController extends Controller
      */
     public function index()
     {
-        //
+        $units = Unit::all();
+        return view('unit.index',compact('units'));
     }
 
     /**
@@ -26,7 +33,7 @@ class UnitController extends Controller
      */
     public function create()
     {
-        //
+        return view('unit.create');
     }
 
     /**
@@ -35,9 +42,19 @@ class UnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
-        //
+        try{
+            $u= new Unit;
+            $u->name=$request->unitName;
+            if($u->save())
+                return redirect()->route(currentUser().'.unit.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**
@@ -46,7 +63,7 @@ class UnitController extends Controller
      * @param  \App\Models\Products\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function show(Unit $unit)
+    public function show($id)
     {
         //
     }
@@ -57,9 +74,10 @@ class UnitController extends Controller
      * @param  \App\Models\Products\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function edit(Unit $unit)
+    public function edit($id)
     {
-        //
+        $unit=Unit::findOrFail(encryptor('decrypt',$id));
+        return view('unit.edit',compact('unit'));
     }
 
     /**
@@ -69,9 +87,19 @@ class UnitController extends Controller
      * @param  \App\Models\Products\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Unit $unit)
+    public function update(UpdateRequest $request, $id)
     {
-        //
+        try{
+            $u= Unit::findOrFail(encryptor('decrypt',$id));
+            $u->name=$request->unitName;
+            if($u->save())
+                return redirect()->route(currentUser().'.unit.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**

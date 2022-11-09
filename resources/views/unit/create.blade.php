@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.app')
 
 @section('pageTitle','Create Unit')
 @section('pageSubTitle','Create')
@@ -11,15 +11,15 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" action="{{route('unit.store')}}">
+                        <form class="form" method="post" action="{{route(currentUser().'.unit.store')}}">
                             @csrf
                             <div class="row">
                                 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="unit">Name</label>
-                                        <input type="text" id="unit" class="form-control"
-                                            placeholder="Unit Name" value="{{ old('unit')}}" name="unit">
+                                        <label for="unitName">Name</label>
+                                        <input type="text" id="unitName" class="form-control"
+                                            placeholder="Unit Name" value="{{ old('unitName')}}" name="unitName">
                                     </div>
                                 </div>
 

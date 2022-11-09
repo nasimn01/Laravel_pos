@@ -11,6 +11,9 @@ use App\Http\Controllers\Settings\Location\DistrictController as district;
 use App\Http\Controllers\Products\CategoryController as category;
 use App\Http\Controllers\Products\SubcategoryController as subcat;
 use App\Http\Controllers\Products\ChildcategoryController as childcat;
+use App\Http\Controllers\Products\BrandController as brand;
+use App\Http\Controllers\Products\UnitController as unit;
+use App\Http\Controllers\Products\ProductController as product;
 
 
 /* Middleware */
@@ -57,6 +60,9 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('category',category::class,['as'=>'owner']);
         Route::resource('subcategory',subcat::class,['as'=>'owner']);
         Route::resource('childcategory',childcat::class,['as'=>'owner']);
+        Route::resource('brand',brand::class,['as'=>'owner']);
+        Route::resource('unit',unit::class,['as'=>'owner']);
+        Route::resource('product',product::class,['as'=>'owner']);
     });
 });
 
@@ -74,4 +80,4 @@ Route::group(['middleware'=>isSalesman::class],function(){
     });
 });
 
-//Route::resource('product',ProductController::class);
+

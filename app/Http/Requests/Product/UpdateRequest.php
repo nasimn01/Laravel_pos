@@ -27,7 +27,11 @@ class UpdateRequest extends FormRequest
             'category' =>'required',
             'productName' =>'required',
             'price' =>'required',
-            'image' =>'mimes:jpg,jpeg,png,bmp,tiff,gif |max:4096'
+        ];
+    }
+    public function message(){
+        return [
+            'required' => "The :attribute field is required"
         ];
     }
 }
