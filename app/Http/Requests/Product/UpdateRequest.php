@@ -25,11 +25,11 @@ class UpdateRequest extends FormRequest
     {
         return [
             'category' =>'required',
-            'productName' =>'required',
-            'price' =>'required',
+            
+            
         ];
     }
-    public function message(){
+    public function messages(){
         return [
             'required' => "The :attribute field is required"
         ];

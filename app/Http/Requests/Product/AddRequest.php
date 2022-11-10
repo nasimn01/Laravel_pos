@@ -34,7 +34,7 @@ class AddRequest extends FormRequest
      * Rules custome message
      */
 
-    public function message(){
+    public function messages(){
         return [
             'required' => "The :attribute field is required"
         ];

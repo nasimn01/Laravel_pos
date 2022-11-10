@@ -16,34 +16,40 @@
                                     <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
                                     <div class="submenu-group-wrapper">
                                         <ul class="submenu-group">
-                                            <li class="submenu-item"><a href="#" class='submenu-link'>{{__('User')}}</a>
+                                            <li class="submenu-item"><a href="{{route(currentUser().'.admin.index')}}" class='submenu-link'>{{__('User')}}</a>
                                                 <ul class="subsubmenu">
                                                     <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.admin.index')}}">{{__('List')}}</a></li>
                                                     <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.admin.create')}}">{{__('Add New')}}</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="submenu-item"><a href="#" class='submenu-link'>{{__('Country')}}</a>
+                                            <li class="submenu-item"><a href="{{route(currentUser().'.country.index')}}" class='submenu-link'>{{__('Country')}}</a>
                                                 <ul class="subsubmenu">
                                                     <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.country.index')}}">{{__('List')}}</a></li>
                                                     <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.country.create')}}">{{__('Add New')}}</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="submenu-item"><a href="#" class='submenu-link'>{{__('Division')}}</a>
+                                            <li class="submenu-item"><a href="{{route(currentUser().'.division.index')}}" class='submenu-link'>{{__('Division')}}</a>
                                                 <ul class="subsubmenu">
                                                     <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.division.index')}}">{{__('List')}}</a></li>
                                                     <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.division.create')}}">{{__('Add New')}}</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="submenu-item"><a href="#" class='submenu-link'>{{__('District')}}</a>
+                                            <li class="submenu-item"><a href="{{route(currentUser().'.district.index')}}" class='submenu-link'>{{__('District')}}</a>
                                                 <ul class="subsubmenu">
                                                     <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.district.index')}}">{{__('List')}}</a></li>
                                                     <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.district.create')}}">{{__('Add New')}}</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="submenu-item"><a href="#" class='submenu-link'>{{__('Upazila')}}</a>
+                                            <li class="submenu-item"><a href="{{route(currentUser().'.upazila.index')}}" class='submenu-link'>{{__('Upazila')}}</a>
                                                 <ul class="subsubmenu">
                                                     <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.upazila.index')}}">{{__('List')}}</a></li>
                                                     <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.upazila.create')}}">{{__('Add New')}}</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="submenu-item"><a href="{{route(currentUser().'.thana.index')}}" class='submenu-link'>{{__('Thana')}}</a>
+                                                <ul class="subsubmenu">
+                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.thana.index')}}">{{__('List')}}</a></li>
+                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.thana.create')}}">{{__('Add New')}}</a></li>
                                                 </ul>
                                             </li>
                                         </ul>  

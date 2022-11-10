@@ -19,6 +19,9 @@
                                             <input type="text" id="name" class="form-control"
                                                 placeholder="Category Name" name="category">
                                         </div>
+                                        @if($errors->has('category'))
+                                        <span class="text-danger"> {{ $errors->first('category') }}</span>
+                                        @endif
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">

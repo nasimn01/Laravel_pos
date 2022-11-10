@@ -21,6 +21,9 @@
                                         <input type="text" id="brandName" class="form-control"
                                             placeholder="Brand Name" value="{{ old('brandName')}}" name="brandName">
                                     </div>
+                                    @if($errors->has('brandName'))
+                                    <span class="text-danger"> {{ $errors->first('brandName') }}</span>
+                                    @endif
                                 </div>
 
                                 <div class="col-12 d-flex justify-content-start">

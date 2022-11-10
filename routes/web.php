@@ -9,6 +9,7 @@ use App\Http\Controllers\Settings\Location\CountryController as country;
 use App\Http\Controllers\Settings\Location\DivisionController as division;
 use App\Http\Controllers\Settings\Location\DistrictController as district;
 use App\Http\Controllers\Settings\Location\UpazilaController as upazila;
+use App\Http\Controllers\Settings\Location\ThanaController as thana;
 use App\Http\Controllers\Products\CategoryController as category;
 use App\Http\Controllers\Products\SubcategoryController as subcat;
 use App\Http\Controllers\Products\ChildcategoryController as childcat;
@@ -51,6 +52,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::resource('division',division::class,['as'=>'admin']);
         Route::resource('district',district::class,['as'=>'admin']);
         Route::resource('upazila',upazila::class,['as'=>'admin']);
+        Route::resource('thana',thana::class,['as'=>'admin']);
         
     });
 });

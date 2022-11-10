@@ -18,7 +18,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="category">Category</label>
+                                            <label for="Category">Category</label>
                                             <select onchange="show_subcat(this.value)" class="form-control" name="category" id="category">
                                                 <option value="">Select Category</option>
                                                 @forelse($categories as $cat)
@@ -26,7 +26,9 @@
                                                 @empty
                                                     <option value="">No Category found</option>
                                                 @endforelse
+                                                
                                             </select>
+                                           
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -57,7 +59,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="name">Units</label>
+                                            <label for="Units">Units</label>
                                             <select class="form-control" name="name" id="name">
                                                 <option value="">Select Category</option>
                                                 @forelse($units as $u)
@@ -65,6 +67,7 @@
                                                 @empty
                                                     <option value="">No Category found</option>
                                                 @endforelse
+                                                
                                             </select>
                                         </div>
                                     </div>
@@ -83,22 +86,18 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="barCode">Bar Code</label>
+                                            <label for="Bar Code">Bar Code</label>
                                             <input type="text" id="barCode" class="form-control"
                                                 placeholder="Bar Code" value="{{ old('barCode',$product->bar_code)}}" name="barCode">
-                                                @if($errors->has('barCode'))
-                                                    <span class="text-danger"> {{ $errors->first('barCode') }}</span>
-                                                @endif
+                                                
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="productName">Name</label>
+                                            <label for="Product Name">Name</label>
                                             <input type="text" id="productName" class="form-control"
                                                 placeholder="Product Name" value="{{ old('productName',$product->product_name)}}" name="productName">
-                                                @if($errors->has('productName'))
-                                                    <span class="text-danger"> {{ $errors->first('productName') }}</span>
-                                                @endif
+                                              
                                         </div>
                                     </div>
                                     
@@ -107,9 +106,7 @@
                                             <label for="price">Price</label>
                                             <input type="text" id="price" class="form-control"
                                                 placeholder="Price" value="{{ old('price',$product->price)}}" name="price">
-                                                @if($errors->has('price'))
-                                                    <span class="text-danger"> {{ $errors->first('price') }}</span>
-                                                @endif
+                                                
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -117,9 +114,7 @@
                                             <label for="image">Image</label>
                                             <input type="text" id="image" class="form-control"
                                                 placeholder="Image" name="image">
-                                                @if($errors->has('image'))
-                                                    <span class="text-danger"> {{ $errors->first('image') }}</span>
-                                                @endif
+                                                
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

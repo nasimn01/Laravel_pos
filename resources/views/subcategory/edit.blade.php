@@ -19,7 +19,7 @@
 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="category">Category</label>
+                                        <label for="Category">Category</label>
                                         <select class="form-control" name="category" id="category">
                                             <option value="">Select Category</option>
                                             @forelse($category as $cat)
@@ -28,14 +28,20 @@
                                                 <option value="">No Category found</option>
                                             @endforelse
                                         </select>
+                                        @if($errors->has('Category'))
+                                        <span class="text-danger"> {{ $errors->first('Category') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="subCat">Name</label>
+                                        <label for="Sub Category">Sub Category</label>
                                         <input type="text" id="subCat" class="form-control"
                                             placeholder="Subcategory Name" value="{{ old('subCat',$subcategory->name)}}" name="subCat">
                                     </div>
+                                    @if($errors->has('Sub Category'))
+                                    <span class="text-danger"> {{ $errors->first('Sub Category') }}</span>
+                                    @endif
                                 </div>
 
                                 <div class="col-12 d-flex justify-content-start">

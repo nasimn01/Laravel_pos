@@ -16,7 +16,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="category">Category</label>
+                                            <label for="Category">Category</label>
                                             <select onchange="show_subcat(this.value)" class="form-control" name="category" id="category">
                                                 <option value="">Select Category</option>
                                                 @forelse($categories as $cat)
@@ -24,7 +24,11 @@
                                                 @empty
                                                     <option value="">No Category found</option>
                                                 @endforelse
+                                                
                                             </select>
+                                            @if($errors->has('category'))
+                                            <span class="text-danger"> {{ $errors->first('category') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -37,12 +41,13 @@
                                                 @empty
                                                     <option value="">No Category found</option>
                                                 @endforelse
+
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="childcategory">Child Category</label>
+                                            <label for="childcategory Name">Child Category</label>
                                             <select class="form-control" name="childcategory" id="childcategory">
                                                 <option value="">Select Category</option>
                                                 @forelse($childcategories as $child)
@@ -55,7 +60,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="name">Units</label>
+                                            <label for="Units">Units</label>
                                             <select class="form-control" name="name" id="name">
                                                 <option value="">Select Category</option>
                                                 @forelse($units as $u)
@@ -63,6 +68,9 @@
                                                 @empty
                                                     <option value="">No Category found</option>
                                                 @endforelse
+                                                @if($errors->has('name'))
+                                                <span class="text-danger"> {{ $errors->first('name') }}</span>
+                                                @endif
                                             </select>
                                         </div>
                                     </div>
@@ -81,21 +89,21 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="barCode">Bar Code</label>
+                                            <label for="Bar Code">Bar Code</label>
                                             <input type="text" id="barCode" class="form-control"
                                                 placeholder="Bar Code" value="{{ old('barCode')}}" name="barCode">
                                                 @if($errors->has('barCode'))
-                                                    <span class="text-danger"> {{ $errors->first('barCode') }}</span>
+                                                <span class="text-danger"> {{ $errors->first('barCode') }}</span>
                                                 @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="productName">Name</label>
+                                            <label for="Product Name">Product Name</label>
                                             <input type="text" id="productName" class="form-control"
                                                 placeholder="Product Name" value="{{ old('productName')}}" name="productName">
                                                 @if($errors->has('productName'))
-                                                    <span class="text-danger"> {{ $errors->first('productName') }}</span>
+                                                <span class="text-danger"> {{ $errors->first('productName') }}</span>
                                                 @endif
                                         </div>
                                     </div>
@@ -108,6 +116,7 @@
                                                 @if($errors->has('price'))
                                                     <span class="text-danger"> {{ $errors->first('price') }}</span>
                                                 @endif
+                                                
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

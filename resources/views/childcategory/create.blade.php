@@ -16,7 +16,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="subcategory">Sub Category</label>
+                                        <label for="Sub Category">Sub Category</label>
                                         <select class="form-control" name="subcategory" id="subcategory">
                                             <option value="">Select Category</option>
                                             @forelse($subcategories as $sub)
@@ -25,15 +25,21 @@
                                                 <option value="">No Category found</option>
                                             @endforelse
                                         </select>
+                                        @if($errors->has('subcategory'))
+                                        <span class="text-danger"> {{ $errors->first('subcategory') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="childcat">Child Category</label>
+                                        <label for="Child Category">Child Category</label>
                                         <input type="text" id="childcat" class="form-control"
                                             placeholder="Childcategory Name" value="{{ old('childcat')}}" name="childcat">
                                     </div>
+                                    @if($errors->has('childcat'))
+                                    <span class="text-danger"> {{ $errors->first('childcat') }}</span>
+                                    @endif
                                 </div>
 
                                 <div class="col-12 d-flex justify-content-start">
