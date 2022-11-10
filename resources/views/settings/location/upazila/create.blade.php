@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle',trans('Create District'))
+@section('pageTitle',trans('Create Upazila'))
 @section('pageSubTitle',trans('Create'))
 
 @section('content')
@@ -11,17 +11,17 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="{{route(currentUser().'.district.store')}}">
+                            <form class="form" method="post" action="{{route(currentUser().'.upazila.store')}}">
                                 @csrf
                                 <div class="row">
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="division_id">Division</label>
-                                            <select class="form-control" name="division_id" id="division_id">
-                                                <option value="">Select Division</option>
-                                                @forelse($divisions as $d)
-                                                    <option value="{{$d->id}}" {{ old('division_id')==$d->id?"selected":""}}> {{ $d->name}}</option>
+                                            <label for="district_id">District</label>
+                                            <select class="form-control" name="district_id" id="district_id">
+                                                <option value="">Select District</option>
+                                                @forelse($districts as $d)
+                                                    <option value="{{$d->id}}" {{ old('district_id')==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
                                                     <option value="">No Category found</option>
                                                 @endforelse
@@ -30,17 +30,17 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="districtName">District Name</label>
-                                            <input type="text" id="districtName" class="form-control" value="{{ old('districtName')}}" name="districtName">
-                                            @if($errors->has('districtName'))
-                                                <span class="text-danger"> {{ $errors->first('districtName') }}</span>
+                                            <label for="upazilaName">Upazila Name</label>
+                                            <input type="text" id="upazilaName" class="form-control" value="{{ old('upazilaName')}}" name="upazilaName">
+                                            @if($errors->has('upazilaName'))
+                                                <span class="text-danger"> {{ $errors->first('upazilaName') }}</span>
                                             @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="districtBn">District Bangla</label>
-                                            <input type="text" id="districtBn" class="form-control" value="{{ old('districtBn')}}" name="districtBn">
+                                            <label for="upazilaBn">Upazila Bangla</label>
+                                            <input type="text" id="upazilaBn" class="form-control" value="{{ old('upazilaBn')}}" name="upazilaBn">
                                         </div>
                                     </div>
                                 </div>

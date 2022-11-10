@@ -22,7 +22,8 @@ class UpazilaController extends Controller
      */
     public function index()
     {
-        //
+        $upazilas=Upazila::all();
+       return view('settings.location.upazila.index',compact('upazilas'));
     }
 
     /**
@@ -32,7 +33,8 @@ class UpazilaController extends Controller
      */
     public function create()
     {
-        //
+        $districts=District::all();
+        return view('settings.location.upazila.create',compact('districts'));
     }
 
     /**
@@ -43,7 +45,19 @@ class UpazilaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $upazila=new Upazila;
+            $upazila->district_id=$request->district_id;
+            $upazila->name=$request->upazilaName;
+            $upazila->name_bn=$request->upazilaBn;
+            if($upazila->save())
+                return redirect()->route(currentUser().'.upazila.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','please try again'));    
+        }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**
@@ -65,7 +79,9 @@ class UpazilaController extends Controller
      */
     public function edit(Upazila $upazila)
     {
-        //
+        $districts=District::all();
+        $upazila=upazila::findOrFail(encryptor('decrypt',$upazila));
+        return view('settings.location.upazila.edit',compact('upazila','districts'));
     }
 
     /**
@@ -77,7 +93,19 @@ class UpazilaController extends Controller
      */
     public function update(Request $request, Upazila $upazila)
     {
-        //
+        try{
+            $upazila=upazila::findOrFail(encryptor('decrypt',$upazila));
+            $upazila->division_id=$request->division_id;
+            $upazila->name=$request->upazilaName;
+            $upazila->name_bn=$request->upazilaBn;
+            if($upazila->save())
+                return redirect()->route(currentUser().'.upazila.index')->with($this->resMessageHtml(true,null,'Successfully update'));
+                else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**

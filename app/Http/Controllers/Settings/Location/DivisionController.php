@@ -46,7 +46,7 @@ class DivisionController extends Controller
     public function store(Request $request)
     {
         try{
-            $division=new division;
+            $division=new Division;
             $division->country_id=$request->country_id;
             $division->name=$request->divisionName;
             $division->name_bn=$request->divisionBn;
