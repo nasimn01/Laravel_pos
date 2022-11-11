@@ -98,7 +98,7 @@ class SupplierController extends Controller
         $divisions = Division::all();
         $districts = District::all();
         $supplier = supplier::findOrFail(encryptor('decrypt',$id));
-        return view('supplier.create',compact('countries','divisions','districts','supplier'));
+        return view('supplier.edit',compact('countries','divisions','districts','supplier'));
     }
 
     /**
@@ -111,7 +111,7 @@ class SupplierController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         try{
-            $sup= new supplier;
+            $sup= supplier::findOrFail(encryptor('decrypt',$id));
             $sup->supplier_name= $request->supplierName;
             $sup->contact= $request->contact;
             $sup->email= $request->email;
