@@ -79,7 +79,7 @@ class DistrictController extends Controller
     public function edit($district)
     {
        $divisions=Division::all();
-       $district=district::findOrFail(encryptor('decrypt',$district));
+       $district=District::findOrFail(encryptor('decrypt',$district));
        return view('settings.location.district.edit',compact('district','divisions'));
     }
 

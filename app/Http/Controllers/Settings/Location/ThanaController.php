@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Settings\Location\Thana;
 use App\Models\Settings\Location\Upazila;
 use Illuminate\Http\Request;
-use App\Http\Requests\Thana\AddNewRequest;
-use App\Http\Requests\Thana\UpdateRequest;
+use App\Http\Requests\District\AddNewRequest;
+use App\Http\Requests\District\UpdateRequest;
 use App\Http\Traits\ResponseTrait;
 use Exception;
 
@@ -22,7 +22,8 @@ class ThanaController extends Controller
      */
     public function index()
     {
-        //
+        $thanas=Thana::all();
+        return view('settings.location.thana.index',compact('thanas'));
     }
 
     /**
@@ -32,7 +33,8 @@ class ThanaController extends Controller
      */
     public function create()
     {
-        //
+        $upazilas=Upazila::all();
+        return view('settings.location.thana.create',compact('upazilas'));
     }
 
     /**
@@ -43,7 +45,19 @@ class ThanaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $thana=new Thana;
+            $thana->upazila_id=$request->upazila_id;
+            $thana->name=$request->thanaName;
+            $thana->name_bn=$request->thanaBn;
+            if($thana->save())
+                return redirect()->route(currentUser().'.thana.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','please try again'));    
+        }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**
@@ -63,9 +77,11 @@ class ThanaController extends Controller
      * @param  \App\Models\Settings\Location\Thana  $thana
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thana $thana)
+    public function edit($thana)
     {
-        //
+        $upazilas=Upazila::all();
+        $thana= Thana::findOrFail(encryptor('decrypt',$thana));
+        return view('settings.location.thana.edit',compact('thana','upazilas'));
     }
 
     /**
@@ -75,9 +91,21 @@ class ThanaController extends Controller
      * @param  \App\Models\Settings\Location\Thana  $thana
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Thana $thana)
+    public function update(Request $request, $thana)
     {
-        //
+        try{
+            $thana= Thana::findOrFail(encryptor('decrypt',$thana));
+            $thana->upazila_id=$request->upazila_id;
+            $thana->name=$request->thanaName;
+            $thana->name_bn=$request->thanaBn;
+            if($thana->save())
+                return redirect()->route(currentUser().'.thana.index')->with($this->resMessageHtml(true,null,'Successfully update'));
+                else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**

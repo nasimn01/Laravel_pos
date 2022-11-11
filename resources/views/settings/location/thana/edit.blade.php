@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle',trans('Update Upazila'))
+@section('pageTitle',trans('Update Thana'))
 @section('pageSubTitle',trans('Update'))
 
 @section('content')
@@ -11,18 +11,18 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="{{route(currentUser().'.upazila.update',encryptor('encrypt',$upazila->id))}}">
+                            <form class="form" method="post" action="{{route(currentUser().'.thana.update',encryptor('encrypt',$thana->id))}}">
                                 @csrf
                                 @method('PATCH')
-                                <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$upazila->id)}}">
+                                <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$thana->id)}}">
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="district_id">Division</label>
-                                            <select class="form-control" name="district_id" id="district_id">
-                                                <option value="">Select District</option>
-                                                @forelse($districts as $d)
-                                                    <option value="{{$d->id}}" {{ old('upazila_id',$upazila->upazila_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
+                                            <label for="upazila_id">District</label>
+                                            <select class="form-control" name="upazila_id" id="upazila_id">
+                                                <option value="">Select Upazila</option>
+                                                @forelse($upazilas as $d)
+                                                    <option value="{{$d->id}}" {{ old('thana_id',$thana->thana_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
                                                     <option value="">No Category found</option>
                                                 @endforelse
@@ -31,17 +31,17 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="upazilaName">Upazila Name</label>
-                                            <input type="text" id="upazilaName" class="form-control" value="{{ old('upazilaName',$upazila->name)}}" name="upazilaName">
-                                            @if($errors->has('upazilaName'))
-                                                <span class="text-danger"> {{ $errors->first('upazilaName') }}</span>
+                                            <label for="thanaName">Thana Name</label>
+                                            <input type="text" id="thanaName" class="form-control" value="{{ old('thanaName',$thana->name)}}" name="thanaName">
+                                            @if($errors->has('thanaName'))
+                                                <span class="text-danger"> {{ $errors->first('thanaName') }}</span>
                                             @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="upazilaBn">Upazila Bangla</label>
-                                            <input type="text" id="upazilaBn" class="form-control" value="{{ old('upazilaBn',$district->name_bn)}}" name="upazilaBn">
+                                            <label for="thanaBn">Thana Bangla</label>
+                                            <input type="text" id="thanaBn" class="form-control" value="{{ old('thanaBn',$thana->name_bn)}}" name="thanaBn">
                                         </div>
                                     </div>
                                 </div>

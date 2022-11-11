@@ -77,10 +77,10 @@ class UpazilaController extends Controller
      * @param  \App\Models\Settings\Location\Upazila  $upazila
      * @return \Illuminate\Http\Response
      */
-    public function edit(Upazila $upazila)
+    public function edit($upazila)
     {
         $districts=District::all();
-        $upazila=upazila::findOrFail(encryptor('decrypt',$upazila));
+        $upazila=Upazila::findOrFail(encryptor('decrypt',$upazila));
         return view('settings.location.upazila.edit',compact('upazila','districts'));
     }
 
@@ -91,11 +91,11 @@ class UpazilaController extends Controller
      * @param  \App\Models\Settings\Location\Upazila  $upazila
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Upazila $upazila)
+    public function update(Request $request, $upazila)
     {
         try{
             $upazila=upazila::findOrFail(encryptor('decrypt',$upazila));
-            $upazila->division_id=$request->division_id;
+            $upazila->district_id=$request->district_id;
             $upazila->name=$request->upazilaName;
             $upazila->name_bn=$request->upazilaBn;
             if($upazila->save())

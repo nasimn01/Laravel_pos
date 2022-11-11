@@ -41,7 +41,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="upazilaBn">Upazila Bangla</label>
-                                            <input type="text" id="upazilaBn" class="form-control" value="{{ old('upazilaBn',$district->name_bn)}}" name="upazilaBn">
+                                            <input type="text" id="upazilaBn" class="form-control" value="{{ old('upazilaBn',$upazila->name_bn)}}" name="upazilaBn">
                                         </div>
                                     </div>
                                 </div>
