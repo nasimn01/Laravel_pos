@@ -37,11 +37,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::paginate(10);
-        $subcategories = Subcategory::paginate(10);
-        $childcategories = Childcategory::paginate(10);
-        $brands = Brand::paginate(10);
-        $units = Unit::paginate(10);
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+        $childcategories = Childcategory::all();
+        $brands = Brand::all();
+        $units = Unit::all();
         return view('product.create',compact('categories','subcategories','childcategories','brands','units'));
     }
 

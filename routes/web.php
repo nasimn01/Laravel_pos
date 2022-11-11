@@ -16,6 +16,8 @@ use App\Http\Controllers\Products\ChildcategoryController as childcat;
 use App\Http\Controllers\Products\BrandController as brand;
 use App\Http\Controllers\Products\UnitController as unit;
 use App\Http\Controllers\Products\ProductController as product;
+use App\Http\Controllers\Suppliers\SupplierController as supplier;
+use App\Http\Controllers\Customers\CustomerController as customer;
 
 
 /* Middleware */
@@ -67,6 +69,8 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('brand',brand::class,['as'=>'owner']);
         Route::resource('unit',unit::class,['as'=>'owner']);
         Route::resource('product',product::class,['as'=>'owner']);
+        Route::resource('supplier',supplier::class,['as'=>'owner']);
+        Route::resource('customer',customer::class,['as'=>'owner']);
     });
 });
 

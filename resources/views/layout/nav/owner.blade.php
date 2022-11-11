@@ -65,10 +65,22 @@
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.unit.create')}}">{{__('Add New')}}</a></li>
                         </ul>
                     </li>
-                    <li class="submenu-item"><a href="{{route(currentUser().'.product.index')}}" class='submenu-link'>{{__('Product')}}</a>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.product.index')}}" class='submenu-link'>{{__('Products')}}</a>
                         <ul class="subsubmenu">
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.product.index')}}">{{__('List')}}</a></li>
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.product.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.supplier.index')}}" class='submenu-link'>{{__('Suppliers')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.supplier.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.supplier.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.customer.index')}}" class='submenu-link'>{{__('Customers')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.customer.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.customer.create')}}">{{__('Add New')}}</a></li>
                         </ul>
                     </li>
                 </ul>  
