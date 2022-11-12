@@ -22,7 +22,7 @@ class ChildcategoryController extends Controller
      */
     public function index()
     {
-        $childcategories = Childcategory::paginate(10);
+        $childcategories = Childcategory::where(company())->paginate(10);
         return view('childcategory.index',compact('childcategories'));
     }
 
@@ -33,7 +33,7 @@ class ChildcategoryController extends Controller
      */
     public function create()
     {
-        $subcategories = Subcategory::all();
+        $subcategories = Subcategory::where(company())->get();
         return view('childcategory.create',compact('subcategories'));
     }
 
@@ -49,6 +49,7 @@ class ChildcategoryController extends Controller
             $childcat= new Childcategory;
             $childcat->subcategory_id=$request->subcategory;
             $childcat->name=$request->childcat;
+            $childcat->company_id=company()['company_id'];
             if($childcat->save())
                 return redirect()->route(currentUser().'.childcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
@@ -78,7 +79,7 @@ class ChildcategoryController extends Controller
      */
     public function edit($id)
     {
-        $subcategory=Subcategory::all();
+        $subcategory = Subcategory::where(company())->get();
         $childcategory= Childcategory::findOrFail(encryptor('decrypt',$id));
         return view('childcategory.edit',compact('childcategory','subcategory'));
     }

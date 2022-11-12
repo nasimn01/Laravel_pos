@@ -59,12 +59,6 @@
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.brand.create')}}">{{__('Add New')}}</a></li>
                         </ul>
                     </li>
-                    <li class="submenu-item"><a href="{{route(currentUser().'.unit.index')}}" class='submenu-link'>{{__('Unit')}}</a>
-                        <ul class="subsubmenu">
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.unit.index')}}">{{__('List')}}</a></li>
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.unit.create')}}">{{__('Add New')}}</a></li>
-                        </ul>
-                    </li>
                     <li class="submenu-item"><a href="{{route(currentUser().'.product.index')}}" class='submenu-link'>{{__('Products')}}</a>
                         <ul class="subsubmenu">
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.product.index')}}">{{__('List')}}</a></li>

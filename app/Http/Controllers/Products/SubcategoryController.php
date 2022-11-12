@@ -22,7 +22,7 @@ class SubcategoryController extends Controller
      */
     public function index()
     {
-        $subcategories=Subcategory::paginate(10);
+        $subcategories=Subcategory::where(company())->paginate(10);
         return view('subcategory.index',compact('subcategories'));
     }
 
@@ -33,7 +33,7 @@ class SubcategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::where(company())->get();
         return view('subcategory.create',compact('categories'));
     }
 
@@ -49,6 +49,7 @@ class SubcategoryController extends Controller
             $subcat= new Subcategory;
             $subcat->category_id=$request->category;
             $subcat->name=$request->subCat;
+            $subcat->company_id=company()['company_id'];
             if($subcat->save())
                 return redirect()->route(currentUser().'.subcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
@@ -78,7 +79,7 @@ class SubcategoryController extends Controller
      */
     public function edit($id)
     {
-        $category=Category::all();
+        $category=Category::where(company())->get();
         $subcategory= Subcategory::findOrFail(encryptor('decrypt',$id));
         return view('subcategory.edit',compact('subcategory','category'));
     }

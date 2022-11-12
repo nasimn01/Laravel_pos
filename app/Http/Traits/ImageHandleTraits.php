@@ -4,15 +4,9 @@ namespace App\Http\Traits;
 
 use Storage;
 use File;
+use Image;
 
 trait ImageHandleTraits{
-
-    public function uploadImage($image, $path)
-    {
-        $imageNewName = time() . "." . $this->checkValidImage($image);
-        Storage::disk('public')->putFileAs("images/$path/", $image, $imageNewName);
-        return $imageNewName;
-    }
 
     public function checkValidImage($image)
     {
@@ -26,11 +20,31 @@ trait ImageHandleTraits{
 
     public function deleteImage($image, $path)
     {
-        $oldImagePath = public_path("/storage/images/$path/$image");
-        if (File::exists($oldImagePath)) {
-            return File::delete($oldImagePath);
-        } else {
-            return 'no image';
+        $oldImagePath = public_path("$path/$image");
+        $oldImagePaththumb = public_path("$path/thumb/$image");
+        if (File::exists($oldImagePath)) 
+            if(File::delete($oldImagePath))
+                if (File::exists($oldImagePaththumb)) 
+                    return File::delete(($oldImagePaththumb));
+                
+        
+            return true;
+    }
+
+    public function resizeImage($image, $path,$resize=false,$w=0,$h=0,$ratio=false){
+        $imageName = time() . "." . $this->checkValidImage($image);
+        $destinationPath = public_path("$path");
+        if (!File::exists($destinationPath.'/thumb')) {
+            File::makeDirectory($destinationPath.'/thumb', 0775, true, true);
         }
+        $img = Image::make($image->path());
+        if($ratio)
+            $img->resize($w, $h, function ($constraint) {$constraint->aspectRatio();})->save($destinationPath.'/thumb/'.$imageName);
+        else
+            $img->resize($w, $h)->save($destinationPath.'/thumb/'.$imageName);
+
+        
+        $image->move($destinationPath, $imageName);
+        return $imageName;
     }
 }

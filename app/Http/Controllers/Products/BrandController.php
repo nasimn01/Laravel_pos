@@ -21,7 +21,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::paginate(10);
+        $brands = Brand::where(company())->paginate(10);
         return view('brand.index',compact('brands'));
     }
 

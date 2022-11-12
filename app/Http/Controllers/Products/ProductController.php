@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(10);
+        $products = Product::where(company())->paginate(10);
         return view('product.index',compact('products'));
     }
 
@@ -37,10 +37,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        $subcategories = Subcategory::all();
-        $childcategories = Childcategory::all();
-        $brands = Brand::all();
+        $categories = Category::where(company())->get();
+        $subcategories = Subcategory::where(company())->get();
+        $childcategories = Childcategory::where(company())->get();
+        $brands = Brand::where(company())->get();
         $units = Unit::all();
         return view('product.create',compact('categories','subcategories','childcategories','brands','units'));
     }
@@ -96,10 +96,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::all();
-        $subcategories = Subcategory::all();
-        $childcategories = Childcategory::all();
-        $brands = Brand::all();
+        $categories = Category::where(company())->get();
+        $subcategories = Subcategory::where(company())->get();
+        $childcategories = Childcategory::where(company())->get();
+        $brands = Brand::where(company())->get();
         $units = Unit::all();
         $product= Product::findOrFail(encryptor('decrypt',$id));
         return view('product.edit',compact('categories','subcategories','childcategories','brands','units','product'));
@@ -126,6 +126,7 @@ class ProductController extends Controller
             $p->description=$request->description;
             $p->price=$request->price;
             $p->image=$request->image;
+            $p->company_id=company()['company_id'];
             $p->status=1;
             if($p->save())
                 return redirect()->route(currentUser().'.product.index')->with($this->resMessageHtml(true,null,'Successfully created'));

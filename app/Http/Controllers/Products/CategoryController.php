@@ -9,11 +9,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Category\AddNewRequest;
 use App\Http\Requests\Category\UpdateRequest;
 use App\Http\Traits\ResponseTrait;
+use App\Http\Traits\ImageHandleTraits;
 use Exception;
 
 class CategoryController extends Controller
 {
-    use ResponseTrait;
+    use ResponseTrait,ImageHandleTraits;
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +22,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::paginate(10);
+        $categories=Category::where(company())->paginate(10);
         return view('category.index',compact('categories'));
     }
 
@@ -46,13 +47,16 @@ class CategoryController extends Controller
         try{
             $cat= new Category;
             $cat->category=$request->category;
-            $cat->image=$request->image;
+            $cat->company_id=company()['company_id'];
+            if($request->has('image'))
+                $cat->image=$this->resizeImage($request->image,'images/category/'.company()['company_id'],true,200,200,false);
+            
             if($cat->save())
                 return redirect()->route(currentUser().'.category.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
-            //dd($e);
+            dd($e);
             return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }
     }
@@ -92,7 +96,11 @@ class CategoryController extends Controller
         try{
             $cat= Category::findOrFail(encryptor('decrypt',$id));
             $cat->category=$request->category;
-            $cat->image=$request->image;
+            $path='images/category/'.company()['company_id'];
+            if($request->has('image') && $request->image)
+                if($this->deleteImage($cat->image,$path))
+                    $cat->image=$this->resizeImage($request->image,$path,true,200,200,false);
+                
             if($cat->save())
                 return redirect()->route(currentUser().'.category.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else

@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('warehouses', function (Blueprint $table) {
             $table->id();
-            $table->string('category');
-            $table->string('image')->nullable();
-            $table->unsignedBigInteger('company_id')->nullable()->index();
+            $table->unsignedBigInteger('company_id')->index();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-            $table->unsignedBigInteger('branch_id')->nullable()->index();
+            $table->unsignedBigInteger('branch_id')->index();
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->string('name');
+            $table->string('address');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('warehouses');
     }
 };

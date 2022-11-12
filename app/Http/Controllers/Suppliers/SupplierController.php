@@ -24,7 +24,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $suppliers = supplier::paginate(10);
+        $suppliers = supplier::where(company())->paginate(10);
         return view('supplier.index',compact('suppliers'));
     }
 
@@ -64,6 +64,7 @@ class SupplierController extends Controller
             $sup->post_code= $request->postCode;
             $sup->post_code= $request->postCode;
             $sup->address= $request->address;
+            $sup->company_id=company()['company_id'];
            
             if($sup->save())
                 return redirect()->route(currentUser().'.supplier.index')->with($this->resMessageHtml(true,null,'Successfully created'));
@@ -125,6 +126,7 @@ class SupplierController extends Controller
             $sup->post_code= $request->postCode;
             $sup->post_code= $request->postCode;
             $sup->address= $request->address;
+            $sup->company_id=company()['company_id'];
            
             if($sup->save())
                 return redirect()->route(currentUser().'.supplier.index')->with($this->resMessageHtml(true,null,'Successfully created'));

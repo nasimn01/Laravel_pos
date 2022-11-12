@@ -30,13 +30,13 @@
                                         <td>{{$cat->category}}</td>
                                         <td>{{$cat->image}}</td>
                                         <td class="white-space-nowrap">
-                                            <a href="{{route(currentUser().'.subcategory.edit',encryptor('encrypt',$cat->id))}}">
+                                            <a href="{{route(currentUser().'.category.edit',encryptor('encrypt',$cat->id))}}">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
                                             <!-- <a href="javascript:void()" onclick="$('#form{{$cat->id}}').submit()">
                                                 <i class="bi bi-trash"></i>
                                             </a> -->
-                                            <form id="form{{$cat->id}}" action="{{route(currentUser().'.subcategory.destroy',encryptor('encrypt',$cat->id))}}" method="post">
+                                            <form id="form{{$cat->id}}" action="{{route(currentUser().'.category.destroy',encryptor('encrypt',$cat->id))}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 

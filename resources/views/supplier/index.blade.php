@@ -64,7 +64,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <th colspan="8" class="text-center">No Pruduct Found</th>
+                                <th colspan="12" class="text-center">No Pruduct Found</th>
                             </tr>
                             @endforelse
                         </tbody>

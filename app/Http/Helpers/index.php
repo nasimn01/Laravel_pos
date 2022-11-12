@@ -91,6 +91,10 @@ function company(){
     return ['company_id' => encryptor('decrypt', Session::get('companyId'))];
 }
 
+function branch(){
+    return ['branch_id' => encryptor('decrypt', Session::get('branchId'))];
+}
+
 
 
 function invoice(){

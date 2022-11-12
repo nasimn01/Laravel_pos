@@ -55,6 +55,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::resource('district',district::class,['as'=>'admin']);
         Route::resource('upazila',upazila::class,['as'=>'admin']);
         Route::resource('thana',thana::class,['as'=>'admin']);
+        Route::resource('unit',unit::class,['as'=>'admin']);
         
     });
 });
@@ -67,7 +68,6 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('subcategory',subcat::class,['as'=>'owner']);
         Route::resource('childcategory',childcat::class,['as'=>'owner']);
         Route::resource('brand',brand::class,['as'=>'owner']);
-        Route::resource('unit',unit::class,['as'=>'owner']);
         Route::resource('product',product::class,['as'=>'owner']);
         Route::resource('supplier',supplier::class,['as'=>'owner']);
         Route::resource('customer',customer::class,['as'=>'owner']);

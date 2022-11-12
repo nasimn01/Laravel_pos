@@ -31,6 +31,10 @@ return new class extends Migration
             $table->foreign('childcategory_id')->references('id')->on('childcategories')->onDelete('cascade');
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
+            $table->unsignedBigInteger('company_id')->nullable()->index();
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->unsignedBigInteger('branch_id')->nullable()->index();
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
