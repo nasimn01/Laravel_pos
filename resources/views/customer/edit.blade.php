@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle',trans('Update Supplier'))
+@section('pageTitle',trans('Update Customer'))
 @section('pageSubTitle',trans('Update'))
 
 @section('content')
@@ -11,18 +11,18 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="{{route(currentUser().'.supplier.update',encryptor('encrypt',$supplier->id))}}">
+                            <form class="form" method="post" action="{{route(currentUser().'.customer.update',encryptor('encrypt',$customer->id))}}">
                                 @csrf
                                 @method('patch')
-                                <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$supplier->id)}}">
+                                <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$customer->id)}}">
                                 <div class="row">
 
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="supplierName">Supplier Name</label>
-                                            <input type="text" id="supplierName" class="form-control" value="{{ old('supplierName',$supplier->supplier_name)}}" name="supplierName">
-                                            @if($errors->has('supplierName'))
-                                            <span class="text-danger"> {{ $errors->first('supplierName') }}</span>
+                                            <label for="customerName">Customer Name</label>
+                                            <input type="text" id="customerName" class="form-control" value="{{ old('customerName',$customer->customer_name)}}" name="customerName">
+                                            @if($errors->has('customerName'))
+                                            <span class="text-danger"> {{ $errors->first('customerName') }}</span>
                                             @endif
                                         </div>
                                         
@@ -30,7 +30,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="contact">Contact</label>
-                                            <input type="text" id="contact" class="form-control" value="{{ old('contact',$supplier->contact)}}" name="contact">
+                                            <input type="text" id="contact" class="form-control" value="{{ old('contact',$customer->contact)}}" name="contact">
                                             @if($errors->has('contact'))
                                             <span class="text-danger"> {{ $errors->first('contact') }}</span>
                                             @endif
@@ -40,32 +40,32 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="text" id="email" class="form-control" value="{{ old('email',$supplier->email)}}" name="email">
+                                            <input type="text" id="email" class="form-control" value="{{ old('email',$customer->email)}}" name="email">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="phone">Phone</label>
-                                            <input type="text" id="phone" class="form-control" value="{{ old('phone',$supplier->phone)}}" name="phone">
+                                            <input type="text" id="phone" class="form-control" value="{{ old('phone',$customer->phone)}}" name="phone">
                                         </div>
                                         
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="taxNumber">TAX Number</label>
-                                            <input type="text" id="taxNumber" class="form-control" value="{{ old('taxNumber',$supplier->tax_number)}}" name="taxNumber">
+                                            <input type="text" id="taxNumber" class="form-control" value="{{ old('taxNumber',$customer->tax_number)}}" name="taxNumber">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="gstNumber">GST Number</label>
-                                            <input type="text" id="gstNumber" class="form-control" value="{{ old('gstNumber',$supplier->gst_number)}}" name="gstNumber">
+                                            <input type="text" id="gstNumber" class="form-control" value="{{ old('gstNumber',$customer->gst_number)}}" name="gstNumber">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="openingAmount">Opening Balance</label>
-                                            <input type="text" id="openingAmount" class="form-control" value="{{ old('openingAmount',$supplier->opening_balance)}}" name="openingAmount">
+                                            <input type="text" id="openingAmount" class="form-control" value="{{ old('openingAmount',$customer->opening_balance)}}" name="openingAmount">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -74,7 +74,7 @@
                                             <select class="form-control" name="countryName" id="countryName">
                                                 <option value="">Select Country</option>
                                                 @forelse($countries as $d)
-                                                    <option value="{{$d->id}}" {{ old('countryName',$supplier->country_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
+                                                    <option value="{{$d->id}}" {{ old('countryName',$customer->country_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
                                                     <option value="">No Category found</option>
                                                 @endforelse
@@ -91,7 +91,7 @@
                                             <select class="form-control" name="divisionName" id="divisionName">
                                                 <option value="">Select Country</option>
                                                 @forelse($divisions as $d)
-                                                    <option value="{{$d->id}}" {{ old('divisionName',$supplier->division_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
+                                                    <option value="{{$d->id}}" {{ old('divisionName',$customer->division_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
                                                     <option value="">No Category found</option>
                                                 @endforelse
@@ -104,7 +104,7 @@
                                             <select class="form-control" name="districtName" id="districtName">
                                                 <option value="">Select Country</option>
                                                 @forelse($districts as $d)
-                                                    <option value="{{$d->id}}" {{ old('districtName',$supplier->district_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
+                                                    <option value="{{$d->id}}" {{ old('districtName',$customer->district_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
                                                     <option value="">No Category found</option>
                                                 @endforelse
@@ -114,13 +114,13 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="postCode">Post Code</label>
-                                            <input type="text" id="postCode" class="form-control" value="{{ old('postCode',$supplier->post_code)}}" name="postCode">
+                                            <input type="text" id="postCode" class="form-control" value="{{ old('postCode',$customer->post_code)}}" name="postCode">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="address" class="form-label">Address</label>
-                                            <textarea class="form-control" name="address" id="address" rows="2">{{ old('address',$supplier->address)}}</textarea>
+                                            <textarea class="form-control" name="address" id="address" rows="2">{{ old('address',$customer->address)}}</textarea>
                                             
                                         </div>
                                     </div>

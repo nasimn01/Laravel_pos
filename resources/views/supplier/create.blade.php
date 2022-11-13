@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle',trans('Create Supplier'))
+@section('pageTitle',trans('Create customer'))
 @section('pageSubTitle',trans('Create'))
 
 @section('content')
@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="{{route(currentUser().'.supplier.store')}}">
+                            <form class="form" method="post" action="{{route(currentUser().'.customer.store')}}">
                                 @csrf
                                 <div class="row">
                                     @if( currentUser()=='owner')
@@ -25,8 +25,8 @@
                                                         <option value="">No branch found</option>
                                                     @endforelse
                                                 </select>
-                                                @if($errors->has('supplierName'))
-                                                <span class="text-danger"> {{ $errors->first('supplierName') }}</span>
+                                                @if($errors->has('customerName'))
+                                                <span class="text-danger"> {{ $errors->first('customerName') }}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -36,10 +36,10 @@
 
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="supplierName">Supplier Name</label>
-                                            <input type="text" id="supplierName" class="form-control" value="{{ old('supplierName')}}" name="supplierName">
-                                            @if($errors->has('supplierName'))
-                                            <span class="text-danger"> {{ $errors->first('supplierName') }}</span>
+                                            <label for="customerName">Customer Name</label>
+                                            <input type="text" id="customerName" class="form-control" value="{{ old('customerName')}}" name="customerName">
+                                            @if($errors->has('customerName'))
+                                            <span class="text-danger"> {{ $errors->first('customerName') }}</span>
                                             @endif
                                         </div>
                                     </div>

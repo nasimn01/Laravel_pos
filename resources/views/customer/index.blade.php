@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('pageTitle',trans('Supplier List'))
+@section('pageTitle',trans('Customer List'))
 @section('pageSubTitle',trans('List'))
 
 @section('content')
@@ -14,7 +14,7 @@
                     {!!Session::get('response')['message']!!}
                 @endif
                 <div>
-                    <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.supplier.create')}}"><i class="bi bi-pencil-square"></i></a>
+                    <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.customer.create')}}"><i class="fa-solid fa-plus"></i></a>
                 </div>
                 <!-- table bordered -->
                 <div class="table-responsive">
@@ -22,7 +22,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{__('#SL')}}</th>
-                                <th scope="col">{{__('Supplier')}}</th>
+                                <th scope="col">{{__('Customer')}}</th>
                                 <th scope="col">{{__('Contact')}}</th>
                                 <th scope="col">{{__('Email')}}</th>
                                 <th scope="col">{{__('Phone')}}</th>
@@ -36,10 +36,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($suppliers as $sup)
+                            @forelse($customers as $sup)
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
-                                <td>{{$sup->supplier_name}}</td>
+                                <td>{{$sup->customer_name}}</td>
                                 <td>{{$sup->contact}}</td>
                                 <td>{{$sup->email}}</td>
                                 <td>{{$sup->phone}}</td>
@@ -50,13 +50,13 @@
                                 <td>{{$sup->division?->name}}</td>
                                 <td>{{$sup->district?->name}}</td>
                                 <td class="white-space-nowrap">
-                                    <a href="{{route(currentUser().'.supplier.edit',encryptor('encrypt',$sup->id))}}">
+                                    <a href="{{route(currentUser().'.customer.edit',encryptor('encrypt',$sup->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
                                     <a href="javascript:void()" onclick="$('#form{{$sup->id}}').submit()">
                                         <i class="bi bi-trash"></i>
                                     </a>
-                                    <form id="form{{$sup->id}}" action="{{route(currentUser().'.supplier.destroy',encryptor('encrypt',$sup->id))}}" method="post">
+                                    <form id="form{{$sup->id}}" action="{{route(currentUser().'.customer.destroy',encryptor('encrypt',$sup->id))}}" method="post">
                                         @csrf
                                         @method('delete')
                                     </form>

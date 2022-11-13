@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Customers;
 
 use App\Http\Controllers\Controller;
 
+use App\Models\Settings\Location\Country;
+use App\Models\Settings\Location\Division;
+use App\Models\Settings\Location\District;
 use App\Models\Customers\customer;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Http\Requests\Customer\AddNewRequest;
 use App\Http\Requests\Customer\UpdateRequest;
@@ -21,7 +25,12 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        if( currentUser()=='owner')
+            $customers = customer::where(company())->paginate(10);
+        else
+            $customers = customer::where(company())->where(branch())->paginate(10);
+
+        return view('customer.index',compact('customers'));
     }
 
     /**
@@ -31,7 +40,11 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        $countries = Country::all();
+        $divisions = Division::all();
+        $districts = District::all();
+        $branches = Branch::where(company())->get();
+        return view('customer.create',compact('countries','divisions','districts','branches'));
     }
 
     /**
@@ -40,9 +53,34 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
-        //
+        try{
+            $cus= new customer;
+            $cus->customer_name= $request->customerName;
+            $cus->contact= $request->contact;
+            $cus->email= $request->email;
+            $cus->phone= $request->phone;
+            $cus->tax_number= $request->taxNumber;
+            $cus->gst_number= $request->gstNumber;
+            $cus->opening_balance= $request->openingAmount;
+            $cus->country_id= $request->countryName;
+            $cus->division_id= $request->divisionName;
+            $cus->district_id= $request->districtName;
+            $cus->post_code= $request->postCode;
+            $cus->post_code= $request->postCode;
+            $cus->address= $request->address;
+            $cus->company_id=company()['company_id'];
+            $cus->branch_id?branch()['branch_id']:null;
+           
+            if($cus->save())
+                return redirect()->route(currentUser().'.customer.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**
@@ -62,9 +100,14 @@ class CustomerController extends Controller
      * @param  \App\Models\Customers\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(customer $customer)
+    public function edit($id)
     {
-        //
+        $countries = Country::all();
+        $divisions = Division::all();
+        $districts = District::all();
+        $branches = Branch::where(company())->get();
+        $customer = customer::findOrFail(encryptor('decrypt',$id));
+        return view('customer.edit',compact('countries','divisions','districts','customer','branches'));
     }
 
     /**
@@ -74,9 +117,32 @@ class CustomerController extends Controller
      * @param  \App\Models\Customers\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, customer $customer)
+    public function update(UpdateRequest $request,$id)
     {
-        //
+        try{
+            $sup= customer::findOrFail(encryptor('decrypt',$id));
+            $sup->customer_name= $request->customerName;
+            $sup->contact= $request->contact;
+            $sup->email= $request->email;
+            $sup->phone= $request->phone;
+            $sup->tax_number= $request->taxNumber;
+            $sup->gst_number= $request->gstNumber;
+            $sup->opening_balance= $request->openingAmount;
+            $sup->country_id= $request->countryName;
+            $sup->division_id= $request->divisionName;
+            $sup->district_id= $request->districtName;
+            $sup->post_code= $request->postCode;
+            $sup->post_code= $request->postCode;
+            $sup->address= $request->address;
+           
+            if($sup->save())
+                return redirect()->route(currentUser().'.customer.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**
