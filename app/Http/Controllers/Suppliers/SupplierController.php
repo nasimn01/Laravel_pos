@@ -8,6 +8,7 @@ use App\Models\Settings\Location\Country;
 use App\Models\Settings\Location\Division;
 use App\Models\Settings\Location\District;
 use App\Models\Suppliers\supplier;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Http\Requests\Supplier\AddNewRequest;
 use App\Http\Requests\Supplier\UpdateRequest;
@@ -24,7 +25,11 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $suppliers = supplier::where(company())->paginate(10);
+        if( currentUser()=='owner')
+            $suppliers = supplier::where(company())->paginate(10);
+        else
+            $suppliers = supplier::where(company())->where(branch())->paginate(10);
+
         return view('supplier.index',compact('suppliers'));
     }
 
@@ -38,7 +43,8 @@ class SupplierController extends Controller
         $countries = Country::all();
         $divisions = Division::all();
         $districts = District::all();
-        return view('supplier.create',compact('countries','divisions','districts'));
+        $branches = Branch::where(company())->get();
+        return view('supplier.create',compact('countries','divisions','districts','branches'));
     }
 
     /**
@@ -65,13 +71,14 @@ class SupplierController extends Controller
             $sup->post_code= $request->postCode;
             $sup->address= $request->address;
             $sup->company_id=company()['company_id'];
+            $sup->branch_id?branch()['branch_id']:null;
            
             if($sup->save())
                 return redirect()->route(currentUser().'.supplier.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
-            //dd($e);
+            dd($e);
             return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }
     }
@@ -98,8 +105,9 @@ class SupplierController extends Controller
         $countries = Country::all();
         $divisions = Division::all();
         $districts = District::all();
+        $branches = Branch::where(company())->get();
         $supplier = supplier::findOrFail(encryptor('decrypt',$id));
-        return view('supplier.edit',compact('countries','divisions','districts','supplier'));
+        return view('supplier.edit',compact('countries','divisions','districts','supplier','branches'));
     }
 
     /**
@@ -126,7 +134,6 @@ class SupplierController extends Controller
             $sup->post_code= $request->postCode;
             $sup->post_code= $request->postCode;
             $sup->address= $request->address;
-            $sup->company_id=company()['company_id'];
            
             if($sup->save())
                 return redirect()->route(currentUser().'.supplier.index')->with($this->resMessageHtml(true,null,'Successfully created'));

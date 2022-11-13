@@ -14,6 +14,25 @@
                             <form class="form" method="post" action="{{route(currentUser().'.supplier.store')}}">
                                 @csrf
                                 <div class="row">
+                                    @if( currentUser()=='owner')
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group">
+                                                <label for="branch_id">Branches Name</label>
+                                                <select class="form-control" name="branch_id" id="branch_id">
+                                                    @forelse($branches as $b)
+                                                        <option value="{{ $b->id }}" {{old('branch_id')==$b->id?'selected':''}}>{{ $b->name }}</option>
+                                                    @empty
+                                                        <option value="">No branch found</option>
+                                                    @endforelse
+                                                </select>
+                                                @if($errors->has('supplierName'))
+                                                <span class="text-danger"> {{ $errors->first('supplierName') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    @else
+                                        <input type="hidden" value="{{ branch()['branch_id']}}" name="branch_id">
+                                    @endif
 
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
@@ -23,7 +42,6 @@
                                             <span class="text-danger"> {{ $errors->first('supplierName') }}</span>
                                             @endif
                                         </div>
-                                        
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">

@@ -18,6 +18,7 @@ use App\Http\Controllers\Products\UnitController as unit;
 use App\Http\Controllers\Products\ProductController as product;
 use App\Http\Controllers\Suppliers\SupplierController as supplier;
 use App\Http\Controllers\Customers\CustomerController as customer;
+use App\Http\Controllers\Purchases\PurchaseController as purchase;
 
 
 /* Middleware */
@@ -71,6 +72,7 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('product',product::class,['as'=>'owner']);
         Route::resource('supplier',supplier::class,['as'=>'owner']);
         Route::resource('customer',customer::class,['as'=>'owner']);
+        Route::resource('purchase',purchase::class,['as'=>'owner']);
     });
 });
 
