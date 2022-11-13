@@ -26,7 +26,12 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        $purchases = Purchase::where(company())->paginate(10);
+        if( currentUser()=='owner')
+            $purchases = Purchase::where(company())->paginate(10);
+        else
+            $purchases = Purchase::where(company())->where(branch())->paginate(10);
+            
+        
         return view('purchase.index',compact('purchases'));
     }
 
@@ -37,8 +42,30 @@ class PurchaseController extends Controller
      */
     public function create()
     {
-        $suppliers = Supplier::where(company())->get();
         $branches = Branch::where(company())->get();
+        if( currentUser()=='owner'){
+            $suppliers = Supplier::where(company())->get();
+            $Warehouses = Warehouse::where(company())->get();
+        }else{
+            $suppliers = Supplier::where(company())->where(branch())->get();
+            $Warehouses = Warehouse::where(company())->where(branch())->get();
+        }
+        
+        return view('purchase.create',compact('branches','suppliers','Warehouses'));
+        
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function product_search(Request $request)
+    {
+        if($request->product_data){
+            
+        }
+        
     }
 
     /**
@@ -47,9 +74,38 @@ class PurchaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
-        //
+        try{
+            $pur= new Purchase;
+            $pur->supplier_id=$request->supplierName;
+            $pur->purchase_date=$request->purchase_date;
+            $pur->reference_no=$request->reference_no;
+            $pur->total_quantity=$request->total_quantity;
+            $pur->sub_amount=$request->sub_amount;
+            $pur->tax=$request->tax;
+            $pur->discount=$request->discount;
+            $pur->total_amount=$request->total_amount;
+            $pur->round_of=$request->round_of;
+            $pur->grand_total=$request->grand_total;
+            $pur->note=$request->note;
+            $pur->company_id=company()['company_id'];
+            $pur->branch_id?branch()['branch_id']:null;
+            $pur->warehouse_id=$request->warehouseName;
+
+            $pur->payment_status=0;
+            $pur->status=1;
+            $pur->status_note=$request->status_note;
+            
+           
+            if($pur->save())
+                return redirect()->route(currentUser().'.purchase.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**
