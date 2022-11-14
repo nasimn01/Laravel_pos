@@ -16,7 +16,7 @@
                         //print_r($childcategories);
                         ?>
                         <table class="table table-bordered mb-0">
-                            <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.childcategory.create')}}"><i class="bi bi-pencil-square"></i></a>
+                            <a class="float-end" href="{{route(currentUser().'.childcategory.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                             <thead>
                                 <tr>
                                     <th scope="col">#SL</th>

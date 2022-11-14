@@ -13,8 +13,8 @@
                 @if(Session::has('response'))
                     {!!Session::get('response')['message']!!}
                 @endif
-                <div>
-                    <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.customer.create')}}"><i class="fa-solid fa-plus"></i></a>
+                <div class="p-0 m-0">
+                    <a class=" float-end" href="{{route(currentUser().'.customer.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                 </div>
                 <!-- table bordered -->
                 <div class="table-responsive">

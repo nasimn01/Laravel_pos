@@ -11,7 +11,7 @@
         
             <div class="card">
                 <div>
-                <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.users.create')}}"><i class="bi bi-pencil-square"></i></a>
+                <a class="float-end" href="{{route(currentUser().'.users.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                 </div>
                 @if(Session::has('response'))
                     {!!Session::get('response')['message']!!}
