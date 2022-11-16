@@ -65,6 +65,7 @@ class ProductController extends Controller
             $p->description=$request->description;
             $p->price=$request->price;
             $p->image=$request->image;
+            $p->company_id=company()['company_id'];
             $p->status=1;
             if($p->save())
                 return redirect()->route(currentUser().'.product.index')->with($this->resMessageHtml(true,null,'Successfully created'));

@@ -46,6 +46,7 @@ class BrandController extends Controller
         try{
             $b= new Brand;
             $b->name=$request->brandName;
+            $b->company_id=company()['company_id'];
             if($b->save())
                 return redirect()->route(currentUser().'.brand.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
