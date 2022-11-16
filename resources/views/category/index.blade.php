@@ -28,7 +28,7 @@
                                     <tr>
                                     <th scope="row">{{ ++$loop->index }}</th>
                                         <td>{{$cat->category}}</td>
-                                        <td>{{$cat->image}}</td>
+                                        <td><img width="80px" height="40px" class="float-first" src="{{asset('images/category/'.company()['company_id'].'/'.$cat->image)}}" alt=""></td>
                                         <td class="white-space-nowrap">
                                             <a href="{{route(currentUser().'.category.edit',encryptor('encrypt',$cat->id))}}">
                                                 <i class="bi bi-pencil-square"></i>

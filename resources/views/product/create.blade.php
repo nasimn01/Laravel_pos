@@ -122,7 +122,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="image">Image</label>
-                                            <input type="text" id="image" class="form-control"
+                                            <input type="file" id="image" class="form-control"
                                                 placeholder="Image" name="image">
                                                 @if($errors->has('image'))
                                                     <span class="text-danger"> {{ $errors->first('image') }}</span>

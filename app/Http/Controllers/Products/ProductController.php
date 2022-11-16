@@ -14,11 +14,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Product\AddRequest;
 use App\Http\Requests\Product\UpdateRequest;
 use App\Http\Traits\ResponseTrait;
+use App\Http\Traits\ImageHandleTraits;
 use Exception;
 
 class ProductController extends Controller
 {
-    use ResponseTrait;
+    use ResponseTrait,ImageHandleTraits;
     /**
      * Display a listing of the resource.
      *
@@ -64,15 +65,18 @@ class ProductController extends Controller
             $p->product_name=$request->productName;
             $p->description=$request->description;
             $p->price=$request->price;
-            $p->image=$request->image;
+            
             $p->company_id=company()['company_id'];
             $p->status=1;
+            if($request->has('image'))
+                $p->image=$this->resizeImage($request->image,'images/product/'.company()['company_id'],true,200,200,false);
+
             if($p->save())
                 return redirect()->route(currentUser().'.product.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
-            //dd($e);
+            dd($e);
             return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }
     }

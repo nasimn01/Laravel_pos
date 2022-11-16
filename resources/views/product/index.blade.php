@@ -25,7 +25,7 @@
                                     <th scope="col">Units</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Price</th>
-                                    <!-- <th scope="col">Image</th>-->
+                                    <th scope="col">Image</th>
                                     <th scope="col">Status</th>
                                     <th class="white-space-nowrap">ACTION</th>
                                 </tr>
@@ -43,7 +43,7 @@
                                     <td>{{$p->unit?->name}}</td>
                                     <td>{{$p->description}}</td>
                                     <td>{{$p->price}}</td>
-                                    <!--  <td><img width="50px" src="{{asset('uploads/product/'.$p->image)}}" alt=""></td>-->
+                                     <td><img width="80px" height="40px" class="float-first" src="{{asset('images/product/'.company()['company_id'].'/'.$p->image)}}" alt=""></td>
                                     <td>@if($p->status == 1) Active @else Inactive @endif</td>
                                     <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
                                     <td class="white-space-nowrap">

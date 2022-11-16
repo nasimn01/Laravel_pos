@@ -112,7 +112,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="image">Image</label>
-                                            <input type="text" id="image" class="form-control"
+                                            <input type="file" id="image" class="form-control"
                                                 placeholder="Image" name="image">
                                                 
                                         </div>
@@ -126,6 +126,7 @@
                                     </div>
                                     
                                     <div class="col-12 d-flex justify-content-end">
+                                    <img width="80px" height="40px" class="float-first" src="{{asset('images/product/'.company()['company_id'].'/'.$product->image)}}" alt="">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
                                         
                                     </div>
