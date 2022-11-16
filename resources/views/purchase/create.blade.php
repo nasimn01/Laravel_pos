@@ -57,21 +57,20 @@
 
 
                                     <div class="col-md-2 mt-2">
-                                        <label for="warehouseName" class="float-end"><h6>Warehouse</h6></label>
+                                        <label for="warehouse_id" class="float-end"><h6>Warehouse</h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="form-control form-group" name="warehouseName" id="warehouseName">
-                                            <option value="">Select Warehouse</option>
+                                        <select class="form-control form-group" name="warehouse_id" id="warehouse_id">
                                             @forelse($Warehouses as $d)
-                                                <option class="brnch brnch{{$d->branch_id}}" value="{{$d->id}}" {{ old('warehouseName')==$d->id?"selected":""}}> {{ $d->name}}</option>
+                                                <option class="brnch brnch{{$d->branch_id}}" value="{{$d->id}}" {{ old('warehouse_id')==$d->id?"selected":""}}> {{ $d->name}}</option>
                                             @empty
                                                 <option value="">No Warehouse found</option>
                                             @endforelse
                                         </select>
                                     </div>
                                     
-                                    @if($errors->has('warehouseName'))
-                                        <span class="text-danger"> {{ $errors->first('warehouseName') }}</span>
+                                    @if($errors->has('warehouse_id'))
+                                        <span class="text-danger"> {{ $errors->first('warehouse_id') }}</span>
                                     @endif 
                                     
 
@@ -92,7 +91,7 @@
                                 </div>
                                 <div class="row m-3">
                                     <div class="col-8 offset-2">
-                                        <input type="text" name="" id="product_search" class="form-control" placeholder="Search Product">
+                                        <input type="text" name="" id="item_search" class="form-control  ui-autocomplete-input" placeholder="Search Product">
                                     </div>
                                 </div>
                                 <table class="table mb-5">
@@ -109,7 +108,7 @@
                                             <th class="p-3">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="details_data">
 
                                     </tbody>
                                 </table>
@@ -201,80 +200,6 @@
                                         <label for="" class="float-start form-group"><h6>0.00</h6></label>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="total_quantity">QTY</label>
-                                            <input type="text" class="form-control" value="{{ old('total_quantity')}}" name="total_quantity">
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="sub_amount">Sub Amount</label>
-                                            <input type="text" class="form-control" value="{{ old('sub_amount')}}" name="sub_amount">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="tax">TAX</label>
-                                            <input type="text"  class="form-control" value="{{ old('tax')}}" name="tax">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="discount_type">Discount type</label>
-                                            <input type="text" class="form-control" value="{{ old('discount_type')}}" name="discount_type">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="discount">Discount</label>
-                                            <input type="text" class="form-control" value="{{ old('discount')}}" name="discount">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="total_amount">Total Amount</label>
-                                            <input type="text" class="form-control" value="{{ old('total_amount')}}" name="total_amount">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="round_of">RoundOf</label>
-                                            <input type="text" class="form-control" value="{{ old('round_of')}}" name="round_of">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="grand_total">Grand Total</label>
-                                            <input type="text" class="form-control" value="{{ old('grand_total')}}" name="grand_total">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="address" class="form-label">Note</label>
-                                            <textarea class="form-control" name="note" id="note" rows="2">{{ old('note')}}</textarea>
-                                            
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="status">Status</label>
-                                            <input type="text" class="form-control" value="{{ old('status')}}" name="status">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label for="status_note">Payment Status</label>
-                                            <input type="text" class="form-control" value="{{ old('status_note')}}" name="status_note">
-                                        </div>
-                                    </div>
-                                    
-                                </div>
                                 
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
@@ -303,16 +228,151 @@
 <script>
     function change_data(e){
         $('.brnch').hide();
-        $('.brnch'e).show();
+        $('.brnch'+e).show();
     }
 
 </script>
 
 <script>
 $(function() {
-    $("#skill_input").autocomplete({
-        source: "fetchData.php",
+    $("#item_search").bind("paste", function(e){
+        $("#item_search").autocomplete('search');
+    } );
+    $("#item_search").autocomplete({
+        source: function(data, cb){
+            
+            $.ajax({
+            autoFocus:true,
+                url: "{{route(currentUser().'.pur.product_search')}}",
+                method: 'GET',
+                dataType: 'json',
+                data: {
+                    name: data.term
+                },
+                success: function(res){
+                console.log(res);
+                    var result;
+                    result = [{label: 'No Records Found ',value: ''}];
+                    if (res.length) {
+                        result = $.map(res, function(el){
+                            return {
+                                label: el.value +'--'+ el.label,
+                                value: '',
+                                id: el.id,
+                                item_name: el.value
+                            };
+                        });
+                    }
+
+                    cb(result);
+                },error: function(e){
+                    console.log("error "+e);
+                }
+            });
+        },
+
+            response:function(e,ui){
+            if(ui.content.length==1){
+                $(this).data('ui-autocomplete')._trigger('select', 'autocompleteselect', ui);
+                $(this).autocomplete("close");
+            }
+            //console.log(ui.content[0].id);
+            },
+
+            //loader start
+            search: function (e, ui) {
+            },
+            select: function (e, ui) { 
+                if(typeof ui.content!='undefined'){
+                console.log("Autoselected first");
+                if(isNaN(ui.content[0].id)){
+                    return;
+                }
+                var item_id=ui.content[0].id;
+                }
+                else{
+                console.log("manual Selected");
+                var item_id=ui.item.id;
+                }
+
+                return_row_with_data(item_id);
+                $("#item_search").val('');
+            },   
+            //loader end
     });
+
+
 });
+
+function return_row_with_data(item_id){
+  $("#item_search").addClass('ui-autocomplete-loader-center');
+	
+	var rowcount=$("#hidden_rowcount").val();
+    $.ajax({
+            autoFocus:true,
+                url: "{{route(currentUser().'.pur.product_search_data')}}",
+                method: 'GET',
+                dataType: 'json',
+                data: {
+                    item_id: item_id
+                },
+                success: function(res){
+                    
+                    $('#details_data').append(res);
+                    //$("#hidden_rowcount").val(parseFloat(rowcount)+1);
+                    success.currentTime = 0;
+                    success.play();
+                    enable_or_disable_item_discount();
+                    $("#item_search").removeClass('ui-autocomplete-loader-center');
+
+
+                   
+                },error: function(e){
+                    console.log("error "+e);
+                }
+            });
+	
+}
+//INCREMENT ITEM
+function increment_qty(rowcount){
+  var item_qty=$("#td_data_"+rowcount+"_3").val();
+  var available_qty=$("#tr_available_qty_"+rowcount+"_13").val();
+  //if(parseFloat(item_qty)<parseFloat(available_qty)){
+    item_qty=parseFloat(item_qty)+1;
+    $("#td_data_"+rowcount+"_3").val(item_qty.toFixed(2));
+  //}
+  calculate_tax(rowcount);
+}
+//DECREMENT ITEM
+function decrement_qty(rowcount){
+  var item_qty=$("#td_data_"+rowcount+"_3").val();
+  if(item_qty<=1){
+    $("#td_data_"+rowcount+"_3").val((1).toFixed(2));
+    return;
+  }
+  $("#td_data_"+rowcount+"_3").val((parseFloat(item_qty)-1).toFixed(2));
+  calculate_tax(rowcount);
+}
+
+//CALCUALATED SALES PRICE
+function calculate_sales_price(rowcount){
+  var purchase_price = (isNaN(parseFloat($("#td_data_"+rowcount+"_10").val().trim()))) ? 0 :parseFloat($("#td_data_"+rowcount+"_10").val().trim()); 
+  var profit_margin = (isNaN(parseFloat($("#td_data_"+rowcount+"_12").val().trim()))) ? 0 :parseFloat($("#td_data_"+rowcount+"_12").val().trim()); 
+  var tax_type = $("#tax_type").val();
+  var sales_price =parseFloat(0);
+    sales_price = purchase_price + ((purchase_price*profit_margin)/parseFloat(100));
+  $("#td_data_"+rowcount+"_13").val(sales_price.toFixed(2));
+}
+//END
+//CALCULATE PROFIT MARGIN PERCENTAGE
+function calculate_profit_margin(rowcount){
+  var purchase_price = (isNaN(parseFloat($("#td_data_"+rowcount+"_10").val().trim()))) ? 0 :parseFloat($("#td_data_"+rowcount+"_10").val().trim()); 
+  var sales_price = (isNaN(parseFloat($("#td_data_"+rowcount+"_13").val().trim()))) ? 0 :parseFloat($("#td_data_"+rowcount+"_13").val().trim());  
+  var profit_margin = (sales_price-purchase_price);
+  var profit_margin = (profit_margin/purchase_price)*parseFloat(100);
+  $("#td_data_"+rowcount+"_12").val(profit_margin.toFixed(2));
+}
+//END
+
 </script>
 @endpush

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Purchases\Purchase;
 use App\Models\Suppliers\Supplier;
+use App\Models\Products\Product;
 use App\Models\Branch;
 use App\Models\Warehouse;
 use App\Models\Company;
@@ -14,7 +15,7 @@ use App\Http\Requests\Purchases\AddNewRequest;
 use App\Http\Requests\Purchases\UpdateRequest;
 use App\Http\Traits\ResponseTrait;
 use Exception;
-
+use DB;
 
 class PurchaseController extends Controller
 {
@@ -62,9 +63,47 @@ class PurchaseController extends Controller
      */
     public function product_search(Request $request)
     {
-        if($request->product_data){
-            
+        if($request->name){
+            $product=Product::select('id','product_name as value','bar_code as label')->where(company())->where(function($query) use ($request) {
+                        $query->where('product_name','like', '%' . $request->name . '%')->orWhere('bar_code','like', '%' . $request->name . '%');
+                        })->get();
+                      print_r(json_encode($product));  
         }
+        
+    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function product_search_data(Request $request)
+    {
+        if($request->item_id){
+            $product=Product::where(company())->where('id',$request->item_id)->first();
+            $data='<tr>';
+            $data.='<td class="p-3">'.$product->product_name.'</td>';
+            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='</tr>';
+            /*<th class="p-3">Quantity</th>
+            <th class="p-3">Purchase Price</th>
+            <th class="p-3">Tax %</th>
+            <th class="p-3">Tax Amount</th>
+            <th class="p-3">Discount(%)</th>
+            <th class="p-3">Unit Cost</th>
+            <th class="p-3">Total Amount</th>
+            <th class="p-3">Action</th>
+        </tr>*/
+                      print_r(json_encode($data));  
+        }
+
+        
         
     }
 

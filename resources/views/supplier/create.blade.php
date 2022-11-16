@@ -13,21 +13,24 @@
                         <div class="card-body">
                             <form class="form" method="post" action="{{route(currentUser().'.supplier.store')}}">
                                 @csrf
+                               
                                 <div class="row">
-                                    @if( currentUser()=='owner')
-                                        <div class="col-md-4 col-12">
-                                            <div class="form-group">
-                                                <label for="branch_id">Branches Name</label>
-                                                <select class="form-control" name="branch_id" id="branch_id">
-                                                    @forelse($branches as $b)
-                                                        <option value="{{ $b->id }}" {{old('branch_id')==$b->id?'selected':''}}>{{ $b->name }}</option>
-                                                    @empty
-                                                        <option value="">No branch found</option>
-                                                    @endforelse
-                                                </select>
-                                                @if($errors->has('supplierName'))
-                                                <span class="text-danger"> {{ $errors->first('supplierName') }}</span>
-                                                @endif
+
+                                        @if( currentUser()=='owner')
+                                            <div class="col-md-4 col-12">
+                                                <div class="form-group">
+                                                    <label for="branch_id">Branches Name</label>
+                                                    <select class="form-control" name="branch_id" id="branch_id">
+                                                        @forelse($branches as $b)
+                                                            <option value="{{ $b->id }}" {{old('branch_id')==$b->id?"selected":""}}>{{ $b->name }}</option>
+                                                        @empty
+                                                            <option value="">No branch found</option>
+                                                        @endforelse
+                                                    </select>
+                                                    @if($errors->has('supplierName'))
+                                                    <span class="text-danger"> {{ $errors->first('supplierName') }}</span>
+                                                    @endif
+                                                </div>
                                             </div>
                                         @else
                                             <input type="hidden" value="{{ branch()['branch_id']}}" name="branch_id">
@@ -92,7 +95,7 @@
                                                 @forelse($countries as $d)
                                                     <option value="{{$d->id}}" {{ old('countryName')==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
-                                                    <option value="">No Category found</option>
+                                                    <option value="">No Country found</option>
                                                 @endforelse
                                             </select>
                                             @if($errors->has('countryName'))
@@ -109,20 +112,20 @@
                                                 @forelse($divisions as $d)
                                                     <option value="{{$d->id}}" {{ old('divisionName')==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
-                                                    <option value="">No Category found</option>
+                                                    <option value="">No division found</option>
                                                 @endforelse
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="districtName">Division</label>
+                                            <label for="districtName">District</label>
                                             <select class="form-control" name="districtName" id="districtName">
                                                 <option value="">Select Country</option>
                                                 @forelse($districts as $d)
                                                     <option value="{{$d->id}}" {{ old('districtName')==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
-                                                    <option value="">No Category found</option>
+                                                    <option value="">No district found</option>
                                                 @endforelse
                                             </select>
                                         </div>

@@ -15,7 +15,7 @@ trait ResponseTrait{
     }   
     public function resMessageHtml($status=true, $error=null, $message=null){
         $st=$status?'success':'danger';
-        $type=$status?'Success':'Successfully logout';
+        $type=$status?'Success':'logout Completed';
         return [
             'response' =>[
                     'message' => "<div class='py-1 alert alert-".$st." alert-dismissible fade show' role='alert'>
