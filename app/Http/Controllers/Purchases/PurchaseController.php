@@ -81,15 +81,23 @@ class PurchaseController extends Controller
         if($request->item_id){
             $product=Product::where(company())->where('id',$request->item_id)->first();
             $data='<tr>';
-            $data.='<td class="p-3">'.$product->product_name.'</td>';
-            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
-            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
-            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
-            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
-            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
-            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
-            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
-            $data.='<td class="p-3">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='<td class="p-2">'.$product->product_name.'</td>';
+            $data.='<td class="p-2">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='<td class="p-2">'.'<input type="text" class="form-control" value="'.$product->price.'"></td>';
+            $data.='<td class="p-2">'.'
+            
+            <select class="form-control form-select mt-2" name="tax" id="tax">
+                <option value="">N/A</option>
+                <option value="">Exclusive</option>
+                <option value="">Inclusive</option>
+            </select>
+            
+            </td>';
+            $data.='<td class="p-2">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='<td class="p-2">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='<td class="p-2">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='<td class="p-2">'.'<input type="text" class="form-control" value="'.$product->product_name.'"></td>';
+            $data.='<td class="p-2 text-danger">'.'<i style="font-size:1.7rem" class="bi bi-dash-circle-fill"></i></td>';
             $data.='</tr>';
             /*<th class="p-3">Quantity</th>
             <th class="p-3">Purchase Price</th>

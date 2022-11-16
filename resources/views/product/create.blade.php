@@ -17,7 +17,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="Category">Category</label>
-                                            <select onchange="show_subcat(this.value)" class="form-control" name="category" id="category">
+                                            <select onchange="show_subcat(this.value)" class="form-control form-select" name="category" id="category">
                                                 <option value="">Select Category</option>
                                                 @forelse($categories as $cat)
                                                     <option value="{{$cat->id}}" {{ old('category')==$cat->id?"selected":""}}> {{ $cat->category}}</option>
@@ -34,7 +34,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="subcategory">Sub Category</label>
-                                            <select onchange="show_childcat(this.value)" class="form-control" name="subcategory" id="subcategory">
+                                            <select onchange="show_childcat(this.value)" class="form-control form-select" name="subcategory" id="subcategory">
                                                 <option value="">Select Category</option>
                                                 @forelse($subcategories as $sub)
                                                     <option class="subcat subcat{{$sub->category_id}}" value="{{$sub->id}}" {{ old('subcategory')==$sub->id?"selected":""}}> {{ $sub->name}}</option>
@@ -48,7 +48,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="childcategory Name">Child Category</label>
-                                            <select class="form-control" name="childcategory" id="childcategory">
+                                            <select class="form-control form-select" name="childcategory" id="childcategory">
                                                 <option value="">Select Category</option>
                                                 @forelse($childcategories as $child)
                                                     <option class="childcat childcat{{$child->subcategory_id}}" value="{{$child->id}}" {{ old('childcategory')==$child->id?"selected":""}}> {{ $child->name}}</option>
@@ -61,7 +61,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="Units">Units</label>
-                                            <select class="form-control" name="name" id="name">
+                                            <select class="form-control form-select" name="name" id="name">
                                                 <option value="">Select Category</option>
                                                 @forelse($units as $u)
                                                     <option value="{{$u->id}}" {{ old('name')==$u->id?"selected":""}}> {{ $u->name}}</option>

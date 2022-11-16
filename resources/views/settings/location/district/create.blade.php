@@ -18,12 +18,12 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="division_id">Division</label>
-                                            <select class="form-control" name="division_id" id="division_id">
+                                            <select class="form-control form-select" name="division_id" id="division_id">
                                                 <option value="">Select Division</option>
                                                 @forelse($divisions as $d)
                                                     <option value="{{$d->id}}" {{ old('division_id')==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
-                                                    <option value="">No Category found</option>
+                                                    <option value="">No Division found</option>
                                                 @endforelse
                                             </select>
                                         </div>

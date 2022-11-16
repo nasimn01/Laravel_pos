@@ -21,7 +21,7 @@
                                             <div class="col-md-4 col-12">
                                                 <div class="form-group">
                                                     <label for="branch_id">Branches Name</label>
-                                                    <select class="form-control" name="branch_id" id="branch_id">
+                                                    <select class="form-control form-select" name="branch_id" id="branch_id">
                                                         @forelse($branches as $b)
                                                             <option value="{{ $b->id }}" {{old('branch_id',$supplier->branch_id)==$b->id?'selected':''}}>{{ $b->name }}</option>
                                                         @empty
@@ -91,7 +91,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="countryName">Country</label>
-                                            <select onchange="show_division(this.value)" class="form-control" name="countryName" id="countryName">
+                                            <select onchange="show_division(this.value)" class="form-control form-select" name="countryName" id="countryName">
                                                 <option value="">Select Country</option>
                                                 @forelse($countries as $d)
                                                     <option value="{{$d->id}}" {{ old('countryName',$supplier->country_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
@@ -108,7 +108,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="divisionName">Division</label>
-                                            <select onchange="show_district(this.value)" class="form-control" name="divisionName" id="divisionName">
+                                            <select onchange="show_district(this.value)" class="form-control form-select" name="divisionName" id="divisionName">
                                                 <option value="">Select Division</option>
                                                 @forelse($divisions as $d)
                                                     <option class="div div{{$d->country_id}}" value="{{$d->id}}" {{ old('divisionName',$supplier->division_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
@@ -121,7 +121,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="districtName">District</label>
-                                            <select class="form-control" name="districtName" id="districtName">
+                                            <select class="form-control form-select" name="districtName" id="districtName">
                                                 <option value="">Select District</option>
                                                 @forelse($districts as $d)
                                                     <option class="dist dist{{$d->division_id}}" value="{{$d->id}}" {{ old('districtName',$supplier->district_id)==$d->id?"selected":""}}> {{ $d->name}}</option>

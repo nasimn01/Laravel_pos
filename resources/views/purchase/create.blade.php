@@ -19,7 +19,7 @@
                                         <label for="branch_id" class="float-end" ><h6>Branches Name</h6></label>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <select onchange="change_data(this.value)" class="form-control" name="branch_id" id="branch_id">
+                                        <select onchange="change_data(this.value)" class="form-control form-select" name="branch_id" id="branch_id">
                                             @forelse($branches as $b)
                                                 <option value="{{ $b->id }}" {{old('branch_id')==$b->id?'selected':''}}>{{ $b->name }}</option>
                                             @empty
@@ -41,7 +41,8 @@
                                         <label for="supplierName" class="float-end"><h6>Supplier</h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="form-control form-group" name="supplierName" id="supplierName">
+                                        
+                                        <select class="form-control form-select" name="supplierName" id="supplierName">
                                             <option value="">Select Supplier</option>
                                             @forelse($suppliers as $d)
                                                 <option class="brnch brnch{{$d->branch_id}}" value="{{$d->id}}" {{ old('supplierName')==$d->id?"selected":""}}> {{ $d->supplier_name}}</option>
@@ -60,7 +61,7 @@
                                         <label for="warehouse_id" class="float-end"><h6>Warehouse</h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="form-control form-group" name="warehouse_id" id="warehouse_id">
+                                        <select class="form-control form-select" name="warehouse_id" id="warehouse_id">
                                             @forelse($Warehouses as $d)
                                                 <option class="brnch brnch{{$d->branch_id}}" value="{{$d->id}}" {{ old('warehouse_id')==$d->id?"selected":""}}> {{ $d->name}}</option>
                                             @empty
@@ -97,15 +98,15 @@
                                 <table class="table mb-5">
                                     <thead>
                                         <tr class="bg-primary text-white">
-                                            <th class="p-3">Product Name</th>
-                                            <th class="p-3">Quantity</th>
-                                            <th class="p-3">Purchase Price</th>
-                                            <th class="p-3">Tax %</th>
-                                            <th class="p-3">Tax Amount</th>
-                                            <th class="p-3">Discount(%)</th>
-                                            <th class="p-3">Unit Cost</th>
-                                            <th class="p-3">Total Amount</th>
-                                            <th class="p-3">Action</th>
+                                            <th class="p-2">Product Name</th>
+                                            <th class="p-2">Quantity</th>
+                                            <th class="p-2">Purchase Price</th>
+                                            <th class="p-2">Tax %</th>
+                                            <th class="p-2">Tax Amount</th>
+                                            <th class="p-2">Discount(%)</th>
+                                            <th class="p-2">Unit Cost</th>
+                                            <th class="p-2">Total Amount</th>
+                                            <th class="p-2">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody id="details_data">
@@ -138,7 +139,7 @@
                                         <input type="text" class="form-control form-group">
                                     </div>
                                     <div class="col-2">
-                                        <select class="form-control form-group" name="" id="">
+                                        <select class="form-control form-select" name="" id="">
                                             <option value="">Select</option>
                                             <option value="">None</option>
                                             <option value="">N/A</option>
@@ -161,7 +162,7 @@
                                         <input type="text" class="form-control form-group">
                                     </div>
                                     <div class="col-2">
-                                        <select class="form-control form-group" name="" id="">
+                                        <select class="form-control form-select" name="" id="">
                                             <option value="">Select</option>
                                             <option value="">Per%</option>
                                             <option value="">Fixed</option>

@@ -19,7 +19,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="Category">Category</label>
-                                            <select onchange="show_subcat(this.value)" class="form-control" name="category" id="category">
+                                            <select onchange="show_subcat(this.value)" class="form-control form-select" name="category" id="category">
                                                 <option value="">Select Category</option>
                                                 @forelse($categories as $cat)
                                                     <option value="{{$cat->id}}" {{ old('category',$product->category_id)==$cat->id?"selected":""}}> {{ $cat->category}}</option>
@@ -34,7 +34,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="subcategory">Sub Category</label>
-                                            <select onchange="show_childcat(this.value)" class="form-control" name="subcategory" id="subcategory">
+                                            <select onchange="show_childcat(this.value)" class="form-control form-select" name="subcategory" id="subcategory">
                                                 <option value="">Select Category</option>
                                                 @forelse($subcategories as $sub)
                                                     <option class="subcat subcat{{$sub->category_id}}" value="{{$sub->id}}" {{ old('subcategory',$product->subcategory_id)==$sub->id?"selected":""}}> {{ $sub->name}}</option>
@@ -47,7 +47,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="childcategory">Child Category</label>
-                                            <select class="form-control" name="childcategory" id="childcategory">
+                                            <select class="form-control form-select" name="childcategory" id="childcategory">
                                                 <option value="">Select Category</option>
                                                 @forelse($childcategories as $child)
                                                     <option class="childcat childcat{{$child->subcategory_id}}" value="{{$child->id}}" {{ old('childcategory',$product->childcategory_id)==$child->id?"selected":""}}> {{ $child->name}}</option>
@@ -60,7 +60,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="Units">Units</label>
-                                            <select class="form-control" name="name" id="name">
+                                            <select class="form-control form-select" name="name" id="name">
                                                 <option value="">Select Category</option>
                                                 @forelse($units as $u)
                                                     <option value="{{$u->id}}" {{ old('name',$product->unit_id)==$u->id?"selected":""}}> {{ $u->name}}</option>
@@ -74,7 +74,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="name">Brand</label>
-                                            <select class="form-control" name="name" id="name">
+                                            <select class="form-control form-select" name="name" id="name">
                                                 <option value="">Select Brand</option>
                                                 @forelse($brands as $b)
                                                     <option value="{{$b->id}}" {{ old('name',$product->brand_id)==$b->id?"selected":""}}> {{ $b->name}}</option>

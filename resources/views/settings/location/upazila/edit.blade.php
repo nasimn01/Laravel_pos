@@ -18,13 +18,13 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="district_id">Division</label>
-                                            <select class="form-control" name="district_id" id="district_id">
+                                            <label for="district_id">District</label>
+                                            <select class="form-control form-select" name="district_id" id="district_id">
                                                 <option value="">Select District</option>
                                                 @forelse($districts as $d)
                                                     <option value="{{$d->id}}" {{ old('upazila_id',$upazila->upazila_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
-                                                    <option value="">No Category found</option>
+                                                    <option value="">No District found</option>
                                                 @endforelse
                                             </select>
                                         </div>

@@ -18,12 +18,12 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="country_id">Country</label>
-                                            <select class="form-control" name="country_id" id="country_id">
+                                            <select class="form-control form-select" name="country_id" id="country_id">
                                                 <option value="">Select Country</option>
                                                 @forelse($countries as $d)
                                                     <option value="{{$d->id}}" {{ old('country_id')==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
-                                                    <option value="">No Category found</option>
+                                                    <option value="">No Country found</option>
                                                 @endforelse
                                             </select>
                                         </div>

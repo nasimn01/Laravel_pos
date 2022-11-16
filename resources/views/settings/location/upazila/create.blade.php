@@ -18,7 +18,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="district_id">District</label>
-                                            <select class="form-control" name="district_id" id="district_id">
+                                            <select class="form-control form-select" name="district_id" id="district_id">
                                                 <option value="">Select District</option>
                                                 @forelse($districts as $d)
                                                     <option value="{{$d->id}}" {{ old('district_id')==$d->id?"selected":""}}> {{ $d->name}}</option>

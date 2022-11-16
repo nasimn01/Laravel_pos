@@ -17,7 +17,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="Sub Category">Sub Category</label>
-                                        <select class="form-control" name="subcategory" id="subcategory">
+                                        <select class="form-control form-select" name="subcategory" id="subcategory">
                                             <option value="">Select Category</option>
                                             @forelse($subcategories as $sub)
                                                 <option value="{{$sub->id}}" {{ old('subcategory')==$sub->id?"selected":""}}> {{ $sub->name}}</option>

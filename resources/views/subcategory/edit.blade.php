@@ -20,7 +20,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="Category">Category</label>
-                                        <select class="form-control" name="category" id="category">
+                                        <select class="form-control form-select" name="category" id="category">
                                             <option value="">Select Category</option>
                                             @forelse($category as $cat)
                                                 <option value="{{$cat->id}}" {{ old('category',$subcategory->category_id)==$cat->id?"selected":""}}> {{ $cat->category}}</option>
