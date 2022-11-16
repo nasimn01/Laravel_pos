@@ -29,10 +29,9 @@
                                                 <span class="text-danger"> {{ $errors->first('supplierName') }}</span>
                                                 @endif
                                             </div>
-                                        </div>
-                                    @else
-                                        <input type="hidden" value="{{ branch()['branch_id']}}" name="branch_id">
-                                    @endif
+                                        @else
+                                            <input type="hidden" value="{{ branch()['branch_id']}}" name="branch_id">
+                                        @endif
 
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
@@ -42,6 +41,7 @@
                                             <span class="text-danger"> {{ $errors->first('supplierName') }}</span>
                                             @endif
                                         </div>
+                                        
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
