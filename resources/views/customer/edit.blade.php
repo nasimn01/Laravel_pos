@@ -71,12 +71,12 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="countryName">Country</label>
-                                            <select class="form-control" name="countryName" id="countryName">
+                                            <select onchange="show_division(this.value)" class="form-control" name="countryName" id="countryName">
                                                 <option value="">Select Country</option>
                                                 @forelse($countries as $d)
                                                     <option value="{{$d->id}}" {{ old('countryName',$customer->country_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
-                                                    <option value="">No Category found</option>
+                                                    <option value="">No Country found</option>
                                                 @endforelse
                                             </select>
                                             @if($errors->has('countryName'))
@@ -88,25 +88,25 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="divisionName">Division</label>
-                                            <select class="form-control" name="divisionName" id="divisionName">
-                                                <option value="">Select Country</option>
+                                            <select onchange="show_district(this.value)" class="form-control" name="divisionName" id="divisionName">
+                                                <option value="">Select Division</option>
                                                 @forelse($divisions as $d)
-                                                    <option value="{{$d->id}}" {{ old('divisionName',$customer->division_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
+                                                    <option class="div div{{$d->country_id}}" value="{{$d->id}}" {{ old('divisionName',$customer->division_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
-                                                    <option value="">No Category found</option>
+                                                    <option value="">No division found</option>
                                                 @endforelse
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="districtName">Division</label>
+                                            <label for="districtName">District</label>
                                             <select class="form-control" name="districtName" id="districtName">
-                                                <option value="">Select Country</option>
+                                                <option value="">Select District</option>
                                                 @forelse($districts as $d)
-                                                    <option value="{{$d->id}}" {{ old('districtName',$customer->district_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
+                                                    <option class="dist dist{{$d->division_id}}" value="{{$d->id}}" {{ old('districtName',$customer->district_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
-                                                    <option value="">No Category found</option>
+                                                    <option value="">No district found</option>
                                                 @endforelse
                                             </select>
                                         </div>
@@ -142,3 +142,26 @@
     <!-- // Basic multiple Column Form section end -->
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    /* call on load page */
+    $(document).ready(function(){
+        $('.div').hide();
+        $('.dist').hide();
+    })
+
+    function show_division(e){
+         $('.div').hide();
+         $('.div'+e).show()
+    }
+    function show_district(e){
+        $('.dist').hide();
+        $('.dist'+e).show();
+    }
+
+    
+   
+    
+</script>
+@endpush
