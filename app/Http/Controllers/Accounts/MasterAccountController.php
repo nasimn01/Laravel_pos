@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Transfers;
+namespace App\Http\Controllers\Accounts;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\Transfer;
+use App\Models\Accounts\master_account;
 use Illuminate\Http\Request;
 
-class TransferController extends Controller
+class MasterAccountController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,10 +43,10 @@ class TransferController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Transfer  $transfer
+     * @param  \App\Models\Accounts\master_account  $master_account
      * @return \Illuminate\Http\Response
      */
-    public function show(Transfer $transfer)
+    public function show(master_account $master_account)
     {
         //
     }
@@ -54,10 +54,10 @@ class TransferController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Transfer  $transfer
+     * @param  \App\Models\Accounts\master_account  $master_account
      * @return \Illuminate\Http\Response
      */
-    public function edit(Transfer $transfer)
+    public function edit(master_account $master_account)
     {
         //
     }
@@ -66,10 +66,10 @@ class TransferController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Transfer  $transfer
+     * @param  \App\Models\Accounts\master_account  $master_account
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transfer $transfer)
+    public function update(Request $request, master_account $master_account)
     {
         //
     }
@@ -77,10 +77,10 @@ class TransferController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Transfer  $transfer
+     * @param  \App\Models\Accounts\master_account  $master_account
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transfer $transfer)
+    public function destroy(master_account $master_account)
     {
         //
     }
