@@ -193,16 +193,8 @@
                                         <label for="" class="float-start form-group"><h6>0.00</h6></label>
                                     </div>
 
-
-                                    <div class="col-2 mt-2">
-                                        <label for="" class="float-end form-group"><h6></h6></label> 
-                                    </div>
-                                    <div class="col-4 mt-2">
-                                        <label for="" class="float-start form-group"><h6></h6></label>
-                                    </div>
-
-
-                                    <div class="col-2 mt-2">
+                                    
+                                    <div class="col-8 mt-2">
                                         <label for="" class="float-end form-group"><h6>Grand Total</h6></label> 
                                     </div>
                                     <div class="col-4 mt-2">
