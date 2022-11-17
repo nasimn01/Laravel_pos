@@ -130,7 +130,16 @@ class ProductController extends Controller
             $p->product_name=$request->productName;
             $p->description=$request->description;
             $p->price=$request->price;
-            $p->image=$request->image;
+            if($request->has('image')){
+                if($p->image){
+                    if($this->deleteImage($p->image,'images/product/'.company()['company_id'])){
+                        $p->image=$this->resizeImage($request->image,'images/product/'.company()['company_id'],true,200,200,false);
+                    }
+                }else{
+                    $p->image=$this->resizeImage($request->image,'images/product/'.company()['company_id'],true,200,200,false);
+                }
+            }
+
             $p->company_id=company()['company_id'];
             $p->status=1;
             if($p->save())

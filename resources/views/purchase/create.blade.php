@@ -15,26 +15,25 @@
                                 @csrf
                                 <div class="row">
                                     @if( currentUser()=='owner')
-                                    <div class="col-md-2 mt-2">
-                                        <label for="branch_id" class="float-end" ><h6>Branches Name</h6></label>
-                                    </div>
-                                    <div class="col-md-4 form-group">
-                                        <select onchange="change_data(this.value)" class="form-control form-select" name="branch_id" id="branch_id">
-                                            @forelse($branches as $b)
-                                                <option value="{{ $b->id }}" {{old('branch_id')==$b->id?'selected':''}}>{{ $b->name }}</option>
-                                            @empty
-                                                <option value="">No branch found</option>
-                                            @endforelse          
-                                        </select>      
-                                    </div>
-                                    @if($errors->has('branch_id'))
-                                    <span class="text-danger"> {{ $errors->first('branch_id') }}</span>
-                                    @endif
+                                        <div class="col-md-2 mt-2">
+                                            <label for="branch_id" class="float-end" ><h6>Branches Name</h6></label>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <select onchange="change_data(this.value)" class="form-control form-select" name="branch_id" id="branch_id">
+                                                @forelse($branches as $b)
+                                                    <option value="{{ $b->id }}" {{old('branch_id')==$b->id?'selected':''}}>{{ $b->name }}</option>
+                                                @empty
+                                                    <option value="">No branch found</option>
+                                                @endforelse          
+                                            </select>      
+                                        </div>
+                                        @if($errors->has('branch_id'))
+                                            <span class="text-danger"> {{ $errors->first('branch_id') }}</span>
+                                        @endif
                                         
                                     @else
                                         <input type="hidden" value="{{ branch()['branch_id']}}" name="branch_id">
                                     @endif
-
                                     
                                         
                                     <div class="col-md-2 mt-2">
@@ -102,8 +101,8 @@
                                             <th class="p-2">Quantity</th>
                                             <th class="p-2">Purchase Price</th>
                                             <th class="p-2">Tax %</th>
-                                            <th class="p-2">Tax Amount</th>
-                                            <th class="p-2">Discount(%)</th>
+                                            <th class="p-2">Discount Type</th>
+                                            <th class="p-2">Discount</th>
                                             <th class="p-2">Unit Cost</th>
                                             <th class="p-2">Total Amount</th>
                                             <th class="p-2">Action</th>
@@ -116,89 +115,94 @@
 
 
                                 <div class="row mb-5">
-                                    <div class="col-2 mt-2">
-                                        <label for="" class="float-end form-group"><h6>Total Quantities</h6></label> 
-                                    </div>
-                                    <div class="col-4 mt-2">
-                                        <label for="" class="float-start form-group"><h6>0</h6></label>
-                                    </div>
-
-                                    
-                                    <div class="col-2 mt-2">
-                                        <label for="" class="float-end form-group"><h6>Subtotal</h6></label> 
-                                    </div>
-                                    <div class="col-4 mt-2">
-                                        <label for="" class="float-start form-group"><h6>0.00</h6></label>
-                                    </div>
-
-
-                                    <div class="col-2 mt-2">
-                                        <label for="" class="float-end form-group"><h6>Other Charges</h6></label> 
-                                    </div>
-                                    <div class="col-2">
-                                        <input type="text" class="form-control form-group">
-                                    </div>
-                                    <div class="col-2">
-                                        <select class="form-control form-select" name="" id="">
-                                            <option value="">Select</option>
-                                            <option value="">None</option>
-                                            <option value="">N/A</option>
-                                        </select>
-                                    </div>
-
-
-                                    <div class="col-2 mt-2">
-                                        <label for="" class="float-end form-group"><h6>Other Charges</h6></label> 
-                                    </div>
-                                    <div class="col-4 mt-2">
-                                        <label for="" class="float-start form-group"><h6>0.00</h6></label>
-                                    </div>
-
-
-                                    <div class="col-2 mt-2">
-                                        <label for="" class="float-end form-group"><h6>Discount on</h6></label> 
-                                    </div>
-                                    <div class="col-2">
-                                        <input type="text" class="form-control form-group">
-                                    </div>
-                                    <div class="col-2">
-                                        <select class="form-control form-select" name="" id="">
-                                            <option value="">Select</option>
-                                            <option value="">Per%</option>
-                                            <option value="">Fixed</option>
-                                        </select>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="row">
+                                            <div class="col-4 offset-2 mt-2 text-end pe-3">
+                                                <label for="" class="form-group"><h6>Total Quantities</h6></label> 
+                                            </div>
+                                            <div class="col-4 mt-2">
+                                                <label for="" class="form-group"><h6 class="total_qty">0</h6></label>
+                                                <input type="hidden" name="total_qty" class="total_qty_p">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4 offset-2 mt-2 text-end pe-3">
+                                                <label for="" class="form-group"><h6>Other Charges</h6></label> 
+                                            </div>
+                                            <div class="col-4 mt-2">
+                                                <input type="text" class="form-control form-group" id="other_charge" name="other_charge" onkeyup="check_change()">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4 offset-2 mt-2 text-end pe-3">
+                                                <label for="" class="form-group"><h6>Discount on</h6></label> 
+                                            </div>
+                                            <div class="col-4 mt-2">
+                                                <input type="text" class="form-control form-group" id="discount_all" name="discount_all" onkeyup="check_change()">
+                                            </div>
+                                            <div class="col-2">
+                                                <select onchange="check_change()" class="form-control" id="discount_all_type" name="discount_all_type">
+                                                    <option value="0">%</option>
+                                                    <option value="1">Fixed</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4 offset-2 mt-2 text-end pe-3">
+                                                <label for="" class="form-group"><h6>Note</h6></label> 
+                                            </div>
+                                            <div class="col-6 mt-2">
+                                                <textarea class="form-control" name="note" rows="2"></textarea>
+                                            </div>
+                                        </div>
                                     </div>
 
-
-                                    <div class="col-2 mt-2">
-                                        <label for="" class="float-end form-group"><h6>Discount on</h6></label> 
-                                    </div>
-                                    <div class="col-4 mt-2">
-                                        <label for="" class="float-start form-group"><h6>0.00</h6></label>
-                                    </div>
-
-                                    
-                                    <div class="col-2 mt-2">
-                                        <label for="" class="float-end form-group"><h6>Note</h6></label> 
-                                    </div>
-                                    <div class="col-4 mt-2">
-                                        <textarea class="form-control" name="" id="" rows="2"></textarea>
-                                    </div>
-
-
-                                    <div class="col-2 mt-2">
-                                        <label for="" class="float-end form-group"><h6>Round Of</h6></label> 
-                                    </div>
-                                    <div class="col-4 mt-2">
-                                        <label for="" class="float-start form-group"><h6>0.00</h6></label>
-                                    </div>
-
-                                    
-                                    <div class="col-8 mt-2">
-                                        <label for="" class="float-end form-group"><h6>Grand Total</h6></label> 
-                                    </div>
-                                    <div class="col-4 mt-2">
-                                        <label for="" class="float-start form-group"><h6>0.00</h6></label>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="row">
+                                            <div class="col-4 offset-4 mt-2 pe-2 text-end">
+                                                <label for="" class="form-group"><h6>Subtotal</h6></label> 
+                                            </div>
+                                            <div class="col-4 mt-2 pe-5 text-end">
+                                                <label for="" class="form-group"><h6 class="tsubtotal">0.00</h6></label>
+                                                <input type="hidden" name="tsubtotal" class="tsubtotal_p">
+                                            </div>
+                                        </div>    
+                                        <div class="row">
+                                            <div class="col-4 offset-4 mt-2 pe-2 text-end">
+                                                <label for="" class="form-group"><h6>Other Charges</h6></label> 
+                                            </div>
+                                            <div class="col-4 mt-2 pe-5 text-end">
+                                                <label for="" class="form-group"><h6 class="tother_charge">0.00</h6></label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-4 offset-4 mt-2 pe-2 text-end">
+                                                <label for="" class="form-group"><h6>Discount on All</h6></label> 
+                                            </div>
+                                            <div class="col-4 mt-2 pe-5 text-end">
+                                                <label for="" class="form-group"><h6 class="tdiscount">0.00</h6></label>
+                                                <input type="hidden" name="tdiscount" class="tdiscount_p">
+                                            </div>
+                                        </div> 
+                                        <div class="row">
+                                            <div class="col-4 offset-4 mt-2 pe-2 text-end">
+                                                <label for="" class="form-group"><h6>Round Of</h6></label> 
+                                            </div>
+                                            <div class="col-4 mt-2 pe-5 text-end">
+                                                <label for="" class="form-group"><h6 class="troundof">0.00</h6></label>
+                                                <input type="hidden" name="troundof" class="troundof_p">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4 offset-4 mt-2 pe-2 text-end">
+                                                <label for="" class="form-group"><h6>Grand Total</h6></label> 
+                                            </div>
+                                            <div class="col-4 mt-2 pe-5 text-end">
+                                                <label for="" class="form-group"><h6 class="tgrandtotal">0.00</h6></label>
+                                                <input type="hidden" name="tgrandtotal" class="tgrandtotal_p">
+                                            </div>
+                                        </div> 
                                     </div>
                                 </div>
                                 
@@ -307,8 +311,6 @@ $(function() {
 
 function return_row_with_data(item_id){
   $("#item_search").addClass('ui-autocomplete-loader-center');
-	
-	var rowcount=$("#hidden_rowcount").val();
     $.ajax({
             autoFocus:true,
                 url: "{{route(currentUser().'.pur.product_search_data')}}",
@@ -318,16 +320,9 @@ function return_row_with_data(item_id){
                     item_id: item_id
                 },
                 success: function(res){
-                    
                     $('#details_data').append(res);
-                    //$("#hidden_rowcount").val(parseFloat(rowcount)+1);
-                    success.currentTime = 0;
-                    success.play();
-                    enable_or_disable_item_discount();
+                    $("#item_search").val('');
                     $("#item_search").removeClass('ui-autocomplete-loader-center');
-
-
-                   
                 },error: function(e){
                     console.log("error "+e);
                 }
@@ -335,45 +330,87 @@ function return_row_with_data(item_id){
 	
 }
 //INCREMENT ITEM
-function increment_qty(rowcount){
-  var item_qty=$("#td_data_"+rowcount+"_3").val();
-  var available_qty=$("#tr_available_qty_"+rowcount+"_13").val();
-  //if(parseFloat(item_qty)<parseFloat(available_qty)){
-    item_qty=parseFloat(item_qty)+1;
-    $("#td_data_"+rowcount+"_3").val(item_qty.toFixed(2));
-  //}
-  calculate_tax(rowcount);
-}
-//DECREMENT ITEM
-function decrement_qty(rowcount){
-  var item_qty=$("#td_data_"+rowcount+"_3").val();
-  if(item_qty<=1){
-    $("#td_data_"+rowcount+"_3").val((1).toFixed(2));
-    return;
-  }
-  $("#td_data_"+rowcount+"_3").val((parseFloat(item_qty)-1).toFixed(2));
-  calculate_tax(rowcount);
+function removerow(e){
+  $(e).parents('tr').remove();
 }
 
 //CALCUALATED SALES PRICE
-function calculate_sales_price(rowcount){
-  var purchase_price = (isNaN(parseFloat($("#td_data_"+rowcount+"_10").val().trim()))) ? 0 :parseFloat($("#td_data_"+rowcount+"_10").val().trim()); 
-  var profit_margin = (isNaN(parseFloat($("#td_data_"+rowcount+"_12").val().trim()))) ? 0 :parseFloat($("#td_data_"+rowcount+"_12").val().trim()); 
-  var tax_type = $("#tax_type").val();
-  var sales_price =parseFloat(0);
-    sales_price = purchase_price + ((purchase_price*profit_margin)/parseFloat(100));
-  $("#td_data_"+rowcount+"_13").val(sales_price.toFixed(2));
+function get_cal(e){
+  var purchase_price = (isNaN(parseFloat($(e).parents('tr').find('.price').val().trim()))) ? 0 :parseFloat($(e).parents('tr').find('.price').val().trim()); 
+  var qty = (isNaN(parseFloat($(e).parents('tr').find('.qty').val().trim()))) ? 0 :parseFloat($(e).parents('tr').find('.qty').val().trim()); 
+  var tax = (isNaN(parseFloat($(e).parents('tr').find('.tax').val().trim()))) ? 0 :parseFloat($(e).parents('tr').find('.tax').val().trim()); 
+  var discount_type = parseFloat($(e).parents('tr').find('.discount_type').val().trim()); 
+  var discount = (isNaN(parseFloat($(e).parents('tr').find('.discount').val().trim()))) ? 0 :parseFloat($(e).parents('tr').find('.discount').val().trim()); 
+  
+  if(discount_type=="0")
+    discount=(purchase_price*(discount/100));
+
+    tax=((purchase_price ) *(tax/100));
+
+    $(e).parents('tr').find('.discount_cal').val(discount)
+    $(e).parents('tr').find('.tax_cal').val(tax)
+
+  var unit_cost = ((purchase_price + tax));
+  var subtotal = ((unit_cost * qty) - discount);
+
+  $(e).parents('tr').find('.unit_cost').val(unit_cost);
+  $(e).parents('tr').find('.subtotal').val(subtotal);
+  total_calculate();
 }
 //END
 //CALCULATE PROFIT MARGIN PERCENTAGE
-function calculate_profit_margin(rowcount){
-  var purchase_price = (isNaN(parseFloat($("#td_data_"+rowcount+"_10").val().trim()))) ? 0 :parseFloat($("#td_data_"+rowcount+"_10").val().trim()); 
-  var sales_price = (isNaN(parseFloat($("#td_data_"+rowcount+"_13").val().trim()))) ? 0 :parseFloat($("#td_data_"+rowcount+"_13").val().trim());  
-  var profit_margin = (sales_price-purchase_price);
-  var profit_margin = (profit_margin/purchase_price)*parseFloat(100);
-  $("#td_data_"+rowcount+"_12").val(profit_margin.toFixed(2));
+function total_calculate(){
+    var totalqty = 0;
+    $('.qty').each(function(e){
+        totalqty += parseFloat($(this).val());
+    });
+    
+    var subtotal = 0;
+    $('.subtotal').each(function(e){
+        subtotal += parseFloat($(this).val());
+    });
+
+    $(".total_qty").text(totalqty);
+    $(".total_qty_p").val(totalqty);
+
+    $(".tsubtotal").text(subtotal);
+    $(".tsubtotal_p").val(subtotal);
+    
+    check_change();
 }
 //END
+
+function check_change(){
+    var other_charge=(isNaN(parseFloat($('#other_charge').val().trim()))) ? 0 :parseFloat($('#other_charge').val().trim());
+    var discount_all=(isNaN(parseFloat($('#discount_all').val().trim()))) ? 0 :parseFloat($('#discount_all').val().trim());$('#discount_all').val();
+    var discount_all_type=$('#discount_all_type').val();
+    var tsubtotal=$(".tsubtotal_p").val();
+
+    if(discount_all_type=="0")
+        discount_all=(tsubtotal*(discount_all/100));
+    
+    $(".tdiscount").text(discount_all.toFixed(2));
+    $(".tdiscount_p").val(discount_all.toFixed(2));
+    $(".tother_charge").text(other_charge.toFixed(2));
+
+    cal_grandtotl()
+}
+
+function cal_grandtotl(){
+    var tsubtotal_p=(isNaN(parseFloat($('.tsubtotal_p').val().trim()))) ? 0 :parseFloat($('.tsubtotal_p').val().trim());
+    var other_charge=(isNaN(parseFloat($('#other_charge').val().trim()))) ? 0 :parseFloat($('#other_charge').val().trim());
+    var tdiscount_p=(isNaN(parseFloat($('.tdiscount_p').val().trim()))) ? 0 :parseFloat($('.tdiscount_p').val().trim());
+    var grandtotal=((tsubtotal_p+other_charge)-tdiscount_p);
+    var roundof=Math.floor(grandtotal);
+
+        subtotal_diff=grandtotal-roundof;
+         
+             $(".troundof").html(parseFloat(subtotal_diff).toFixed(2)); 
+             $(".troundof_p").val(parseFloat(subtotal_diff).toFixed(2)); 
+             $(".tgrandtotal").html(parseFloat(roundof).toFixed(2)); 
+             $(".tgrandtotal_p").val(parseFloat(roundof).toFixed(2)); 
+
+}
 
 </script>
 @endpush
