@@ -5,5 +5,46 @@
     "Profile Statistics":"প্রোফাইল পরিসংখ্যান",
     "Users List":"ব্যবহারকারীদের তালিকা",
     "List":"তালিকা",
-    "Settings":"সেটিংস"
+    "Settings":"সেটিংস",
+    "Supplier":"সরবরাহকারী",
+    "Customer":"ক্রেতা",
+    "SL":"এসএল",
+    "Name":"নাম",
+    "Contact":"যোগাযোগ",
+    "Phone":"ফোন",
+    "Email":"ইমেইল",
+    "Image":"ছবি",
+    "TAX Number":"কর নম্বর",
+    "Bar Code":"বার কোড",
+    "Brand":"ব্র্যান্ড",
+    "Units":"ইউনিট",
+    "Description":"বর্ণনা",
+    "Division":"বিভাগ",
+    "Division bn":"বিভাগ বি.এন",
+    "GST Number":"জিএসটি নম্বর",
+    "Opening balance":"খোলার ব্যালেন্স",
+    "Sub Category":"সাব ক্যাটাগরি",
+    "Child Category":"শিশু বিভাগ",
+    "Price":"দাম",
+    "Status":"স্ট্যাটাস",
+    "Payment Status":"লেনদেনের অবস্থা",
+    "Date":"তারিখ",
+    "Reference Number":"পরিচিত সংখ্যা",
+    "Total QTY":"মোট পরিমাণ",
+    "Sub Amount":"সাব পরিমাণ",
+    "TAX":"ট্যাক্স",
+    "Discount Type":"ডিসকাউন্ট টাইপ",
+    "Total Amount":"সর্বমোট পরিমাণ",
+    "RoundOf":"বৃত্তাকার",
+    "GrandTotal":"সর্বমোট",
+    "Note":"বিঃদ্রঃ",
+    "Branch":"শাখা",
+    "Warehouse":"গুদাম"
+
+
+
 }
+
+
+
+

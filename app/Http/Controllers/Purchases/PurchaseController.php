@@ -9,7 +9,7 @@ use App\Models\Purchases\Purchase_details;
 use App\Models\Stock\Stock;
 use App\Models\Suppliers\Supplier;
 use App\Models\Products\Product;
-use App\Models\Branch;
+use App\Models\Settings\Branch;
 use App\Models\Warehouse;
 use App\Models\Company;
 use Illuminate\Http\Request;

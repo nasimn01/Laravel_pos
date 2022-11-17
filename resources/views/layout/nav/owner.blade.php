@@ -35,6 +35,12 @@
             <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
             <div class="submenu-group-wrapper">
                 <ul class="submenu-group">
+                    <li class="submenu-item"><a href="{{route(currentUser().'.branch.index')}}" class='submenu-link'>{{__('Branch')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.branch.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.branch.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
                     <li class="submenu-item"><a href="{{route(currentUser().'.category.index')}}" class='submenu-link'>{{__('Category')}}</a>
                         <ul class="subsubmenu">
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.category.index')}}">{{__('List')}}</a></li>

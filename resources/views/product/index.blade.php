@@ -15,19 +15,19 @@
                             <a class="float-end" href="{{route(currentUser().'.product.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                             <thead>
                                 <tr>
-                                    <th scope="col">#SL</th>
-                                    <th scope="col">Bar Code</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Brand</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Sub Category</th>
-                                    <th scope="col">Child Category</th>
-                                    <th scope="col">Units</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Status</th>
-                                    <th class="white-space-nowrap">ACTION</th>
+                                    <th scope="col">{{__('#SL')}}</th>
+                                    <th scope="col">{{__('Bar Code')}}</th>
+                                    <th scope="col">{{__('Name')}}</th>
+                                    <th scope="col">{{__('Brand')}}</th>
+                                    <th scope="col">{{__('Category')}}</th>
+                                    <th scope="col">{{__('Sub Category')}}</th>
+                                    <th scope="col">{{__('Child Category')}}</th>
+                                    <th scope="col">{{__('Units')}}</th>
+                                    <th scope="col">{{__('Description')}}</th>
+                                    <th scope="col">{{__('Price')}}</th>
+                                    <th scope="col">{{__('Image')}}</th>
+                                    <th scope="col">{{__('Status')}}</th>
+                                    <th class="white-space-nowrap">{{__('ACTION')}}</th>
                                 </tr>
                             </thead>
                             <tbody>

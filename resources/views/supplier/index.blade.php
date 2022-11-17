@@ -32,7 +32,7 @@
                                 <th scope="col">{{__('Country')}}</th>
                                 <th scope="col">{{__('Division')}}</th>
                                 <th scope="col">{{__('Division bn')}}</th>
-                                <th class="white-space-nowrap">{{__('Action') }}</th>
+                                <th class="white-space-nowrap">{{__('Action')}}</th>
                             </tr>
                         </thead>
                         <tbody>

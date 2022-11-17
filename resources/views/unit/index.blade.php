@@ -15,9 +15,9 @@
                             <a class="float-end" href="{{route(currentUser().'.unit.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                             <thead>
                                 <tr>
-                                    <th scope="col">#SL</th>
-                                    <th scope="col">Name</th>
-                                    <th class="white-space-nowrap">ACTION</th>
+                                    <th scope="col">{{__('#SL')}}</th>
+                                    <th scope="col">{{__('Name')}}</th>
+                                    <th class="white-space-nowrap">{{__('ACTION')}}</th>
                                 </tr>
                             </thead>
                             <tbody>

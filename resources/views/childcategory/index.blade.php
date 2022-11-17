@@ -19,9 +19,9 @@
                             <a class="float-end" href="{{route(currentUser().'.childcategory.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                             <thead>
                                 <tr>
-                                    <th scope="col">{{__'#SL'}}</th>
-                                    <th scope="col">{{__'Sub Category'}}</th>
-                                    <th scope="col">Child Category</th>
+                                    <th scope="col">{{__('#SL')}}</th>
+                                    <th scope="col">{{__('Sub Category')}}</th>
+                                    <th scope="col">{{__('Child Category')}}</th>
                                     <th class="white-space-nowrap">ACTION</th>
                                 </tr>
                             </thead>
