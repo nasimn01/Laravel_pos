@@ -140,7 +140,7 @@
                                             <div class="col-4 mt-2">
                                                 <input type="text" class="form-control form-group" id="discount_all" name="discount_all" onkeyup="check_change()">
                                             </div>
-                                            <div class="col-2">
+                                            <div class="col-2 mt-2">
                                                 <select onchange="check_change()" class="form-control" id="discount_all_type" name="discount_all_type">
                                                     <option value="0">%</option>
                                                     <option value="1">Fixed</option>

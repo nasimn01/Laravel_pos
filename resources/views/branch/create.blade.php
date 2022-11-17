@@ -52,8 +52,8 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="address">Address</label>
-                                           <textarea name="address" id="address" rows="5">{{ old('address')}}</textarea>
+                                            <label class="form-label" for="address">Address</label>
+                                           <textarea class="form-control" name="address" id="address" rows="2">{{ old('address')}}</textarea>
                                         </div>
                                        
                                     </div>

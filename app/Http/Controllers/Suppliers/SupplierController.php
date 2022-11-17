@@ -8,7 +8,7 @@ use App\Models\Settings\Location\Country;
 use App\Models\Settings\Location\Division;
 use App\Models\Settings\Location\District;
 use App\Models\Suppliers\supplier;
-use App\Models\Branch;
+use App\Models\Settings\Branch;
 use Illuminate\Http\Request;
 use App\Http\Requests\Supplier\AddNewRequest;
 use App\Http\Requests\Supplier\UpdateRequest;

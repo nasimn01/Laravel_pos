@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Company;
-use App\Models\Branch;
+use App\Models\Settings\Branch;
 use App\Http\Traits\ResponseTrait;
 use App\Http\Requests\AdminUser\AddNewRequest;
 use App\Http\Requests\AdminUser\UpdateRequest;
@@ -48,7 +48,7 @@ class AdminUserController extends Controller
     public function store(AddNewRequest $request)
     {
         try{
-            $user=new User;
+            $user= new User;
             $user->name=$request->userName;
             $user->contact_no=$request->contactNumber;
             $user->email=$request->userEmail;
