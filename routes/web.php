@@ -21,6 +21,10 @@ use App\Http\Controllers\Customers\CustomerController as customer;
 use App\Http\Controllers\Purchases\PurchaseController as purchase;
 use App\Http\Controllers\Settings\BranchController as branch;
 
+use App\Http\Controllers\Accounts\MasterAccountController as master;
+use App\Http\Controllers\Accounts\SubHeadController as sub_head;
+use App\Http\Controllers\Accounts\ChildOneController as child_one;
+use App\Http\Controllers\Accounts\ChildTwoController as child_two;
 
 /* Middleware */
 use App\Http\Middleware\isAdmin;
@@ -75,6 +79,13 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('customer',customer::class,['as'=>'owner']);
         Route::resource('purchase',purchase::class,['as'=>'owner']);
         Route::resource('branch',branch::class,['as'=>'owner']);
+        
+        Route::resource('master',master::class,['as'=>'owner']);
+        Route::resource('sub_head',sub_head::class,['as'=>'owner']);
+        Route::resource('child_one',child_one::class,['as'=>'owner']);
+        Route::resource('child_two',child_two::class,['as'=>'owner']);
+
+
         Route::get('/product_search', [purchase::class,'product_search'])->name('owner.pur.product_search');
         Route::get('/product_search_data', [purchase::class,'product_search_data'])->name('owner.pur.product_search_data');
     });

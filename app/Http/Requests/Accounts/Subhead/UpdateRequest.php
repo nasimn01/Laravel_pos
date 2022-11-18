@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Accounts\Master;
+namespace App\Http\Requests\Accounts\Subhead;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddNewRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,7 @@ class AddNewRequest extends FormRequest
     public function rules()
     {
         return [
+            'master_head'=> 'required',
             'head_name'=> 'required',
             'head_code'=> 'required'
         ];

@@ -110,10 +110,28 @@
             <div class="submenu-group-wrapper">
                 <ul class="submenu-group">
                     
-                    <li class="submenu-item"><a href="{{route(currentUser().'.category.index')}}" class='submenu-link'>{{__('Master Head')}}</a>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.master.index')}}" class='submenu-link'>{{__('Master Head')}}</a>
                         <ul class="subsubmenu">
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.category.index')}}">{{__('List')}}</a></li>
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.category.create')}}">{{__('Add New')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.master.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.master.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.sub_head.index')}}" class='submenu-link'>{{__('Sub Head')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.sub_head.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.sub_head.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.child_one.index')}}" class='submenu-link'>{{__('Child One')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.child_one.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.child_one.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.child_two.index')}}" class='submenu-link'>{{__('Child Two')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.child_two.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.child_two.create')}}">{{__('Add New')}}</a></li>
                         </ul>
                     </li>
                     

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Accounts\Master;
+namespace App\Http\Requests\Accounts\ChildTwo;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,6 +24,7 @@ class AddNewRequest extends FormRequest
     public function rules()
     {
         return [
+            'child_one'=> 'required',
             'head_name'=> 'required',
             'head_code'=> 'required'
         ];

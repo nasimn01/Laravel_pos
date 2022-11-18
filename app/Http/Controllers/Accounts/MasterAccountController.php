@@ -22,12 +22,9 @@ class MasterAccountController extends Controller
      */
     public function index()
     {
-        if( currentUser()=='owner')
-            $data = master_account::where(company())->paginate(10);
-        else
-            $data = master_account::where(company())->where(branch())->paginate(10);
 
-        return view('master.index',compact('data'));
+        $data= master_account::all();
+        return view('accounts.master.index',compact('data'));
     }
 
     /**
@@ -37,7 +34,7 @@ class MasterAccountController extends Controller
      */
     public function create()
     {
-        //
+        return view('accounts.master.create');
     }
 
     /**
@@ -46,9 +43,23 @@ class MasterAccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
-        //
+        try{
+            $mac = new master_account;
+            $mac->head_name= $request->head_name;
+            $mac->head_code= $request->head_code;
+            $mac->opening_balance= $request->opening_balance;
+
+        if($mac->save())
+                return redirect()->route(currentUser().'.master.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
+
     }
 
     /**
@@ -68,9 +79,10 @@ class MasterAccountController extends Controller
      * @param  \App\Models\Accounts\master_account  $master_account
      * @return \Illuminate\Http\Response
      */
-    public function edit(master_account $master_account)
+    public function edit($id)
     {
-        //
+        $mac = master_account::findOrFail(encryptor('decrypt',$id));
+        return view('accounts.master.edit',compact('mac'));
     }
 
     /**
@@ -80,9 +92,22 @@ class MasterAccountController extends Controller
      * @param  \App\Models\Accounts\master_account  $master_account
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, master_account $master_account)
+    public function update(UpdateRequest $request, $id)
     {
-        //
+        try{
+            $mac = master_account::findOrFail(encryptor('decrypt',$id));;
+            $mac->head_name= $request->head_name;
+            $mac->head_code= $request->head_code;
+            $mac->opening_balance= $request->opening_balance;
+
+        if($mac->save())
+                return redirect()->route(currentUser().'.master.index')->with($this->resMessageHtml(true,null,'Successfully Updated'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**
@@ -91,8 +116,10 @@ class MasterAccountController extends Controller
      * @param  \App\Models\Accounts\master_account  $master_account
      * @return \Illuminate\Http\Response
      */
-    public function destroy(master_account $master_account)
+    public function destroy($id)
     {
-        //
+        $mac= master_account::findOrFail(encryptor('decrypt',$id));
+        $mac->delete();
+        return redirect()->back();
     }
 }

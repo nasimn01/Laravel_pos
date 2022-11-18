@@ -9,4 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class child_one extends Model
 {
     use HasFactory,SoftDeletes;
+    public function sub_head(){
+        return $this->belongsTo(sub_head::class);
+    }
 }
