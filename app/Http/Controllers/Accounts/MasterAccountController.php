@@ -6,9 +6,15 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Accounts\master_account;
 use Illuminate\Http\Request;
+use App\Http\Requests\Accounts\Master\AddNewRequest;
+use App\Http\Requests\Accounts\Master\UpdateRequest;
+use App\Http\Traits\ResponseTrait;
+use Exception;
+
 
 class MasterAccountController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,12 @@ class MasterAccountController extends Controller
      */
     public function index()
     {
-        //
+        if( currentUser()=='owner')
+            $data = master_account::where(company())->paginate(10);
+        else
+            $data = master_account::where(company())->where(branch())->paginate(10);
+
+        return view('master.index',compact('data'));
     }
 
     /**
