@@ -25,6 +25,7 @@ use App\Http\Controllers\Accounts\MasterAccountController as master;
 use App\Http\Controllers\Accounts\SubHeadController as sub_head;
 use App\Http\Controllers\Accounts\ChildOneController as child_one;
 use App\Http\Controllers\Accounts\ChildTwoController as child_two;
+use App\Http\Controllers\Accounts\NavigationHeadViewController as navigate;
 
 /* Middleware */
 use App\Http\Middleware\isAdmin;
@@ -84,6 +85,7 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('sub_head',sub_head::class,['as'=>'owner']);
         Route::resource('child_one',child_one::class,['as'=>'owner']);
         Route::resource('child_two',child_two::class,['as'=>'owner']);
+        Route::resource('navigate',navigate::class,['as'=>'owner']);
 
 
         Route::get('/product_search', [purchase::class,'product_search'])->name('owner.pur.product_search');

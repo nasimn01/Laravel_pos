@@ -12,4 +12,8 @@ class sub_head extends Model
     public function master_account(){
         return $this->belongsTo(master_account::class,'master_head_id','id');
     }
+
+    public function child_one(){
+        return $this->hasMany(child_one::class);
+    }
 }

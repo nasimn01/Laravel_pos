@@ -9,4 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class master_account extends Model
 {
     use HasFactory,SoftDeletes;
+    public function sub_head(){
+        return $this->hasMany(sub_head::class,'master_head_id','id');
+    }
+
 }
