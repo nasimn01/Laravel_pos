@@ -12,4 +12,8 @@ class child_one extends Model
     public function sub_head(){
         return $this->belongsTo(sub_head::class);
     }
+
+    public function child_two(){
+        return $this->hasMany(child_two::class);
+    }
 }

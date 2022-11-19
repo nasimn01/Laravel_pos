@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Accounts;
 use App\Http\Controllers\Controller;
 
 use App\Models\Accounts\master_account;
+use App\Models\Settings\Company;
 use Illuminate\Http\Request;
 use App\Http\Requests\Accounts\Master\AddNewRequest;
 use App\Http\Requests\Accounts\Master\UpdateRequest;
@@ -23,7 +24,7 @@ class MasterAccountController extends Controller
     public function index()
     {
 
-        $data= master_account::all();
+        $data= master_account::where(company())->paginate(10);
         return view('accounts.master.index',compact('data'));
     }
 
@@ -47,6 +48,7 @@ class MasterAccountController extends Controller
     {
         try{
             $mac = new master_account;
+            $mac->company_id=company()['company_id'];
             $mac->head_name= $request->head_name;
             $mac->head_code= $request->head_code;
             $mac->opening_balance= $request->opening_balance;

@@ -134,6 +134,12 @@
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.child_two.create')}}">{{__('Add New')}}</a></li>
                         </ul>
                     </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.navigate.index')}}" class='submenu-link'>{{__('Navigate View')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.navigate.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.navigate.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
                     
                     
                 </ul>  
