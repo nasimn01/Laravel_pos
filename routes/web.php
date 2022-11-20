@@ -21,6 +21,7 @@ use App\Http\Controllers\Customers\CustomerController as customer;
 use App\Http\Controllers\Purchases\PurchaseController as purchase;
 use App\Http\Controllers\Sales\SalesController as sales;
 use App\Http\Controllers\Settings\BranchController as branch;
+use App\Http\Controllers\Settings\WarehouseController as warehouse;
 
 use App\Http\Controllers\Accounts\MasterAccountController as master;
 use App\Http\Controllers\Accounts\SubHeadController as sub_head;
@@ -82,7 +83,10 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('purchase',purchase::class,['as'=>'owner']);
         Route::resource('sales',sales::class,['as'=>'owner']);
         Route::resource('branch',branch::class,['as'=>'owner']);
+        Route::resource('warehouse',warehouse::class,['as'=>'owner']);
         
+
+
         Route::resource('master',master::class,['as'=>'owner']);
         Route::resource('sub_head',sub_head::class,['as'=>'owner']);
         Route::resource('child_one',child_one::class,['as'=>'owner']);

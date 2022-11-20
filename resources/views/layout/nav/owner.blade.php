@@ -28,10 +28,10 @@
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.branch.create')}}">{{__('Add New')}}</a></li>
                         </ul>
                     </li>
-                    <li class="submenu-item"><a href="{{route(currentUser().'.branch.index')}}" class='submenu-link'>{{__('Warehouse')}}</a>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.warehouse.index')}}" class='submenu-link'>{{__('Warehouse')}}</a>
                         <ul class="subsubmenu">
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.branch.index')}}">{{__('List')}}</a></li>
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.branch.create')}}">{{__('Add New')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.warehouse.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.warehouse.create')}}">{{__('Add New')}}</a></li>
                         </ul>
                     </li>
                 </ul>  
