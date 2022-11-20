@@ -19,6 +19,7 @@ use App\Http\Controllers\Products\ProductController as product;
 use App\Http\Controllers\Suppliers\SupplierController as supplier;
 use App\Http\Controllers\Customers\CustomerController as customer;
 use App\Http\Controllers\Purchases\PurchaseController as purchase;
+use App\Http\Controllers\Sales\SalesController as sales;
 use App\Http\Controllers\Settings\BranchController as branch;
 
 use App\Http\Controllers\Accounts\MasterAccountController as master;
@@ -79,6 +80,7 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('supplier',supplier::class,['as'=>'owner']);
         Route::resource('customer',customer::class,['as'=>'owner']);
         Route::resource('purchase',purchase::class,['as'=>'owner']);
+        Route::resource('sales',sales::class,['as'=>'owner']);
         Route::resource('branch',branch::class,['as'=>'owner']);
         
         Route::resource('master',master::class,['as'=>'owner']);
