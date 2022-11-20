@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Sales\Sales;
 use Illuminate\Http\Request;
+use App\Models\Settings\Branch;
+use App\Models\Settings\Warehouse;
+use App\Models\Settings\Company;
+use App\Models\Customers\customer;
 
 class SalesController extends Controller
 {
@@ -16,7 +20,13 @@ class SalesController extends Controller
      */
     public function index()
     {
-        //
+        if( currentUser()=='owner')
+            $sales = Sales::where(company())->paginate(10);
+        else
+            $sales = Sales::where(company())->where(branch())->paginate(10);
+            
+        
+        return view('sales.index',compact('sales'));
     }
 
     /**
@@ -26,7 +36,16 @@ class SalesController extends Controller
      */
     public function create()
     {
-        //
+        $branches = Branch::where(company())->get();
+        if( currentUser()=='owner'){
+            $customers = customer::where(company())->get();
+            $Warehouses = Warehouse::where(company())->get();
+        }else{
+            $customers = customer::where(company())->where(branch())->get();
+            $Warehouses = Warehouse::where(company())->where(branch())->get();
+        }
+        
+        return view('sales.create',compact('branches','customers','Warehouses'));
     }
 
     /**

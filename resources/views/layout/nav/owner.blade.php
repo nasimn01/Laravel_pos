@@ -96,6 +96,12 @@
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.purchase.create')}}">{{__('Add New')}}</a></li>
                         </ul>
                     </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.sales.index')}}" class='submenu-link'>{{__('Sales')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.sales.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.sales.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
                 </ul>  
             </div>
         </div>

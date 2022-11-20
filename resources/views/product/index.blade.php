@@ -17,13 +17,12 @@
                                 <tr>
                                     <th scope="col">{{__('#SL')}}</th>
                                     <th scope="col">{{__('Bar Code')}}</th>
-                                    <th scope="col">{{__('Name')}}</th>
                                     <th scope="col">{{__('Brand')}}</th>
                                     <th scope="col">{{__('Category')}}</th>
                                     <th scope="col">{{__('Sub Category')}}</th>
                                     <th scope="col">{{__('Child Category')}}</th>
+                                    <th scope="col">{{__('Name')}}</th>
                                     <th scope="col">{{__('Units')}}</th>
-                                    <th scope="col">{{__('Description')}}</th>
                                     <th scope="col">{{__('Price')}}</th>
                                     <th scope="col">{{__('Image')}}</th>
                                     <th scope="col">{{__('Status')}}</th>
@@ -35,13 +34,12 @@
                                 <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
                                     <td>{{$p->bar_code}}</td>
-                                    <td>{{$p->product_name}}</td>
                                     <td>{{$p->brand?->name}}</td>
                                     <td>{{$p->category?->category}}</td>
                                     <td>{{$p->subcategory?->name}}</td>
                                     <td>{{$p->childcategory?->name}}</td>
+                                    <td>{{$p->product_name}}</td>
                                     <td>{{$p->unit?->name}}</td>
-                                    <td>{{$p->description}}</td>
                                     <td>{{$p->price}}</td>
                                      <td><img width="80px" height="40px" class="float-first" src="{{asset('images/product/'.company()['company_id'].'/'.$p->image)}}" alt=""></td>
                                     <td>@if($p->status == 1) Active @else Inactive @endif</td>

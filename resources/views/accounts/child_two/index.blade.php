@@ -27,7 +27,7 @@
                                 @forelse($data as $d)
                                 <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
-                                    <td>{{$d->child_one?->head_name}}</td>
+                                    <td>{{$d->child_one?->head_name}} - {{$d->child_one?->head_code}}</td>
                                     <td>{{$d->head_name}}</td>
                                     <td>{{$d->head_code}}</td>
                                     <td>{{$d->opening_balance}}</td>
