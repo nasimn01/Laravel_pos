@@ -22,6 +22,7 @@ use App\Http\Controllers\Purchases\PurchaseController as purchase;
 use App\Http\Controllers\Settings\BranchController as branch;
 use App\Http\Controllers\Settings\WarehouseController as warehouse;
 
+
 use App\Http\Controllers\Accounts\MasterAccountController as master;
 use App\Http\Controllers\Accounts\SubHeadController as sub_head;
 use App\Http\Controllers\Accounts\ChildOneController as child_one;
