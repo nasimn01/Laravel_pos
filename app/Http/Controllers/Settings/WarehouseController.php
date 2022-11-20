@@ -21,7 +21,7 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        $warehouses=Warehouse::where(company())->where(branch())->paginate(10);
+        $warehouses=Warehouse::where(company())->paginate(10);
         return view('warehouse.index',compact('warehouses'));
     }
 
@@ -42,7 +42,7 @@ class WarehouseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AddNewRequest $request)
+    public function store(Request $request)
     {
         try{
             $war= new Warehouse;
@@ -95,7 +95,7 @@ class WarehouseController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         try{
-            $war= new Warehouse;
+            $war= Warehouse::findOrFail(decrypt($id));
             $war->name=$request->name;
             $war->address=$request->address;
             $war->company_id=company()['company_id'];
@@ -125,3 +125,5 @@ class WarehouseController extends Controller
     
     }
 }
+
+

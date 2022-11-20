@@ -30,19 +30,16 @@
                                     <th scope="row">{{ ++$loop->index }}</th>
                                         <td>{{$war->branch->name}}</td> 
                                         <td>{{$war->name}}</td>
-                                        <td>{{$war->Address}}</td>
+                                        <td>{{$war->address}}</td>
                                         
                                         <td class="white-space-nowrap">
                                             <a href="{{route(currentUser().'.warehouse.edit',encryptor('encrypt',$war->id))}}">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
-                                            <!-- <a href="javascript:void()" onclick="$('#form{{$cat->id}}').submit()">
-                                                <i class="bi bi-trash"></i>
-                                            </a> -->
+                                            
                                             <form id="form{{$war->id}}" action="{{route(currentUser().'.warehouse.destroy',encryptor('encrypt',$war->id))}}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                
                                             </form>
                                         </td>
                                     </tr>

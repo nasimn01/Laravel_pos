@@ -13,22 +13,18 @@
                           <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.warehouse.store')}}">
                               @csrf
                               @method('patch')
+                              <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$branch->id)}}">
                               <div class="row">
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
-                                          <label for="company_id">company_id</label>
-                                          <input type="text" id="contact" value="{{ old('company_id')}}" class="form-control"
-                                              placeholder="Warehouse company_id" name="company_id">
-                                      </div>
-                                      @if($errors->has('company_id'))
-                                      <span class="text-danger"> {{ $errors->first('company_id') }}</span>
-                                      @endif
-                                  </div>
-                                  <div class="col-md-6 col-12">
-                                      <div class="form-group">
-                                          <label for="branch_id">Branch_id</label>
-                                          <input type="text" id="contact" value="{{ old('branch_id')}}" class="form-control"
-                                              placeholder="Warehouse branch_id" name="branch_id">
+                                          <label for="branch_id">Branch</label>
+                                          <select class="form-control form-select" name="branch_id" id="branch_id">
+                                                  @forelse($warehouses as $b)
+                                                      <option value="{{ $b->id }}" {{old('branch_id')==$b->id?'selected':''}}>{{ $b->name }}</option>
+                                                  @empty
+                                                      <option value="">No branch found</option>
+                                                  @endforelse
+                                              </select>
                                       </div>
                                       @if($errors->has('branch_id'))
                                       <span class="text-danger"> {{ $errors->first('branch_id') }}</span>
@@ -49,12 +45,10 @@
                                           <label class="form-label" for="address">Address</label>
                                          <textarea class="form-control" name="address" id="address" rows="2">{{ old('address')}}</textarea>
                                       </div>
-                                     
                                   </div>
 
                                   <div class="col-12 d-flex justify-content-end">
                                       <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
-                                      
                                   </div>
                               </div>
                           </form>
