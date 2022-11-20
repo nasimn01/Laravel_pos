@@ -15,7 +15,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                                <label for="branch_id">Branch_id</label>
+                                                <label for="branch_id">Branch</label>
                                                 <select class="form-control form-select" name="branch_id" id="branch_id">
                                                     <option value="">Select Branch</option>
                                                     @forelse($branch as $b)
