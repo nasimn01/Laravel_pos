@@ -30,7 +30,6 @@
                                 <th scope="col">{{__('TAX')}}</th>
                                 <th scope="col">{{__('Discount Type')}}</th>
                                 <th scope="col">{{__('Discount')}}</th>
-                                <th scope="col">{{__('Total Amount')}}</th>
                                 <th scope="col">{{__('RoundOf')}}</th>
                                 <th scope="col">{{__('GrandTotal')}}</th>
                                 <th scope="col">{{__('Note')}}</th>
@@ -54,7 +53,6 @@
                                 <td>{{$pur->tax}}</td>
                                 <td>{{$pur->discount_type}}</td>
                                 <td>{{$pur->discount}}</td>
-                                <td>{{$pur->total_amount}}</td>
                                 <td>{{$pur->round_of}}</td>
                                 <td>{{$pur->grand_total}}</td>
                                 <td>{{$pur->note}}</td>

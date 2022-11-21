@@ -21,6 +21,7 @@ return new class extends Migration
             $table->decimal('unit_price',10,2)->default(0);
             $table->decimal('sub_amount',10,2)->default(0);
             $table->decimal('tax',10,2)->default(0);
+            $table->integer('discount_type')->comment('0 amount, 2 percent')->default(1);
             $table->decimal('discount',10,2)->default(0);
             $table->decimal('total_amount',10,2)->default(0);
             $table->timestamps();

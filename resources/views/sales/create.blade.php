@@ -37,7 +37,7 @@
                                     
                                         
                                     <div class="col-md-2 mt-2">
-                                        <label for="supplierName" class="float-end"><h6>Customer</h6></label>
+                                        <label for="customrName" class="float-end"><h6>Customer</h6></label>
                                     </div>
                                     <div class="col-md-4">
                                         
@@ -78,7 +78,7 @@
                                         <label for="date" class="float-end"><h6>Date</h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="date" id="purchase_date" class="form-control" value="{{ old('purchase_date')}}" name="purchase_date">
+                                        <input type="date" id="sales_date" class="form-control" value="{{ old('sales_date')}}" name="sales_date">
                                     </div>
 
 
@@ -248,7 +248,7 @@ $(function() {
             
             $.ajax({
             autoFocus:true,
-                url: "{{route(currentUser().'.pur.product_search')}}",
+                url: "{{route(currentUser().'.sales.product_sc')}}",
                 method: 'GET',
                 dataType: 'json',
                 data: {
@@ -313,7 +313,7 @@ function return_row_with_data(item_id){
   $("#item_search").addClass('ui-autocomplete-loader-center');
     $.ajax({
             autoFocus:true,
-                url: "{{route(currentUser().'.pur.product_search_data')}}",
+                url: "{{route(currentUser().'.sales.product_sc_d')}}",
                 method: 'GET',
                 dataType: 'json',
                 data: {

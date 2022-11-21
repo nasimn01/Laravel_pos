@@ -97,6 +97,9 @@ Route::group(['middleware'=>isOwner::class],function(){
 
         Route::get('/product_search', [purchase::class,'product_search'])->name('owner.pur.product_search');
         Route::get('/product_search_data', [purchase::class,'product_search_data'])->name('owner.pur.product_search_data');
+
+        Route::get('/product_sc', [sales::class,'product_search'])->name('owner.sales.product_sc');
+        Route::get('/product_sc_d', [sales::class,'product_search_data'])->name('owner.sales.product_sc_d');
     });
 });
 

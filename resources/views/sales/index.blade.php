@@ -30,7 +30,6 @@
                                 <th scope="col">{{__('TAX')}}</th>
                                 <th scope="col">{{__('Discount Type')}}</th>
                                 <th scope="col">{{__('Discount')}}</th>
-                                <th scope="col">{{__('Total Amount')}}</th>
                                 <th scope="col">{{__('RoundOf')}}</th>
                                 <th scope="col">{{__('GrandTotal')}}</th>
                                 <th scope="col">{{__('Note')}}</th>
@@ -46,15 +45,14 @@
                             @forelse($sales as $s)
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
-                                <td>{{$s->supplier?->supplier_name}}</td>
-                                <td>{{$s->purchase_date}}</td>
+                                <td>{{$s->customer?->customer_name}}</td>
+                                <td>{{$s->sales_date}}</td>
                                 <td>{{$s->reference_no}}</td>
                                 <td>{{$s->total_quantity}}</td>
                                 <td>{{$s->sub_amount}}</td>
                                 <td>{{$s->tax}}</td>
                                 <td>{{$s->discount_type}}</td>
                                 <td>{{$s->discount}}</td>
-                                <td>{{$s->total_amount}}</td>
                                 <td>{{$s->round_of}}</td>
                                 <td>{{$s->grand_total}}</td>
                                 <td>{{$s->note}}</td>
