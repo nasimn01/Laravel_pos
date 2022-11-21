@@ -41,18 +41,18 @@
                                     </div>
                                     <div class="col-md-4">
                                         
-                                        <select class="form-control form-select" name="customrName" id="customrName">
+                                        <select class="form-control form-select" name="customerName" id="customerName">
                                             <option value="">Select Customer</option>
                                             @forelse($customers as $d)
-                                                <option class="brnch brnch{{$d->branch_id}}" value="{{$d->id}}" {{ old('customrName')==$d->id?"selected":""}}> {{ $d->customer_name}}</option>
+                                                <option class="brnch brnch{{$d->branch_id}}" value="{{$d->id}}" {{ old('customerName')==$d->id?"selected":""}}> {{ $d->customer_name}}</option>
                                             @empty
                                                 <option value="">No Customer found</option>
                                             @endforelse
                                         </select>
                                     </div>
                                     
-                                    @if($errors->has('customrName'))
-                                    <span class="text-danger"> {{ $errors->first('customrName') }}</span>
+                                    @if($errors->has('customerName'))
+                                    <span class="text-danger"> {{ $errors->first('customerName') }}</span>
                                     @endif
 
 
@@ -239,20 +239,23 @@
 </script>
 
 <script>
+
+
+
 $(function() {
     $("#item_search").bind("paste", function(e){
         $("#item_search").autocomplete('search');
     } );
     $("#item_search").autocomplete({
         source: function(data, cb){
-            
+          
             $.ajax({
             autoFocus:true,
                 url: "{{route(currentUser().'.sales.product_sc')}}",
                 method: 'GET',
                 dataType: 'json',
                 data: {
-                    name: data.term
+                    name: data.term,
                 },
                 success: function(res){
                 console.log(res);
