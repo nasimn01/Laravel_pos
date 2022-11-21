@@ -23,6 +23,7 @@ return new class extends Migration
             $table->decimal('tax',10,2)->default(0)->nullable();
             $table->integer('discount_type')->comment('0 amount, 2 percent')->default(1);
             $table->decimal('discount',10,2)->default(0);
+            $table->decimal('other_charge',10,2)->default(0)->nullable();
             $table->decimal('round_of',10,2)->default(0);
             $table->string('grand_total');
             $table->string('note')->nullable();
