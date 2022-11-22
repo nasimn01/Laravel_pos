@@ -10,17 +10,17 @@
               <div class="card">
                   <div class="card-content">
                       <div class="card-body">
-                          <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.warehouse.store')}}">
+                          <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.warehouse.update', $warehouse->id)}}">
                               @csrf
                               @method('patch')
-                              <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$branch->id)}}">
+                              <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$warehouse->id)}}">
                               <div class="row">
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
                                           <label for="branch_id">Branch</label>
                                           <select class="form-control form-select" name="branch_id" id="branch_id">
-                                                  @forelse($warehouses as $b)
-                                                      <option value="{{ $b->id }}" {{old('branch_id')==$b->id?'selected':''}}>{{ $b->name }}</option>
+                                                  @forelse($branch as $b)
+                                                      <option value="{{ $b->id }}" {{old('branch_id',$warehouse->branch_id)==$b->id?'selected':''}}>{{ $b->name }}</option>
                                                   @empty
                                                       <option value="">No branch found</option>
                                                   @endforelse
@@ -33,7 +33,7 @@
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
                                           <label for="name">Warehouse</label>
-                                          <input type="text" id="name" value="{{ old('name')}}" class="form-control"
+                                          <input type="text" id="name" value="{{ old('name',$warehouse->name)}}" class="form-control"
                                               placeholder="Warehouse Name" name="name">
                                       </div>
                                       @if($errors->has('name'))
@@ -43,7 +43,7 @@
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
                                           <label class="form-label" for="address">Address</label>
-                                         <textarea class="form-control" name="address" id="address" rows="2">{{ old('address')}}</textarea>
+                                         <textarea class="form-control" name="address" id="address" rows="2">{{ old('address',$warehouse->address)}}</textarea>
                                       </div>
                                   </div>
 

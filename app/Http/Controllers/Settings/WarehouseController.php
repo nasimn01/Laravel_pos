@@ -95,12 +95,11 @@ class WarehouseController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         try{
-            $war= Warehouse::findOrFail(decrypt($id));
+            $war= Warehouse::findOrFail (encryptor('decrypt',$id));
             $war->name=$request->name;
-            $war->address=$request->address;
             $war->company_id=company()['company_id'];
-            $war->branch_id=$request->branch_id;
-
+            $war->branch_id=$request->branchName;
+            $war->address=$request->address;
             if($war->save())
                 return redirect()->route(currentUser().'.warehouse.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
