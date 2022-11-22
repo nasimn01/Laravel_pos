@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('branch_id')->index();
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->string('name');
+            $table->string('contact');
             $table->string('address');
             $table->timestamps();
             $table->softDeletes();

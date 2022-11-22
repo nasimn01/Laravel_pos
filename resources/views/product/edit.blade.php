@@ -35,11 +35,11 @@
                                         <div class="form-group">
                                             <label for="subcategory">Sub Category</label>
                                             <select onchange="show_childcat(this.value)" class="form-control form-select" name="subcategory" id="subcategory">
-                                                <option value="">Select Category</option>
+                                                <option value="">Select Sub Category</option>
                                                 @forelse($subcategories as $sub)
                                                     <option class="subcat subcat{{$sub->category_id}}" value="{{$sub->id}}" {{ old('subcategory',$product->subcategory_id)==$sub->id?"selected":""}}> {{ $sub->name}}</option>
                                                 @empty
-                                                    <option value="">No Category found</option>
+                                                    <option value="">No Sub Category found</option>
                                                 @endforelse
                                             </select>
                                         </div>
@@ -48,24 +48,24 @@
                                         <div class="form-group">
                                             <label for="childcategory">Child Category</label>
                                             <select class="form-control form-select" name="childcategory" id="childcategory">
-                                                <option value="">Select Category</option>
+                                                <option value="">Select Child Category</option>
                                                 @forelse($childcategories as $child)
                                                     <option class="childcat childcat{{$child->subcategory_id}}" value="{{$child->id}}" {{ old('childcategory',$product->childcategory_id)==$child->id?"selected":""}}> {{ $child->name}}</option>
                                                 @empty
-                                                    <option value="">No Category found</option>
+                                                    <option value="">No Child Category found</option>
                                                 @endforelse
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="Units">Units</label>
-                                            <select class="form-control form-select" name="name" id="name">
-                                                <option value="">Select Category</option>
+                                            <label for="unit_id">Unit</label>
+                                            <select class="form-control form-select" name="unit_id" id="unit_id">
+                                                <option value="">Select Unit</option>
                                                 @forelse($units as $u)
                                                     <option value="{{$u->id}}" {{ old('name',$product->unit_id)==$u->id?"selected":""}}> {{ $u->name}}</option>
                                                 @empty
-                                                    <option value="">No Category found</option>
+                                                    <option value="">No Unit found</option>
                                                 @endforelse
                                                 
                                             </select>
@@ -73,23 +73,15 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="name">Brand</label>
-                                            <select class="form-control form-select" name="name" id="name">
+                                            <label for="brand_id">Brand</label>
+                                            <select class="form-control form-select" name="brand_id" id="brand_id">
                                                 <option value="">Select Brand</option>
                                                 @forelse($brands as $b)
                                                     <option value="{{$b->id}}" {{ old('name',$product->brand_id)==$b->id?"selected":""}}> {{ $b->name}}</option>
                                                 @empty
-                                                    <option value="">No Category found</option>
+                                                    <option value="">No Brand found</option>
                                                 @endforelse
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="Bar Code">Bar Code</label>
-                                            <input type="text" id="barCode" class="form-control"
-                                                placeholder="Bar Code" value="{{ old('barCode',$product->bar_code)}}" name="barCode">
-                                                
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -103,10 +95,8 @@
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="price">Price</label>
-                                            <input type="text" id="price" class="form-control"
-                                                placeholder="Price" value="{{ old('price',$product->price)}}" name="price">
-                                                
+                                            <label for="price">Sell Price</label>
+                                            <input type="text" id="price" class="form-control" placeholder="Price" value="{{ old('price',$product->price)}}" name="price">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

@@ -25,8 +25,8 @@ class UpdateRequest extends FormRequest
     {
         return [
             'category' =>'required',
-            
-            
+            'productName' => 'required',
+            'price' => 'required',
         ];
     }
     public function messages(){

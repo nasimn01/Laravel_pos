@@ -10,7 +10,7 @@
               <div class="card">
                   <div class="card-content">
                       <div class="card-body">
-                          <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.warehouse.update', $warehouse->id)}}">
+                          <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.warehouse.update', encryptor('encrypt',$warehouse->id))}}">
                               @csrf
                               @method('patch')
                               <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$warehouse->id)}}">
@@ -42,8 +42,20 @@
                                   </div>
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
+                                          <label class="form-label" for="contact">Contact</label>
+                                         <input type="text" class="form-control" name="contact" id="contact" value="{{ old('contact',$warehouse->contact)}}">
+                                      @if($errors->has('contact'))
+                                      <span class="text-danger"> {{ $errors->first('contact') }}</span>
+                                      @endif
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6 col-12">
+                                      <div class="form-group">
                                           <label class="form-label" for="address">Address</label>
                                          <textarea class="form-control" name="address" id="address" rows="2">{{ old('address',$warehouse->address)}}</textarea>
+                                      @if($errors->has('address'))
+                                      <span class="text-danger"> {{ $errors->first('address') }}</span>
+                                      @endif
                                       </div>
                                   </div>
 

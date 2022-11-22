@@ -40,8 +40,8 @@
     </li>
     <li class="menu-item has-sub">
         <a href="#" class='menu-link'>
-        <i class="bi bi-table"></i>
-            <span>{{__('Table')}}</span>
+        <i class="bi bi-box"></i>
+            <span>{{__('Products')}}</span>
         </a>
         <div class="submenu ">
             <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
@@ -78,24 +78,39 @@
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.product.create')}}">{{__('Add New')}}</a></li>
                         </ul>
                     </li>
-                    <li class="submenu-item"><a href="{{route(currentUser().'.supplier.index')}}" class='submenu-link'>{{__('Suppliers')}}</a>
-                        <ul class="subsubmenu">
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.supplier.index')}}">{{__('List')}}</a></li>
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.supplier.create')}}">{{__('Add New')}}</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu-item"><a href="{{route(currentUser().'.customer.index')}}" class='submenu-link'>{{__('Customers')}}</a>
-                        <ul class="subsubmenu">
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.customer.index')}}">{{__('List')}}</a></li>
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.customer.create')}}">{{__('Add New')}}</a></li>
-                        </ul>
-                    </li>
+                </ul>  
+            </div>
+        </div>
+    </li>
+    <li class="menu-item has-sub">
+        <a href="#" class='menu-link'>
+        <i class="bi bi-cart-plus"></i>
+            <span>{{__('Purchases')}}</span>
+        </a>
+        <div class="submenu ">
+            <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+            <div class="submenu-group-wrapper">
+                <ul class="submenu-group">
                     <li class="submenu-item"><a href="{{route(currentUser().'.purchase.index')}}" class='submenu-link'>{{__('Purchases')}}</a>
                         <ul class="subsubmenu">
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.purchase.index')}}">{{__('List')}}</a></li>
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.purchase.create')}}">{{__('Add New')}}</a></li>
                         </ul>
                     </li>
+                    
+                </ul>  
+            </div>
+        </div>
+    </li>
+    <li class="menu-item has-sub">
+        <a href="#" class='menu-link'>
+        <i class="bi bi-cart"></i>
+            <span>{{__('Sales')}}</span>
+        </a>
+        <div class="submenu ">
+            <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+            <div class="submenu-group-wrapper">
+                <ul class="submenu-group">
                     <li class="submenu-item"><a href="{{route(currentUser().'.sales.index')}}" class='submenu-link'>{{__('Sales')}}</a>
                         <ul class="subsubmenu">
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.sales.index')}}">{{__('List')}}</a></li>
@@ -108,8 +123,104 @@
     </li>
     <li class="menu-item has-sub">
         <a href="#" class='menu-link'>
-        <i class="bi bi-person"></i>
+            <i class="bi bi-people-fill"></i>
+            <span>{{__('Supplier')}}</span>
+        </a>
+        <div class="submenu ">
+            <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+            <div class="submenu-group-wrapper">
+                <ul class="submenu-group">
+                    <li class="submenu-item"><a href="{{route(currentUser().'.supplier.index')}}" class='submenu-link'>{{__('Suppliers')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.supplier.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.supplier.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.customer.index')}}" class='submenu-link'>{{__('Supplier Payment')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.customer.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.customer.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                </ul>  
+            </div>
+        </div>
+    </li>
+    <li class="menu-item has-sub">
+        <a href="#" class='menu-link'>
+        <i class="bi bi-people"></i>
+            <span>{{__('Customer')}}</span>
+        </a>
+        <div class="submenu ">
+            <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+            <div class="submenu-group-wrapper">
+                <ul class="submenu-group">
+                    <li class="submenu-item"><a href="{{route(currentUser().'.customer.index')}}" class='submenu-link'>{{__('Customers')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.customer.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.customer.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.customer.index')}}" class='submenu-link'>{{__('Supplier Payment')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.customer.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.customer.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                </ul>  
+            </div>
+        </div>
+    </li>
+    <li class="menu-item has-sub">
+        <a href="#" class='menu-link'>
+        <i class="bi bi-calculator"></i>
             <span>{{__('Accounts')}}</span>
+        </a>
+        <div class="submenu ">
+            <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+            <div class="submenu-group-wrapper">
+                <ul class="submenu-group">
+                    
+                    <li class="submenu-item"><a href="{{route(currentUser().'.master.index')}}" class='submenu-link'>{{__('Master Head')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.master.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.master.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.sub_head.index')}}" class='submenu-link'>{{__('Sub Head')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.sub_head.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.sub_head.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.child_one.index')}}" class='submenu-link'>{{__('Child One')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.child_one.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.child_one.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.child_two.index')}}" class='submenu-link'>{{__('Child Two')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.child_two.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.child_two.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.navigate.index')}}" class='submenu-link'>{{__('Navigate View')}}</a>
+                        <ul class="subsubmenu">
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.navigate.index')}}">{{__('List')}}</a></li>
+                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.navigate.create')}}">{{__('Add New')}}</a></li>
+                        </ul>
+                    </li>
+                    
+                    
+                </ul>  
+            </div>
+        </div>
+    </li>
+    <li class="menu-item has-sub">
+        <a href="#" class='menu-link'>
+        <i class="bi bi-card-checklist"></i>
+            <span>{{__('Report')}}</span>
         </a>
         <div class="submenu ">
             <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->

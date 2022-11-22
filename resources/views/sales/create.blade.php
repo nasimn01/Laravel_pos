@@ -32,7 +32,7 @@
                                         @endif
                                         
                                     @else
-                                        <input type="hidden" value="{{ branch()['branch_id']}}" name="branch_id">
+                                        <input type="hidden" value="{{ branch()['branch_id']}}" name="branch_id" id="branch_id">
                                     @endif
                                     
                                         
@@ -85,7 +85,7 @@
                                     <div class="col-md-2 mt-2">
                                         <label for="reference_no" class="float-end"><h6>Reference Number</h6></label>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mt-3">
                                         <input type="text" class="form-control" value="{{ old('reference_no')}}" name="reference_no">
                                     </div>
                                 </div>
@@ -98,8 +98,8 @@
                                     <thead>
                                         <tr class="bg-primary text-white">
                                             <th class="p-2">Product Name</th>
-                                            <th class="p-2">Quantity</th>
-                                            <th class="p-2">Purchase Price</th>
+                                            <th class="p-2">Qty</th>
+                                            <th class="p-2">Sell Price</th>
                                             <th class="p-2">Tax %</th>
                                             <th class="p-2">Discount Type</th>
                                             <th class="p-2">Discount</th>
@@ -248,6 +248,12 @@ $(function() {
     } );
     $("#item_search").autocomplete({
         source: function(data, cb){
+          let branch_id=$('#branch_id').val();
+          let warehouse_id=$('#warehouse_id').val();
+          let oldpro="3,4,";
+          $(".productlist").each(function(){
+            oldpro+=$(this).find(".product_id_list").val()+",";
+          })
           
             $.ajax({
             autoFocus:true,
@@ -255,26 +261,25 @@ $(function() {
                 method: 'GET',
                 dataType: 'json',
                 data: {
-                    name: data.term,
+                    name: data.term,branch_id:branch_id,warehouse_id:warehouse_id,oldpro:oldpro
                 },
                 success: function(res){
-                console.log(res);
                     var result;
                     result = [{label: 'No Records Found ',value: ''}];
                     if (res.length) {
                         result = $.map(res, function(el){
                             return {
-                                label: el.value +'--'+ el.label,
+                                label: el.bar_code+'-'+el.product_name +'-'+el.price+' ('+el.qty+')',
                                 value: '',
                                 id: el.id,
-                                item_name: el.value
+                                item_name: el.product_name
                             };
                         });
                     }
 
                     cb(result);
                 },error: function(e){
-                    console.log("error "+e);
+                    console.log(e);
                 }
             });
         },
@@ -313,14 +318,17 @@ $(function() {
 });
 
 function return_row_with_data(item_id){
-  $("#item_search").addClass('ui-autocomplete-loader-center');
+    $("#item_search").addClass('ui-autocomplete-loader-center');
+    let branch_id=$('#branch_id').val();
+    let warehouse_id=$('#warehouse_id').val();
+
     $.ajax({
             autoFocus:true,
                 url: "{{route(currentUser().'.sales.product_sc_d')}}",
                 method: 'GET',
                 dataType: 'json',
                 data: {
-                    item_id: item_id
+                    item_id: item_id,branch_id:branch_id,warehouse_id:warehouse_id
                 },
                 success: function(res){
                     $('#details_data').append(res);
@@ -341,10 +349,15 @@ function removerow(e){
 function get_cal(e){
   var purchase_price = (isNaN(parseFloat($(e).parents('tr').find('.price').val().trim()))) ? 0 :parseFloat($(e).parents('tr').find('.price').val().trim()); 
   var qty = (isNaN(parseFloat($(e).parents('tr').find('.qty').val().trim()))) ? 0 :parseFloat($(e).parents('tr').find('.qty').val().trim()); 
+  var stock = (isNaN(parseFloat($(e).parents('tr').find('.stockqty').val().trim()))) ? 0 :parseFloat($(e).parents('tr').find('.stockqty').val().trim()); 
   var tax = (isNaN(parseFloat($(e).parents('tr').find('.tax').val().trim()))) ? 0 :parseFloat($(e).parents('tr').find('.tax').val().trim()); 
   var discount_type = parseFloat($(e).parents('tr').find('.discount_type').val().trim()); 
   var discount = (isNaN(parseFloat($(e).parents('tr').find('.discount').val().trim()))) ? 0 :parseFloat($(e).parents('tr').find('.discount').val().trim()); 
-  
+  if(stock < qty){
+    alert("You cannot sell more than "+stock);
+    qty=stock;
+    $(e).parents('tr').find('.qty').val(stock)
+  }
   if(discount_type=="0")
     discount=(purchase_price*(discount/100));
 

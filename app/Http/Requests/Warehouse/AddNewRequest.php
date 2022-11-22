@@ -25,7 +25,8 @@ class AddNewRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'contact' => 'required'
+            'contact' => 'required',
+            'address' => 'required'
         ];
     }
     public function messages(){

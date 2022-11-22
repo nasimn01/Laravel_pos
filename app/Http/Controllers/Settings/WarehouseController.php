@@ -42,13 +42,14 @@ class WarehouseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
         try{
             $war= new Warehouse;
             $war->company_id=company()['company_id'];
             $war->branch_id=$request->branch_id;
             $war->name=$request->name;
+            $war->contact=$request->contact;
             $war->address=$request->address;
 
             if($war->save())
@@ -95,11 +96,13 @@ class WarehouseController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         try{
-            $war= Warehouse::findOrFail (encryptor('decrypt',$id));
+            $war= Warehouse::findOrFail(encryptor('decrypt',$id));
             $war->name=$request->name;
             $war->company_id=company()['company_id'];
-            $war->branch_id=$request->branchName;
+            $war->branch_id=$request->branch_id;
             $war->address=$request->address;
+            $war->contact=$request->contact;
+
             if($war->save())
                 return redirect()->route(currentUser().'.warehouse.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else

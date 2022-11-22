@@ -24,8 +24,9 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-           'name' => 'required',
-           'contact' => 'required'
+            'name' => 'required',
+            'contact' => 'required',
+            'address' => 'required'
         ];
     }
     public function messages(){

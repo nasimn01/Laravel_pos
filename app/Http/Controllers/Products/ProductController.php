@@ -56,12 +56,12 @@ class ProductController extends Controller
     {
         try{
             $p= new Product;
-            $p->bar_code=$request->barCode;
+            $p->bar_code=company()['company_id'].time();
             $p->category_id=$request->category;
             $p->subcategory_id=$request->subcategory;
             $p->childcategory_id=$request->childcategory;
-            $p->brand_id=$request->name;
-            $p->unit_id=$request->name;
+            $p->brand_id=$request->brand_id;
+            $p->unit_id=$request->unit_id;
             $p->product_name=$request->productName;
             $p->description=$request->description;
             $p->price=$request->price;
@@ -121,12 +121,11 @@ class ProductController extends Controller
     {
         try{
             $p= Product::findOrFail(encryptor('decrypt',$id));
-            $p->bar_code=$request->barCode;
             $p->category_id=$request->category;
             $p->subcategory_id=$request->subcategory;
             $p->childcategory_id=$request->childcategory;
-            $p->brand_id=$request->name;
-            $p->unit_id=$request->name;
+            $p->brand_id=$request->brand_id;
+            $p->unit_id=$request->unit_id;
             $p->product_name=$request->productName;
             $p->description=$request->description;
             $p->price=$request->price;

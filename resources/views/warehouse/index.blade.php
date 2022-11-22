@@ -20,6 +20,7 @@
                                         <th scope="col">{{__('#SL')}}</th>
                                         <th scope="col">{{__('Branch')}}</th>
                                         <th scope="col">{{__('Name')}}</th>
+                                        <th scope="col">{{__('Contact')}}</th>
                                         <th scope="col">{{__('Address')}}</th>
                                         <th class="white-space-nowrap">{{__('ACTION')}}</th>
                                     </tr>
@@ -30,6 +31,7 @@
                                     <th scope="row">{{ ++$loop->index }}</th>
                                         <td>{{$war->branch->name}}</td> 
                                         <td>{{$war->name}}</td>
+                                        <td>{{$war->contact}}</td>
                                         <td>{{$war->address}}</td>
                                         
                                         <td class="white-space-nowrap">

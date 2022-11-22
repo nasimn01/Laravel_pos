@@ -64,10 +64,10 @@ class SalesController extends Controller
     public function product_sc(Request $request)
     {
         if($request->name){
-            $product=Product::select('id','product_name as value','bar_code as label')->where(company())->where(function($query) use ($request) {
-                        $query->where('product_name','like', '%' . $request->name . '%')->orWhere('bar_code','like', '%' . $request->name . '%');
-                        })->get();
-                      print_r(json_encode($product));  
+
+            $product=DB::select("SELECT products.id,products.price,products.product_name,products.bar_code,sum(stocks.quantity) as qty FROM `products` JOIN stocks on stocks.product_id=products.id WHERE stocks.company_id=".company()['company_id']." and stocks.branch_id=".$request->branch_id." and stocks.warehouse_id=".$request->warehouse_id." and (products.product_name like '%". $request->name ."%' or products.bar_code like '%". $request->name ."%') and products.id not in (".rtrim($request->oldpro,',').") GROUP BY products.id");
+            
+            print_r(json_encode($product));  
         }
         
     }
@@ -79,11 +79,12 @@ class SalesController extends Controller
     public function product_sc_d(Request $request)
     {
         if($request->item_id){
-            $product=Product::where(company())->where('id',$request->item_id)->first();
-            $data='<tr>';
-            $data.='<td class="p-2">'.$product->product_name.'<input name="product_id[]" type="hidden" value="'.$product->id.'"></td>';
+            $product=collect(\DB::select("SELECT products.id,products.price,products.product_name,products.bar_code,sum(stocks.quantity) as qty FROM `products` JOIN stocks on stocks.product_id=products.id WHERE stocks.company_id=".company()['company_id']." and stocks.branch_id=".$request->branch_id." and stocks.warehouse_id=".$request->warehouse_id." and products.id=".$request->item_id." GROUP BY products.id"))->first();
+            
+            $data='<tr class="productlist">';
+            $data.='<td class="p-2">'.$product->product_name.'<input name="product_id[]" type="hidden" value="'.$product->id.'" class="product_id_list"><input name="stockqty[]" type="hidden" value="'.$product->qty.'" class="stockqty"></td>';
             $data.='<td class="p-2"><input onkeyup="get_cal(this)" name="qty[]" type="text" class="form-control qty" value="0"></td>';
-            $data.='<td class="p-2"><input onkeyup="get_cal(this)" name="price[]" type="text" class="form-control price" value="0"></td>';
+            $data.='<td class="p-2"><input onkeyup="get_cal(this)" name="price[]" type="text" class="form-control price" value="'.$product->price.'"></td>';
             $data.='<td class="p-2"><input onkeyup="get_cal(this)" name="tax[]" type="text" class="form-control tax" value=""></td>';
             $data.='<td class="p-2">
                         <select onchange="get_cal(this)" class="form-control form-select mt-2 discount_type" name="discount_type[]">
@@ -148,6 +149,7 @@ class SalesController extends Controller
                         $pd->total_amount=$request->subtotal[$i];
                         if($pd->save()){
                             $stock=new Stock;
+                            $stock->product_id=$product_id;
                             $stock->purchase_id=$pur->id;
                             $stock->company_id=company()['company_id'];
                             $stock->branch_id=$request->branch_id;
