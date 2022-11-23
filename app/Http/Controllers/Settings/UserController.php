@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
-use App\Models\Company;
 use App\Models\Settings\Branch;
 use App\Http\Traits\ResponseTrait;
 use App\Http\Requests\User\AddNewRequest;
