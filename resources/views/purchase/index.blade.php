@@ -29,7 +29,6 @@
                                 <th scope="col">{{__('Sub Amount')}}</th>
                                 <th scope="col">{{__('TAX')}}</th>
                                 <th scope="col">{{__('Discount Type')}}</th>
-                                <th scope="col">{{__('Discount')}}</th>
                                 <th scope="col">{{__('RoundOf')}}</th>
                                 <th scope="col">{{__('GrandTotal')}}</th>
                                 <th scope="col">{{__('Note')}}</th>
@@ -52,13 +51,12 @@
                                 <td>{{$pur->sub_amount}}</td>
                                 <td>{{$pur->tax}}</td>
                                 <td>{{$pur->discount_type}}</td>
-                                <td>{{$pur->discount}}</td>
                                 <td>{{$pur->round_of}}</td>
                                 <td>{{$pur->grand_total}}</td>
                                 <td>{{$pur->note}}</td>
                                
                                 <td>{{$pur->branch?->name}}</td>
-                                <td>{{$pur->warehous?->name}}</td>
+                                <td>{{$pur->warehouse?->name}}</td>
                                 <td>{{$pur->status}}</td>
                                 <td>{{$pur->payment_status}}</td>
                                 <td class="white-space-nowrap">

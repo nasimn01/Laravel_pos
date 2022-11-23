@@ -34,8 +34,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="name">Warehouse</label>
-                                            <input type="text" id="name" value="{{ old('name')}}" class="form-control"
-                                                placeholder="Warehouse Name" name="name">
+                                            <input type="text" id="name" value="{{ old('name')}}" class="form-control" placeholder="Warehouse Name" name="name">
                                         </div>
                                         @if($errors->has('name'))
                                         <span class="text-danger"> {{ $errors->first('name') }}</span>
@@ -43,9 +42,21 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
+                                            <label for="contact">Contact</label>
+                                            <input type="text" id="name" value="{{ old('contact')}}" class="form-control" placeholder="Warehouse contact" name="contact">
+                                        </div>
+                                        @if($errors->has('contact'))
+                                        <span class="text-danger"> {{ $errors->first('contact') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
                                             <label class="form-label" for="address">Address Details</label>
                                            <textarea class="form-control" name="address" id="address" rows="2">{{ old('address')}}</textarea>
                                         </div>
+                                        @if($errors->has('address'))
+                                        <span class="text-danger"> {{ $errors->first('address') }}</span>
+                                        @endif
                                     </div>
 
                                     <div class="col-12 d-flex justify-content-end">

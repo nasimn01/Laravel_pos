@@ -22,6 +22,7 @@ use App\Http\Controllers\Purchases\PurchaseController as purchase;
 use App\Http\Controllers\Sales\SalesController as sales;
 use App\Http\Controllers\Settings\BranchController as branch;
 use App\Http\Controllers\Settings\WarehouseController as warehouse;
+use App\Http\Controllers\Reports\ReportController as report;
 
 
 use App\Http\Controllers\Accounts\MasterAccountController as master;
@@ -85,6 +86,7 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('sales',sales::class,['as'=>'owner']);
         Route::resource('branch',branch::class,['as'=>'owner']);
         Route::resource('warehouse',warehouse::class,['as'=>'owner']);
+        Route::resource('report',report::class,['as'=>'owner']);
         
 
 

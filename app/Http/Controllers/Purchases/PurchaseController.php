@@ -150,6 +150,7 @@ class PurchaseController extends Controller
                         if($pd->save()){
                             $stock=new Stock;
                             $stock->purchase_id=$pur->id;
+                            $stock->product_id=$product_id;
                             $stock->company_id=company()['company_id'];
                             $stock->branch_id=$request->branch_id;
                             $stock->warehouse_id=$request->warehouse_id;

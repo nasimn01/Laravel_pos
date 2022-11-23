@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Settings\Warehouse;
+use App\Models\Settings\Company;
 use Illuminate\Http\Request;
 use App\Http\Requests\Warehouse\AddNewRequest;
 use App\Http\Requests\Warehouse\UpdateRequest;
@@ -21,7 +22,7 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        $warehouses=Warehouse::where(company())->paginate(10);
+        $warehouses= Warehouse::where(company())->paginate(10);
         return view('warehouse.index',compact('warehouses'));
     }
 
@@ -32,7 +33,7 @@ class WarehouseController extends Controller
      */
     public function create()
     {
-        $branch = Branch::all();
+        $branch = Branch::where(company())->get();
         return view('warehouse.create',compact('branch'));
     }
 
@@ -81,7 +82,7 @@ class WarehouseController extends Controller
      */
     public function edit( $id)
     {
-        $branch = Branch::all();
+        $branch = Branch::where(company())->get();
         $warehouse=Warehouse::findOrFail(encryptor('decrypt',$id));
         return view('warehouse.edit',compact('warehouse','branch'));
     }

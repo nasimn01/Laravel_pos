@@ -19,8 +19,9 @@
                                             <label for="branch_id" class="float-end" ><h6>Branches Name</h6></label>
                                         </div>
                                         <div class="col-md-4 form-group">
-                                            <select onchange="change_data(this.value)" class="form-control form-select" name="branch_id" id="branch_id">
-                                                @forelse($branches as $b)
+                                            <select required onchange="change_data(this.value)" class="form-control form-select" name="branch_id" id="branch_id">
+                                                <option value="">Select Branches</option>    
+                                            @forelse($branches as $b)
                                                     <option value="{{ $b->id }}" {{old('branch_id')==$b->id?'selected':''}}>{{ $b->name }}</option>
                                                 @empty
                                                     <option value="">No branch found</option>
@@ -41,7 +42,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         
-                                        <select class="form-control form-select" name="supplierName" id="supplierName">
+                                        <select required class="form-control form-select" name="supplierName" id="supplierName">
                                             <option value="">Select Supplier</option>
                                             @forelse($suppliers as $d)
                                                 <option class="brnch brnch{{$d->branch_id}}" value="{{$d->id}}" {{ old('supplierName')==$d->id?"selected":""}}> {{ $d->supplier_name}}</option>
@@ -60,7 +61,8 @@
                                         <label for="warehouse_id" class="float-end"><h6>Warehouse</h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="form-control form-select" name="warehouse_id" id="warehouse_id">
+                                        <select required class="form-control form-select" name="warehouse_id" id="warehouse_id">
+                                            <option value="">Select Warehouse</option>
                                             @forelse($Warehouses as $d)
                                                 <option class="brnch brnch{{$d->branch_id}}" value="{{$d->id}}" {{ old('warehouse_id')==$d->id?"selected":""}}> {{ $d->name}}</option>
                                             @empty
@@ -413,4 +415,5 @@ function cal_grandtotl(){
 }
 
 </script>
+
 @endpush

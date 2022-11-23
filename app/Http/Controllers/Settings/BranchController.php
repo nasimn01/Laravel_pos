@@ -21,7 +21,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        $branchs=Branch::where(company())->paginate(10);
+        $branchs= Branch::where(company())->paginate(10);
         return view('branch.index',compact('branchs'));
     }
 

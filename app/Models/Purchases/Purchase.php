@@ -4,7 +4,7 @@ namespace App\Models\Purchases;
 
 use App\Models\Settings\Branch;
 use App\Models\Suppliers\supplier;
-use App\Models\Warehouse;
+use App\Models\Settings\Warehouse;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

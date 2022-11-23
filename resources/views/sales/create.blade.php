@@ -250,7 +250,7 @@ $(function() {
         source: function(data, cb){
           let branch_id=$('#branch_id').val();
           let warehouse_id=$('#warehouse_id').val();
-          let oldpro="3,4,";
+          let oldpro="";
           $(".productlist").each(function(){
             oldpro+=$(this).find(".product_id_list").val()+",";
           })

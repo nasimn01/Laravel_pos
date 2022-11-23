@@ -227,12 +227,8 @@
             <div class="submenu-group-wrapper">
                 <ul class="submenu-group">
                     
-                    <li class="submenu-item"><a href="{{route(currentUser().'.master.index')}}" class='submenu-link'>{{__('Master Head')}}</a>
-                        <ul class="subsubmenu">
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.master.index')}}">{{__('List')}}</a></li>
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.master.create')}}">{{__('Add New')}}</a></li>
-                        </ul>
-                    </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.report.index')}}" class='submenu-link'>{{__('Purchase Report')}}</a></li>
+
                     <li class="submenu-item"><a href="{{route(currentUser().'.sub_head.index')}}" class='submenu-link'>{{__('Sub Head')}}</a>
                         <ul class="subsubmenu">
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.sub_head.index')}}">{{__('List')}}</a></li>
