@@ -228,6 +228,7 @@
                 <ul class="submenu-group">
                     
                     <li class="submenu-item"><a href="{{route(currentUser().'.report.index')}}" class='submenu-link'>{{__('Purchase Report')}}</a></li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.sreport')}}" class='submenu-link'>{{__('Stock Report')}}</a></li>
 
                     <li class="submenu-item"><a href="{{route(currentUser().'.sub_head.index')}}" class='submenu-link'>{{__('Sub Head')}}</a>
                         <ul class="subsubmenu">

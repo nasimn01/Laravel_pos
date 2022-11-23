@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle',trans('Purchase Reports'))
+@section('pageTitle',trans('Stock Reports'))
 @section('pageSubTitle',trans('Reports'))
 
 @section('content')
@@ -33,20 +33,7 @@
                                     </div>
 
 
-                                    <div class="col-md-2 mt-4">
-                                        <label for="supplierName" class="float-end"><h6>Supplier</h6></label>
-                                    </div>
-                                    <div class="col-md-4 mt-4">
-                                        
-                                        <select class="form-control form-select" name="supplierName" id="supplierName">
-                                            <option value="">Select Supplier</option>
-                                            @forelse($suppliers as $d)
-                                                <option value="{{$d->id}}" {{ old('supplierName')==$d->id?"selected":""}}> {{ $d->supplier_name}}</option>
-                                            @empty
-                                                <option value="">No Supplier found</option>
-                                            @endforelse
-                                        </select>
-                                    </div>
+                                    
 
 
                                 </div>
@@ -64,28 +51,22 @@
                                     <thead>
                                         <tr class="bg-primary text-white">
                                             <th class="p-2">#SL</th>
-                                            <th class="p-2">Product ID</th>
-                                            <th class="p-2">Quantity</th>
-                                            <th class="p-2">Unit Price</th>
-                                            <th class="p-2">Sub Amount</th>
-                                            <th class="p-2">Tax</th>
-                                            <th class="p-2">Total Amount</th>
+                                            <th class="p-2">Product</th>
+                                            <th class="p-2">Total Quantity</th>
+                                            <th class="p-2">Current Quantity</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse($data as $d)
+                                        @forelse($stock as $s)
                                         <tr>
                                             <th scope="row">{{ ++$loop->index }}</th>
-                                            <td>{{$d->product_id}}</td>
-                                            <td>{{$d->quantity}}</td>
-                                            <td>{{$d->unit_price}}</td>
-                                            <td>{{$d->sub_amount}}</td>
-                                            <td>{{$d->tax}}</td>
-                                            <td>{{$d->total_amount}}</td>
+                                            <td>{{$s->product_id}}</td>
+                                            <td>{{$s->quantity}}</td>
+                                            <td>{{$s->qty}}</td>
                                         </tr>
                                         @empty
                                         <tr>
-                                            <th colspan="7" class="text-center">No data Found</th>
+                                            <th colspan="4" class="text-center">No data Found</th>
                                         </tr>
                                         @endforelse
                                     </tbody>

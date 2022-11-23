@@ -55,6 +55,7 @@ Route::get('/login', [auth::class,'signInForm'])->name('login');
 Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 
+
 Route::group(['middleware'=>isAdmin::class],function(){
     Route::prefix('admin')->group(function(){
         Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
@@ -87,6 +88,9 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('branch',branch::class,['as'=>'owner']);
         Route::resource('warehouse',warehouse::class,['as'=>'owner']);
         Route::resource('report',report::class,['as'=>'owner']);
+
+        //stock report
+        Route::get('/sreport',[report::class,'stockreport'])->name('owner.sreport');
         
 
 
