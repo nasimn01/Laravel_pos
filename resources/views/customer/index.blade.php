@@ -31,7 +31,7 @@
                                 <th scope="col">{{__('Opening balance')}}</th>
                                 <th scope="col">{{__('Country')}}</th>
                                 <th scope="col">{{__('Division')}}</th>
-                                <th scope="col">{{__('Division bn')}}</th>
+                                <th scope="col">{{__('District')}}</th>
                                 <th class="white-space-nowrap">{{__('Action') }}</th>
                             </tr>
                         </thead>

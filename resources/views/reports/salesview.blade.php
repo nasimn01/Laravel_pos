@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle',trans('Purchase Reports'))
+@section('pageTitle',trans('Sales Reports'))
 @section('pageSubTitle',trans('Reports'))
 
 @section('content')
@@ -34,16 +34,16 @@
 
 
                                     <div class="col-md-2 mt-4">
-                                        <label for="supplierName" class="float-end"><h6>Supplier</h6></label>
+                                        <label for="supplierName" class="float-end"><h6>Customer</h6></label>
                                     </div>
                                     <div class="col-md-4 mt-4">
                                         
-                                        <select class="form-control form-select" name="supplierName" id="supplierName">
-                                            <option value="">Select Supplier</option>
-                                            @forelse($suppliers as $d)
-                                                <option value="{{$d->id}}" {{ old('supplierName')==$d->id?"selected":""}}> {{ $d->supplier_name}}</option>
+                                        <select class="form-control form-select" name="customerName" id="customerName">
+                                            <option value="">Select Customer</option>
+                                            @forelse($customers as $c)
+                                                <option value="{{$c->id}}" {{ old('customerName')==$c->id?"selected":""}}> {{ $c->customer_name}}</option>
                                             @empty
-                                                <option value="">No Supplier found</option>
+                                                <option value="">No data found</option>
                                             @endforelse
                                         </select>
                                     </div>
@@ -70,11 +70,13 @@
                                             <th class="p-2">Unit Price</th>
                                             <th class="p-2">Sub Amount</th>
                                             <th class="p-2">Tax</th>
+                                            <th class="p-2">Discount Type</th>
+                                            <th class="p-2">Discount</th>
                                             <th class="p-2">Total Amount</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse($data as $d)
+                                        @forelse($sales as $d)
                                         <tr class="text-center">
                                             <th scope="row">{{ ++$loop->index }}</th>
                                             <td>{{$d->product_id}}</td>
@@ -83,11 +85,13 @@
                                             <td>{{$d->unit_price}}</td>
                                             <td>{{$d->sub_amount}}</td>
                                             <td>{{$d->tax}}</td>
+                                            <td>{{$d->discount_type}}</td>
+                                            <td>{{$d->discount}}</td>
                                             <td>{{$d->total_amount}}</td>
                                         </tr>
                                         @empty
                                         <tr>
-                                            <th colspan="7" class="text-center">No data Found</th>
+                                            <th colspan="9" class="text-center">No data Found</th>
                                         </tr>
                                         @endforelse
                                     </tbody>

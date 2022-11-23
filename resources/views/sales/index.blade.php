@@ -30,9 +30,9 @@
                                 <th scope="col">{{__('TAX')}}</th>
                                 <th scope="col">{{__('Discount Type')}}</th>
                                 <th scope="col">{{__('Discount')}}</th>
-                                <th scope="col">{{__('RoundOf')}}</th>
+                                <!-- <th scope="col">{{__('RoundOf')}}</th> -->
                                 <th scope="col">{{__('GrandTotal')}}</th>
-                                <th scope="col">{{__('Note')}}</th>
+                          
                                
                                 <th scope="col">{{__('Branch')}}</th>
                                 <th scope="col">{{__('Warehouse')}}</th>
@@ -53,12 +53,12 @@
                                 <td>{{$s->tax}}</td>
                                 <td>{{$s->discount_type}}</td>
                                 <td>{{$s->discount}}</td>
-                                <td>{{$s->round_of}}</td>
+                                <!-- <td>{{$s->round_of}}</td> -->
                                 <td>{{$s->grand_total}}</td>
-                                <td>{{$s->note}}</td>
+                              
                                
                                 <td>{{$s->branch?->name}}</td>
-                                <td>{{$s->warehous?->name}}</td>
+                                <td>{{$s->warehouse?->name}}</td>
                                 <td>{{$s->status}}</td>
                                 <td>{{$s->payment_status}}</td>
                                 <td class="white-space-nowrap">

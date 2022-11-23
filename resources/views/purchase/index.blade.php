@@ -27,9 +27,9 @@
                                 <th scope="col">{{__('Reference Number')}}</th>
                                 <th scope="col">{{__('Total QTY')}}</th>
                                 <th scope="col">{{__('Sub Amount')}}</th>
-                                <th scope="col">{{__('TAX')}}</th>
+                                <!-- <th scope="col">{{__('TAX')}}</th>
                                 <th scope="col">{{__('Discount Type')}}</th>
-                                <th scope="col">{{__('RoundOf')}}</th>
+                                <th scope="col">{{__('RoundOf')}}</th> -->
                                 <th scope="col">{{__('GrandTotal')}}</th>
                                 <th scope="col">{{__('Note')}}</th>
                                
@@ -49,9 +49,9 @@
                                 <td>{{$pur->reference_no}}</td>
                                 <td>{{$pur->total_quantity}}</td>
                                 <td>{{$pur->sub_amount}}</td>
-                                <td>{{$pur->tax}}</td>
+                                <!-- <td>{{$pur->tax}}</td>
                                 <td>{{$pur->discount_type}}</td>
-                                <td>{{$pur->round_of}}</td>
+                                <td>{{$pur->round_of}}</td> -->
                                 <td>{{$pur->grand_total}}</td>
                                 <td>{{$pur->note}}</td>
                                

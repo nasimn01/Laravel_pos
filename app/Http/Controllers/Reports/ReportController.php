@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Reports;
 
 use App\Http\Controllers\Controller;
 
+
 use App\Models\Purchases\Purchase_details;
+use App\Models\Sales\Sales_details;
 use App\Models\Suppliers\Supplier;
+use App\Models\Customers\customer;
 use DB;
 
 class ReportController extends Controller
@@ -27,5 +30,13 @@ class ReportController extends Controller
     {
         $stock= DB::select("SELECT products.product_name,stocks.*,sum(stocks.quantity) as qty, AVG(stocks.unit_price) as avunitprice FROM `stocks` join products on products.id=stocks.product_id GROUP BY stocks.product_id");
         return view('reports.sview',compact('stock'));
+    }
+
+
+    public function salesReport()
+    {
+        $customers = customer::all();
+        $sales = Sales_details::all();
+        return view('reports.salesview',compact('sales','customers'));
     }
 }

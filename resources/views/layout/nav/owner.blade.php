@@ -229,31 +229,7 @@
                     
                     <li class="submenu-item"><a href="{{route(currentUser().'.report.index')}}" class='submenu-link'>{{__('Purchase Report')}}</a></li>
                     <li class="submenu-item"><a href="{{route(currentUser().'.sreport')}}" class='submenu-link'>{{__('Stock Report')}}</a></li>
-
-                    <li class="submenu-item"><a href="{{route(currentUser().'.sub_head.index')}}" class='submenu-link'>{{__('Sub Head')}}</a>
-                        <ul class="subsubmenu">
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.sub_head.index')}}">{{__('List')}}</a></li>
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.sub_head.create')}}">{{__('Add New')}}</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu-item"><a href="{{route(currentUser().'.child_one.index')}}" class='submenu-link'>{{__('Child One')}}</a>
-                        <ul class="subsubmenu">
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.child_one.index')}}">{{__('List')}}</a></li>
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.child_one.create')}}">{{__('Add New')}}</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu-item"><a href="{{route(currentUser().'.child_two.index')}}" class='submenu-link'>{{__('Child Two')}}</a>
-                        <ul class="subsubmenu">
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.child_two.index')}}">{{__('List')}}</a></li>
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.child_two.create')}}">{{__('Add New')}}</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu-item"><a href="{{route(currentUser().'.navigate.index')}}" class='submenu-link'>{{__('Navigate View')}}</a>
-                        <ul class="subsubmenu">
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.navigate.index')}}">{{__('List')}}</a></li>
-                            <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.navigate.create')}}">{{__('Add New')}}</a></li>
-                        </ul>
-                    </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.salreport')}}" class='submenu-link'>{{__('Sales Report')}}</a></li>
                     
                     
                 </ul>  

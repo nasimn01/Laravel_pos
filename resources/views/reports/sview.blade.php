@@ -49,18 +49,20 @@
                                 </div>
                                 <table class="table mb-5">
                                     <thead>
-                                        <tr class="bg-primary text-white">
+                                        <tr class="bg-primary text-white text-center">
                                             <th class="p-2">#SL</th>
-                                            <th class="p-2">Product</th>
+                                            <th class="p-2">Product ID</th>
+                                            <th class="p-2">Product Name</th>
                                             <th class="p-2">Total Quantity</th>
                                             <th class="p-2">Current Quantity</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse($stock as $s)
-                                        <tr>
+                                        <tr class="text-center">
                                             <th scope="row">{{ ++$loop->index }}</th>
                                             <td>{{$s->product_id}}</td>
+                                            <td>{{$s->product_name}}</td>
                                             <td>{{$s->quantity}}</td>
                                             <td>{{$s->qty}}</td>
                                         </tr>
