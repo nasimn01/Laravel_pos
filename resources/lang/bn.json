@@ -8,7 +8,7 @@
     "Settings":"সেটিংস",
     "Supplier":"সরবরাহকারী",
     "Customer":"ক্রেতা",
-    "SL":"এসএল",
+    "#SL":"#এসএল",
     "Name":"নাম",
     "Contact":"যোগাযোগ",
     "Phone":"ফোন",
@@ -19,7 +19,12 @@
     "Brand":"ব্র্যান্ড",
     "Units":"ইউনিট",
     "Description":"বর্ণনা",
+    "Country":"দেশ",
     "Division":"বিভাগ",
+    "District":"জেলা",
+    "Upazila":"উপজেলা",
+    "Thana":"থানা",
+    "Unit":"ইউনিট",
     "Division bn":"বিভাগ বি.এন",
     "GST Number":"জিএসটি নম্বর",
     "Opening balance":"খোলার ব্যালেন্স",
@@ -57,6 +62,7 @@
     "Child Two": "শিশু দুই",
     "Navigate View": "নেভিগেট ভিউ",
     "ACTION": "কর্ম",
+    "Action": "কর্ম",
     "Supplier Payment": "সরবরাহকারী পেমেন্ট"
   
     
