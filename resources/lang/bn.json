@@ -23,6 +23,7 @@
     "Division bn":"বিভাগ বি.এন",
     "GST Number":"জিএসটি নম্বর",
     "Opening balance":"খোলার ব্যালেন্স",
+    "Category": "শ্রেণী",
     "Sub Category":"সাব ক্যাটাগরি",
     "Child Category":"শিশু বিভাগ",
     "Price":"দাম",
@@ -39,7 +40,26 @@
     "GrandTotal":"সর্বমোট",
     "Note":"বিঃদ্রঃ",
     "Branch":"শাখা",
-    "Warehouse":"গুদাম"
+    "Warehouse":"গুদাম",
+    "Add New": "নতুন যোগ করুন",
+    "Products": "পণ্য",
+    "Purchases": "ক্রয়",
+    "Sales": "বিক্রয়",
+    "Purchase Report": "ক্রয় প্রতিবেদন",
+    "Stock Report": "স্টক রিপোর্ট",
+    "Sales Report": "বিক্রয় রিপোর্ট",
+    "Report": "রিপোর্ট",
+    "Accounts": "হিসাব",
+    "User": "ব্যবহারকারী",
+    "Master Head": "মাস্টার হেড",
+    "Sub Head": "উপ-প্রধান",
+    "Child One": "শিশু এক",
+    "Child Two": "শিশু দুই",
+    "Navigate View": "নেভিগেট ভিউ",
+    "ACTION": "কর্ম",
+    "Supplier Payment": "সরবরাহকারী পেমেন্ট"
+  
+    
 
 
 

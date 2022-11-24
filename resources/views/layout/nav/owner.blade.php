@@ -130,7 +130,7 @@
             <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
             <div class="submenu-group-wrapper">
                 <ul class="submenu-group">
-                    <li class="submenu-item"><a href="{{route(currentUser().'.supplier.index')}}" class='submenu-link'>{{__('Suppliers')}}</a>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.supplier.index')}}" class='submenu-link'>{{__('Supplier')}}</a>
                         <ul class="subsubmenu">
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.supplier.index')}}">{{__('List')}}</a></li>
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.supplier.create')}}">{{__('Add New')}}</a></li>
@@ -155,7 +155,7 @@
             <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
             <div class="submenu-group-wrapper">
                 <ul class="submenu-group">
-                    <li class="submenu-item"><a href="{{route(currentUser().'.customer.index')}}" class='submenu-link'>{{__('Customers')}}</a>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.customer.index')}}" class='submenu-link'>{{__('Customer')}}</a>
                         <ul class="subsubmenu">
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.customer.index')}}">{{__('List')}}</a></li>
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.customer.create')}}">{{__('Add New')}}</a></li>

@@ -67,6 +67,19 @@
                                                 @endif
                                         </div>
                                     </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="language">Language</label>
+                                            <select class="form-control" name="language" id="language">
+                                                <option value="">Select Language</option>
+                                                <option value="en" {{ old('language',$user->language)=="en"?"selected":""}}> English</option>
+                                                <option value="bn" {{ old('language',$user->language)=="bn"?"selected":""}}> Bangla</option>
+                                            </select>
+                                            @if($errors->has('branch_id'))
+                                                <span class="text-danger"> {{ $errors->first('branch_id') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">

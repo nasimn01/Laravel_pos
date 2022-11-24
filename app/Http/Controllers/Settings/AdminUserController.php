@@ -25,7 +25,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $users=User::where('role_id',1)->paginate();
+        $users=User::whereIn('role_id',[1,2])->paginate();
         return view('settings.adminusers.index',compact('users'));
     }
 
@@ -101,6 +101,7 @@ class AdminUserController extends Controller
             $user->name=$request->userName;
             $user->contact_no=$request->contactNumber;
             $user->email=$request->userEmail;
+            $user->language=$request->language;
             if($request->has('password') && $request->password)
                 $user->password=Hash::make($request->password);
          
