@@ -16,6 +16,7 @@ use App\Http\Requests\Product\UpdateRequest;
 use App\Http\Traits\ResponseTrait;
 use App\Http\Traits\ImageHandleTraits;
 use Exception;
+use DB;
 
 class ProductController extends Controller
 {
@@ -30,6 +31,18 @@ class ProductController extends Controller
         $products = Product::where(company())->paginate(10);
         return view('product.index',compact('products'));
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function label()
+    {
+        $stock= DB::select("SELECT products.*,stocks.*,sum(stocks.quantity) as qty, AVG(stocks.unit_price) as avunitprice FROM `stocks` join products on products.id=stocks.product_id GROUP BY stocks.product_id");
+        return view('product.label',compact('stock'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

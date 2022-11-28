@@ -78,6 +78,7 @@
                             <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.product.create')}}">{{__('Add New')}}</a></li>
                         </ul>
                     </li>
+                    <li class="submenu-item"><a href="{{route(currentUser().'.plabel')}}" class='submenu-link'>{{__('Product Label')}}</a></li>
                 </ul>  
             </div>
         </div>

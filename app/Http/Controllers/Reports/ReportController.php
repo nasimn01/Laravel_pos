@@ -32,6 +32,7 @@ class ReportController extends Controller
         return view('reports.sview',compact('stock'));
     }
 
+   
 
     public function salesReport()
     {
