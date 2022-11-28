@@ -1,6 +1,8 @@
 {
     "dashboard": "ড্যাশবোর্ড",
     "Logout": "প্রস্থান",
+    "Create":"সৃষ্টি",
+    "Update":"হালনাগাদ",
     "My Account": "আমার অ্যাকাউন্ট",
     "Profile Statistics":"প্রোফাইল পরিসংখ্যান",
     "Users List":"ব্যবহারকারীদের তালিকা",
@@ -13,6 +15,7 @@
     "Contact":"যোগাযোগ",
     "Phone":"ফোন",
     "Email":"ইমেইল",
+    "Address":"ঠিকানা",
     "Image":"ছবি",
     "TAX Number":"কর নম্বর",
     "Bar Code":"বার কোড",
@@ -31,11 +34,14 @@
     "Category": "শ্রেণী",
     "Sub Category":"সাব ক্যাটাগরি",
     "Child Category":"শিশু বিভাগ",
+    "Childcategory List":"শিশুবিভাগের তালিকা",
     "Price":"দাম",
     "Status":"স্ট্যাটাস",
     "Payment Status":"লেনদেনের অবস্থা",
     "Date":"তারিখ",
     "Reference Number":"পরিচিত সংখ্যা",
+    "Bin Number":"বিন নম্বর",
+    "Trade Number":"ট্রেড নম্বর",
     "Total QTY":"মোট পরিমাণ",
     "Sub Amount":"সাব পরিমাণ",
     "TAX":"ট্যাক্স",
@@ -57,14 +63,21 @@
     "Accounts": "হিসাব",
     "User": "ব্যবহারকারী",
     "Master Head": "মাস্টার হেড",
+    "Master Account List": "মাস্টার অ্যাকাউন্ট তালিকা",
     "Sub Head": "উপ-প্রধান",
+    "Create Sub Head": "সাব হেড তৈরি করুন",
+    "Sub Head List": "সাব হেড লিস্ট",
     "Child One": "শিশু এক",
+    "Child One List": "শিশু এক তালিকা",
     "Child Two": "শিশু দুই",
     "Navigate View": "নেভিগেট ভিউ",
     "ACTION": "কর্ম",
     "Action": "কর্ম",
-    "Supplier Payment": "সরবরাহকারী পেমেন্ট"
-  
+    "Supplier Payment": "সরবরাহকারী পেমেন্ট",
+    "Customer Payment": "গ্রাহক পেমেন্ট",
+    "Head Name":"মাথার নাম",
+    "Head Code":"হেড কোড",
+    "Opening Balance":"ওপেনিং ব্যালেন্স"
     
 
 

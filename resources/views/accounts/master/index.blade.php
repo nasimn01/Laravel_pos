@@ -1,6 +1,6 @@
 @extends('layout.app')
-@section('pageTitle','Master Account List')
-@section('pageSubTitle','List')
+@section('pageTitle',trans('Master Account List'))
+@section('pageSubTitle',trans('List'))
 
 @section('content')
 

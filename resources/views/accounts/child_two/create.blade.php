@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle','Create Child Two')
+@section('pageTitle',trans('Create Child Two')
 @section('pageSubTitle','Create')
 
 @section('content')

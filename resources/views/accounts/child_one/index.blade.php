@@ -1,6 +1,6 @@
 @extends('layout.app')
-@section('pageTitle','Child One List')
-@section('pageSubTitle','List')
+@section('pageTitle',trans('Child One List'))
+@section('pageSubTitle',trans('List'))
 
 @section('content')
 
