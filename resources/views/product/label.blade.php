@@ -21,7 +21,7 @@
                                         </div>
 
                                         <div class="col-2 text-end me-0 pe-0">
-                                            <button type="#" class="btn  btn-success   mb-1 ps-5 pe-5 ">Search</button>
+                                            <button type="#" class="btn  btn-info   mb-1 ps-5 pe-5 ">Search</button>
                                         </div>
                                     </div>
                                 </div>
@@ -41,7 +41,7 @@
                                               
                                                 @forelse($stock as $s)
                                                 <tr class="text-center">
-                                                    <th scope="row">{{ ++$loop->index }}</th>
+                                                    <th scope="row"><input type="checkbox"></th>
                                                     <td>{{$s->product_name}}</td>
                                                     <td>{{$s->quantity}}</td>
                                                     <td>{{$s->bar_code}}</td>
@@ -54,6 +54,18 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                </div>
+
+                                
+                                <div class="row mb-3 p-3">
+                                   
+                                        <div class="col-4  d-flex justify-content-end">
+                                            <button type="#" class="btn  btn-info me-1 mb-1 ps-5 pe-5">Preview</button>
+                                        </div>
+                                        <div class="col-4 d-flex justify-content-Start">
+                                            <button type="#" class="btn pbtn  btn-warning me-1 mb-1 ps-5 pe-5">Close</button>
+                                        </div>
+                                 
                                 </div>
                             </form>
                         </div>
