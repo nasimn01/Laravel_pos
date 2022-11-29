@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Transfers;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\Transfer;
+use App\Models\Transfers\Transfer;
+use App\Models\Settings\Branch;
+use App\Models\Settings\Warehouse;
+use App\Models\Settings\Company;
 use Illuminate\Http\Request;
 
 class TransferController extends Controller
@@ -16,7 +19,10 @@ class TransferController extends Controller
      */
     public function index()
     {
-        //
+        $transfer = Transfer::all();
+        $branches = Branch::where(company())->get();
+        $warehouses = Warehouse::all();
+        return view('transfer.index',compact('transfer','branches','warehouses'));
     }
 
     /**

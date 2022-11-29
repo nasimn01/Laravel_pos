@@ -124,6 +124,23 @@
     </li>
     <li class="menu-item has-sub">
         <a href="#" class='menu-link'>
+        <i class="bi bi-cart"></i>
+            <span>{{__('Transfer')}}</span>
+        </a>
+        <div class="submenu ">
+            <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+            <div class="submenu-group-wrapper">
+                <ul class="submenu-group">
+                    <li class="submenu-item"><a href="{{route(currentUser().'.transfer.index')}}" class='submenu-link'>{{__('Transfer')}}</a>
+                        <ul class="subsubmenu">
+                        </ul>
+                    </li>
+                </ul>  
+            </div>
+        </div>
+    </li>
+    <li class="menu-item has-sub">
+        <a href="#" class='menu-link'>
             <i class="bi bi-people-fill"></i>
             <span>{{__('Supplier')}}</span>
         </a>
