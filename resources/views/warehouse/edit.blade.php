@@ -1,7 +1,7 @@
 @extends('layout.app')
 
-@section('pageTitle','Update Warehouse')
-@section('pageSubTitle','Update')
+@section('pageTitle',trans('Update Warehouse'))
+@section('pageSubTitle',trans('Update'))
 
 @section('content')
   <section id="multiple-column-form">

@@ -1,7 +1,7 @@
 @extends('layout.app')
 
-@section('pageTitle','Create Unit')
-@section('pageSubTitle','Create')
+@section('pageTitle',trans('Create Unit'))
+@section('pageSubTitle',trans('Create'))
 
 @section('content')
 <!-- // Basic multiple Column Form section start -->

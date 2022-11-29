@@ -50,11 +50,11 @@
                                 <table class="table mb-5">
                                     <thead>
                                         <tr class="bg-primary text-white text-center">
-                                            <th class="p-2">#SL</th>
-                                            <th class="p-2">Product ID</th>
-                                            <th class="p-2">Product Name</th>
-                                            <th class="p-2">Total Quantity</th>
-                                            <th class="p-2">Current Quantity</th>
+                                            <th class="p-2">{{__('#SL')}}</th>
+                                            <th class="p-2">{{__('Product ID')}}</th>
+                                            <th class="p-2">{{__('Product Name')}}</th>
+                                            <th class="p-2">{{__('Total Quantity')}}</th>
+                                            <th class="p-2">{{__('Current Quantity')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>

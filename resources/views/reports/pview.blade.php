@@ -63,14 +63,14 @@
                                 <table class="table mb-5">
                                     <thead>
                                         <tr class="bg-primary text-white text-center">
-                                            <th class="p-2">#SL</th>
-                                            <th class="p-2">Product ID</th>
-                                            <th class="p-2">Product Name</th>
-                                            <th class="p-2">Quantity</th>
-                                            <th class="p-2">Unit Price</th>
-                                            <th class="p-2">Sub Amount</th>
-                                            <th class="p-2">Tax</th>
-                                            <th class="p-2">Total Amount</th>
+                                            <th class="p-2">{{__('#SL')}}</th>
+                                            <th class="p-2">{{__('Product ID')}}</th>
+                                            <th class="p-2">{{__('Product Name')}}</th>
+                                            <th class="p-2">{{__('Quantity')}}</th>
+                                            <th class="p-2">{{__('Unit Price')}}</th>
+                                            <th class="p-2">{{__('Sub Amount')}}</th>
+                                            <th class="p-2">{{__('Tax')}}</th>
+                                            <th class="p-2">{{__('Total Amount')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -1,6 +1,6 @@
 @extends('layout.app')
-@section('pageTitle','Navigate master view List')
-@section('pageSubTitle','List')
+@section('pageTitle',trans('Navigate master view List'))
+@section('pageSubTitle',trans('List'))
 
 @section('content')
 

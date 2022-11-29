@@ -1,7 +1,7 @@
 @extends('layout.app')
 
-@section('pageTitle','Create Brand')
-@section('pageSubTitle','Create')
+@section('pageTitle',trans('Create Brand'))
+@section('pageSubTitle',trans('Create'))
 
 @section('content')
 <!-- // Basic multiple Column Form section start -->

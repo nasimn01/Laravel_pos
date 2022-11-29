@@ -1,7 +1,7 @@
 @extends('layout.app')
 
-@section('pageTitle','Branch List')
-@section('pageSubTitle','List')
+@section('pageTitle',trans('Branch List'))
+@section('pageSubTitle',trans('List'))
 
 @section('content')
 

@@ -44,7 +44,7 @@ class PurchaseDetailsController extends Controller
      * @param  \App\Models\Purchase\Purchase_details  $purchase_details
      * @return \Illuminate\Http\Response
      */
-    public function show(Purchase_details $purchase_details)
+    public function show($purchase_details)
     {
         //
     }
@@ -55,7 +55,7 @@ class PurchaseDetailsController extends Controller
      * @param  \App\Models\Purchase\Purchase_details  $purchase_details
      * @return \Illuminate\Http\Response
      */
-    public function edit(Purchase_details $purchase_details)
+    public function edit($purchase_details)
     {
         //
     }
@@ -67,7 +67,7 @@ class PurchaseDetailsController extends Controller
      * @param  \App\Models\Purchase\Purchase_details  $purchase_details
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Purchase_details $purchase_details)
+    public function update(Request $request, $purchase_details)
     {
         //
     }
@@ -78,7 +78,7 @@ class PurchaseDetailsController extends Controller
      * @param  \App\Models\Purchase\Purchase_details  $purchase_details
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Purchase_details $purchase_details)
+    public function destroy($purchase_details)
     {
         //
     }

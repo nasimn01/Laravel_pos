@@ -1,7 +1,7 @@
 @extends('layout.app')
 
-@section('pageTitle','Update Child Two')
-@section('pageSubTitle','Update')
+@section('pageTitle',trans('Update Child Two'))
+@section('pageSubTitle',trans('Update'))
 
 @section('content')
 <!-- // Basic multiple Column Form section start -->
