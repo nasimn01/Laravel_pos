@@ -32,6 +32,8 @@ use App\Http\Controllers\Accounts\ChildOneController as child_one;
 use App\Http\Controllers\Accounts\ChildTwoController as child_two;
 use App\Http\Controllers\Accounts\NavigationHeadViewController as navigate;
 
+use App\Http\Controllers\Vouchers\CreditVoucherController as credit;
+
 /* Middleware */
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isOwner;
@@ -103,6 +105,8 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('child_one',child_one::class,['as'=>'owner']);
         Route::resource('child_two',child_two::class,['as'=>'owner']);
         Route::resource('navigate',navigate::class,['as'=>'owner']);
+
+        Route::resource('credit',credit::class,['as'=>'owner']);
 
 
         Route::get('/product_search', [purchase::class,'product_search'])->name('owner.pur.product_search');
