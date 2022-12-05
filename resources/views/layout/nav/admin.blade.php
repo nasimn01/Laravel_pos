@@ -1,65 +1,68 @@
-<ul>
-                            <li
-                                class="menu-item  ">
-                                <a href="{{route(currentUser().'.dashboard')}}" class='menu-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                    <span>{{__('dashboard') }}</span>
-                                </a>
-                            </li>
 
-                            <li class="menu-item has-sub">
-                                <a href="#" class='menu-link'>
-                                    <i class="bi bi-gear"></i>
-                                    <span>{{__('Settings')}}</span>
-                                </a>
-                                <div class="submenu ">
-                                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                                    <div class="submenu-group-wrapper">
-                                        <ul class="submenu-group">
-                                            <li class="submenu-item"><a href="{{route(currentUser().'.admin.index')}}" class='submenu-link'>{{__('User')}}</a>
-                                                <ul class="subsubmenu">
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.admin.index')}}">{{__('List')}}</a></li>
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.admin.create')}}">{{__('Add New')}}</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="submenu-item"><a href="{{route(currentUser().'.country.index')}}" class='submenu-link'>{{__('Country')}}</a>
-                                                <ul class="subsubmenu">
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.country.index')}}">{{__('List')}}</a></li>
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.country.create')}}">{{__('Add New')}}</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="submenu-item"><a href="{{route(currentUser().'.division.index')}}" class='submenu-link'>{{__('Division')}}</a>
-                                                <ul class="subsubmenu">
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.division.index')}}">{{__('List')}}</a></li>
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.division.create')}}">{{__('Add New')}}</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="submenu-item"><a href="{{route(currentUser().'.district.index')}}" class='submenu-link'>{{__('District')}}</a>
-                                                <ul class="subsubmenu">
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.district.index')}}">{{__('List')}}</a></li>
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.district.create')}}">{{__('Add New')}}</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="submenu-item"><a href="{{route(currentUser().'.upazila.index')}}" class='submenu-link'>{{__('Upazila')}}</a>
-                                                <ul class="subsubmenu">
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.upazila.index')}}">{{__('List')}}</a></li>
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.upazila.create')}}">{{__('Add New')}}</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="submenu-item"><a href="{{route(currentUser().'.thana.index')}}" class='submenu-link'>{{__('Thana')}}</a>
-                                                <ul class="subsubmenu">
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.thana.index')}}">{{__('List')}}</a></li>
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.thana.create')}}">{{__('Add New')}}</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="submenu-item"><a href="{{route(currentUser().'.unit.index')}}" class='submenu-link'>{{__('Unit')}}</a>
-                                                <ul class="subsubmenu">
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.unit.index')}}">{{__('List')}}</a></li>
-                                                    <li class="subsubmenu-item"><a class="subsubmenu-link" href="{{route(currentUser().'.unit.create')}}">{{__('Add New')}}</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>  
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+
+<ul class="menu">
+    <li class="sidebar-item">
+        <a href="{{route(currentUser().'.dashboard')}}" class='sidebar-link'>
+            <i class="bi bi-grid-fill"></i>
+            <span>{{__('dashboard') }}</span>
+        </a>
+    </li>
+    
+    <li class="sidebar-item has-sub">
+        <a href="#" class='sidebar-link'>
+            <i class="bi bi-gear-fill"></i>
+            <span>{{__('Settings')}}</span>
+        </a>
+        <ul class="submenu">
+            <li class="submenu-item sidebar-item has-sub">
+                <a href="#" class='sidebar-link'> {{__('User')}}</a>
+                <ul class="submenu">
+                    <li class="py-1"><a href="{{route(currentUser().'.admin.index')}}">{{__('List')}}</a></li>
+                    <li class="py-1"><a href="{{route(currentUser().'.admin.create')}}">{{__('Add New')}}</a></li>
+                </ul>
+            </li>
+            <li class="submenu-item sidebar-item has-sub">
+                <a href="#" class='sidebar-link'> {{__('Country')}}</a>
+                <ul class="submenu">
+                    <li class="py-1"><a href="{{route(currentUser().'.country.index')}}">{{__('List')}}</a></li>
+                    <li class="py-1"><a href="{{route(currentUser().'.country.create')}}">{{__('Add New')}}</a></li>
+                </ul>
+            </li>
+            <li class="submenu-item sidebar-item has-sub">
+                <a href="#" class='sidebar-link'> {{__('Division')}}</a>
+                <ul class="submenu">
+                    <li class="py-1"><a href="{{route(currentUser().'.division.index')}}">{{__('List')}}</a></li>
+                    <li class="py-1"><a href="{{route(currentUser().'.division.create')}}">{{__('Add New')}}</a></li>
+                </ul>
+            </li>
+            <li class="submenu-item sidebar-item has-sub">
+                <a href="#" class='sidebar-link'> {{__('District')}}</a>
+                <ul class="submenu">
+                    <li class="py-1"><a href="{{route(currentUser().'.district.index')}}">{{__('List')}}</a></li>
+                    <li class="py-1"><a href="{{route(currentUser().'.district.create')}}">{{__('Add New')}}</a></li>
+                </ul>
+            </li>
+            <li class="submenu-item sidebar-item has-sub">
+                <a href="#" class='sidebar-link'> {{__('Upazila')}}</a>
+                <ul class="submenu">
+                    <li class="py-1"><a href="{{route(currentUser().'.upazila.index')}}">{{__('List')}}</a></li>
+                    <li class="py-1"><a href="{{route(currentUser().'.upazila.create')}}">{{__('Add New')}}</a></li>
+                </ul>
+            </li>
+            <li class="submenu-item sidebar-item has-sub">
+                <a href="#" class='sidebar-link'> {{__('Thana')}}</a>
+                <ul class="submenu">
+                    <li class="py-1"><a href="{{route(currentUser().'.thana.index')}}">{{__('List')}}</a></li>
+                    <li class="py-1"><a href="{{route(currentUser().'.thana.create')}}">{{__('Add New')}}</a></li>
+                </ul>
+            </li>
+            <li class="submenu-item sidebar-item has-sub">
+                <a href="#" class='sidebar-link'> {{__('Unit')}}</a>
+                <ul class="submenu">
+                    <li class="py-1"><a href="{{route(currentUser().'.unit.index')}}">{{__('List')}}</a></li>
+                    <li class="py-1"><a href="{{route(currentUser().'.unit.create')}}">{{__('Add New')}}</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
