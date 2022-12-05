@@ -16,8 +16,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col">{{__('#SL')}}</th>
-                                    <th scope="col">{{__('Head Name')}}</th>
-                                    <th scope="col">{{__('Head Code')}}</th>
+                                    <th scope="col">{{__('Master Head')}}</th>
+                                   
                                     <th scope="col">{{__('Opening Balance')}}</th>
                                     <th class="white-space-nowrap">{{__('ACTION')}}</th>
                                 </tr>
@@ -26,8 +26,8 @@
                                 @forelse($data as $d)
                                 <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
-                                    <td>{{$d->head_name}}</td>
-                                    <td>{{$d->head_code}}</td>
+                                    <td>{{$d->head_name}} - {{$d->head_code}}</td>
+                           
                                     <td>{{$d->opening_balance}}</td>
                                     <td class="white-space-nowrap">
                                         <a href="{{route(currentUser().'.master.edit',encryptor('encrypt',$d->id))}}">

@@ -17,8 +17,8 @@
                                 <tr>
                                     <th scope="col">{{__('#SL')}}</th>
                                     <th scope="col">{{__('Child One')}}</th>
-                                    <th scope="col">{{__('Head Name')}}</th>
-                                    <th scope="col">{{__('Head Code')}}</th>
+                                    <th scope="col">{{__('Child Two')}}</th>
+                                
                                     <th scope="col">{{__('Opening Balance')}}</th>
                                     <th class="white-space-nowrap">{{__('ACTION')}}</th>
                                 </tr>
@@ -28,8 +28,8 @@
                                 <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
                                     <td>{{$d->child_one?->head_name}} - {{$d->child_one?->head_code}}</td>
-                                    <td>{{$d->head_name}}</td>
-                                    <td>{{$d->head_code}}</td>
+                                    <td>{{$d->head_name}} - {{$d->head_code}}</td>
+                               
                                     <td>{{$d->opening_balance}}</td>
                                     <td class="white-space-nowrap">
                                         <a href="{{route(currentUser().'.child_two.edit',encryptor('encrypt',$d->id))}}">
