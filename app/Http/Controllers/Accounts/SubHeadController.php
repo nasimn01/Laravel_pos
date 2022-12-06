@@ -22,7 +22,7 @@ class SubHeadController extends Controller
      */
     public function index()
     {
-        $data= sub_head::paginate(10);
+        $data= sub_head::where(company())->paginate(10);
         return view('accounts.sub_head.index',compact('data'));
     }
 
@@ -33,7 +33,7 @@ class SubHeadController extends Controller
      */
     public function create()
     {
-        $data= master_account::all();
+        $data= master_account::where(company())->get();
         return view('accounts.sub_head.create',compact('data'));
     }
 
@@ -81,7 +81,7 @@ class SubHeadController extends Controller
      */
     public function edit($id)
     {
-        $data= master_account::all();
+        $data= master_account::where(company())->get();
         $sub= sub_head::findOrFail(encryptor('decrypt',$id));
         return view('accounts.sub_head.edit',compact('data','sub'));
     }
