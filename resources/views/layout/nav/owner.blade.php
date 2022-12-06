@@ -182,7 +182,7 @@
         <a href="#" class='sidebar-link'><i class="bi bi-card-checklist"></i><span>{{__('Report')}}</span>
         </a>
         <ul class="submenu">
-            <li><a href="{{route(currentUser().'.report.index')}}" >{{__('Purchase Report')}}</a></li>
+            <li><a href="{{route(currentUser().'.preport')}}" >{{__('Purchase Report')}}</a></li>
             <li><a href="{{route(currentUser().'.sreport')}}" >{{__('Stock Report')}}</a></li>
             <li><a href="{{route(currentUser().'.salreport')}}" >{{__('Sales Report')}}</a></li>
 		</ul>

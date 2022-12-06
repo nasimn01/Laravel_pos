@@ -5,24 +5,34 @@ namespace App\Http\Controllers\Reports;
 use App\Http\Controllers\Controller;
 
 
-use App\Models\Purchases\Purchase_details;
+use App\Models\Purchases\Purchase;
 use App\Models\Sales\Sales_details;
 use App\Models\Suppliers\Supplier;
 use App\Models\Customers\customer;
+use Illuminate\Http\Request;
 use DB;
 
 class ReportController extends Controller
 {
  
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Purchase Report
      */
-    public function index()
+    public function preport(Request $request)
     {
-        $suppliers = Supplier::all();
-        $data= Purchase_details::paginate(10);
+        $data= Purchase::where(company());
+
+        if($request->fdate){
+            $tdate=$request->tdate?$request->tdate:$request->fdate;
+            $data=$data->whereBetween('purchase_date',[$request->fdate,$tdate]);
+        }
+
+        if($request->sup){
+            $data=$data->where('supplier_id',$request->sup);
+        }
+
+        $suppliers = Supplier::where(company())->get();
+        $data= $data->paginate(10);
         return view('reports.pview',compact('data','suppliers'));
     }
 
