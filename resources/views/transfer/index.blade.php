@@ -89,15 +89,15 @@
                                 <table class="table mb-5">
                                     <thead>
                                         <tr class="bg-primary text-white">
-                                            <th class="p-2">Product Name</th>
-                                            <th class="p-2">Qty</th>
-                                            <th class="p-2">Sell Price</th>
-                                            <th class="p-2">Tax %</th>
-                                            <th class="p-2">Discount Type</th>
-                                            <th class="p-2">Discount</th>
-                                            <th class="p-2">Unit Cost</th>
-                                            <th class="p-2">Total Amount</th>
-                                            <th class="p-2">Action</th>
+                                            <th class="p-2">{{__('Product Name')}}</th>
+                                            <th class="p-2">{{__('Qty')}}</th>
+                                            <th class="p-2">{{__('Sell Price')}}</th>
+                                            <th class="p-2">{{__('Tax %')}}</th>
+                                            <th class="p-2">{{__('Discount Type')}}</th>
+                                            <th class="p-2">{{__('Discount')}}</th>
+                                            <th class="p-2">{{__('Unit Cost')}}</th>
+                                            <th class="p-2">{{__('Total Amount')}}</th>
+                                            <th class="p-2">{{__('Action')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody id="details_data">

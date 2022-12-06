@@ -15,7 +15,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="name">Category</label>
+                                            <label for="name">{{__('Category')}}</label>
                                             <input type="text" id="name" class="form-control"
                                                 placeholder="Category Name" name="category">
                                         </div>
@@ -25,14 +25,14 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="image">Image</label>
+                                            <label for="image">{{__('Image')}}</label>
                                             <input type="file" id="image" class="form-control"
                                                 placeholder="Image" name="image">
                                         </div>
                                     </div>
                                     
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
                                         
                                     </div>
                                 </div>

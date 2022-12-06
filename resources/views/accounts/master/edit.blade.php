@@ -19,7 +19,7 @@
                                 
                             <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="head_name">Head Name</label>
+                                        <label for="head_name">{{__('Head Name')}}</label>
                                         <input type="text" id="head_name" class="form-control"
                                             placeholder="Head Name" value="{{ old('head_name',$mac->head_name)}}" name="head_name">
                                     </div>
@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="head_code">Head Code</label>
+                                        <label for="head_code">{{__('Head Code')}}</label>
                                         <input type="text" id="head_code" class="form-control"
                                             placeholder="Head Code" value="{{ old('head_code',$mac->head_code)}}" name="head_code">
                                     </div>
@@ -39,14 +39,14 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="opening_balance">Opening Balance</label>
+                                        <label for="opening_balance">{{__('Opening Balance')}}</label>
                                         <input type="text" id="opening_balance" class="form-control"
                                             placeholder="Opening Balance" value="{{ old('opening_balance',$mac->opening_balance)}}" name="opening_balance">
                                     </div>
                                 </div>
 
                                 <div class="col-12 d-flex justify-content-start">
-                                    <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
                                     
                                 </div>
                             </div>

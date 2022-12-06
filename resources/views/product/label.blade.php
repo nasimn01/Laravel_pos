@@ -21,7 +21,7 @@
                                         </div>
 
                                         <div class="col-2 text-end me-0 pe-0">
-                                            <button type="#" class="btn  btn-info   mb-1 ps-5 pe-5 ">Search</button>
+                                            <button type="#" class="btn  btn-info   mb-1 ps-5 pe-5 ">{{__('Search')}}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -31,10 +31,10 @@
                                         <table class="table mb-5">
                                             <thead>
                                                 <tr class="bg-primary text-white text-center">
-                                                    <th class="p-2">#SL</th>
-                                                    <th class="p-2">Product Name</th>
-                                                    <th class="p-2">Quantity</th>
-                                                    <th class="p-2">Bar Code</th>
+                                                    <th class="p-2">{{__('#SL')}}</th>
+                                                    <th class="p-2">{{__('Product Name')}}</th>
+                                                    <th class="p-2">{{__('Quantity')}}</th>
+                                                    <th class="p-2">{{__('Bar Code')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -60,10 +60,10 @@
                                 <div class="row mb-3 p-3">
                                    
                                         <div class="col-4  d-flex justify-content-end">
-                                            <button type="#" class="btn  btn-info me-1 mb-1 ps-5 pe-5">Preview</button>
+                                            <button type="#" class="btn  btn-info me-1 mb-1 ps-5 pe-5">{{__('Preview')}}</button>
                                         </div>
                                         <div class="col-4 d-flex justify-content-Start">
-                                            <button type="#" class="btn pbtn  btn-warning me-1 mb-1 ps-5 pe-5">Close</button>
+                                            <button type="#" class="btn pbtn  btn-warning me-1 mb-1 ps-5 pe-5">{{__('Close')}}</button>
                                         </div>
                                  
                                 </div>

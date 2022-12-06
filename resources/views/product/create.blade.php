@@ -16,7 +16,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="Category">Category</label>
+                                            <label for="Category">{{__('Category')}}</label>
                                             <select onchange="show_subcat(this.value)" class="form-control form-select" name="category" id="category">
                                                 <option value="">Select Category</option>
                                                 @forelse($categories as $cat)
@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="subcategory">Sub Category</label>
+                                            <label for="subcategory">{{__('Sub Category')}}</label>
                                             <select onchange="show_childcat(this.value)" class="form-control form-select" name="subcategory" id="subcategory">
                                                 <option value="">Select Sub Category</option>
                                                 @forelse($subcategories as $sub)
@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="childcategory Name">Child Category</label>
+                                            <label for="childcategory Name">{{__('Child Category')}}</label>
                                             <select class="form-control form-select" name="childcategory" id="childcategory">
                                                 <option value="">Select Child Category</option>
                                                 @forelse($childcategories as $child)
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="unit_id">Unit</label>
+                                            <label for="unit_id">{{__('Unit')}}</label>
                                             <select class="form-control form-select" name="unit_id" id="unit_id">
                                                 <option value="">Select Unit</option>
                                                 @forelse($units as $u)
@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="brand_id">Brand</label>
+                                            <label for="brand_id">{{__('Brand')}}</label>
                                             <select class="form-control" name="brand_id" id="brand_id">
                                                 <option value="">Select Brand</option>
                                                 @forelse($brands as $b)
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="Product Name">Product Name</label>
+                                            <label for="Product Name">{{__('Product Name')}}</label>
                                             <input type="text" id="productName" class="form-control"
                                                 placeholder="Product Name" value="{{ old('productName')}}" name="productName">
                                                 @if($errors->has('productName'))
@@ -100,7 +100,7 @@
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="price">Sell Price</label>
+                                            <label for="price">{{__('Sell Price')}}</label>
                                             <input type="text" id="price" class="form-control"
                                                 placeholder="Price" value="{{ old('price')}}" name="price">
                                                 @if($errors->has('price'))
@@ -111,7 +111,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="image">Image</label>
+                                            <label for="image">{{__('Image')}}</label>
                                             <input type="file" id="image" class="form-control"
                                                 placeholder="Image" name="image">
                                                 @if($errors->has('image'))
@@ -121,14 +121,14 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="description">Description</label>
+                                            <label for="description">{{__('Description')}}</label>
                                             <textarea  class="form-control" id="description"
                                                 placeholder="Product description" name="description">{{ old('description')}}</textarea>
                                         </div>
                                     </div>
                                     
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
                                         
                                     </div>
                                 </div>
