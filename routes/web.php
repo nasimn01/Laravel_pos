@@ -92,12 +92,16 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('branch',branch::class,['as'=>'owner']);
         Route::resource('warehouse',warehouse::class,['as'=>'owner']);
         Route::resource('transfer',transfer::class,['as'=>'owner']);
-        Route::resource('report',report::class,['as'=>'owner']);
 
         //stock report
+        Route::get('/preport',[report::class,'preport'])->name('owner.preport');
         Route::get('/sreport',[report::class,'stockreport'])->name('owner.sreport');
         Route::get('/salreport',[report::class,'salesReport'])->name('owner.salreport');
+
         Route::get('/plabel',[product::class,'label'])->name('owner.plabel');
+        Route::get('/qrcodepreview',[product::class,'qrcodepreview'])->name('owner.qrcodepreview');
+        Route::get('/barcodepreview',[product::class,'barcodepreview'])->name('owner.barcodepreview');
+        Route::get('/labelprint',[product::class,'labelprint'])->name('owner.labelprint');
         
 
 
@@ -108,8 +112,8 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('navigate',navigate::class,['as'=>'owner']);
 
         Route::resource('credit',credit::class,['as'=>'owner']);
+        Route::get('get_head', [credit::class, 'get_head'])->name('owner.get_head');
         Route::resource('drvoucher',devit::class);
-        Route::get('debit_get_head', [devit::class, 'get_head'])->name('debit_get_head');
 
 
         Route::get('/product_search', [purchase::class,'product_search'])->name('owner.pur.product_search');

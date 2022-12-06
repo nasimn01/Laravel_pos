@@ -22,7 +22,7 @@ class ChildOneController extends Controller
      */
     public function index()
     {
-        $data= child_one::paginate(10);
+        $data= child_one::where(company())->paginate(10);
         return view('accounts.child_one.index',compact('data'));
     }
 
@@ -33,7 +33,7 @@ class ChildOneController extends Controller
      */
     public function create()
     {
-        $data= sub_head::all();
+        $data= sub_head::where(company())->get();
         return view('accounts.child_one.create',compact('data'));
     }
 
@@ -81,7 +81,7 @@ class ChildOneController extends Controller
      */
     public function edit($id)
     {
-        $data= sub_head::all();
+        $data= sub_head::where(company())->get();
         $child= child_one::findOrFail(encryptor('decrypt',$id));
         return view('accounts.child_one.edit',compact('data','child'));
     }

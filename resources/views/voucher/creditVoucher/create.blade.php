@@ -146,7 +146,7 @@
                                         </div>
                                         <div class="row">
                                         <div class="col-sm-12 text-right">
-                                            <input class="form-control" name="Upload File" type="file" name="slip[]" multiple>
+                                            <input class="form-control" type="file" name="slip[]" multiple>
                                         </div>
                                         </div>
                                     </div>
@@ -200,8 +200,7 @@
 
     function get_head(code){
 	    if($(code).val()!=""){
-            $.getJSON( "{{route('debit_get_head')}}",{'code':$(code).val()}, function(j){
-              console.log(j);
+            $.getJSON( "{{route(currentUser().'.get_head')}}",{'code':$(code).val()}, function(j){
 	            if(j.length>0){
             		var data			= '';
             		var table_name 		= '';
