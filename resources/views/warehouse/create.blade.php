@@ -15,7 +15,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                                <label for="branch_id">Branch</label>
+                                                <label for="branch_id">{{__('Branch')}}</label>
                                                 <select class="form-control form-select" name="branch_id" id="branch_id">
                                                     <option value="">Select Branch</option>
                                                     @forelse($branch as $b)
@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="name">Warehouse</label>
+                                            <label for="name">{{__('Warehouse')}}</label>
                                             <input type="text" id="name" value="{{ old('name')}}" class="form-control" placeholder="Warehouse Name" name="name">
                                         </div>
                                         @if($errors->has('name'))
@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="contact">Contact</label>
+                                            <label for="contact">{{__('Contact')}}</label>
                                             <input type="text" id="name" value="{{ old('contact')}}" class="form-control" placeholder="Warehouse contact" name="contact">
                                         </div>
                                         @if($errors->has('contact'))
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label class="form-label" for="address">Address Details</label>
+                                            <label class="form-label" for="address">{{__('Address Details')}}</label>
                                            <textarea class="form-control" name="address" id="address" rows="2">{{ old('address')}}</textarea>
                                         </div>
                                         @if($errors->has('address'))
@@ -60,7 +60,7 @@
                                     </div>
 
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
                                         
                                     </div>
                                 </div>

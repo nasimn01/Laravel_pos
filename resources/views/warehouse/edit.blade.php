@@ -17,7 +17,7 @@
                               <div class="row">
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
-                                          <label for="branch_id">Branch</label>
+                                          <label for="branch_id">{{__('Branch')}}</label>
                                           <select class="form-control form-select" name="branch_id" id="branch_id">
                                                   @forelse($branch as $b)
                                                       <option value="{{ $b->id }}" {{old('branch_id',$warehouse->branch_id)==$b->id?'selected':''}}>{{ $b->name }}</option>
@@ -41,7 +41,7 @@
                                   </div>
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
-                                          <label class="form-label" for="contact">Contact</label>
+                                          <label class="form-label" for="contact">{{__('Contact')}}</label>
                                          <input type="text" class="form-control" name="contact" id="contact" value="{{ old('contact',$warehouse->contact)}}">
                                       @if($errors->has('contact'))
                                       <span class="text-danger"> {{ $errors->first('contact') }}</span>
@@ -50,7 +50,7 @@
                                   </div>
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
-                                          <label class="form-label" for="address">Address</label>
+                                          <label class="form-label" for="address">{{__('Address')}}</label>
                                          <textarea class="form-control" name="address" id="address" rows="2">{{ old('address',$warehouse->address)}}</textarea>
                                       @if($errors->has('address'))
                                       <span class="text-danger"> {{ $errors->first('address') }}</span>
@@ -59,7 +59,7 @@
                                   </div>
 
                                   <div class="col-12 d-flex justify-content-end">
-                                      <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                                      <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
                                   </div>
                               </div>
                           </form>

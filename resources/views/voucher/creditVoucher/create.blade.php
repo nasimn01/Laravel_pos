@@ -17,7 +17,7 @@
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="countryName">Voucher No</label>
+                                            <label for="countryName">{{__('Voucher No')}}</label>
                                             <input type="text" id="voucher_no" class="form-control" value="" name="voucher_no" readonly>
                                             @if($errors->has('countryName'))
                                                 <span class="text-danger"> {{ $errors->first('countryName') }}</span>
@@ -27,7 +27,7 @@
                                 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="date">Date</label>
+                                            <label for="date">{{__('Date')}}</label>
                                             <input type="date" id="current_date" class="form-control" value="{{ old('current_date')}}" name="current_date" required>
                                             @if($errors->has('current_date'))
                                                 <span class="text-danger"> {{ $errors->first('current_date') }}</span>
@@ -36,19 +36,19 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="name">Name</label>
+                                            <label for="name">{{__('Name')}}</label>
                                             <input type="text" id="pay_name" class="form-control" value="{{ old('pay_name')}}" name="pay_name">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="Purpose">Purpose</label>
+                                            <label for="Purpose">{{__('Purpose')}}</label>
                                             <input type="text" id="purpose" class="form-control" value="{{ old('purpose')}}" name="purpose">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="Category">Received Account</label>
+                                            <label for="Category">{{__('Received Account')}}</label>
                                             <select  class="form-control form-select" name="credit">
                                                 @if($paymethod)
                                                     @foreach($paymethod as $d)
@@ -65,15 +65,15 @@
                                     <table class="table table-bordered" id='account' cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>SN#</th>
-                                                <th>A/C Head</th>
-                                                <th>Amount</th>
-                                                <th>Remarks</th>
+                                                <th>{{__('SN#')}}</th>
+                                                <th>{{__('A/C Head')}}</th>
+                                                <th>{{__('Amount')}}</th>
+                                                <th>{{__('Remarks')}}</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th style="text-align:right;" colspan="2">Total Amount Tk.</th>
+                                                <th style="text-align:right;" colspan="2">{{__('Total Amount Tk.')}}</th>
                                                 <th><input type='text' class='form-control' name='debit_sum' id='debit_sum' value='' style='text-align:center; border:none;' readonly autocomplete="off" /></th>
                                                 <th></th>
                                             </tr>
@@ -111,7 +111,7 @@
                                     <div class="row">
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group @if($errors->has('name')) has-error @endif">
-                                            <label>Cheque No</label>
+                                            <label>{{__('Cheque No')}}</label>
                                             <span class="block input-icon input-icon-right">
                                                 <input type="text" class="form-control" name="cheque_no" value="{{old('cheque_no')}}">
                                                 @if($errors->has('cheque_no')) 
@@ -127,13 +127,13 @@
                                         </div>
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group">
-                                            <label>Bank Name</label>
+                                            <label>{{__('Bank Name')}}</label>
                                             <input type="text" class="form-control" name="bank" value="{{old('bank')}}">
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group">
-                                            <label>Cheque Date</label>
+                                            <label>{{__('Cheque Date')}}</label>
                                             <input type="date" class="form-control" name="cheque_dt" >
                                                 
                                             @if($errors->has('cheque_dt')) 
@@ -154,7 +154,7 @@
                                 
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Submit')}}</button>
                                         
                                     </div>
                                 </div>
