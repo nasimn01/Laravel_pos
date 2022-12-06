@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('journal_vouchers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('company_id')->nullable()->index();
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->string('voucher_no');
             $table->string('current_date');
             $table->string('pay_name')->nullable();

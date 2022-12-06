@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('cre_voucher_bkdns', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('company_id')->nullable()->index();
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->string('credit_voucher_id');
             $table->string('particulars')->nullable();
             $table->string('account_code');
