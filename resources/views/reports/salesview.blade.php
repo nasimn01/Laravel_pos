@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="#">
+                            <form class="form" method="get" action="">
                                 @csrf
                                 <div class="row">
                                     
@@ -21,7 +21,7 @@
                                         <label for="fdate" class="float-end"><h6>Form Date</h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="date" id="fdate" class="form-control" value="{{ old('fdate')}}" name="fdate">
+                                        <input type="date" id="fdate" class="form-control" value="{{isset($_GET['fdate'])?$_GET['fdate']:''}}" name="fdate">
                                     </div>
 
 
@@ -29,7 +29,7 @@
                                         <label for="tdate" class="float-end"><h6>To Date</h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="date" id="tdate" class="form-control" value="{{ old('tdate')}}" name="tdate">
+                                        <input type="date" id="tdate" class="form-control" value="{{isset($_GET['tdate'])?$_GET['tdate']:''}}" name="tdate">
                                     </div>
 
 
@@ -38,10 +38,10 @@
                                     </div>
                                     <div class="col-md-4 mt-4">
                                         
-                                        <select class="form-control form-select" name="customerName" id="customerName">
+                                        <select class="form-control form-select" name="cus" id="cus">
                                             <option value="">Select Customer</option>
                                             @forelse($customers as $c)
-                                                <option value="{{$c->id}}" {{ old('customerName')==$c->id?"selected":""}}> {{ $c->customer_name}}</option>
+                                                <option value="{{$c->id}}" {{isset($_GET['cus'])&& $_GET['cus']==$c->id?'selected':''}}> {{ $c->customer_name}}</option>
                                             @empty
                                                 <option value="">No data found</option>
                                             @endforelse
@@ -52,25 +52,23 @@
                                 </div>
                                 <div class="row m-4">
                                     <div class="col-6 d-flex justify-content-end">
-                                        <button type="#" class="btn btn-sm btn-success me-1 mb-1 ps-5 pe-5">Show</button>
+                                        <button type="submit" class="btn btn-sm btn-success me-1 mb-1 ps-5 pe-5">Show</button>
                                         
                                     </div>
                                     <div class="col-6 d-flex justify-content-Start">
-                                        <button type="#" class="btn pbtn btn-sm btn-warning me-1 mb-1 ps-5 pe-5">Close</button>
+                                        <a href="{{route(currentUser().'.salesreport')}}" class="btn pbtn btn-sm btn-warning me-1 mb-1 ps-5 pe-5">Reset</a>
                                         
                                     </div>
                                 </div>
                                 <table class="table mb-5">
                                     <thead>
                                         <tr class="bg-primary text-white text-center">
-                                            <th class="p-2">{{__('#SL')}}</th>
-                                            <th class="p-2">{{__('Product ID')}}</th>
-                                            <th class="p-2">{{__('Product Name')}}</th>
+                                        <th class="p-2">{{__('Sales Date')}}</th>
+                                            <th class="p-2">{{__('Customer')}}</th>
+                                            <th class="p-2">{{__('Reference Number')}}</th>
                                             <th class="p-2">{{__('Quantity')}}</th>
-                                            <th class="p-2">{{__('Unit Price')}}</th>
                                             <th class="p-2">{{__('Sub Amount')}}</th>
                                             <th class="p-2">{{__('Tax')}}</th>
-                                            <th class="p-2">{{__('Discount Type')}}</th>
                                             <th class="p-2">{{__('Discount')}}</th>
                                             <th class="p-2">{{__('Total Amount')}}</th>
                                         </tr>
@@ -78,16 +76,22 @@
                                     <tbody>
                                         @forelse($sales as $d)
                                         <tr class="text-center">
-                                            <th scope="row">{{ ++$loop->index }}</th>
-                                            <td>{{$d->product_id}}</td>
-                                            <td>{{$d->product?->product_name}}</td>
-                                            <td>{{$d->quantity}}</td>
-                                            <td>{{$d->unit_price}}</td>
+                                            <td>{{$d->sales_date}}</td>
+                                            <td>{{$d->customer?->customer_name}}</td>
+                                            <td>{{$d->reference_no}}</td>
+                                            <td>{{$d->total_quantity}}</td>
                                             <td>{{$d->sub_amount}}</td>
                                             <td>{{$d->tax}}</td>
-                                            <td>{{$d->discount_type}}</td>
-                                            <td>{{$d->discount}}</td>
-                                            <td>{{$d->total_amount}}</td>
+                                            <td>
+                                                @if($d->discount)
+                                                    @if($d->discount_type==2)
+                                                        %{{$d->discount}}
+                                                    @else
+                                                        {{$d->discount}}
+                                                    @endif
+                                                @endif
+                                            </td>
+                                            <td>{{$d->grand_total}}</td>
                                         </tr>
                                         @empty
                                         <tr>

@@ -115,12 +115,17 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::get('get_head', [credit::class, 'get_head'])->name('owner.get_head');
         Route::resource('drvoucher',devit::class);
 
-
+        //Purchase
         Route::get('/product_search', [purchase::class,'product_search'])->name('owner.pur.product_search');
         Route::get('/product_search_data', [purchase::class,'product_search_data'])->name('owner.pur.product_search_data');
 
+        //Sale
         Route::get('/product_sc', [sales::class,'product_sc'])->name('owner.sales.product_sc');
         Route::get('/product_sc_d', [sales::class,'product_sc_d'])->name('owner.sales.product_sc_d');
+
+        //Transfer
+        Route::get('/product_scr', [transfer::class,'product_scr'])->name('owner.transfer.product_scr');
+        Route::get('/product_scr_d', [transfer::class,'product_scr_d'])->name('owner.transfer.product_scr_d');
     });
 });
 

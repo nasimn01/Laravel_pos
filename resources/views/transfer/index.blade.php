@@ -40,7 +40,7 @@
                                         <label for="date" class="float-end"><h6>Date</h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="date" id="sales_date" class="form-control" value="{{ old('sales_date')}}" name="sales_date">
+                                        <input type="date" id="transfer_date" class="form-control" value="{{ old('transfer_date')}}" name="transfer_date">
                                     </div>
 
                                     
@@ -249,7 +249,7 @@ $(function() {
           
             $.ajax({
             autoFocus:true,
-                url: "{{route(currentUser().'.sales.product_sc')}}",
+                url: "{{route(currentUser().'.transfer.product_scr')}}",
                 method: 'GET',
                 dataType: 'json',
                 data: {
@@ -316,7 +316,7 @@ function return_row_with_data(item_id){
 
     $.ajax({
             autoFocus:true,
-                url: "{{route(currentUser().'.sales.product_sc_d')}}",
+                url: "{{route(currentUser().'.transfer.product_scr_d')}}",
                 method: 'GET',
                 dataType: 'json',
                 data: {
