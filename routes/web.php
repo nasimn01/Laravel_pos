@@ -80,50 +80,55 @@ Route::group(['middleware'=>isOwner::class],function(){
     Route::prefix('owner')->group(function(){
         Route::get('/dashboard', [dash::class,'ownerDashboard'])->name('owner.dashboard');
         Route::resource('users',user::class,['as'=>'owner']);
-        Route::resource('category',category::class,['as'=>'owner']);
-        Route::resource('subcategory',subcat::class,['as'=>'owner']);
-        Route::resource('childcategory',childcat::class,['as'=>'owner']);
         Route::resource('brand',brand::class,['as'=>'owner']);
-        Route::resource('product',product::class,['as'=>'owner']);
-        Route::resource('supplier',supplier::class,['as'=>'owner']);
-        Route::resource('customer',customer::class,['as'=>'owner']);
-        Route::resource('purchase',purchase::class,['as'=>'owner']);
-        Route::resource('sales',sales::class,['as'=>'owner']);
         Route::resource('branch',branch::class,['as'=>'owner']);
         Route::resource('warehouse',warehouse::class,['as'=>'owner']);
-        Route::resource('transfer',transfer::class,['as'=>'owner']);
 
-        //stock report
+        //Supplier and Customer
+        Route::resource('supplier',supplier::class,['as'=>'owner']);
+        Route::resource('customer',customer::class,['as'=>'owner']);
+        
+
+        //report
         Route::get('/preport',[report::class,'preport'])->name('owner.preport');
         Route::get('/sreport',[report::class,'stockreport'])->name('owner.sreport');
         Route::get('/salreport',[report::class,'salesReport'])->name('owner.salreport');
 
+        //Product
+        Route::resource('category',category::class,['as'=>'owner']);
+        Route::resource('subcategory',subcat::class,['as'=>'owner']);
+        Route::resource('childcategory',childcat::class,['as'=>'owner']);
+        Route::resource('product',product::class,['as'=>'owner']);
         Route::get('/plabel',[product::class,'label'])->name('owner.plabel');
         Route::get('/qrcodepreview',[product::class,'qrcodepreview'])->name('owner.qrcodepreview');
         Route::get('/barcodepreview',[product::class,'barcodepreview'])->name('owner.barcodepreview');
         Route::get('/labelprint',[product::class,'labelprint'])->name('owner.labelprint');
         
 
-
+        //Accounts
         Route::resource('master',master::class,['as'=>'owner']);
         Route::resource('sub_head',sub_head::class,['as'=>'owner']);
         Route::resource('child_one',child_one::class,['as'=>'owner']);
         Route::resource('child_two',child_two::class,['as'=>'owner']);
         Route::resource('navigate',navigate::class,['as'=>'owner']);
 
+        //Voucher
         Route::resource('credit',credit::class,['as'=>'owner']);
         Route::get('get_head', [credit::class, 'get_head'])->name('owner.get_head');
         Route::resource('drvoucher',devit::class);
 
         //Purchase
+        Route::resource('purchase',purchase::class,['as'=>'owner']);
         Route::get('/product_search', [purchase::class,'product_search'])->name('owner.pur.product_search');
         Route::get('/product_search_data', [purchase::class,'product_search_data'])->name('owner.pur.product_search_data');
 
         //Sale
+        Route::resource('sales',sales::class,['as'=>'owner']);
         Route::get('/product_sc', [sales::class,'product_sc'])->name('owner.sales.product_sc');
         Route::get('/product_sc_d', [sales::class,'product_sc_d'])->name('owner.sales.product_sc_d');
 
         //Transfer
+        Route::resource('transfer',transfer::class,['as'=>'owner']);
         Route::get('/product_scr', [transfer::class,'product_scr'])->name('owner.transfer.product_scr');
         Route::get('/product_scr_d', [transfer::class,'product_scr_d'])->name('owner.transfer.product_scr_d');
     });
