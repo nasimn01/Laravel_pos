@@ -87,8 +87,11 @@
     "Create Users":"ব্যবহারকারী তৈরি করুন",
     "Sub Head List": "সাব হেড লিস্ট",
     "Child One": "শিশু এক",
+    "Create Child_One": "চাইল্ড_ওয়ান তৈরি করুন",
     "Child One List": "শিশু এক তালিকা",
-    "Child Two": "শিশু দুই",
+    "Child Two":"শিশু দুই",
+    "Create Child Two": "শিশু দুই তৈরি করুন",
+    "Child Two List":"শিশু দুই তালিকা",
     "Navigate View": "নেভিগেট ভিউ",
     "Navigate master view List": "নেভিগেট মাস্টার ভিউ তালিকা",
     "ACTION": "কর্ম",
@@ -116,7 +119,9 @@
     "Branch List":"শাখা তালিকা",
     "Create Branch":"শাখা তৈরি করুন",
     "Supplier Name":"সরবরাহকারী নাম",
-    "Warehouse List":"গুদাম তালিকা"
+    "Warehouse List":"গুদাম তালিকা",
+    "Show":"দেখান",
+    "Reset":"রিসেট"
 
     
 
