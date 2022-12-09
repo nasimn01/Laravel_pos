@@ -45,13 +45,13 @@
 
                                     
                                     <div class="col-md-2 mt-2">
-                                        <label for="warehouse_id" class="float-end"><h6>Warehouse From</h6></label>
+                                        <label for="warehouse_from" class="float-end"><h6>Warehouse From</h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="form-control form-select" name="warehouse_id" id="warehouse_id">
+                                        <select class="form-control form-select" name="warehouse_from" id="warehouse_id">
                                         <option value="">Select Warehouse</option>
                                             @forelse($warehouses as $d)
-                                                <option class="brnch brnch{{$d->branch_id}}" value="{{$d->id}}" {{ old('warehouse_id')==$d->id?"selected":""}}> {{ $d->name}}</option>
+                                                <option class="brnch brnch{{$d->branch_id}}" value="{{$d->id}}" {{ old('warehouse_from')==$d->id?"selected":""}}> {{ $d->name}}</option>
                                             @empty
                                                 <option value="">No Warehouse found</option>
                                             @endforelse
@@ -60,21 +60,21 @@
 
 
                                     <div class="col-md-2 mt-2">
-                                        <label for="warehouse_id" class="float-end"><h6>Warehouse To</h6></label>
+                                        <label for="warehouse" class="float-end"><h6>Warehouse To</h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="form-control form-select" name="warehouse_id" id="warehouse_id">
+                                        <select class="form-control form-select" name="warehouse_to" id="warehouse_to">
                                         <option value="">Select Warehouse</option>
                                             @forelse($warehouses as $d)
-                                                <option class="brnch brnch{{$d->branch_id}}" value="{{$d->id}}" {{ old('warehouse_id')==$d->id?"selected":""}}> {{ $d->name}}</option>
+                                                <option class="brnch brnch{{$d->branch_id}}" value="{{$d->id}}" {{ old('warehouse_to')==$d->id?"selected":""}}> {{ $d->name}}</option>
                                             @empty
                                                 <option value="">No Warehouse found</option>
                                             @endforelse
                                         </select>
                                     </div>
                                     
-                                    @if($errors->has('warehouse_id'))
-                                        <span class="text-danger"> {{ $errors->first('warehouse_id') }}</span>
+                                    @if($errors->has('warehouse_to'))
+                                        <span class="text-danger"> {{ $errors->first('warehouse_to') }}</span>
                                     @endif 
                                     
 
