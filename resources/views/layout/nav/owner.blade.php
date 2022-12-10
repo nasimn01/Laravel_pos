@@ -96,7 +96,7 @@
     <li class="sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-sign-turn-right-fill"></i><span>{{__('Transfer')}}</span></a>
         <ul class="submenu">
-            <li class="py-1"><a href="{{route(currentUser().'.transfer.index')}}">{{__('List')}}</a></li>
+            <li class="py-1"><a href="{{route(currentUser().'.transfer.index')}}">{{__('Transfer')}}</a></li>
 		</ul>   
     </li>
 
@@ -174,6 +174,12 @@
                     <li><a href="{{route(currentUser().'.navigate.index')}}">{{__('List')}}</a></li>
                 </ul>
             </li>
+            <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'>{{__('Voucher')}}</a>
+                <ul class="submenu">
+                    <li><a href="{{route(currentUser().'.credit.index')}}">{{__('Credit Voucher')}}</a></li>
+                    
+                </ul>
+            </li>
 		</ul>
         
     </li>
@@ -185,15 +191,6 @@
             <li><a href="{{route(currentUser().'.preport')}}" >{{__('Purchase Report')}}</a></li>
             <li><a href="{{route(currentUser().'.sreport')}}" >{{__('Stock Report')}}</a></li>
             <li><a href="{{route(currentUser().'.salreport')}}" >{{__('Sales Report')}}</a></li>
-		</ul>
-        
-    </li>
-    <li class="sidebar-item has-sub">
-        <a href="#" class='sidebar-link'><i class="bi bi-receipt"></i><span>{{__('Voucher')}}</span>
-        </a>
-        <ul class="submenu">
-            <li><a href="{{route(currentUser().'.credit.index')}}" >{{__('Credit Voucher')}}</a></li>
-
 		</ul>
         
     </li>

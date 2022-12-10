@@ -5,14 +5,18 @@ namespace App\Http\Controllers\Transfers;
 use App\Http\Controllers\Controller;
 
 use App\Models\Transfers\Transfer;
+use App\Models\Transfers\Transfer_detail;
+use App\Models\Stock\Stock;
 use App\Models\Settings\Branch;
 use App\Models\Settings\Warehouse;
 use App\Models\Settings\Company;
 use Illuminate\Http\Request;
+use App\Http\Traits\ResponseTrait;
 use DB;
 
 class TransferController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -20,9 +24,16 @@ class TransferController extends Controller
      */
     public function index()
     {
-        $transfer = Transfer::all();
+
         $branches = Branch::where(company())->get();
-        $warehouses = Warehouse::all();
+        if( currentUser()=='owner'){
+            $transfer = Transfer::where(company())->get();
+            $warehouses = Warehouse::where(company())->get();
+        }else{
+            $transfer = Transfer::where(company())->where(branch())->get();
+            $warehouses = Warehouse::where(company())->where(branch())->get();
+        }
+        
         return view('transfer.index',compact('transfer','branches','warehouses'));
     }
 
@@ -91,7 +102,55 @@ class TransferController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::beginTransaction();
+        try{
+            $pur= new Transfer;
+            $pur->transfer_date=$request->transfer_date;
+            $pur->quantity=$request->total_qty;
+            $pur->company_id=company()['company_id'];
+            $pur->branch_id=$request->branch_id;
+            $pur->warehouse_form=$request->warehouse_from;
+            $pur->warehouse_to=$request->warehouse_to;
+            //$pur->created_by=currentUserId();
+            if($pur->save()){
+                if($request->product_id){
+                    foreach($request->product_id as $i=>$product_id){
+                        $pd=new Transfer_detail;
+                        $pd->transfer_id=$pur->id;
+                        $pd->product_id=$product_id;
+                        $pd->quantity=$request->qty[$i];
+                        $pd->unit_price=$request->price[$i];
+                        $pd->tax=$request->tax[$i];
+                        $pd->discount=$request->discount[$i];
+                        $pd->sub_amount=$request->unit_cost[$i];
+                        $pd->total_amount=$request->subtotal[$i];
+                        if($pd->save()){
+                            $stock=new Stock;
+                            $stock->product_id=$product_id;
+                            $stock->transfer_id =$pur->id;
+                            $stock->company_id=company()['company_id'];
+                            $stock->branch_id=$request->branch_id;
+                            $stock->warehouse_id=$request->warehouse_to;
+                            $stock->quantity='-'.$pd->quantity;
+                            $stock->unit_price=($pd->total_amount / $pd->quantity);
+                            $stock->tax=$pd->tax;
+                            $stock->discount=$pd->discount;
+                            $stock->save();
+
+                            DB::commit();
+                        }
+
+                    }
+                }
+                
+                return redirect()->route(currentUser().'.transfer.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            }else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            DB::rollback();
+            dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**
