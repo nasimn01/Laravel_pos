@@ -25,6 +25,20 @@ class TransferController extends Controller
     public function index()
     {
 
+        $transfers = Transfer::where(company())->get();
+        return view('transfer.index',compact('transfers'));
+    }
+
+
+    
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
         $branches = Branch::where(company())->get();
         if( currentUser()=='owner'){
             $transfer = Transfer::where(company())->get();
@@ -34,8 +48,9 @@ class TransferController extends Controller
             $warehouses = Warehouse::where(company())->where(branch())->get();
         }
         
-        return view('transfer.index',compact('transfer','branches','warehouses'));
+        return view('transfer.create',compact('transfer','branches','warehouses'));
     }
+
 
 
     public function product_scr(Request $request)
@@ -85,16 +100,6 @@ class TransferController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -111,7 +116,7 @@ class TransferController extends Controller
             $pur->branch_id=$request->branch_id;
             $pur->warehouse_form=$request->warehouse_from;
             $pur->warehouse_to=$request->warehouse_to;
-            //$pur->created_by=currentUserId();
+            $pur->created_by=currentUserId();
             if($pur->save()){
                 if($request->product_id){
                     foreach($request->product_id as $i=>$product_id){
@@ -125,22 +130,36 @@ class TransferController extends Controller
                         $pd->sub_amount=$request->unit_cost[$i];
                         $pd->total_amount=$request->subtotal[$i];
                         if($pd->save()){
+                            /* fromw warehouse stock out */
                             $stock=new Stock;
                             $stock->product_id=$product_id;
                             $stock->transfer_id =$pur->id;
                             $stock->company_id=company()['company_id'];
                             $stock->branch_id=$request->branch_id;
-                            $stock->warehouse_id=$request->warehouse_to;
+                            $stock->warehouse_id=$request->warehouse_from;
                             $stock->quantity='-'.$pd->quantity;
-                            $stock->unit_price=($pd->total_amount / $pd->quantity);
+                            $stock->unit_price=$request->price[$i];
                             $stock->tax=$pd->tax;
                             $stock->discount=$pd->discount;
                             $stock->save();
+                            /* to warehouse stock in*/
+                            $stockt=new Stock;
+                            $stockt->product_id=$product_id;
+                            $stockt->transfer_id =$pur->id;
+                            $stockt->company_id=company()['company_id'];
+                            $stockt->branch_id=$request->branch_id;
+                            $stockt->warehouse_id=$request->warehouse_to;
+                            $stockt->quantity=$pd->quantity;
+                            $stockt->unit_price=$request->price[$i];
+                            $stockt->tax=$pd->tax;
+                            $stockt->discount=$pd->discount;
+                            $stockt->save();
 
                             DB::commit();
                         }
 
                     }
+
                 }
                 
                 return redirect()->route(currentUser().'.transfer.index')->with($this->resMessageHtml(true,null,'Successfully created'));

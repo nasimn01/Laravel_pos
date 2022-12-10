@@ -68,6 +68,7 @@ class ProductController extends Controller
             $p->product_name=$request->productName;
             $p->description=$request->description;
             $p->price=$request->price;
+            $p->purchase_price=$request->purchase_price;
             
             $p->company_id=company()['company_id'];
             $p->status=1;
@@ -131,6 +132,7 @@ class ProductController extends Controller
             $p->product_name=$request->productName;
             $p->description=$request->description;
             $p->price=$request->price;
+            $p->purchase_price=$request->purchase_price;
             if($request->has('image')){
                 if($p->image){
                     if($this->deleteImage($p->image,'images/product/'.company()['company_id'])){

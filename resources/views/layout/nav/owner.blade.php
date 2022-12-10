@@ -96,7 +96,8 @@
     <li class="sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-sign-turn-right-fill"></i><span>{{__('Transfer')}}</span></a>
         <ul class="submenu">
-            <li class="py-1"><a href="{{route(currentUser().'.transfer.index')}}">{{__('Transfer')}}</a></li>
+            <li class="py-1"><a href="{{route(currentUser().'.transfer.index')}}">{{__('Transfer list')}}</a></li>
+            <li class="py-1"><a href="{{route(currentUser().'.transfer.create')}}">{{__('Transfer')}}</a></li>
 		</ul>   
     </li>
 
