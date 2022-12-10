@@ -23,7 +23,7 @@
                                     <th scope="col">{{__('Child Category')}}</th>
                                     <th scope="col">{{__('Name')}}</th>
                                     <th scope="col">{{__('Units')}}</th>
-                                    <th scope="col">{{__('Price')}}</th>
+                                    <th scope="col">{{__('Sales Price')}}</th>
                                     <th scope="col">{{__('Image')}}</th>
                                     <th scope="col">{{__('Status')}}</th>
                                     <th class="white-space-nowrap">{{__('ACTION')}}</th>

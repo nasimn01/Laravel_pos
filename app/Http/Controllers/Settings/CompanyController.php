@@ -16,7 +16,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $data = Company::where(currentUserId())->get();
+        return view('company.index',compact('data'));
     }
 
     /**

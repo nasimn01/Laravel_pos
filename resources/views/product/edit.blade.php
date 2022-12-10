@@ -99,6 +99,18 @@
                                             <input type="text" id="price" class="form-control" placeholder="Price" value="{{ old('price',$product->price)}}" name="price">
                                         </div>
                                     </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="purchase_price">{{__('Purchase Price')}}</label>
+                                            <input type="text" id="purchase_price" class="form-control"
+                                                placeholder="Purchase Price" value="{{ old('purchase_price',$product->purchase_price)}}" name="purchase_price">
+                                                @if($errors->has('purchase_price'))
+                                                    <span class="text-danger"> {{ $errors->first('purchase_price') }}</span>
+                                                @endif
+                                                
+                                        </div>
+                                    </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="image">{{__('Image')}}</label>

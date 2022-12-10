@@ -56,7 +56,7 @@
                                         
                                     </div>
                                     <div class="col-6 d-flex justify-content-Start">
-                                        <a href="{{route(currentUser().'.salesreport')}}" class="btn pbtn btn-sm btn-warning me-1 mb-1 ps-5 pe-5">Reset</a>
+                                        <a href="{{route(currentUser().'.salreport')}}" class="btn pbtn btn-sm btn-warning me-1 mb-1 ps-5 pe-5">Reset</a>
                                         
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                             <td>{{$d->sales_date}}</td>
                                             <td>{{$d->customer?->customer_name}}</td>
                                             <td>{{$d->reference_no}}</td>
-                                            <td>{{$d->total_quantity}}</td>
+                                            <td>{{$d->quantity}}</td>
                                             <td>{{$d->sub_amount}}</td>
                                             <td>{{$d->tax}}</td>
                                             <td>
@@ -91,7 +91,7 @@
                                                     @endif
                                                 @endif
                                             </td>
-                                            <td>{{$d->grand_total}}</td>
+                                            <td>{{$d->total_amount}}</td>
                                         </tr>
                                         @empty
                                         <tr>
