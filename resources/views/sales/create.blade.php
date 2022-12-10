@@ -16,7 +16,7 @@
                                 <div class="row">
                                     @if( currentUser()=='owner')
                                         <div class="col-md-2 mt-2">
-                                            <label for="branch_id" class="float-end" ><h6>Branches Name</h6></label>
+                                            <label for="branch_id" class="float-end" ><h6>{{__('Branches Name')}}</h6></label>
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <select onchange="change_data(this.value)" class="form-control form-select" name="branch_id" id="branch_id">
@@ -37,7 +37,7 @@
                                     
                                         
                                     <div class="col-md-2 mt-2">
-                                        <label for="customrName" class="float-end"><h6>Customer</h6></label>
+                                        <label for="customrName" class="float-end"><h6>{{__('Customer')}}</h6></label>
                                     </div>
                                     <div class="col-md-4">
                                         
@@ -57,7 +57,7 @@
 
 
                                     <div class="col-md-2 mt-2">
-                                        <label for="warehouse_id" class="float-end"><h6>Warehouse</h6></label>
+                                        <label for="warehouse_id" class="float-end"><h6>{{__('Warehouse')}}</h6></label>
                                     </div>
                                     <div class="col-md-4">
                                         <select class="form-control form-select" name="warehouse_id" id="warehouse_id">
@@ -83,7 +83,7 @@
 
 
                                     <div class="col-md-2 mt-2">
-                                        <label for="reference_no" class="float-end"><h6>Reference Number</h6></label>
+                                        <label for="reference_no" class="float-end"><h6>{{__('Reference Number')}}</h6></label>
                                     </div>
                                     <div class="col-md-4 mt-3">
                                         <input type="text" class="form-control" value="{{ old('reference_no')}}" name="reference_no">
@@ -97,15 +97,15 @@
                                 <table class="table mb-5">
                                     <thead>
                                         <tr class="bg-primary text-white">
-                                            <th class="p-2">Product Name</th>
-                                            <th class="p-2">Qty</th>
-                                            <th class="p-2">Sell Price</th>
-                                            <th class="p-2">Tax %</th>
-                                            <th class="p-2">Discount Type</th>
-                                            <th class="p-2">Discount</th>
-                                            <th class="p-2">Unit Cost</th>
-                                            <th class="p-2">Total Amount</th>
-                                            <th class="p-2">Action</th>
+                                            <th class="p-2">{{__('Product Name')}}</th>
+                                            <th class="p-2">{{__('Qty')}}</th>
+                                            <th class="p-2">{{__('Sell Price')}}</th>
+                                            <th class="p-2">{{__('Tax %')}}</th>
+                                            <th class="p-2">{{__('Discount Type')}}</th>
+                                            <th class="p-2">{{__('Discount')}}</th>
+                                            <th class="p-2">{{__('Unit Cost')}}</th>
+                                            <th class="p-2">{{__('Total Amount')}}</th>
+                                            <th class="p-2">{{__('Action')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody id="details_data">
@@ -118,7 +118,7 @@
                                     <div class="col-12 col-sm-6">
                                         <div class="row">
                                             <div class="col-4 offset-2 mt-2 text-end pe-3">
-                                                <label for="" class="form-group"><h6>Total Quantities</h6></label> 
+                                                <label for="" class="form-group"><h6>{{__('Total Quantities')}}</h6></label> 
                                             </div>
                                             <div class="col-4 mt-2">
                                                 <label for="" class="form-group"><h6 class="total_qty">0</h6></label>
@@ -127,7 +127,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-4 offset-2 mt-2 text-end pe-3">
-                                                <label for="" class="form-group"><h6>Other Charges</h6></label> 
+                                                <label for="" class="form-group"><h6>{{__('Other Charges')}}</h6></label> 
                                             </div>
                                             <div class="col-4 mt-2">
                                                 <input type="text" class="form-control form-group" id="other_charge" name="other_charge" onkeyup="check_change()">
@@ -135,7 +135,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-4 offset-2 mt-2 text-end pe-3">
-                                                <label for="" class="form-group"><h6>Discount on</h6></label> 
+                                                <label for="" class="form-group"><h6>{{__('Discount on')}}</h6></label> 
                                             </div>
                                             <div class="col-4 mt-2">
                                                 <input type="text" class="form-control form-group" id="discount_all" name="discount_all" onkeyup="check_change()">
@@ -149,7 +149,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-4 offset-2 mt-2 text-end pe-3">
-                                                <label for="" class="form-group"><h6>Note</h6></label> 
+                                                <label for="" class="form-group"><h6>{{__('Note')}}</h6></label> 
                                             </div>
                                             <div class="col-6 mt-2">
                                                 <textarea class="form-control" name="note" rows="2"></textarea>
@@ -160,7 +160,7 @@
                                     <div class="col-12 col-sm-6">
                                         <div class="row">
                                             <div class="col-4 offset-4 mt-2 pe-2 text-end">
-                                                <label for="" class="form-group"><h6>Subtotal</h6></label> 
+                                                <label for="" class="form-group"><h6>{{__('Subtotal')}}</h6></label> 
                                             </div>
                                             <div class="col-4 mt-2 pe-5 text-end">
                                                 <label for="" class="form-group"><h6 class="tsubtotal">0.00</h6></label>
@@ -169,7 +169,7 @@
                                         </div>    
                                         <div class="row">
                                             <div class="col-4 offset-4 mt-2 pe-2 text-end">
-                                                <label for="" class="form-group"><h6>Other Charges</h6></label> 
+                                                <label for="" class="form-group"><h6>{{__('Other Charges')}}</h6></label> 
                                             </div>
                                             <div class="col-4 mt-2 pe-5 text-end">
                                                 <label for="" class="form-group"><h6 class="tother_charge">0.00</h6></label>
@@ -178,7 +178,7 @@
                                         
                                         <div class="row">
                                             <div class="col-4 offset-4 mt-2 pe-2 text-end">
-                                                <label for="" class="form-group"><h6>Discount on All</h6></label> 
+                                                <label for="" class="form-group"><h6>{{__('Discount on All')}}</h6></label> 
                                             </div>
                                             <div class="col-4 mt-2 pe-5 text-end">
                                                 <label for="" class="form-group"><h6 class="tdiscount">0.00</h6></label>
@@ -187,7 +187,7 @@
                                         </div> 
                                         <div class="row">
                                             <div class="col-4 offset-4 mt-2 pe-2 text-end">
-                                                <label for="" class="form-group"><h6>Round Of</h6></label> 
+                                                <label for="" class="form-group"><h6>{{__('Round Of')}}</h6></label> 
                                             </div>
                                             <div class="col-4 mt-2 pe-5 text-end">
                                                 <label for="" class="form-group"><h6 class="troundof">0.00</h6></label>
@@ -196,7 +196,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-4 offset-4 mt-2 pe-2 text-end">
-                                                <label for="" class="form-group"><h6>Grand Total</h6></label> 
+                                                <label for="" class="form-group"><h6>{{__('Grand Total')}}</h6></label> 
                                             </div>
                                             <div class="col-4 mt-2 pe-5 text-end">
                                                 <label for="" class="form-group"><h6 class="tgrandtotal">0.00</h6></label>
@@ -208,7 +208,7 @@
                                 
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
                                         
                                     </div>
                                 </div>

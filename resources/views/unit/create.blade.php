@@ -17,14 +17,14 @@
                                 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="unitName">Name</label>
+                                        <label for="unitName">{{__('Name')}}</label>
                                         <input type="text" id="unitName" class="form-control"
                                             placeholder="Unit Name" value="{{ old('unitName')}}" name="unitName">
                                     </div>
                                 </div>
 
                                 <div class="col-12 d-flex justify-content-start">
-                                    <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
                                     
                                 </div>
                             </div>

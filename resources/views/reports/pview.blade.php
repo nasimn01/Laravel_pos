@@ -14,7 +14,7 @@
                             <form class="form" method="get" action="">
                                 <div class="row">
                                     <div class="col-md-2 mt-2">
-                                        <label for="fdate" class="float-end"><h6>Form Date</h6></label>
+                                        <label for="fdate" class="float-end"><h6>{{__('From Date')}}</h6></label>
                                     </div>
                                     <div class="col-md-4">
                                         <input type="date" id="fdate" class="form-control" value="{{isset($_GET['fdate'])?$_GET['fdate']:''}}" name="fdate">
@@ -22,7 +22,7 @@
 
 
                                     <div class="col-md-2 mt-2">
-                                        <label for="tdate" class="float-end"><h6>To Date</h6></label>
+                                        <label for="tdate" class="float-end"><h6>{{__('To Date')}}</h6></label>
                                     </div>
                                     <div class="col-md-4">
                                         <input type="date" id="tdate" class="form-control" value="{{isset($_GET['tdate'])?$_GET['tdate']:''}}" name="tdate">
@@ -30,7 +30,7 @@
 
 
                                     <div class="col-md-2 mt-4">
-                                        <label for="sup" class="float-end"><h6>Supplier</h6></label>
+                                        <label for="sup" class="float-end"><h6>{{__('Supplier')}}</h6></label>
                                     </div>
                                     <div class="col-md-4 mt-4">
                                         
@@ -48,11 +48,11 @@
                                 </div>
                                 <div class="row m-4">
                                     <div class="col-6 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-sm btn-success me-1 mb-1 ps-5 pe-5">Show</button>
+                                        <button type="submit" class="btn btn-sm btn-success me-1 mb-1 ps-5 pe-5">{{__('Show')}}</button>
                                         
                                     </div>
                                     <div class="col-6 d-flex justify-content-Start">
-                                        <a href="{{route(currentUser().'.preport')}}" class="btn pbtn btn-sm btn-warning me-1 mb-1 ps-5 pe-5">Reset</a>
+                                        <a href="{{route(currentUser().'.preport')}}" class="btn pbtn btn-sm btn-warning me-1 mb-1 ps-5 pe-5">{{__('Reset')}}</a>
                                         
                                     </div>
                                 </div>

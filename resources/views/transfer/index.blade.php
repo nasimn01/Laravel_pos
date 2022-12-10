@@ -16,7 +16,7 @@
                                 <div class="row">
                                     @if( currentUser()=='owner')
                                         <div class="col-md-2 mt-2">
-                                            <label for="branch_id" class="float-end" ><h6>Branches Name</h6></label>
+                                            <label for="branch_id" class="float-end" ><h6>{{__('Branches Name')}}</h6></label>
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <select onchange="change_data(this.value)" class="form-control form-select" name="branch_id" id="branch_id">
@@ -37,7 +37,7 @@
                                     @endif
 
                                     <div class="col-md-2 mt-2">
-                                        <label for="date" class="float-end"><h6>Date</h6></label>
+                                        <label for="date" class="float-end"><h6>{{__('Date')}}</h6></label>
                                     </div>
                                     <div class="col-md-4">
                                         <input type="date" id="transfer_date" class="form-control" value="{{ old('transfer_date')}}" name="transfer_date">
@@ -45,7 +45,7 @@
 
                                     
                                     <div class="col-md-2 mt-2">
-                                        <label for="warehouse_from" class="float-end"><h6>Warehouse From</h6></label>
+                                        <label for="warehouse_from" class="float-end"><h6>{{__('Warehouse From')}}</h6></label>
                                     </div>
                                     <div class="col-md-4">
                                         <select class="form-control form-select" name="warehouse_from" id="warehouse_id">
@@ -60,7 +60,7 @@
 
 
                                     <div class="col-md-2 mt-2">
-                                        <label for="warehouse" class="float-end"><h6>Warehouse To</h6></label>
+                                        <label for="warehouse" class="float-end"><h6>{{__('Warehouse To')}}</h6></label>
                                     </div>
                                     <div class="col-md-4">
                                         <select class="form-control form-select" name="warehouse_to" id="warehouse_to">
@@ -110,7 +110,7 @@
                                     <div class="col-12 col-sm-6">
                                         <div class="row">
                                             <div class="col-4 offset-2 mt-2 text-end pe-3">
-                                                <label for="" class="form-group"><h6>Total Quantities</h6></label> 
+                                                <label for="" class="form-group"><h6>{{__('Total Quantities')}}</h6></label> 
                                             </div>
                                             <div class="col-4 mt-2">
                                                 <label for="" class="form-group"><h6 class="total_qty">0</h6></label>
@@ -119,7 +119,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-4 offset-2 mt-2 text-end pe-3">
-                                                <label for="" class="form-group"><h6>Other Charges</h6></label> 
+                                                <label for="" class="form-group"><h6>{{__('Other Charges')}}</h6></label> 
                                             </div>
                                             <div class="col-4 mt-2">
                                                 <input type="text" class="form-control form-group" id="other_charge" name="other_charge" onkeyup="check_change()">
@@ -127,7 +127,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-4 offset-2 mt-2 text-end pe-3">
-                                                <label for="" class="form-group"><h6>Discount on</h6></label> 
+                                                <label for="" class="form-group"><h6>{{__('Discount on')}}</h6></label> 
                                             </div>
                                             <div class="col-4 mt-2">
                                                 <input type="text" class="form-control form-group" id="discount_all" name="discount_all" onkeyup="check_change()">

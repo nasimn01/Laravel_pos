@@ -127,7 +127,13 @@
     "Credit Voucher List":"ক্রেডিট ভাউচার তালিকা",
     "Pay Name":"পরিশোধ নাম",
     "Purpose":"উদ্দেশ্য",
-    "Amount":"পরিমাণ"
+    "Amount":"পরিমাণ",
+    "Date":"তারিখ",
+    "From Date":"তারিখ হইতে",
+    "To Date":"তারিখ পর্যন্ত",
+    "Close":"বন্ধ",
+    "Create Sales":"বিক্রয় তৈরি করুন",
+    "Total Quantities":"মোট পরিমাণ"
 
     
 
