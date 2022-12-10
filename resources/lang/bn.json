@@ -103,6 +103,7 @@
     "Opening Balance":"ওপেনিং ব্যালেন্স",
     "Transfer":"স্থানান্তর",
     "Voucher":"ভাউচার",
+    "Voucher No":"ভাউচার নং",
     "Create Transfer":"ট্রান্সফার তৈরি করুন",
     "Unit Cost":"ইউনিট খরচ",
     "Tax %":"ট্যাক্স %",
@@ -121,7 +122,12 @@
     "Supplier Name":"সরবরাহকারী নাম",
     "Warehouse List":"গুদাম তালিকা",
     "Show":"দেখান",
-    "Reset":"রিসেট"
+    "Reset":"রিসেট",
+    "Credit Voucher":"ক্রেডিট ভাউচার",
+    "Credit Voucher List":"ক্রেডিট ভাউচার তালিকা",
+    "Pay Name":"পরিশোধ নাম",
+    "Purpose":"উদ্দেশ্য",
+    "Amount":"পরিমাণ"
 
     
 
