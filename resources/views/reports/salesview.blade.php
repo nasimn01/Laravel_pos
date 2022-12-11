@@ -56,11 +56,7 @@
                                         
                                     </div>
                                     <div class="col-6 d-flex justify-content-Start">
-<<<<<<< HEAD
                                         <a href="{{route(currentUser().'.salesreport')}}" class="btn pbtn btn-sm btn-warning me-1 mb-1 ps-5 pe-5">{{__('Reset')}}</a>
-=======
-                                        <a href="{{route(currentUser().'.salreport')}}" class="btn pbtn btn-sm btn-warning me-1 mb-1 ps-5 pe-5">Reset</a>
->>>>>>> 78fbd3b45201814473e8deff5dc4b614c8fb607f
                                         
                                     </div>
                                 </div>

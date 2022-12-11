@@ -16,7 +16,7 @@
                             <table class="table table-bordered mb-0">
                                 <thead>
                                     <tr>
-                                        <th scope="col">{{__('Name')}}</th>
+                                        <th scope="col">{{__('Company Name')}}</th>
                                         <th scope="col">{{__('Contact')}}</th>
                                         <th scope="col">{{__('Country')}}</th>
                                         <th scope="col">{{__('Division')}}</th>
@@ -32,6 +32,12 @@
                                     <tr>
                                         <td>{{$d->name}}</td>
                                         <td>{{$d->contact}}</td>
+                                        <td>{{$d->country?->name}}</td>
+                                        <td>{{$d->division?->name}}</td>
+                                        <td>{{$d->district?->name}}</td>
+                                        <td>{{$d->upazila?->name}}</td>
+                                        <td>{{$d->thana?->name}}</td>
+                                        <td>{{$d->address}}</td>
                                         <td class="white-space-nowrap">
                                             <a href="{{route(currentUser().'.company.edit',encryptor('encrypt',$d->id))}}">
                                                 <i class="bi bi-pencil-square"></i>
