@@ -14,9 +14,6 @@
                             <form class="form" method="get" action="">
                                 @csrf
                                 <div class="row">
-                                    
-
-
                                     <div class="col-md-2 mt-2">
                                         <label for="fdate" class="float-end"><h6>{{__('From Date')}}</h6></label>
                                     </div>

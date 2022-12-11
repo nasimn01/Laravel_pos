@@ -2,9 +2,7 @@
 
 @section('pageTitle','Edit Company details')
 @section('pageSubTitle','Edit')
-
 @section('content')
-
   <section id="multiple-column-form">
       <div class="row match-height">
           <div class="col-12">
