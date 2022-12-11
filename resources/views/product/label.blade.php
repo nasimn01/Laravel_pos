@@ -65,18 +65,6 @@
                                     </table>
                                 </div>
                                 <div class="col-12 col-sm-4 labeldata">
-
-                                
-                                <div class="row mb-3 p-3">
-                                   
-                                        <div class="col-4  d-flex justify-content-end">
-                                            <button type="#" class="btn  btn-info me-1 mb-1 ps-5 pe-5">{{__('Preview')}}</button>
-                                        </div>
-                                        <div class="col-4 d-flex justify-content-Start">
-                                            <button type="#" class="btn pbtn  btn-warning me-1 mb-1 ps-5 pe-5">{{__('Close')}}</button>
-                                        </div>
-                                 
-                                </div>
                             </div>
                         </div>
                     </div>
