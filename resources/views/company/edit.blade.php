@@ -1,7 +1,7 @@
 @extends('layout.app')
 
-@section('pageTitle','Update Company details')
-@section('pageSubTitle','Update')
+@section('pageTitle',trans('Update Company details'))
+@section('pageSubTitle',trans('Update'))
 @section('content')
   <section id="multiple-column-form">
       <div class="row match-height">

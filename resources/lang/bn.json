@@ -37,6 +37,12 @@
     "GST Number":"জিএসটি নম্বর",
     "Opening balance":"খোলার ব্যালেন্স",
     "Category": "শ্রেণী",
+    "Subtotal":"সাবটোটাল",
+    "Other Charges":"অন্যান্য চার্জ",
+    "Discount on":"ডিসকাউন্ট",
+    "Discount on All":"",
+    "Round Of":"",
+    "Grand Total":"",
     "Sub Category":"সাব ক্যাটাগরি",
     "Child Category":"শিশু বিভাগ",
     "Childcategory List":"শিশুবিভাগের তালিকা",
@@ -79,6 +85,7 @@
     "Accounts": "হিসাব",
     "User": "ব্যবহারকারী",
     "Master Head": "মাস্টার হেড",
+    
 
     "Create Master Account":"মাস্টার অ্যাকাউন্ট তৈরি করুন",
     "Master Account List": "মাস্টার অ্যাকাউন্ট তালিকা",
@@ -104,6 +111,8 @@
     "Transfer":"স্থানান্তর",
     "Voucher":"ভাউচার",
     "Voucher No":"ভাউচার নং",
+    "Transfer List":"বদলি তালিকা",
+    "Transfer list":"বদলি তালিকা",
     "Create Transfer":"ট্রান্সফার তৈরি করুন",
     "Unit Cost":"ইউনিট খরচ",
     "Tax %":"ট্যাক্স %",
@@ -128,12 +137,20 @@
     "Pay Name":"পরিশোধ নাম",
     "Purpose":"উদ্দেশ্য",
     "Amount":"পরিমাণ",
-    "Date":"তারিখ",
     "From Date":"তারিখ হইতে",
+    "Trasfer Date":"স্থানান্তরের তারিখ",
+    "From Branch":"শাখা থেকে",
+    "To Warehouse":"গুদামঘরে",
+    "From Warehouse":"গুদাম থেকে",
+    "From Branches":"শাখা থেকে",
     "To Date":"তারিখ পর্যন্ত",
+    "To Branches":"শাখা থেকে",
     "Close":"বন্ধ",
     "Create Sales":"বিক্রয় তৈরি করুন",
-    "Total Quantities":"মোট পরিমাণ"
+    "Total Quantities":"মোট পরিমাণ",
+    "Company Name":"কোম্পানি নাম",
+    "Company Details":"কোম্পানি বিবরণ",
+    "Update Company details":"কোম্পানির বিবরণ আপডেট করুন"
 
     
 
