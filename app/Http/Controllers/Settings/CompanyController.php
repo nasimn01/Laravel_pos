@@ -5,10 +5,18 @@ namespace App\Http\Controllers\Settings;
 use App\Http\Controllers\Controller;
 
 use App\Models\Settings\Company;
+use App\Models\Settings\Location\Country;
+use App\Models\Settings\Location\District;
+use App\Models\Settings\Location\Division;
+use App\Models\Settings\Location\Thana;
+use App\Models\Settings\Location\Upazila;
 use Illuminate\Http\Request;
+use App\Http\Traits\ResponseTrait;
+use Exception;
 
 class CompanyController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +24,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $data = Company::where(currentUserId())->get();
+        $data = Company::where('id',company()['company_id'])->first();
         return view('company.index',compact('data'));
+
     }
 
     /**
@@ -58,9 +67,15 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function edit(Company $company)
+    public function edit($id)
     {
-        //
+        $country = Country::all();
+        $division = Division::all();
+        $district = District::all();
+        $upazila = Upazila::all();
+        $thana = Thana::all();
+        $company=Company::findOrFail(encryptor('decrypt',$id));
+        return view('company.edit',compact('company','country','division','district','upazila','thana'));
     }
 
     /**
@@ -70,9 +85,28 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request, $id)
     {
-        //
+        try{
+            $com=Company::findOrFail(encryptor('decrypt',$id));
+            $com->name=$request->name;
+            $com->contact=$request->contact;
+            $com->country_id=$request->country;
+            $com->division_id=$request->division;
+            $com->district_id=$request->district;
+            $com->upazila_id=$request->upazila;
+            $com->thana_id=$request->thana;
+            $com->address=$request->address;
+
+
+            if($com->save())
+                return redirect()->route(currentUser().'.company.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
+            else
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+        }
     }
 
     /**

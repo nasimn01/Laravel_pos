@@ -65,6 +65,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
     Route::prefix('admin')->group(function(){
         Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
         /* settings */
+        Route::resource('company',company::class,['as'=>'admin']);
         Route::resource('users',user::class,['as'=>'admin']);
         Route::resource('admin',admin::class,['as'=>'admin']);
         Route::resource('country',country::class,['as'=>'admin']);

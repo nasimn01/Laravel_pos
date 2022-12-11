@@ -28,27 +28,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($data as $d)
+                                    
                                     <tr>
-                                        <td>{{$d->name}}</td>
-                                        <td>{{$d->contact}}</td>
-                                        <td>{{$d->country?->name}}</td>
-                                        <td>{{$d->division?->name}}</td>
-                                        <td>{{$d->district?->name}}</td>
-                                        <td>{{$d->upazila?->name}}</td>
-                                        <td>{{$d->thana?->name}}</td>
-                                        <td>{{$d->address}}</td>
+                                        <td>{{$data->name}}</td>
+                                        <td>{{$data->contact}}</td>
+                                        <td>{{$data->country?->name}}</td>
+                                        <td>{{$data->division?->name}}</td>
+                                        <td>{{$data->district?->name}}</td>
+                                        <td>{{$data->upazila?->name}}</td>
+                                        <td>{{$data->thana?->name}}</td>
+                                        <td>{{$data->address}}</td>
                                         <td class="white-space-nowrap">
-                                            <a href="{{route(currentUser().'.company.edit',encryptor('encrypt',$d->id))}}">
+                                            <a href="{{route(currentUser().'.company.edit',encryptor('encrypt',$data->id))}}">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
                                         </td>
                                     </tr>
-                                    @empty
-                                    <tr>
-                                        <th colspan="9" class="text-center">No Data Found</th>
-                                    </tr>
-                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Settings\Branch;
 use App\Models\Settings\Warehouse;
 
+
 class Transfer extends Model
 {
     use HasFactory;
@@ -20,4 +21,5 @@ class Transfer extends Model
     public function warehouset(){
         return $this->belongsTo(Warehouse::class,'warehouse_to','id');
     }
+    
 }

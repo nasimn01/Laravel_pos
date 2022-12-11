@@ -14,6 +14,7 @@
             <span>{{__('Settings')}}</span>
         </a>
         <ul class="submenu">
+            <li class="py-1"><a href="{{route(currentUser().'.company.index')}}">{{__('Company Details')}}</a></li>
             <li class="submenu-item sidebar-item has-sub">
                 <a href="#" class='sidebar-link'> {{__('User')}}</a>
                 <ul class="submenu">
