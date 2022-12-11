@@ -65,7 +65,8 @@ Route::group(['middleware'=>isAdmin::class],function(){
     Route::prefix('admin')->group(function(){
         Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
         /* settings */
-        Route::resource('company',company::class,['as'=>'admin']);
+        Route::get('/admincompany',[company::class,'admindex'])->name('admin.admincompany');
+
         Route::resource('users',user::class,['as'=>'admin']);
         Route::resource('admin',admin::class,['as'=>'admin']);
         Route::resource('country',country::class,['as'=>'admin']);
@@ -96,6 +97,7 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::get('/preport',[report::class,'preport'])->name('owner.preport');
         Route::get('/sreport',[report::class,'stockreport'])->name('owner.sreport');
         Route::get('/salreport',[report::class,'salesReport'])->name('owner.salreport');
+        
 
         //Product
         Route::resource('category',category::class,['as'=>'owner']);

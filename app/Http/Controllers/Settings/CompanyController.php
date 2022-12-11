@@ -28,6 +28,18 @@ class CompanyController extends Controller
         return view('company.index',compact('data'));
 
     }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function admindex()
+    {
+        $data = Company::all();
+        return view('company.admin',compact('data'));
+
+    }
 
     /**
      * Show the form for creating a new resource.
