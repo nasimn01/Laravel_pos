@@ -19,7 +19,7 @@
 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="Category">Category</label>
+                                        <label for="Category">{{__('Category')}}</label>
                                         <select class="form-control form-select" name="category" id="category">
                                             <option value="">Select Category</option>
                                             @forelse($category as $cat)
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="Sub Category">Sub Category</label>
+                                        <label for="Sub Category">{{__('Sub Category')}}</label>
                                         <input type="text" id="subCat" class="form-control"
                                             placeholder="Subcategory Name" value="{{ old('subCat',$subcategory->name)}}" name="subCat">
                                     </div>
@@ -45,7 +45,7 @@
                                 </div>
 
                                 <div class="col-12 d-flex justify-content-start">
-                                    <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
                                     
                                 </div>
                             </div>

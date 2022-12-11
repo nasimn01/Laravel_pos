@@ -1,7 +1,7 @@
 @extends('layout.app')
 
-@section('pageTitle','Edit Category')
-@section('pageSubTitle','Create')
+@section('pageTitle',trans('Update Category'))
+@section('pageSubTitle',trans('Update'))
 
 @section('content')
 
