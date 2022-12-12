@@ -34,7 +34,7 @@ use App\Http\Controllers\Accounts\ChildTwoController as child_two;
 use App\Http\Controllers\Accounts\NavigationHeadViewController as navigate;
 
 use App\Http\Controllers\Vouchers\CreditVoucherController as credit;
-use App\Http\Controllers\Vouchers\DebitVoucherController as devit;
+use App\Http\Controllers\Vouchers\DebitVoucherController as debit;
 
 /* Middleware */
 use App\Http\Middleware\isAdmin;
@@ -119,8 +119,8 @@ Route::group(['middleware'=>isOwner::class],function(){
 
         //Voucher
         Route::resource('credit',credit::class,['as'=>'owner']);
+        Route::resource('debit',debit::class,['as'=>'owner']);
         Route::get('get_head', [credit::class, 'get_head'])->name('owner.get_head');
-        Route::resource('drvoucher',devit::class);
 
         //Purchase
         Route::resource('purchase',purchase::class,['as'=>'owner']);

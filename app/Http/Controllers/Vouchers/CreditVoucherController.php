@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Vouchers;
 
 use App\Http\Controllers\Controller;
 
+use App\Models\Settings\Company;
 use App\Models\Vouchers\CreditVoucher;
 use App\Models\Vouchers\CreVoucherBkdn;
 use App\Models\Vouchers\GeneralVoucher;
@@ -312,6 +313,7 @@ class CreditVoucherController extends Controller
             if(!empty($voucher_no)){
                 $jv=new CreditVoucher;
                 $jv->voucher_no=$voucher_no;
+                $jv->company_id =company()['company_id'];
                 $jv->current_date=$request->current_date;
                 $jv->pay_name=$request->pay_name;
                 $jv->purpose=$request->purpose;
@@ -320,7 +322,7 @@ class CreditVoucherController extends Controller
                 $jv->cheque_no=$request->cheque_no;
                 $jv->bank=$request->bank;
                 $jv->cheque_dt=$request->cheque_dt;
-                $jv->created_by=Session::get('userId');
+                $jv->created_by=currentUserId();
 				if($request->has('slip')){
 					$imageName= rand(111,999).time().'.'.$request->slip->extension();
 					$request->slip->move(public_path('uploads/slip'), $imageName);
@@ -336,6 +338,7 @@ class CreditVoucherController extends Controller
                         $credit=explode('~',$credit);
                         $jvb=new CreVoucherBkdn;
                         $jvb->credit_voucher_id=$jv->id;
+                        $jvb->company_id =company()['company_id'];
                         $jvb->particulars="Received from";
                         $jvb->account_code=$credit[2];
                         $jvb->table_name=$credit[0];
@@ -349,11 +352,12 @@ class CreditVoucherController extends Controller
 							else if($table_name=="child_twos"){$field_name="child_two_id";}
 							$gl=new GeneralLedger;
                             $gl->credit_voucher_id=$jv->id;
+                            $gl->company_id =company()['company_id'];
                             $gl->journal_title=$credit[2];
                             $gl->rec_date=$request->current_date;
                             $gl->jv_id=$voucher_no;
                             $gl->crvoucher_bkdn_id=$jvb->id;
-                            $gl->created_by=Session::get('userId');
+                            $gl->created_by=currentUserId();
                             $gl->dr=$request->debit_sum;
                             $gl->{$field_name}=$credit[1];
                             $gl->save();
@@ -363,6 +367,7 @@ class CreditVoucherController extends Controller
                         foreach($account_codes as $i=>$acccode){
                             $jvb=new CreVoucherBkdn;
                             $jvb->credit_voucher_id=$jv->id;
+                            $jvb->company_id =company()['company_id'];
                             $jvb->particulars=!empty($request->remarks[$i])?$request->remarks[$i]:"";
                             $jvb->account_code=!empty($acccode)?$acccode:"";
                             $jvb->table_name=!empty($request->table_name[$i])?$request->table_name[$i]:"";
@@ -376,11 +381,12 @@ class CreditVoucherController extends Controller
     							else if($table_name=="child_twos"){$field_name="child_two_id";}
     							$gl=new GeneralLedger;
                                 $gl->credit_voucher_id=$jv->id;
+                                $gl->company_id =company()['company_id'];
                                 $gl->journal_title=!empty($acccode)?$acccode:"";
                                 $gl->rec_date=$request->current_date;
                                 $gl->jv_id=$voucher_no;
                                 $gl->crvoucher_bkdn_id=$jvb->id;
-                                $gl->created_by=Session::get('userId');
+                                $gl->created_by=currentUserId();
                                 $gl->cr=!empty($request->debit[$i])?$request->debit[$i]:0;
                                 $gl->{$field_name}=!empty($request->table_id[$i])?$request->table_id[$i]:"";
                                 $gl->save();
@@ -389,14 +395,14 @@ class CreditVoucherController extends Controller
                     }
                 }
                 DB::commit();
-				return redirect(route('creditVoucher.index'));
+				return redirect()->route(currentUser().'.credit.index')->with($this->resMessageHtml(true,null,'Successfully created'));
 			}else{
-				return redirect()->back();
+				return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
 			}
 		}catch (Exception $e) {
 			dd($e);
 			DB::rollBack();
-			return redirect()->back();
+			return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
 		}
     }
 
@@ -417,9 +423,11 @@ class CreditVoucherController extends Controller
      * @param  \App\Models\CreditVoucher  $creditVoucher
      * @return \Illuminate\Http\Response
      */
-    public function edit(CreditVoucher $creditVoucher)
+    public function edit($id)
     {
-        //
+        $creditVoucher=CreditVoucher::findOrFail(encryptor('decrypt',$id));
+		$crevoucherbkdn=CreVoucherBkdn::where('credit_voucher_id',$id)->get();
+		return view('voucher.creditVoucher.edit',compact('creditVoucher','crevoucherbkdn'));
     }
 
     /**
@@ -429,9 +437,22 @@ class CreditVoucherController extends Controller
      * @param  \App\Models\CreditVoucher  $creditVoucher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CreditVoucher $creditVoucher)
+    public function update(Request $request, $id)
     {
-        //
+        $cv= CreditVoucher::findOrFail(encryptor('decrypt',$id));
+		$cv->current_date = $request->current_date;
+		$cv->pay_name = $request->pay_name;
+		$cv->purpose = $request->purpose;
+		$cv->cheque_no = $request->cheque_no;
+		$cv->cheque_dt = $request->cheque_dt;
+		$cv->bank = $request->bank;
+		if($request->has('slip')){
+			$imageName= rand(111,999).time().'.'.$request->slip->extension();
+			$request->slip->move(public_path('uploads/slip'), $imageName);
+			$cv->slip=$imageName;
+		}
+        $cv->save();
+        return redirect()->route(currentUser().'.credit.index')->with($this->resMessageHtml(true,null,'Successfully Updated'));
     }
 
     /**

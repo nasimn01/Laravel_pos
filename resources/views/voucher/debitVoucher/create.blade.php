@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle',trans('Create Credit Voucher'))
+@section('pageTitle',trans('Debit Credit Voucher'))
 @section('pageSubTitle',trans('Create'))
 
 @section('content')
@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" enctype="multipart/form-data" method="post" action="{{route(currentUser().'.credit.store')}}">
+                            <form class="form" enctype="multipart/form-data" method="post" action="{{route(currentUser().'.debit.store')}}">
                                 @csrf
                                 <div class="row">
                                     
