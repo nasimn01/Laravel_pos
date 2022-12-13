@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->string('sub_head_id');
             $table->string('head_name');
-            $table->string('head_code');
+            $table->string('head_code')->unique();
             $table->string('opening_balance');
             $table->timestamps();
             $table->softDeletes();
