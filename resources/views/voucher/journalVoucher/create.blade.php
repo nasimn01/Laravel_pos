@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle',trans('Create Credit Voucher'))
+@section('pageTitle',trans('Create Journal Voucher'))
 @section('pageSubTitle',trans('Create'))
 
 @section('content')
@@ -9,10 +9,10 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
-                    <h4 class="card-title text-center">{{__('Credit Voucher Entry')}}</h4>
+                    <h4 class="card-title text-center">{{__('Journal Voucher Entry')}}</h4>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" enctype="multipart/form-data" method="post" action="{{route(currentUser().'.credit.store')}}">
+                            <form class="form" enctype="multipart/form-data" method="post" action="{{route(currentUser().'.journal.store')}}">
                                 @csrf
                                 <div class="row">
                                     
@@ -66,10 +66,11 @@
                                     <table class="table table-bordered" id='account' cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>{{__('SN#')}}</th>
-                                                <th>{{__('A/C Head')}}</th>
-                                                <th>{{__('Amount')}}</th>
-                                                <th>{{__('Remarks')}}</th>
+                                                <th>SN#</th>
+                                                <th>A/C Head</th>
+                                                <th>Debit (Tk)</th>
+                                                <th>Credit (Tk)</th>
+                                                <th>Remarks</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -101,7 +102,34 @@
                                                 <td style='text-align:left;'>
                                                     <input type='text' name='debit[]' class='cls_debit form-control' value='' style='text-align:center; border:none;' maxlength='15' onkeyup='removeChar(this)' onBlur='return debit_entry(this);' autocomplete="off"/> 
                                                 </td>
+                                                <td style='text-align:left;'>
+                                                    <input type='text' name='credit[]' class='cls_credit form-control' value='' style='text-align:center; border:none;' maxlength='15' onkeyup='removeChar(this)' onBlur='return credit_entry(this);' autocomplete="off" /> 
+                                                    <input type='hidden' name='jobinc[]' class='jobinc' value='1'>
+                                                    <input type='hidden' name='bkdn_id[]' value='' />
+                                                </td>
                                                 <td style='text-align:left;'><input type='text' class=" form-control" name='remarks[]' value='' maxlength='50' style='text-align:left;border:none;' /></td>
+                                            </tr>
+                                            <tr>
+                                                <td style='text-align:center;'>2</td>
+                                                <td style='text-align:left;'>
+                                                    <div style='width:100%;position:relative;'>
+                                                        <input type='text' name='account_code[]' class='cls_account_code form-control' value='' style='border:none;' onkeyup="get_head(this)" maxlength='100' autocomplete="off"/>
+                                                        <div class="sugg" style='display:none;'>
+                                                            <div style='border:1px solid #aaa;'></div>
+                                                        </div>
+                                                    </div>
+                                                        <input type='hidden' class='table_name' name='table_name[]' value=''>
+                                                        <input type='hidden' class='table_id' name='table_id[]' value=''>
+                                                </td>
+                                                <td style='text-align:left;'>
+                                                    <input type='text' name='debit[]' class='cls_debit form-control' value='' style='text-align:center; border:none;' maxlength='15' onkeyup='removeChar(this)' onBlur='return debit_entry(this);' autocomplete="off"/> 
+                                                </td>
+                                                <td style='text-align:left;'>
+                                                    <input type='text' name='credit[]' class='cls_credit form-control' value='' style='text-align:center; border:none;' maxlength='15' onkeyup='removeChar(this)' onBlur='return credit_entry(this);' autocomplete="off" /> 
+                                                    <input type='hidden' name='jobinc[]' class='jobinc' value='2'>
+                                                    <input type='hidden' name='bkdn_id[]' value='' />
+                                                </td>
+                                                <td style='text-align:left;'><input type='text' name='remarks[]' class=' form-control' value='' maxlength='50' style='text-align:left;border:none;' /></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -174,25 +202,30 @@
 <script>
 	function add_row(){
 
-		var row="<tr>\
-					<td style='text-align:center;'>"+(parseInt($("#account tbody tr").length) + 1)+"</td>\
-					<td style='text-align:left;'>\
-						<div style='width:100%;position:relative;'>\
-							<input type='text' name='account_code[]' class='cls_account_code form-control' value='' style='border:none;' onkeyup='get_head(this)' maxlength='100' autocomplete='off'/>\
-							<div class='sugg' style='display:none;'>\
-								<div style='border:1px solid #aaa;'></div>\
-							</div>\
-						</div>\
-							<input type='hidden' class='table_name' name='table_name[]' value=''>\
-							<input type='hidden' class='table_id' name='table_id[]' value=''>\
-					</td>\
-					<td style='text-align:left;'>\
-						<input type='text' name='debit[]' class='cls_debit form-control' value='' style='text-align:center; border:none;' maxlength='15' onkeyup='removeChar(this)' onBlur='return debit_entry(this);' autocomplete='off'/> \
-					</td>\
-					<td style='text-align:left;'><input type='text' name='remarks[]' value='' class=' form-control' maxlength='50' style='text-align:left;border:none;' /></td>\
-				</tr>";
-		$('#account tbody').append(row);
-	}
+        var row="<tr>\
+                    <td style='text-align:center;'>"+(parseInt($("#account tbody tr").length) + 1)+"</td>\
+                    <td style='text-align:left;'>\
+                        <div style='width:100%;position:relative;'>\
+                            <input type='text' name='account_code[]' class='cls_account_code form-control' value='' style='border:none;' onkeyup='get_head(this)' maxlength='100' autocomplete='off'/>\
+                            <div class='sugg' style='display:none;'>\
+                                <div style='border:1px solid #aaa;'></div>\
+                            </div>\
+                        </div>\
+                            <input type='hidden' class='table_name' name='table_name[]' value=''>\
+                            <input type='hidden' class='table_id' name='table_id[]' value=''>\
+                    </td>\
+                    <td style='text-align:left;'>\
+                        <input type='text' name='debit[]' class='cls_debit form-control' value='' style='text-align:center; border:none;' maxlength='15' onkeyup='removeChar(this)' onBlur='return debit_entry(this);' autocomplete='off'/> \
+                    </td>\
+                    <td style='text-align:left;'>\
+                        <input type='text' name='credit[]' class='cls_credit form-control' value='' style='text-align:center; border:none;' maxlength='15' onkeyup='removeChar(this)' onBlur='return credit_entry(this);' autocomplete='off' /> \
+                        <input type='hidden' name='jobinc[]' class='jobinc' value='2'>\
+                        <input type='hidden' name='bkdn_id[]' value='' />\
+                    </td>\
+                    <td style='text-align:left;'><input type='text' name='remarks[]' value='' class=' form-control' maxlength='50' style='text-align:left;border:none;' /></td>\
+                </tr>";
+        $('#account tbody').append(row);
+    }
 
 	function remove_row(){
 		$('#account tbody tr').last().remove();

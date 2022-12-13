@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle',trans('Debit Credit Voucher'))
+@section('pageTitle',trans('Create Debit Voucher'))
 @section('pageSubTitle',trans('Create'))
 
 @section('content')
@@ -9,6 +9,7 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
+                    <h4 class="card-title text-center">{{__('Debit Voucher Entry')}}</h4>
                     <div class="card-content">
                         <div class="card-body">
                             <form class="form" enctype="multipart/form-data" method="post" action="{{route(currentUser().'.debit.store')}}">

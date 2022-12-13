@@ -30,6 +30,8 @@ return new class extends Migration
             $table->string('devoucher_bkdn_id')->nullable();
             $table->string('credit_voucher_id')->nullable();
             $table->string('crvoucher_bkdn_id')->nullable();
+            $table->string('journal_voucher_id')->nullable();
+            $table->string('journal_voucher_bkdn_id')->nullable();
 
             // default
             $table->unsignedBigInteger('created_by')->index()->default(2);
