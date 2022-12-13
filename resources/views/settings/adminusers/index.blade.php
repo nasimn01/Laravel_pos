@@ -13,7 +13,7 @@
                     {!!Session::get('response')['message']!!}
                 @endif
                 <div>
-                    <a class="btn btn-sm btn-primary float-end" href="{{route(currentUser().'.admin.create')}}"><i class="bi bi-pencil-square"></i></a>
+                    <a class=" float-end" href="{{route(currentUser().'.admin.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                 </div>
                 <!-- table bordered -->
                 <div class="table-responsive">
@@ -43,13 +43,13 @@
                                     <a href="{{route(currentUser().'.admin.edit',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
+                                    {{--<a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                     <form id="form{{$p->id}}" action="{{route(currentUser().'.admin.destroy',encryptor('encrypt',$p->id))}}" method="post">
                                         @csrf
                                         @method('delete')
-                                    </form>
+                                    </form>--}}
                                 </td>
                             </tr>
                             @empty
