@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthenticationController as auth;
 use App\Http\Controllers\DashboardController as dash;
 use App\Http\Controllers\Settings\CompanyController as company;
 use App\Http\Controllers\Settings\UserController as user;
+use App\Http\Controllers\Settings\ProfileController as profile;
 use App\Http\Controllers\Settings\AdminUserController as admin;
 use App\Http\Controllers\Settings\Location\CountryController as country;
 use App\Http\Controllers\Settings\Location\DivisionController as division;
@@ -67,6 +68,10 @@ Route::group(['middleware'=>isAdmin::class],function(){
         /* settings */
         Route::get('/admincompany',[company::class,'admindex'])->name('admin.admincompany');
 
+        //Adnin profile
+        Route::get('/profile', [profile::class,'adminProfile'])->name('admin.profile');
+        Route::post('/profile', [profile::class,'adminProfile'])->name('admin.profile.update');
+
         Route::resource('users',user::class,['as'=>'admin']);
         Route::resource('admin',admin::class,['as'=>'admin']);
         Route::resource('country',country::class,['as'=>'admin']);
@@ -87,6 +92,11 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('brand',brand::class,['as'=>'owner']);
         Route::resource('branch',branch::class,['as'=>'owner']);
         Route::resource('warehouse',warehouse::class,['as'=>'owner']);
+
+        //Owner profile
+        Route::get('/profile', [profile::class,'ownerProfile'])->name('owner.profile');
+        Route::post('/profile', [profile::class,'ownerProfile'])->name('owner.profile.update');
+
 
         //Supplier and Customer
         Route::resource('supplier',supplier::class,['as'=>'owner']);

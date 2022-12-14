@@ -104,6 +104,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
+                                    <img width="80px" height="40px" class="float-first" src="{{asset('images/users/'.company()['company_id'].'/'.$user->image)}}" alt="">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
                                         
                                     </div>

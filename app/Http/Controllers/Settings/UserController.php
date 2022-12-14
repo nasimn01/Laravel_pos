@@ -9,13 +9,14 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\Settings\Branch;
 use App\Http\Traits\ResponseTrait;
+use App\Http\Traits\ImageHandleTraits;
 use App\Http\Requests\User\AddNewRequest;
 use Illuminate\Support\Facades\Hash;
 use Exception;
 
 class UserController extends Controller
 {
-    use ResponseTrait;
+    use ResponseTrait,ImageHandleTraits;
     /**
      * Display a listing of the resource.
      *
@@ -26,6 +27,7 @@ class UserController extends Controller
         $users=User::where(company())->whereNot('id',currentUserId())->get();
         return view('settings.users.index',compact('users'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -62,6 +64,8 @@ class UserController extends Controller
             $user->company_id=company()['company_id'];
             $user->branch_id=$request->branch_id;
             $user->role_id=$request->role_id;
+            if($request->has('image'))
+                $user->image=$this->resizeImage($request->image,'images/users/'.company()['company_id'],true,200,200,false);
             if($user->save())
                 return redirect()->route(currentUser().'.users.index')->with($this->resMessageHtml(true,null,'Successfully Registred'));
             else
@@ -123,9 +127,17 @@ class UserController extends Controller
 
             $user->branch_id=$request->branch_id;
             $user->role_id=$request->role_id;
+            $path='images/users/'.company()['company_id'];
+            if($request->has('image') && $request->image)
+                if($this->deleteImage($user->image,$path))
+                    $user->image=$this->resizeImage($request->image,$path,true,200,200,false);
 
             if($user->save())
-                return redirect()->route(currentUser().'.users.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
+                if($user->id == currentUserId()){
+                    return redirect()->route(currentUser().'.profile.update')->with($this->resMessageHtml(true,null,'Successfully updated'));
+                }else{
+                    return redirect()->route(currentUser().'.users.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
+                }
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

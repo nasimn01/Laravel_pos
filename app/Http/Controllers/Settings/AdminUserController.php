@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Company;
 use App\Models\Settings\Branch;
 use App\Http\Traits\ResponseTrait;
+use App\Http\Traits\ImageHandleTraits;
 use App\Http\Requests\AdminUser\AddNewRequest;
 use App\Http\Requests\AdminUser\UpdateRequest;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +18,7 @@ use Exception;
 
 class AdminUserController extends Controller
 {
-    use ResponseTrait;
+    use ResponseTrait,ImageHandleTraits;
     /**
      * Display a listing of the resource.
      *
@@ -104,9 +105,18 @@ class AdminUserController extends Controller
             $user->language=$request->language;
             if($request->has('password') && $request->password)
                 $user->password=Hash::make($request->password);
+
+            $path='images/users/'.company()['company_id'];
+            if($request->has('image') && $request->image)
+                if($this->deleteImage($user->image,$path))
+                    $user->image=$this->resizeImage($request->image,$path,true,200,200,false);
          
             if($user->save())
-                return redirect()->route(currentUser().'.admin.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
+                if($user->id == currentUserId()){
+                    return redirect()->route(currentUser().'.profile.update')->with($this->resMessageHtml(true,null,'Successfully updated'));
+                }else{
+                    return redirect()->route(currentUser().'.admin.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
+                }
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
