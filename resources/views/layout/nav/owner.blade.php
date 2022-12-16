@@ -176,6 +176,11 @@
                     <li class="py-1"><a href="{{route(currentUser().'.navigate.index')}}">{{__('List')}}</a></li>
                 </ul>
             </li>
+            <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'>{{__('Income Statement')}}</a>
+                <ul class="submenu">
+                    <li class="py-1"><a href="{{route(currentUser().'.incomeStatement')}}">{{__('Income Statement')}}</a></li>
+                </ul>
+            </li>
             <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'>{{__('Voucher')}}</a>
                 <ul class="submenu">
                     <li class="py-1"><a href="{{route(currentUser().'.credit.index')}}">{{__('Credit Voucher')}}</a></li>

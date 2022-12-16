@@ -25,7 +25,7 @@
                                 <th scope="col">{{__('Email')}}</th>
                                 <th scope="col">{{__('Contact')}}</th>
                                 <th scope="col">{{__('Image')}}</th>
-                                <th scope="col">{{__('Status')}}</th>
+                                <th scope="col">{{__('Language')}}</th>
                                 <th class="white-space-nowrap">{{__('Action') }}</th>
                             </tr>
                         </thead>
@@ -36,8 +36,8 @@
                                 <td>{{$p->name}}</td>
                                 <td>{{$p->email}}</td>
                                 <td>{{$p->contact_no}}</td>
-                                <td><img width="50px" src="{{asset('uploads/admin/'.$p->image)}}" alt=""></td>
-                                <td>@if($p->status == 1) {{__('Active') }} @else {{__('Inactive') }} @endif</td>
+                                <td><img width="40px" height="55px" class="float-first" src="{{asset('images/users/'.company()['company_id'].'/'.$p->image)}}" alt=""></td>
+                                <td>@if($p->language == 'en') {{__('English') }} @else {{__('Bangla') }} @endif</td>
                                 <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
                                 <td class="white-space-nowrap">
                                     <a href="{{route(currentUser().'.admin.edit',encryptor('encrypt',$p->id))}}">

@@ -40,7 +40,7 @@ class ProfileController extends Controller
         
         $users=User::where(company(currentUserId()))->first();
         // dd(currentUserId());
-        return view('settings.users.profile',compact('users'));
+        return view('settings.adminusers.profile',compact('users'));
     }
 
 }

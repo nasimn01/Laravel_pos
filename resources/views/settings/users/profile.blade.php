@@ -24,7 +24,7 @@
                     @method('PATCH')
                     <input type="hidden" value="{{$users->role_id}}" name="role_id">
                     <div class="row mb-3">
-                        <label for="userName" class="col-sm-2 col-form-label">{{__('Name')}}</label>
+                        <label for="userName" class="col-sm-2 col-form-label"><b>{{__('Name')}}</b></label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" value="{{$users->name}}" name="userName">
                         </div>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="contactNumber" class="col-sm-2 col-form-label">{{__('Contact Number')}}</label>
+                        <label for="contactNumber" class="col-sm-2 col-form-label">{{__('Contact')}}</label>
                         <div class="col-sm-10">
                             <input type="text" id="contactNumber" name="contactNumber" class="form-control" value="{{$users->contact_no}}">
                             
