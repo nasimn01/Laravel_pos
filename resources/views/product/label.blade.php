@@ -51,7 +51,7 @@
                                               
                                                 @forelse($stock as $s)
                                                 <tr class="text-center">
-                                                    <th scope="row"><input class="get_data" value="{{$s->id}}" type="checkbox"></th>
+                                                    <th scope="row"><input class="get_data" value="{{$s->product_id}}" type="checkbox"></th>
                                                     <td>{{$s->product_name}}</td>
                                                     <td>{{$s->quantity}}</td>
                                                     <td>{{$s->bar_code}}</td>
