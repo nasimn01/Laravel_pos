@@ -113,6 +113,10 @@ class AdminUserController extends Controller
          
             if($user->save())
                 if($user->id == currentUserId()){
+                    request()->session()->put(
+                        [
+                            'image'=>$user->image?$user->image:$user->image,
+                        ]);
                     return redirect()->route(currentUser().'.profile.update')->with($this->resMessageHtml(true,null,'Successfully updated'));
                 }else{
                     return redirect()->route(currentUser().'.admin.index')->with($this->resMessageHtml(true,null,'Successfully updated'));

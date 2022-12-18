@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Vouchers;
+namespace App\Http\Controllers\Currency;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\Vouchers\GeneralLedger;
+use App\Models\Currency\Currency;
 use Illuminate\Http\Request;
 
-class GeneralLedgerController extends Controller
+class CurrencyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,10 +43,10 @@ class GeneralLedgerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Voucher\GeneralLedger  $generalLedger
+     * @param  \App\Models\Currency\Currency  $currency
      * @return \Illuminate\Http\Response
      */
-    public function show(GeneralLedger $generalLedger)
+    public function show(Currency $currency)
     {
         //
     }
@@ -54,10 +54,10 @@ class GeneralLedgerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Voucher\GeneralLedger  $generalLedger
+     * @param  \App\Models\Currency\Currency  $currency
      * @return \Illuminate\Http\Response
      */
-    public function edit(GeneralLedger $generalLedger)
+    public function edit(Currency $currency)
     {
         //
     }
@@ -66,10 +66,10 @@ class GeneralLedgerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Voucher\GeneralLedger  $generalLedger
+     * @param  \App\Models\Currency\Currency  $currency
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GeneralLedger $generalLedger)
+    public function update(Request $request, Currency $currency)
     {
         //
     }
@@ -77,10 +77,10 @@ class GeneralLedgerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Voucher\GeneralLedger  $generalLedger
+     * @param  \App\Models\Currency\Currency  $currency
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GeneralLedger $generalLedger)
+    public function destroy(Currency $currency)
     {
         //
     }

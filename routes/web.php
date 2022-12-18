@@ -135,8 +135,9 @@ Route::group(['middleware'=>isOwner::class],function(){
         //Voucher
         Route::resource('credit',credit::class,['as'=>'owner']);
         Route::resource('debit',debit::class,['as'=>'owner']);
-        Route::resource('journal',journal::class,['as'=>'owner']);
         Route::get('get_head', [credit::class, 'get_head'])->name('owner.get_head');
+        Route::resource('journal',journal::class,['as'=>'owner']);
+        Route::get('journal_get_head', [journal::class, 'get_head'])->name('owner.journal_get_head');
 
         //Purchase
         Route::resource('purchase',purchase::class,['as'=>'owner']);

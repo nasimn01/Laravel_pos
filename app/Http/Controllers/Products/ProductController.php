@@ -211,9 +211,9 @@ class ProductController extends Controller
     public function qrcodepreview(Request $request){
         $company_id=company()['company_id'];
         if($request->checkall)
-            $productlist=DB::select("SELECT p.*,stocks.*,sum(stocks.quantity) as stock FROM `products` as p JOIN stocks on stocks.product_id=p.id where p.company_id=$company_id order by p.product_name");
+            $productlist=DB::select("SELECT p.*,stocks.*,sum(stocks.quantity) as stock FROM `products` as p JOIN stocks on stocks.product_id=p.id where p.company_id=$company_id order by p.product_name group by p.id");
         else
-            $productlist=DB::select("SELECT p.*,stocks.*,sum(stocks.quantity) as stock FROM `products` as p JOIN stocks on stocks.product_id=p.id WHERE p.id in (".implode(',',$request->datas).") order by p.product_name");
+            $productlist=DB::select("SELECT p.*,stocks.*,sum(stocks.quantity) as stock FROM `products` as p JOIN stocks on stocks.product_id=p.id WHERE p.id in (".implode(',',$request->datas).")  group by p.id order by p.product_name");
     
         $barcode="<div class='row'>";
         $barcode.='<div class="text-center"><button type="button" class="btn btn-primary" onclick="print_label('.'\'a4\','.'\'qrcode\''.')"><i class="fas fa-print"></i> A4</button>';

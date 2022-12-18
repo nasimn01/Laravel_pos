@@ -25,6 +25,7 @@ return new class extends Migration
             $table->bigInteger('upazila_id')->nullable();
             $table->bigInteger('thana_id')->nullable();
             $table->string('address',1000)->nullable();
+            $table->string('currency')->nullable();
             $table->boolean('status')->default(1)->comment('1=>active 2=>inactive');
             $table->timestamps();
             $table->softDeletes();

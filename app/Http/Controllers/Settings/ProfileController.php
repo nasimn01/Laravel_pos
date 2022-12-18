@@ -5,14 +5,9 @@ namespace App\Http\Controllers\Settings;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Models\Role;
 use App\Models\User;
-use App\Models\Settings\Branch;
 use App\Http\Traits\ResponseTrait;
 use App\Http\Traits\ImageHandleTraits;
-use App\Http\Requests\User\AddNewRequest;
-use Illuminate\Support\Facades\Hash;
-use Exception;
 
 class ProfileController extends Controller
 {
@@ -28,7 +23,8 @@ class ProfileController extends Controller
         
         $users=User::where(company(currentUserId()))->first();
         // dd(currentUserId());
-        return view('settings.users.profile',compact('users'));
+           return view('settings.users.profile',compact('users'));
+          
     }
     /**
      * Show the form for creating a new resource.

@@ -102,32 +102,30 @@ class JournalVoucherController extends Controller
 														"coa_code"=>$sub1_row->head_code,
 														"lavel"=>"sub_heads"
 													);
-				$sub2Arr = DB::select("SELECT * FROM child_ones WHERE sub_head_id = {$sub1_row->id} and company_id={$company} ORDER BY id ASC");
-				if ($sub2Arr){
-					foreach ($sub2Arr as $sub2_row){
-					    if($sub1_row->id==1 || $sub1_row->id==2){/*nothing will get*/}else{
-					        $fcoa_bkdnArr["{$sub2_row->id}"]=array(
+					$sub2Arr = DB::select("SELECT * FROM child_ones WHERE sub_head_id = {$sub1_row->id} and company_id={$company} ORDER BY id ASC");
+					if ($sub2Arr){
+						foreach ($sub2Arr as $sub2_row){
+							$fcoa_bkdnArr["{$sub2_row->id}"]=array(
 															"id"=>$sub2_row->id,
 															"parent"=>$sub1_row->id,
 															"head"=>$sub2_row->head_name,
 															"coa_code"=>$sub2_row->head_code,
 															"lavel"=>"child_ones"
 															);
-					        $sub3Arr = DB::select("SELECT * FROM child_twos WHERE child_one_id = {$sub2_row->id} and company_id={$company} ORDER BY id ASC");
-        					if ($sub3Arr){
-        						foreach ($sub3Arr as $sub3_row){
-        						  $sub_fcoa_bkdnArr["{$sub3_row->id}"]=array(
-        																"id"=>$sub3_row->id,
-        																"parent"=>$sub2_row->id,
-        																"head"=>$sub3_row->head_name,
-        																"coa_code"=>$sub3_row->head_code,
-        																"lavel"=>"child_twos"
-        															);
-        						}
-        					}
-					    }
-				    }
-				}
+							$sub3Arr = DB::select("SELECT * FROM child_twos WHERE child_one_id = {$sub2_row->id} and company_id={$company} ORDER BY id ASC");
+							if ($sub3Arr){
+								foreach ($sub3Arr as $sub3_row){
+									$sub_fcoa_bkdnArr["{$sub3_row->id}"]=array(
+																		"id"=>$sub3_row->id,
+																		"parent"=>$sub2_row->id,
+																		"head"=>$sub3_row->head_name,
+																		"coa_code"=>$sub3_row->head_code,
+																		"lavel"=>"child_twos"
+																	);
+								}
+							}
+						}
+					}
 				}
 			}
 			}

@@ -27,7 +27,7 @@ class IncomeStatementController extends Controller
     public function details(Request $r){
         $month=$r->month;
         $year=$r->year;
-        $acc_head=master_account::where(company())->paginate(10);
+        $acc_head=master_account::where(company())->get();
         /* operating income */
         $incomeheadop=array();
         $incomeheadopone=array();
@@ -49,72 +49,72 @@ class IncomeStatementController extends Controller
 
         foreach($acc_head as $ah){
             if($ah->head_code=="4000"){
-                if($ah->subhead){
-                    foreach($ah->subhead as $subhead){
-                        if($subhead->head_code=="4100"){/* operating income */
-                            if($subhead->childOne->count() > 0){
-                                foreach($subhead->childOne as $childOne){
-                                    if($childOne->childTwo->count() > 0){
-                                        foreach($childOne->childTwo as $childTwo){
-                                            $incomeheadoptwo[]=$childTwo->id;
+                if($ah->sub_head){
+                    foreach($ah->sub_head as $sub_head){
+                        if($sub_head->head_code=="4100"){/* operating income */
+                            if($sub_head->child_one->count() > 0){
+                                foreach($sub_head->child_one as $child_one){
+                                    if($child_one->child_two->count() > 0){
+                                        foreach($child_one->child_two as $child_two){
+                                            $incomeheadoptwo[]=$child_two->id;
                                         }
                                     }else{
-                                        $incomeheadopone[]=$childOne->id;
+                                        $incomeheadopone[]=$child_one->id;
                                     }
                                 }
                             }else{
-                                $incomeheadop[]=$subhead->id;
+                                $incomeheadop[]=$sub_head->id;
                             }
-                        }else if ($subhead->head_code=="4200"){ /* nonoperating income */
-                            if($subhead->childOne->count() > 0){
-                                foreach($subhead->childOne as $childOne){
-                                    if($childOne->childTwo->count() > 0){
-                                        foreach($childOne->childTwo as $childTwo){
-                                            $incomeheadnoptwo[]=$childTwo->id;
+                        }else if ($sub_head->head_code=="4200"){ /* nonoperating income */
+                            if($sub_head->child_one->count() > 0){
+                                foreach($sub_head->child_one as $child_one){
+                                    if($child_one->child_two->count() > 0){
+                                        foreach($child_one->child_two as $child_two){
+                                            $incomeheadnoptwo[]=$child_two->id;
                                         }
                                     }else{
-                                        $incomeheadnopone[]=$childOne->id;
+                                        $incomeheadnopone[]=$child_one->id;
                                     }
                                 }
                             }else{
-                                $incomeheadnop[]=$subhead->id;
+                                $incomeheadnop[]=$sub_head->id;
                             }
                         }
                     }
                 }
             }else if($ah->head_code=="5000"){
-                if($ah->subhead){
-                    foreach($ah->subhead as $subhead){
-                        if($subhead->head_code=="5200"){/* operating income */
-                            if($subhead->childOne->count() > 0){
-                                foreach($subhead->childOne as $childOne){
-                                    if($childOne->childTwo->count() > 0){
-                                        foreach($childOne->childTwo as $childTwo){
-                                            $expenseheadoptwo[]=$childTwo->id;
+                if($ah->sub_head){
+                    foreach($ah->sub_head as $sub_head){
+                        if($sub_head->head_code=="5200"){/* operating income */
+                            if($sub_head->child_one->count() > 0){
+                                foreach($sub_head->child_one as $child_one){
+                                    if($child_one->child_two->count() > 0){
+                                        foreach($child_one->child_two as $child_two){
+                                            $expenseheadoptwo[]=$child_two->id;
                                         }
                                     }else{
-                                        $expenseheadopone[]=$childOne->id;
+                                        $expenseheadopone[]=$child_one->id;
                                     }
                                 }
                             }else{
-                                $expenseheadop[]=$subhead->id;
+                                $expenseheadop[]=$sub_head->id;
                             }
-                        }else if ($subhead->head_code=="5300"){ /* nonoperating income */
-                            if($subhead->childOne->count() > 0){
-                                foreach($subhead->childOne as $childOne){
-                                    if($childOne->childTwo->count() > 0){
-                                        foreach($childOne->childTwo as $childTwo){
-                                            $expenseheadnoptwo[]=$childTwo->id;
+                        }else if ($sub_head->head_code=="5300"){ /* nonoperating income */
+                            if($sub_head->child_one->count() > 0){
+                                foreach($sub_head->child_one as $child_one){
+                                    if($child_one->child_two->count() > 0){
+                                        foreach($child_one->child_two as $child_two){
+                                            $expenseheadnoptwo[]=$child_two->id;
                                         }
                                     }else{
-                                        if($childOne->head_code!="53001")
-                                            $expenseheadnopone[]=$childOne->id;
+                                        if($child_one->head_code!="53001")
+                                            $expenseheadnopone[]=$child_one->id;
                                         else
-                                            $tax_data[]=$childOne->id;
+                                            $tax_data[]=$child_one->id;
                                     }
                                 }
                             }else{
-                                $expenseheadnop[]=$subhead->id;
+                                $expenseheadnop[]=$sub_head->id;
                             }
                         }
                     }
@@ -161,7 +161,7 @@ class IncomeStatementController extends Controller
                 });
             })
             ->get();
-
+            
             /* operating expense */
             $opexpense=GeneralLedger::whereBetween('rec_date',[$datas,$datae])
             ->where(function($query) use ($expenseheadop,$expenseheadopone,$expenseheadoptwo){
@@ -176,7 +176,7 @@ class IncomeStatementController extends Controller
                 });
             })
             ->get();
-
+            
             /* nonoperating expense */
             $nonopexpense=GeneralLedger::whereBetween('rec_date',[$datas,$datae])
             ->where(function($query) use ($expenseheadnop,$expenseheadnopone,$expenseheadnoptwo){
@@ -191,7 +191,7 @@ class IncomeStatementController extends Controller
                 });
             })
             ->get();
-            /* nonoperating expense */
+            /* tax expense */
             $taxamount=GeneralLedger::whereBetween('rec_date',[$datas,$datae])
             ->where(function($query) use ($tax_data){
                 $query->orWhere(function($query) use ($tax_data){
