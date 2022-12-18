@@ -26,6 +26,7 @@ use App\Http\Controllers\Settings\BranchController as branch;
 use App\Http\Controllers\Settings\WarehouseController as warehouse;
 use App\Http\Controllers\Reports\ReportController as report;
 use App\Http\Controllers\Transfers\TransferController as transfer;
+use App\Http\Controllers\Currency\CurrencyController as currency;
 
 
 use App\Http\Controllers\Accounts\MasterAccountController as master;
@@ -81,6 +82,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::resource('upazila',upazila::class,['as'=>'admin']);
         Route::resource('thana',thana::class,['as'=>'admin']);
         Route::resource('unit',unit::class,['as'=>'admin']);
+        Route::resource('currency',currency::class,['as'=>'admin']);
         
     });
 });
