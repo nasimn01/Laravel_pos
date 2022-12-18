@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Company;
+
 use App\Models\Settings\Branch;
 use App\Http\Traits\ResponseTrait;
 use App\Http\Traits\ImageHandleTraits;
@@ -84,6 +85,7 @@ class AdminUserController extends Controller
      */
     public function edit($id)
     {
+        
         $user=User::findOrFail(encryptor('decrypt',$id));
         return view('settings.adminusers.edit',compact('user'));
     }
@@ -103,6 +105,7 @@ class AdminUserController extends Controller
             $user->contact_no=$request->contactNumber;
             $user->email=$request->userEmail;
             $user->language=$request->language;
+            $user->currency=$request->currency;
             if($request->has('password') && $request->password)
                 $user->password=Hash::make($request->password);
 

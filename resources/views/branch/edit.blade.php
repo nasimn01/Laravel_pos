@@ -27,6 +27,19 @@
                                       @endif
                                   </div>
                                   <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="thana">{{__('Currency')}}</label>
+                                            <select class="form-control form-select" name="currency">
+                                                <option value="">Select Currency</option>
+                                                @forelse($currency as $d)
+                                                    <option value="{{$d->id}}" {{ old('currency',$company->currency)==$d->id?"selected":""}}> {{ $d->currency_name}}</option>
+                                                @empty
+                                                    <option value="">No Currency found</option>
+                                                @endforelse
+                                            </select>
+                                        </div>
+                                    </div>
+                                  <div class="col-md-6 col-12">
                                       <div class="form-group">
                                           <label for="contact">Contact</label>
                                           <input type="text" id="contact" value="{{ old('contact',$branch->contact)}}" class="form-control"

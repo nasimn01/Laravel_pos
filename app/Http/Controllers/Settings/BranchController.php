@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Settings\Branch;
+use App\Models\Currency\Currency;
 use Illuminate\Http\Request;
 use App\Http\Requests\Branch\AddNewRequest;
 use App\Http\Requests\Branch\UpdateRequest;
@@ -90,8 +91,9 @@ class BranchController extends Controller
      */
     public function edit($id)
     {
+        $currency= Currency::all();
         $branch=Branch::findOrFail(encryptor('decrypt',$id));
-        return view('branch.edit',compact('branch'));
+        return view('branch.edit',compact('branch','currency'));
     }
 
     /**

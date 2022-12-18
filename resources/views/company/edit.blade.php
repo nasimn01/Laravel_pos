@@ -39,7 +39,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                  <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="division_id">{{__('Division')}}</label>
                                             <select class="form-control form-select" name="division">
@@ -52,7 +52,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                  <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="district">{{__('District')}}</label>
                                             <select class="form-control form-select" name="district">
@@ -65,7 +65,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                  <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="upazila">{{__('Upazila')}}</label>
                                             <select class="form-control form-select" name="upazila">
@@ -78,7 +78,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                  <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="thana">{{__('Thana')}}</label>
                                             <select class="form-control form-select" name="thana">
@@ -87,6 +87,19 @@
                                                     <option value="{{$d->id}}" {{ old('thana',$company->thana_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
                                                     <option value="">No Thana found</option>
+                                                @endforelse
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="thana">{{__('Currency')}}</label>
+                                            <select class="form-control form-select" name="currency">
+                                                <option value="">Select Currency</option>
+                                                @forelse($currency as $d)
+                                                    <option value="{{$d->id}}" {{ old('currency',$company->currency)==$d->id?"selected":""}}> {{ $d->currency_name}}</option>
+                                                @empty
+                                                    <option value="">No Currency found</option>
                                                 @endforelse
                                             </select>
                                         </div>

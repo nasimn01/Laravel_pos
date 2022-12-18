@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Settings;
 use App\Http\Controllers\Controller;
 
 use App\Models\Settings\Company;
+
 use App\Models\Settings\Location\Country;
 use App\Models\Settings\Location\District;
 use App\Models\Settings\Location\Division;
 use App\Models\Settings\Location\Thana;
 use App\Models\Settings\Location\Upazila;
+use App\Models\Currency\Currency;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
 use Exception;
@@ -81,13 +83,14 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
+        $currency= Currency::all();
         $country = Country::all();
         $division = Division::all();
         $district = District::all();
         $upazila = Upazila::all();
         $thana = Thana::all();
         $company=Company::findOrFail(encryptor('decrypt',$id));
-        return view('company.edit',compact('company','country','division','district','upazila','thana'));
+        return view('company.edit',compact('company','country','division','district','upazila','thana','currency'));
     }
 
     /**

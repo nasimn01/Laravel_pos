@@ -23,6 +23,7 @@
                                         <th scope="col">{{__('District')}}</th>
                                         <th scope="col">{{__('Upazila')}}</th>
                                         <th scope="col">{{__('Thana')}}</th>
+                                        <th scope="col">{{__('Currency')}}</th>
                                         <th scope="col">{{__('Address')}}</th>
                                         <th class="white-space-nowrap">{{__('ACTION')}}</th>
                                     </tr>
@@ -37,6 +38,7 @@
                                         <td>{{$data->district?->name}}</td>
                                         <td>{{$data->upazila?->name}}</td>
                                         <td>{{$data->thana?->name}}</td>
+                                        <td>{{$data->currency?->currency_name}}</td>
                                         <td>{{$data->address}}</td>
                                         <td class="white-space-nowrap">
                                             <a href="{{route(currentUser().'.company.edit',encryptor('encrypt',$data->id))}}">
