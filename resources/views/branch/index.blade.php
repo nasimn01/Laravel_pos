@@ -23,6 +23,7 @@
                                         <th scope="col">{{__('Bin Number')}}</th>
                                         <th scope="col">{{__('Trade Number')}}</th>
                                         <th scope="col">{{__('Address')}}</th>
+                                        <th scope="col">{{__('Currency')}}</th>
                                         <th class="white-space-nowrap">{{__('ACTION')}}</th>
                                     </tr>
                                 </thead>
@@ -35,6 +36,7 @@
                                         <td>{{$cat->binNumber}}</td>
                                         <td>{{$cat->tradeNumber}}</td>
                                         <td>{{$cat->address}}</td>
+                                        <td>{{$cat->Currency?->currency_name}}</td>
                                         
                                         <td class="white-space-nowrap">
                                             <a href="{{route(currentUser().'.branch.edit',encryptor('encrypt',$cat->id))}}">

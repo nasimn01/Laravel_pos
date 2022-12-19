@@ -10,6 +10,7 @@ use App\Models\Settings\Location\District;
 use App\Models\Settings\Location\Division;
 use App\Models\Settings\Location\Thana;
 use App\Models\Settings\Location\Upazila;
+use App\Models\Currency\Currency;
 
 class Company extends Model
 {
@@ -28,5 +29,8 @@ class Company extends Model
     }
     public function thana(){
         return $this->belongsTo(Thana::class);
+    }
+    public function Currency(){
+        return $this->belongsTo(Currency::class,'currency','id');
     }
 }

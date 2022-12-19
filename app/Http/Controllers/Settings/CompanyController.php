@@ -112,6 +112,7 @@ class CompanyController extends Controller
             $com->upazila_id=$request->upazila;
             $com->thana_id=$request->thana;
             $com->address=$request->address;
+            $com->currency=$request->currency;
 
 
             if($com->save())

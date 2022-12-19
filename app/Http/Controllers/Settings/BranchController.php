@@ -22,6 +22,7 @@ class BranchController extends Controller
      */
     public function index()
     {
+        
         $branchs= Branch::where(company())->paginate(10);
         return view('branch.index',compact('branchs'));
     }
@@ -33,7 +34,8 @@ class BranchController extends Controller
      */
     public function create()
     {
-        return view('branch.create');
+        $currency = Currency::all();
+        return view('branch.create',compact('currency'));
     }
 
     /**
@@ -47,6 +49,7 @@ class BranchController extends Controller
         try{
             $cat= new Branch;
             $cat->name=$request->name;
+            $cat->currency=$request->currency;
             $cat->contact=$request->contact;
             $cat->binNumber=$request->binNumber;
             $cat->tradeNumber=$request->tradeNumber;
@@ -108,6 +111,7 @@ class BranchController extends Controller
         try{
             $cat= Branch::findOrFail(encryptor('decrypt',$id));
             $cat->name=$request->name;
+            $cat->currency=$request->currency;
             $cat->contact=$request->contact;
             $cat->binNumber=$request->binNumber;
             $cat->tradeNumber=$request->tradeNumber;

@@ -38,7 +38,7 @@
                                         <td>{{$data->district?->name}}</td>
                                         <td>{{$data->upazila?->name}}</td>
                                         <td>{{$data->thana?->name}}</td>
-                                        <td>{{$data->currency?->currency_name}}</td>
+                                        <td>{{$data->Currency?->currency_name}}</td>
                                         <td>{{$data->address}}</td>
                                         <td class="white-space-nowrap">
                                             <a href="{{route(currentUser().'.company.edit',encryptor('encrypt',$data->id))}}">

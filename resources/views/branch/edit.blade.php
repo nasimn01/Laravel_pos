@@ -32,7 +32,7 @@
                                             <select class="form-control form-select" name="currency">
                                                 <option value="">Select Currency</option>
                                                 @forelse($currency as $d)
-                                                    <option value="{{$d->id}}" {{ old('currency',$company->currency)==$d->id?"selected":""}}> {{ $d->currency_name}}</option>
+                                                    <option value="{{$d->id}}" {{ old('currency',$branch->currency)==$d->id?"selected":""}}> {{ $d->currency_name}}</option>
                                                 @empty
                                                     <option value="">No Currency found</option>
                                                 @endforelse
