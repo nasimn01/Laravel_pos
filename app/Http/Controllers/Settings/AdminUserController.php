@@ -105,7 +105,6 @@ class AdminUserController extends Controller
             $user->contact_no=$request->contactNumber;
             $user->email=$request->userEmail;
             $user->language=$request->language;
-            $user->currency=$request->currency;
             if($request->has('password') && $request->password)
                 $user->password=Hash::make($request->password);
 
@@ -127,7 +126,7 @@ class AdminUserController extends Controller
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
-            //dd($e);
+            dd($e);
             return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }
     }
