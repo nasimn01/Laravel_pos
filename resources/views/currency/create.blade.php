@@ -27,7 +27,7 @@
                                       <div class="form-group">
                                           <label for="name">{{__('Symbol')}}</label>
                                           <input type="text" id="Symbol" class="form-control"
-                                              placeholder="Currency Name" name="symbol">
+                                              placeholder="Currency Symbol" name="symbol">
                                       </div>
                                       @if($errors->has('currency'))
                                       <span class="text-danger"> {{ $errors->first('currency') }}</span>
@@ -37,7 +37,7 @@
                                       <div class="form-group">
                                           <label for="name">{{__('Port')}}</label>
                                           <input type="text" id="port" class="form-control"
-                                              placeholder="Currency Name" name="port">
+                                              placeholder="Currency port" name="port">
                                       </div>
                                       @if($errors->has('currency'))
                                       <span class="text-danger"> {{ $errors->first('currency') }}</span>
@@ -47,7 +47,7 @@
                                       <div class="form-group">
                                           <label for="name">{{__('Rate')}}</label>
                                           <input type="text" id="rate" class="form-control"
-                                              placeholder="Currency Name" name="rate">
+                                              placeholder="Currency rate" name="rate">
                                       </div>
                                       @if($errors->has('currency'))
                                       <span class="text-danger"> {{ $errors->first('currency') }}</span>
