@@ -27,7 +27,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $users=User::whereIn('role_id',[2])->paginate();
+        $users=User::whereIn('role_id',[1,2])->paginate();
         return view('settings.adminusers.index',compact('users'));
     }
 
@@ -99,6 +99,7 @@ class AdminUserController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {
+     
         try{
             $user=User::findOrFail(encryptor('decrypt',$id));
             $user->name=$request->userName;
@@ -112,7 +113,7 @@ class AdminUserController extends Controller
             if($request->has('image') && $request->image)
                 if($this->deleteImage($user->image,$path))
                     $user->image=$this->resizeImage($request->image,$path,true,200,200,false);
-         
+
             if($user->save())
                 if($user->id == currentUserId()){
                     request()->session()->put(

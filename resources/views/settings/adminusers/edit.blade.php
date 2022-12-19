@@ -75,9 +75,6 @@
                                                 <option value="en" {{ old('language',$user->language)=="en"?"selected":""}}> English</option>
                                                 <option value="bn" {{ old('language',$user->language)=="bn"?"selected":""}}> Bangla</option>
                                             </select>
-                                            @if($errors->has('branch_id'))
-                                                <span class="text-danger"> {{ $errors->first('branch_id') }}</span>
-                                            @endif
                                         </div>
                                     </div>
                                 </div>
