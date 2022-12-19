@@ -32,7 +32,7 @@
                                   </div>
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
-                                          <label for="name">Warehouse</label>
+                                          <label for="name">{{__('Warehouse')}}</label>
                                           <input type="text" id="name" value="{{ old('name',$warehouse->name)}}" class="form-control" placeholder="Warehouse Name" name="name">
                                       </div>
                                       @if($errors->has('name'))
