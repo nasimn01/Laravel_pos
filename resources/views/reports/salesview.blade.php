@@ -71,12 +71,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse($sales as $d)
+                                        @forelse($data as $d)
                                         <tr class="text-center">
                                             <td>{{$d->sales_date}}</td>
                                             <td>{{$d->customer?->customer_name}}</td>
                                             <td>{{$d->reference_no}}</td>
-                                            <td>{{$d->quantity}}</td>
+                                            <td>{{$d->total_quantity}}</td>
                                             <td>{{$d->sub_amount}}</td>
                                             <td>{{$d->tax}}</td>
                                             <td>
@@ -88,7 +88,7 @@
                                                     @endif
                                                 @endif
                                             </td>
-                                            <td>{{$d->total_amount}}</td>
+                                            <td>{{$d->grand_total}}</td>
                                         </tr>
                                         @empty
                                         <tr>

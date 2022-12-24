@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Purchases\Purchase;
 use App\Models\Sales\Sales_details;
+use App\Models\Sales\Sales;
 use App\Models\Suppliers\Supplier;
 use App\Models\Customers\customer;
 use Illuminate\Http\Request;
@@ -44,10 +45,23 @@ class ReportController extends Controller
 
    
 
-    public function salesReport()
+    public function salesReport(Request $request)
     {
-        $customers = customer::all();
-        $sales = Sales_details::all();
-        return view('reports.salesview',compact('sales','customers'));
+        
+
+        $data = Sales::where(company());
+
+        if($request->fdate){
+            $tdate=$request->tdate?$request->tdate:$request->fdate;
+            $data=$data->whereBetween('sales_date',[$request->fdate,$tdate]);
+        }
+
+        if($request->cus){
+            $data=$data->where('customer_id',$request->cus);
+        }
+        $customers = customer::where(company())->get();
+        $data= $data->paginate(10);
+        //$sales = Sales_details::all();
+        return view('reports.salesview',compact('data','customers'));
     }
 }
