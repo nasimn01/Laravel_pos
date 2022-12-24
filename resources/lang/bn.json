@@ -19,6 +19,7 @@
     "Phone":"ফোন",
     "Email":"ইমেইল",
     "Address":"ঠিকানা",
+    "Address Details":"বিস্তারিত ঠিকানা",
     "Image":"ছবি",
     "Save":"সংরক্ষণ",
     "TAX Number":"কর নম্বর",
@@ -48,6 +49,7 @@
     "Update Category":"আপডেট বিভাগ",
     "Brand List":"ব্র্যান্ড তালিকা",
     "Update Brand":"ব্র্যান্ড আপডেট করুন",
+    "Update Branch":"হালনাগাদ শাখা",
     "Category List":"বিভাগ তালিকা",
     "Sub Category":"সাব ক্যাটাগরি",
     "Subcategory List":"উপশ্রেণি তালিকা",
@@ -75,7 +77,6 @@
     "GrandTotal":"সর্বমোট",
     "Note":"বিঃদ্রঃ",
     "Branch":"শাখা",
-    "Warehouse":"গুদাম",
     "Add New": "নতুন যোগ করুন",
     "Products": "পণ্য",
     "Product List":"পণ্য তালিকা",
@@ -144,6 +145,8 @@
     "Branch List":"শাখা তালিকা",
     "Create Branch":"শাখা তৈরি করুন",
     "Supplier Name":"সরবরাহকারী নাম",
+    "Create Warehouse":"গুদাম তৈরি করুন",
+    "Warehouse":"গুদাম",
     "Warehouse List":"গুদাম তালিকা",
     "Show":"দেখান",
     "Reset":"রিসেট",
@@ -165,10 +168,13 @@
     "Create Sales":"বিক্রয় তৈরি করুন",
     "Total Quantities":"মোট পরিমাণ",
     "Company Name":"কোম্পানি নাম",
+    "Details":"বিবরণ",
     "Company Details":"কোম্পানি বিবরণ",
     "update":"হালনাগাদ",
     "Update Customer":"গ্রাহক আপডেট করুন",
+    "Update Warehouse":"গুদাম আপডেট করুন",
     "Update Company details":"কোম্পানির বিবরণ আপডেট করুন",
+    "Update Company Details":"কোম্পানির বিবরণ আপডেট করুন",
     "update Subcategory":"উপশ্রেণি আপডেট করুন",
     "Update Supplier":"সরবরাহকারী আপডেট করুন",
     "Update Sub Head":"সাব হেড আপডেট করুন",
@@ -176,7 +182,8 @@
     "Update Child Two":"আপডেট চাইল্ড টু",
     "Update Master Account":"মাস্টার অ্যাকাউন্ট আপডেট করুন",
     "Label":"লেবেল",
-    "Product Label":"পণ্য লেবেল"
+    "Product Label":"পণ্য লেবেল",
+    "Currency":"মুদ্রা"
 
     
 
