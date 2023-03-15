@@ -22,9 +22,9 @@
 <body>
 <div id="auth">
     <div class="row h-100">
-        <div class="col-lg-8 col-12">
+        <div class="col-lg-6 offset-3 col-12">
             <div id="auth-left">
-                <div class="auth-logo">
+                <div class="auth-logo text-center">
                     <a href="#"><img src="{{ asset('assets/images/logo/logo1.svg')}}" alt="Logo"></a>
                 </div>
 
@@ -32,11 +32,11 @@
                 
             </div>
         </div>
-        <div class="col-lg-4 d-none d-lg-block">
+        <!-- <div class="col-lg-4 d-none d-lg-block">
             <div id="auth-right">
     
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
         

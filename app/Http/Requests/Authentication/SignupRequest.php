@@ -29,4 +29,9 @@ class SignupRequest extends FormRequest
             'password'=>'required|confirmed'
         ];
     }
+    public function messages(){
+        return [
+            'required' => "The :attribute filed is required"
+        ];
+    }
 }
