@@ -26,7 +26,7 @@
 
 
 
-                <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.admin.update',encryptor('encrypt',$users->id))}}">
+                <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.admin.profile.up',encryptor('encrypt',$users->id))}}">
                     @csrf
                     @method('PATCH')
                     <input type="hidden" value="{{$users->role_id}}" name="role_id">
