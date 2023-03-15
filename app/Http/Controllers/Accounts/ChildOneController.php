@@ -47,6 +47,7 @@ class ChildOneController extends Controller
     {
         try{
             $mac = new child_one();
+            $mac->company_id=company()['company_id'];
             $mac->sub_head_id= $request->sub_head;
             $mac->head_name= $request->head_name;
             $mac->head_code= $request->head_code;

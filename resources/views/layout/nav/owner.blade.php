@@ -147,30 +147,13 @@
         <a href="#" class='sidebar-link'><i class="bi bi-calculator"></i><span>{{__('Accounts')}}</span>
         </a>
         <ul class="submenu">
-            <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'> {{__('Master Head')}}</a>
-                <ul class="submenu">
-                    <li class="py-1"><a href="{{route(currentUser().'.master.index')}}">{{__('List')}}</a></li>
-                    <li class="py-1"><a href="{{route(currentUser().'.master.create')}}">{{__('Add New')}}</a></li>
-                </ul>
-            </li>
-            <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'>{{__('Sub Head')}}</a>
-                <ul class="submenu">
-                    <li class="py-1"><a href="{{route(currentUser().'.sub_head.index')}}">{{__('List')}}</a></li>
-                    <li class="py-1"><a href="{{route(currentUser().'.sub_head.create')}}">{{__('Add New')}}</a></li>
-                </ul>
-            </li>
-            <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'>{{__('Child One')}}</a>
-                <ul class="submenu">
-                    <li class="py-1"><a href="{{route(currentUser().'.child_one.index')}}">{{__('List')}}</a></li>
-                    <li class="py-1"><a href="{{route(currentUser().'.child_one.create')}}">{{__('Add New')}}</a></li>
-                </ul>
-            </li>
-            <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'>{{__('Child Two')}}</a>
-                <ul class="submenu">
-                    <li class="py-1"><a href="{{route(currentUser().'.child_two.index')}}">{{__('List')}}</a></li>
-                    <li class="py-1"><a href="{{route(currentUser().'.child_two.create')}}">{{__('Add New')}}</a></li>
-                </ul>
-            </li>
+            <li class="py-1"><a href="{{route(currentUser().'.master.index')}}" >{{__('Master Head')}}</a></li>
+            <li class="py-1"><a href="{{route(currentUser().'.sub_head.index')}}" >{{__('Sub Head')}}</a></li>
+            <li class="py-1"><a href="{{route(currentUser().'.child_one.index')}}" >{{__('Child One')}}</a></li>
+            <li class="py-1"><a href="{{route(currentUser().'.child_two.index')}}" >{{__('Child Two')}}</a></li>
+            <li class="py-1"><a href="{{route(currentUser().'.navigate.index')}}">{{__('Navigate View')}}</a></li>
+            <li class="py-1"><a href="{{route(currentUser().'.incomeStatement')}}">{{__('Income Statement')}}</a></li>
+            
             <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'>{{__('Voucher')}}</a>
                 <ul class="submenu">
                     <li class="py-1"><a href="{{route(currentUser().'.credit.index')}}">{{__('Credit Voucher')}}</a></li>
@@ -178,10 +161,6 @@
                     <li class="py-1"><a href="{{route(currentUser().'.journal.index')}}">{{__('Journal Voucher')}}</a></li>
                 </ul>
             </li>
-            
-            <li class="py-1"><a href="{{route(currentUser().'.navigate.index')}}">{{__('Navigate View')}}</a></li>
-            <li class="py-1"><a href="{{route(currentUser().'.incomeStatement')}}">{{__('Income Statement')}}</a></li>
-
 		</ul>
         
     </li>

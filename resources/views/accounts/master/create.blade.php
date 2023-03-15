@@ -19,7 +19,7 @@
                                     <div class="form-group">
                                         <label for="head_name">{{__('Head Name')}}</label>
                                         <input type="text" id="head_name" class="form-control"
-                                            placeholder="Head Name" value="{{ old('head_name')}}" name="head_name">
+                                            placeholder="Head Name" value="{{ old('head_name')}}" name="head_name" required>
                                     </div>
                                     @if($errors->has('head_name'))
                                     <span class="text-danger"> {{ $errors->first('head_name') }}</span>
@@ -29,7 +29,7 @@
                                     <div class="form-group">
                                         <label for="head_code">{{__('Head Code')}}</label>
                                         <input type="text" id="head_code" class="form-control"
-                                            placeholder="Head Code" value="{{ old('head_code')}}" name="head_code">
+                                            placeholder="Head Code" value="{{ old('head_code')}}" name="head_code" required>
                                     </div>
                                     @if($errors->has('head_code'))
                                     <span class="text-danger"> {{ $errors->first('head_code') }}</span>
@@ -39,7 +39,7 @@
                                     <div class="form-group">
                                         <label for="opening_balance">{{__('Opening Balance')}}</label>
                                         <input type="text" id="opening_balance" class="form-control"
-                                            placeholder="Opening Balance" value="{{ old('opening_balance')}}" name="opening_balance">
+                                            placeholder="Opening Balance" value="{{ old('opening_balance')}}" name="opening_balance" required>
                                     </div>
                                 </div>
 

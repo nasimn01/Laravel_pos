@@ -47,6 +47,7 @@ class ChildTwoController extends Controller
     {
         try{
             $mac = new child_two();
+            $mac->company_id=company()['company_id'];
             $mac->child_one_id= $request->child_one;
             $mac->head_name= $request->head_name;
             $mac->head_code= $request->head_code;

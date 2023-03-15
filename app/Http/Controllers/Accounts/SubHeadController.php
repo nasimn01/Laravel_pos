@@ -47,6 +47,7 @@ class SubHeadController extends Controller
     {
         try{
             $mac = new sub_head();
+            $mac->company_id=company()['company_id'];
             $mac->master_head_id= $request->master_head;
             $mac->head_name= $request->head_name;
             $mac->head_code= $request->head_code;
