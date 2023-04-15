@@ -7,6 +7,7 @@
     <title>CRUD | @yield('siteTitle', 'POS')</title>
     
 <link rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/main/style.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/main/app-dark.css') }}">
 <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.svg') }}" type="image/x-icon">
 <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png') }}" type="image/png">
@@ -69,7 +70,7 @@
 				<div class="page-heading m-0">
 					<div class="page-title">
 						<div class="row">
-							<div class="col-12 col-md-6 order-md-1 order-last">
+							<div class="col-12 col-md-6 order-md-1 order-last p-0">
 								<div class="fs-5 fw-bold">@yield('pageTitle')</div>
 							</div>
 							<div class="col-12 col-md-6 order-md-2 order-first">
