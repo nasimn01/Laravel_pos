@@ -115,15 +115,8 @@ class AdminUserController extends Controller
                     $user->image=$this->resizeImage($request->image,$path,true,200,200,false);
 
             if($user->save())
-                if($user->id == currentUserId()){
-                    request()->session()->put(
-                        [
-                            'image'=>$user->image?$user->image:$user->image,
-                        ]);
-                    return redirect()->route(currentUser().'.profile.update')->with($this->resMessageHtml(true,null,'Successfully updated'));
-                }else{
+            
                     return redirect()->route(currentUser().'.admin.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
-                }
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

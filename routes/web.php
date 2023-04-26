@@ -73,7 +73,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         //Adnin profile
         Route::get('/profile', [profile::class,'adminProfile'])->name('admin.profile');
         Route::post('/profile', [profile::class,'adminProfile'])->name('admin.profile.update');
-        Route::post('/profile/update', [profile::class,'aProfileUpdate'])->name('admin.profile.up');
+        Route::post('/profile-update', [profile::class,'aProfileUpdate'])->name('admin.profile.up');
 
        // Route::resource('/profile/update',profile::class,['as'=>'admin']);
 

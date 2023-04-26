@@ -26,9 +26,9 @@
 
 
 
-                <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.admin.profile.up',encryptor('encrypt',$users->id))}}">
+                <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.profile.up')}}">
                     @csrf
-                    @method('PATCH')
+                    @method('POST')
                     <input type="hidden" value="{{$users->role_id}}" name="role_id">
                     <div class="row mb-3">
                         <label for="userName" class="col-sm-2 col-form-label"><b>{{__('Name')}}:</b></label>

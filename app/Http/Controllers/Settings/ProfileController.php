@@ -45,13 +45,14 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function aProfileUpdate(Request $request, $id)
+    public function aProfileUpdate(Request $request)
     {
         try{
-            $user=User::findOrFail(encryptor('decrypt',$id));
+            $user=User::findOrFail(currentUserId());
             $user->name=$request->userName;
             $user->contact_no=$request->contactNumber;
             $user->email=$request->userEmail;
+            $user->language=$request->language;
             if($request->has('password') && $request->password)
                 $user->password=Hash::make($request->password);
                 
@@ -65,6 +66,7 @@ class ProfileController extends Controller
                     request()->session()->put(
                         [
                             'image'=>$user->image?$user->image:$user->image,
+                            'userName'=>encryptor('encrypt',$user->name),
                         ]);
                     return redirect()->route(currentUser().'.profile.update')->with($this->resMessageHtml(true,null,'Successfully updated'));
                 }else{
