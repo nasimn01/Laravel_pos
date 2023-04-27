@@ -4,6 +4,13 @@
 @section('pageSubTitle',trans('Create'))
 
 @section('content')
+<style>
+    @media screen and (max-width: 800px) {
+  .tbl-scroll {
+    overflow: scroll;
+  }
+}
+</style>
   <!-- // Basic multiple Column Form section start -->
     <section id="multiple-column-form">
         <div class="row match-height">
@@ -94,24 +101,28 @@
                                         <input type="text" name="" id="item_search" class="form-control  ui-autocomplete-input" placeholder="Search Product">
                                     </div>
                                 </div>
-                                <table class="table mb-5">
-                                    <thead>
-                                        <tr class="bg-primary text-white">
-                                            <th class="p-2">{{__('Product Name')}}</th>
-                                            <th class="p-2">{{__('Qty')}}</th>
-                                            <th class="p-2">{{__('Sell Price')}}</th>
-                                            <th class="p-2">{{__('Tax %')}}</th>
-                                            <th class="p-2">{{__('Discount Type')}}</th>
-                                            <th class="p-2">{{__('Discount')}}</th>
-                                            <th class="p-2">{{__('Unit Cost')}}</th>
-                                            <th class="p-2">{{__('Total Amount')}}</th>
-                                            <th class="p-2">{{__('Action')}}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="details_data">
-
-                                    </tbody>
-                                </table>
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-md-12 tbl-scroll">
+                                        <table class="table mb-5">
+                                            <thead>
+                                                <tr class="bg-primary text-white">
+                                                    <th class="p-2">{{__('Product Name')}}</th>
+                                                    <th class="p-2">{{__('Qty')}}</th>
+                                                    <th class="p-2">{{__('Sell Price')}}</th>
+                                                    <th class="p-2">{{__('Tax %')}}</th>
+                                                    <th class="p-2">{{__('Discount Type')}}</th>
+                                                    <th class="p-2">{{__('Discount')}}</th>
+                                                    <th class="p-2">{{__('Unit Cost')}}</th>
+                                                    <th class="p-2">{{__('Total Amount')}}</th>
+                                                    <th class="p-2">{{__('Action')}}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="details_data">
+        
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
 
 
                                 <div class="row mb-5">

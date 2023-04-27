@@ -4,6 +4,13 @@
 @section('pageSubTitle',trans('Create'))
 
 @section('content')
+<style>
+    @media screen and (max-width: 800px) {
+  .tbl-scroll {
+    overflow: scroll;
+  }
+}
+</style>
     <section id="multiple-column-form">
         <div class="match-height">
             <div class="card">
@@ -95,7 +102,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12 col-sm-12 col-md-12">
+                                <div class="col-lg-12 col-sm-12 col-md-12 tbl-scroll">
                                     <table class="table mb-5">
                                         <thead>
                                             <tr class="bg-primary text-white">
