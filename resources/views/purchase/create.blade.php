@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12 col-sm-6 col-md-12">
+                                <div class="col-lg-12 col-sm-12 col-md-12">
                                     <table class="table mb-5">
                                         <thead>
                                             <tr class="bg-primary text-white">
