@@ -21,7 +21,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="role_id">{{__('Role')}}</label>
+                                            <label for="role_id">{{__('Role')}}<span class="text-danger">*</span></label>
                                             <select class="form-control" name="role_id" id="role_id">
                                                 <option value="">Select Role</option>
                                                 @forelse($roles as $r)
@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="userName">{{__('Name')}}</label>
+                                            <label for="userName">{{__('Name')}}<span class="text-danger">*</span></label>
                                             <input type="text" id="userName" class="form-control" value="{{ old('userName',$user->name)}}" name="userName">
                                             @if($errors->has('userName'))
                                                 <span class="text-danger"> {{ $errors->first('userName') }}</span>
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="contactNumber">{{__('Contact Number')}}</label>
+                                            <label for="contactNumber">{{__('Contact Number')}}<span class="text-danger">*</span></label>
                                             <input type="text" id="contactNumber" class="form-control" value="{{ old('contactNumber',$user->contact_no)}}" name="contactNumber">
                                             @if($errors->has('contactNumber'))
                                                 <span class="text-danger"> {{ $errors->first('contactNumber') }}</span>
@@ -84,7 +84,7 @@
                                 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="password">{{__('Password')}}</label>
+                                            <label for="password">{{__('Password')}}<span class="text-danger">*</span></label>
                                             <input type="password" id="password" class="form-control" name="password">
                                                 @if($errors->has('password'))
                                                     <span class="text-danger"> {{ $errors->first('password') }}</span>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Warehouse;
+namespace App\Http\Requests\Division;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,14 +24,14 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'contact' => 'required',
-            'branch' => 'required',
+            'country' => 'required',
+            'divisionName' => 'required|unique:divisions,name',
         ];
     }
     public function messages(){
         return [
-            'required' => "The :attribute filed is required"
+            'required' => "The :attribute filed is required",
+            'unique' => "This :attribute is already used. Please try another",
         ];
     }
 }

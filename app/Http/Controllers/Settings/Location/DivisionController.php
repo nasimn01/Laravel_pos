@@ -43,11 +43,11 @@ class DivisionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
         try{
             $division=new Division;
-            $division->country_id=$request->country_id;
+            $division->country_id=$request->country;
             $division->name=$request->divisionName;
             $division->name_bn=$request->divisionBn;
             if($division->save())
@@ -91,11 +91,11 @@ class DivisionController extends Controller
      * @param  \App\Models\Settings\Location\Division  $division
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$division)
+    public function update(UpdateRequest $request,$division)
     {
         try{
             $division=division::findOrFail(encryptor('decrypt',$division));
-            $division->country_id=$request->country_id;
+            $division->country_id=$request->country;
             $division->name=$request->divisionName;
             $division->name_bn=$request->divisionBn;
             if($division->save())

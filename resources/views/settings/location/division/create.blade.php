@@ -17,20 +17,23 @@
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="country_id">Country</label>
-                                            <select class="form-control form-select" name="country_id" id="country_id">
+                                            <label for="country_id">{{__('Country')}}<span class="text-danger">*</span></label>
+                                            <select class="form-control form-select" name="country" id="country">
                                                 <option value="">Select Country</option>
                                                 @forelse($countries as $d)
-                                                    <option value="{{$d->id}}" {{ old('country_id')==$d->id?"selected":""}}> {{ $d->name}}</option>
+                                                    <option value="{{$d->id}}" {{ old('country')==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
                                                     <option value="">No Country found</option>
                                                 @endforelse
                                             </select>
+                                            @if($errors->has('country'))
+                                            <span class="text-danger"> {{ $errors->first('country') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="divisionName">Division Name</label>
+                                            <label for="divisionName">{{__('Division Name')}}<span class="text-danger">*</span></label>
                                             <input type="text" id="divisionName" class="form-control" value="{{ old('divisionName')}}" name="divisionName">
                                             @if($errors->has('divisionName'))
                                                 <span class="text-danger"> {{ $errors->first('divisionName') }}</span>
@@ -39,7 +42,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="divisionBn">Division Bangla</label>
+                                            <label for="divisionBn">{{__('Division Bangla')}}</label>
                                             <input type="text" id="divisionBn" class="form-control" value="{{ old('divisionBn')}}" name="divisionBn">
                                         </div>
                                     </div>

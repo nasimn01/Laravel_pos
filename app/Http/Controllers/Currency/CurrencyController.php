@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Currency\Currency;
 use Illuminate\Http\Request;
+use App\Http\Requests\Currency\AddNewRequest;
+use App\Http\Requests\Currency\UpdateRequest;
 use App\Http\Traits\ResponseTrait;
 use Exception;
 
@@ -39,7 +41,7 @@ class CurrencyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
         try{
             $cur= new Currency;
@@ -87,7 +89,7 @@ class CurrencyController extends Controller
      * @param  \App\Models\Currency\Currency  $currency
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(UpdateRequest $request,$id)
     {
         try{
             $cur= Currency::findOrFail(encryptor('decrypt',$id));

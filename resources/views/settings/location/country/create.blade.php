@@ -17,7 +17,7 @@
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="countryName">Country Name</label>
+                                            <label for="countryName">{{__('Country Name')}}<span class="text-danger">*</span></label>
                                             <input type="text" id="countryName" class="form-control" value="{{ old('countryName')}}" name="countryName">
                                             @if($errors->has('countryName'))
                                                 <span class="text-danger"> {{ $errors->first('countryName') }}</span>
@@ -27,7 +27,7 @@
                                 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="countryCode">Country Code</label>
+                                            <label for="countryCode">{{__('Country Code')}}<span class="text-danger">*</span></label>
                                             <input type="text" id="countryCode" class="form-control" value="{{ old('countryCode')}}" name="countryCode">
                                             @if($errors->has('countryCode'))
                                                 <span class="text-danger"> {{ $errors->first('countryCode') }}</span>
@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="countryBn">Country Bangla</label>
+                                            <label for="countryBn">{{__('Country Bangla')}}</label>
                                             <input type="text" id="countryBn" class="form-control" value="{{ old('countryBn')}}" name="countryBn">
                                         </div>
                                     </div>

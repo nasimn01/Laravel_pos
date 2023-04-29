@@ -19,7 +19,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="userName">Name</label>
+                                            <label for="userName">{{__('Name')}}<span class="text-danger">*</span></label>
                                             <input type="text" id="userName" class="form-control" value="{{ old('userName')}}" name="userName">
                                             @if($errors->has('userName'))
                                                 <span class="text-danger"> {{ $errors->first('userName') }}</span>
@@ -29,7 +29,7 @@
                                 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="userEmail">Email</label>
+                                            <label for="userEmail">{{__('Email')}}</label>
                                             <input type="text" id="userEmail" class="form-control" value="{{ old('userEmail')}}" name="userEmail">
                                             @if($errors->has('userEmail'))
                                                 <span class="text-danger"> {{ $errors->first('userEmail') }}</span>
@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="contactNumber">Contact Number</label>
+                                            <label for="contactNumber">{{__('Contact Number')}}<span class="text-danger">*</span></label>
                                             <input type="text" id="contactNumber" class="form-control" value="{{ old('contactNumber')}}" name="contactNumber">
                                             @if($errors->has('contactNumber'))
                                                 <span class="text-danger"> {{ $errors->first('contactNumber') }}</span>
@@ -48,7 +48,7 @@
                                  
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="password">Password</label>
+                                            <label for="password">{{__('Password')}}<span class="text-danger">*</span></label>
                                             <input type="password" id="password" class="form-control" name="password">
                                                 @if($errors->has('password'))
                                                     <span class="text-danger"> {{ $errors->first('password') }}</span>
@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="image">Image</label>
+                                            <label for="image">{{__('Image')}}</label>
                                             <input type="file" id="image" class="form-control"
                                                 placeholder="Image" name="image">
                                                 @if($errors->has('image'))
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
                                     </div>
                                 </div>
                             </form>

@@ -16,17 +16,18 @@
                             <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$branch->id)}}">
                               <div class="row">
 
-                                  <div class="col-md-6 col-12">
+                                  <div class="col-lg-4 col-md-6 col-sm-12">
                                       <div class="form-group">
-                                          <label for="name">{{__('Branch')}}</label>
+                                          <label for="name">{{__('Branch')}}<span class="text-danger">*</span></label>
                                           <input type="text" id="name" value="{{ old('name',$branch->name)}}" class="form-control"
                                               placeholder="Branch Name" name="name">
+
+                                            @if($errors->has('name'))
+                                            <span class="text-danger"> {{ $errors->first('name') }}</span>
+                                            @endif
                                       </div>
-                                      @if($errors->has('name'))
-                                      <span class="text-danger"> {{ $errors->first('name') }}</span>
-                                      @endif
                                   </div>
-                                  <div class="col-md-6 col-12">
+                                  <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="thana">{{__('Currency')}}</label>
                                             <select class="form-control form-select" name="currency">
@@ -39,17 +40,18 @@
                                             </select>
                                         </div>
                                     </div>
-                                  <div class="col-md-6 col-12">
+                                  <div class="col-lg-4 col-md-6 col-sm-12">
                                       <div class="form-group">
-                                          <label for="contact">{{__('Contact')}}</label>
+                                          <label for="contact">{{__('Contact')}}<span class="text-danger">*</span></label>
                                           <input type="text" id="contact" value="{{ old('contact',$branch->contact)}}" class="form-control"
                                               placeholder="Branch contact" name="contact">
+
+                                            @if($errors->has('contact'))
+                                            <span class="text-danger"> {{ $errors->first('contact') }}</span>
+                                            @endif
                                       </div>
-                                      @if($errors->has('contact'))
-                                      <span class="text-danger"> {{ $errors->first('contact') }}</span>
-                                      @endif
                                   </div>
-                                  <div class="col-md-6 col-12">
+                                  <div class="col-lg-4 col-md-6 col-sm-12">
                                       <div class="form-group">
                                           <label for="binNumber">{{__('Bin Number')}}</label>
                                           <input type="text" id="binNumber" value="{{ old('binNumber',$branch->binNumber)}}" class="form-control"
@@ -57,7 +59,7 @@
                                       </div>
                                      
                                   </div>
-                                  <div class="col-md-6 col-12">
+                                  <div class="col-lg-4 col-md-6 col-sm-12">
                                       <div class="form-group">
                                           <label for="tradeNumber">{{__('Trade Number')}}</label>
                                           <input type="text" id="binNumber" value="{{ old('tradeNumber',$branch->tradeNumber)}}" class="form-control"
@@ -65,7 +67,7 @@
                                       </div>
                                      
                                   </div>
-                                  <div class="col-md-6 col-12">
+                                  <div class="col-lg-4 col-md-6 col-sm-12">
                                       <div class="form-group">
                                           <label class="from-label" for="address">{{__('Address')}}</label>
                                          <textarea class="form-control" name="address" id="address" rows="2">{{ old('address',$branch->address)}}</textarea>

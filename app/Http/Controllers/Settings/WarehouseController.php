@@ -48,7 +48,7 @@ class WarehouseController extends Controller
         try{
             $war= new Warehouse;
             $war->company_id=company()['company_id'];
-            $war->branch_id=$request->branch_id;
+            $war->branch_id=$request->branch;
             $war->name=$request->name;
             $war->contact=$request->contact;
             $war->address=$request->address;
@@ -100,7 +100,7 @@ class WarehouseController extends Controller
             $war= Warehouse::findOrFail(encryptor('decrypt',$id));
             $war->name=$request->name;
             $war->company_id=company()['company_id'];
-            $war->branch_id=$request->branch_id;
+            $war->branch_id=$request->branch;
             $war->address=$request->address;
             $war->contact=$request->contact;
 

@@ -17,7 +17,7 @@
                               <div class="row"> 
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
-                                          <label for="name">{{__('Currency')}}</label>
+                                          <label for="name">{{__('Currency')}}<span class="text-danger">*</span></label>
                                           <input type="text" id="name" value="{{ $currency->currency_name }}" class="form-control"
                                               placeholder="Currency Name" name="currency">
                                       </div>
@@ -27,7 +27,7 @@
                                   </div>
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
-                                          <label for="name">{{__('Symbol')}}</label>
+                                          <label for="name">{{__('Symbol')}}<span class="text-danger">*</span></label>
                                           <input type="text" id="Symbol" value="{{ $currency->currency_symbol }}" class="form-control"
                                               placeholder="Currency Name" name="symbol">
                                       </div>
@@ -37,7 +37,7 @@
                                   </div>
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
-                                          <label for="name">{{__('Port')}}</label>
+                                          <label for="name">{{__('Port')}}<span class="text-danger">*</span></label>
                                           <input type="text" id="port" value="{{ $currency->currency_port }}" class="form-control"
                                               placeholder="Currency Name" name="port">
                                       </div>
@@ -47,7 +47,7 @@
                                   </div>
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
-                                          <label for="name">{{__('Rate')}}</label>
+                                          <label for="name">{{__('Rate')}}<span class="text-danger">*</span></label>
                                           <input type="text" id="rate" value="{{ $currency->currency_rate }}" class="form-control"
                                               placeholder="Currency Name" name="rate">
                                       </div>

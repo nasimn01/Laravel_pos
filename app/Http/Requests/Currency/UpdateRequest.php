@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Warehouse;
+namespace App\Http\Requests\Currency;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -13,7 +13,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,9 +24,10 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'contact' => 'required',
-            'branch' => 'required',
+            'currency' => 'required',
+            'symbol' => 'required',
+            'port' => 'required',
+            'rate' => 'required',
         ];
     }
     public function messages(){

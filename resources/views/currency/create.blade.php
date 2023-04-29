@@ -15,43 +15,43 @@
                               <div class="row">
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
-                                          <label for="name">{{__('Currency')}}</label>
+                                          <label for="name">{{__('Currency')}}<span class="text-danger">*</span></label>
                                           <input type="text" id="name" class="form-control"
                                               placeholder="Currency Name" name="currency">
+                                              @if($errors->has('currency'))
+                                              <span class="text-danger"> {{ $errors->first('currency') }}</span>
+                                              @endif
                                       </div>
-                                      @if($errors->has('currency'))
-                                      <span class="text-danger"> {{ $errors->first('currency') }}</span>
-                                      @endif
                                   </div>
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
-                                          <label for="name">{{__('Symbol')}}</label>
+                                          <label for="name">{{__('Symbol')}}<span class="text-danger">*</span></label>
                                           <input type="text" id="Symbol" class="form-control"
                                               placeholder="Currency Symbol" name="symbol">
+                                              @if($errors->has('currency'))
+                                              <span class="text-danger"> {{ $errors->first('currency') }}</span>
+                                              @endif
                                       </div>
-                                      @if($errors->has('currency'))
-                                      <span class="text-danger"> {{ $errors->first('currency') }}</span>
-                                      @endif
                                   </div>
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
-                                          <label for="name">{{__('Port')}}</label>
+                                          <label for="name">{{__('Port')}}<span class="text-danger">*</span></label>
                                           <input type="text" id="port" class="form-control"
                                               placeholder="Currency port" name="port">
+                                              @if($errors->has('currency'))
+                                              <span class="text-danger"> {{ $errors->first('currency') }}</span>
+                                              @endif
                                       </div>
-                                      @if($errors->has('currency'))
-                                      <span class="text-danger"> {{ $errors->first('currency') }}</span>
-                                      @endif
                                   </div>
                                   <div class="col-md-6 col-12">
                                       <div class="form-group">
-                                          <label for="name">{{__('Rate')}}</label>
+                                          <label for="name">{{__('Rate')}}<span class="text-danger">*</span></label>
                                           <input type="text" id="rate" class="form-control"
                                               placeholder="Currency rate" name="rate">
+                                              @if($errors->has('currency'))
+                                              <span class="text-danger"> {{ $errors->first('currency') }}</span>
+                                              @endif
                                       </div>
-                                      @if($errors->has('currency'))
-                                      <span class="text-danger"> {{ $errors->first('currency') }}</span>
-                                      @endif
                                   </div>
                                
                                   
