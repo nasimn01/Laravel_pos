@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Settings\Location\District;
 use App\Models\Settings\Location\Upazila;
 use Illuminate\Http\Request;
-use App\Http\Requests\Division\AddNewRequest;
-use App\Http\Requests\Division\UpdateRequest;
+use App\Http\Requests\Upazila\AddNewRequest;
+use App\Http\Requests\Upazila\UpdateRequest;
 use App\Http\Traits\ResponseTrait;
 use Exception;
 
@@ -43,7 +43,7 @@ class UpazilaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
         try{
             $upazila=new Upazila;
@@ -91,7 +91,7 @@ class UpazilaController extends Controller
      * @param  \App\Models\Settings\Location\Upazila  $upazila
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $upazila)
+    public function update(UpdateRequest $request, $upazila)
     {
         try{
             $upazila=upazila::findOrFail(encryptor('decrypt',$upazila));

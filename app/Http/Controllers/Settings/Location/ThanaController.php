@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Settings\Location\Thana;
 use App\Models\Settings\Location\Upazila;
 use Illuminate\Http\Request;
-use App\Http\Requests\District\AddNewRequest;
-use App\Http\Requests\District\UpdateRequest;
+use App\Http\Requests\Thana\AddNewRequest;
+use App\Http\Requests\Thana\UpdateRequest;
 use App\Http\Traits\ResponseTrait;
 use Exception;
 
@@ -43,7 +43,7 @@ class ThanaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
         try{
             $thana=new Thana;
@@ -91,7 +91,7 @@ class ThanaController extends Controller
      * @param  \App\Models\Settings\Location\Thana  $thana
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $thana)
+    public function update(UpdateRequest $request, $thana)
     {
         try{
             $thana= Thana::findOrFail(encryptor('decrypt',$thana));

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Division;
+namespace App\Http\Requests\District;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
@@ -26,8 +26,8 @@ class UpdateRequest extends FormRequest
     {
         $id=encryptor('decrypt',$r->uptoken);
         return [
-            'country' => 'required',
-            'divisionName' => 'required|unique:divisions,name,'.$id,
+            'division_id' => 'required',
+            'districtName' => 'required|unique:districts,name,'.$id,
         ];
     }
     public function messages(){

@@ -15,13 +15,13 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="name">{{__('Category')}}</label>
+                                            <label for="name">{{__('Category')}}<span class="text-danger">*</span></label>
                                             <input type="text" id="name" class="form-control"
                                                 placeholder="Category Name" name="category">
+                                                @if($errors->has('category'))
+                                                <span class="text-danger"> {{ $errors->first('category') }}</span>
+                                                @endif
                                         </div>
-                                        @if($errors->has('category'))
-                                        <span class="text-danger"> {{ $errors->first('category') }}</span>
-                                        @endif
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">

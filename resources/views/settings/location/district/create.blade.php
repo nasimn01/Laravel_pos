@@ -17,7 +17,7 @@
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="division_id">Division</label>
+                                            <label for="division_id">Division<span class="text-danger">*</span></label>
                                             <select class="form-control form-select" name="division_id" id="division_id">
                                                 <option value="">Select Division</option>
                                                 @forelse($divisions as $d)
@@ -26,11 +26,14 @@
                                                     <option value="">No Division found</option>
                                                 @endforelse
                                             </select>
+                                            @if($errors->has('division_id'))
+                                                <span class="text-danger"> {{ $errors->first('division_id') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="districtName">District Name</label>
+                                            <label for="districtName">District Name<span class="text-danger">*</span></label>
                                             <input type="text" id="districtName" class="form-control" value="{{ old('districtName')}}" name="districtName">
                                             @if($errors->has('districtName'))
                                                 <span class="text-danger"> {{ $errors->first('districtName') }}</span>

@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Division;
+namespace App\Http\Requests\Upazila;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
 
-class UpdateRequest extends FormRequest
+class AddNewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,12 +21,11 @@ class UpdateRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules(Request $r)
+    public function rules()
     {
-        $id=encryptor('decrypt',$r->uptoken);
         return [
-            'country' => 'required',
-            'divisionName' => 'required|unique:divisions,name,'.$id,
+            'district_id' => 'required',
+            'upazilaName' => 'required|unique:upazilas,name',
         ];
     }
     public function messages(){

@@ -16,7 +16,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="Category">{{__('Category')}}</label>
+                                        <label for="Category">{{__('Category')}}<span class="text-danger">*</span></label>
                                         <select class="form-control form-select" name="category" id="category">
                                             <option value="">Select Category</option>
                                             @forelse($categories as $cat)
@@ -34,13 +34,13 @@
                                 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="Sub Category">{{__('Sub Category')}}</label>
+                                        <label for="Sub Category">{{__('Sub Category')}}<span class="text-danger">*</span></label>
                                         <input type="text" id="subCat" class="form-control"
                                             placeholder="Subcategory Name" value="{{ old('subCat')}}" name="subCat">
+                                            @if($errors->has('subCat'))
+                                            <span class="text-danger"> {{ $errors->first('subCat') }}</span>
+                                            @endif
                                     </div>
-                                    @if($errors->has('subCat'))
-                                    <span class="text-danger"> {{ $errors->first('subCat') }}</span>
-                                    @endif
                                 </div>
 
                                 <div class="col-12 d-flex justify-content-start">

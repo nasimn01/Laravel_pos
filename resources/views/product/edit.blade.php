@@ -18,7 +18,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="Category">{{__('Category')}}</label>
+                                            <label for="Category">{{__('Category')}}<span class="text-danger">*</span></label>
                                             <select onchange="show_subcat(this.value)" class="form-control form-select" name="category" id="category">
                                                 <option value="">Select Category</option>
                                                 @forelse($categories as $cat)
@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="Product Name">{{__('Name')}}</label>
+                                            <label for="Product Name">{{__('Name')}}<span class="text-danger">*</span></label>
                                             <input type="text" id="productName" class="form-control"
                                                 placeholder="Product Name" value="{{ old('productName',$product->product_name)}}" name="productName">
                                               
@@ -95,7 +95,7 @@
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="price">{{__('Sell Price')}}</label>
+                                            <label for="price">{{__('Sell Price')}}<span class="text-danger">*</span></label>
                                             <input type="text" id="price" class="form-control" placeholder="Price" value="{{ old('price',$product->price)}}" name="price">
                                         </div>
                                     </div>

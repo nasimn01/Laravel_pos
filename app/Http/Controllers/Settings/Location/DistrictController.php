@@ -42,7 +42,7 @@ class DistrictController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
         try{
             $district=new district;
@@ -76,10 +76,10 @@ class DistrictController extends Controller
      * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function edit($district)
+    public function edit($id)
     {
        $divisions=Division::all();
-       $district=District::findOrFail(encryptor('decrypt',$district));
+       $district=District::findOrFail(encryptor('decrypt',$id));
        return view('settings.location.district.edit',compact('district','divisions'));
     }
 
@@ -90,10 +90,10 @@ class DistrictController extends Controller
      * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $district)
+    public function update(UpdateRequest $request, $id)
     {
         try{
-            $district=district::findOrFail(encryptor('decrypt',$district));
+            $district=district::findOrFail(encryptor('decrypt',$id));
             $district->division_id=$request->division_id;
             $district->name=$request->districtName;
             $district->name_bn=$request->districtBn;

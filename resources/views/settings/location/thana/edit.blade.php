@@ -18,20 +18,23 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="upazila_id">Upazila</label>
+                                            <label for="upazila_id">Upazila<span class="text-danger">*</span></label>
                                             <select class="form-control form-select" name="upazila_id" id="upazila_id">
                                                 <option value="">Select Upazila</option>
                                                 @forelse($upazilas as $d)
-                                                    <option value="{{$d->id}}" {{ old('thana_id',$thana->thana_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
+                                                    <option value="{{$d->id}}" {{ old('upazila_id',$thana->upazila_id)==$d->id?"selected":""}}> {{ $d->name}}</option>
                                                 @empty
                                                     <option value="">No Upazila found</option>
                                                 @endforelse
                                             </select>
+                                            @if($errors->has('upazila_id'))
+                                                <span class="text-danger"> {{ $errors->first('upazila_id') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="thanaName">Thana Name</label>
+                                            <label for="thanaName">Thana Name<span class="text-danger">*</span></label>
                                             <input type="text" id="thanaName" class="form-control" value="{{ old('thanaName',$thana->name)}}" name="thanaName">
                                             @if($errors->has('thanaName'))
                                                 <span class="text-danger"> {{ $errors->first('thanaName') }}</span>
