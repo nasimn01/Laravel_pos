@@ -62,9 +62,9 @@
                                 <td>{{$s->status}}</td>
                                 <td>{{$s->payment_status}}</td>
                                 <td class="white-space-nowrap">
-                                    <a href="{{route(currentUser().'.sales.edit',encryptor('encrypt',$s->id))}}">
+                                    {{-- <a href="{{route(currentUser().'.sales.edit',encryptor('encrypt',$s->id))}}">
                                         <i class="bi bi-pencil-square"></i>
-                                    </a>
+                                    </a> --}}
                                     {{--<a href="javascript:void()" onclick="$('#form{{$s->id}}').submit()">
                                         <i class="bi bi-trash"></i>
                                     </a>

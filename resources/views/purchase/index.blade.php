@@ -60,7 +60,7 @@
                                 <td>{{$pur->status}}</td>
                                 <td>{{$pur->payment_status}}</td>
                                 <td class="white-space-nowrap">
-                                    <a href="{{route(currentUser().'.purchase.edit',encryptor('encrypt',$pur->id))}}">
+                                    {{-- <a href="{{route(currentUser().'.purchase.edit',encryptor('encrypt',$pur->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
                                     <a href="javascript:void()" onclick="$('#form{{$pur->id}}').submit()">
@@ -69,7 +69,7 @@
                                     <form id="form{{$pur->id}}" action="{{route(currentUser().'.purchase.destroy',encryptor('encrypt',$pur->id))}}" method="post">
                                         @csrf
                                         @method('delete')
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                             @empty
