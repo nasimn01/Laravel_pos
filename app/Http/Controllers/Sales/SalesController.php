@@ -143,8 +143,8 @@ class SalesController extends Controller
                         $pd->product_id=$product_id;
                         $pd->quantity=$request->qty[$i];
                         $pd->unit_price=$request->price[$i];
-                        $pd->tax=$request->tax[$i];
-
+                        $pd->tax=$request->tax[$i]>0?$request->tax[$i]:0;
+                        
                         $pd->discount_type=$request->discount_type[$i];
                         $pd->discount=$request->discount[$i];
                         $pd->sub_amount=$request->unit_cost[$i];

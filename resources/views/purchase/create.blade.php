@@ -359,7 +359,7 @@ function get_cal(e){
     $(e).parents('tr').find('.tax_cal').val(tax)
 
   var unit_cost = ((purchase_price + tax));
-  var subtotal = ((unit_cost * qty) - discount);
+  var subtotal = ((unit_cost * qty) - (discount * qty));
 
   $(e).parents('tr').find('.unit_cost').val(unit_cost);
   $(e).parents('tr').find('.subtotal').val(subtotal);

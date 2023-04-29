@@ -332,28 +332,28 @@ function return_row_with_data(item_id){
     let warehouse_id=$('#warehouse_id').val();
 
     $.ajax({
-            autoFocus:true,
-                url: "{{route(currentUser().'.sales.product_sc_d')}}",
-                method: 'GET',
-                dataType: 'json',
-                data: {
-                    item_id: item_id,branch_id:branch_id,warehouse_id:warehouse_id
-                },
-                success: function(res){
-                    $('#details_data').append(res);
-                    $("#item_search").val('');
-                    $("#item_search").removeClass('ui-autocomplete-loader-center');
-                },error: function(e){
-                    console.log("error "+e);
-                }
-            });
+        autoFocus:true,
+        url: "{{route(currentUser().'.sales.product_sc_d')}}",
+        method: 'GET',
+        dataType: 'json',
+        data: {
+            item_id: item_id,branch_id:branch_id,warehouse_id:warehouse_id
+        },
+        success: function(res){
+            $('#details_data').append(res);
+            $("#item_search").val('');
+            $("#item_search").removeClass('ui-autocomplete-loader-center');
+        },error: function(e){
+            console.log("error "+e);
+        }
+    });
 	
 }
 //INCREMENT ITEM
 function removerow(e){
   $(e).parents('tr').remove();
 }
-
+//END
 //CALCUALATED SALES PRICE
 function get_cal(e){
   var purchase_price = (isNaN(parseFloat($(e).parents('tr').find('.price').val().trim()))) ? 0 :parseFloat($(e).parents('tr').find('.price').val().trim()); 
@@ -376,7 +376,7 @@ function get_cal(e){
     $(e).parents('tr').find('.tax_cal').val(tax)
 
   var unit_cost = ((purchase_price + tax));
-  var subtotal = ((unit_cost * qty) - discount);
+  var subtotal = ((unit_cost * qty) - (discount * qty));
 
   $(e).parents('tr').find('.unit_cost').val(unit_cost);
   $(e).parents('tr').find('.subtotal').val(subtotal);
@@ -420,7 +420,7 @@ function check_change(){
 
     cal_grandtotl()
 }
-
+//END
 function cal_grandtotl(){
     var tsubtotal_p=(isNaN(parseFloat($('.tsubtotal_p').val().trim()))) ? 0 :parseFloat($('.tsubtotal_p').val().trim());
     var other_charge=(isNaN(parseFloat($('#other_charge').val().trim()))) ? 0 :parseFloat($('#other_charge').val().trim());
@@ -436,6 +436,6 @@ function cal_grandtotl(){
              $(".tgrandtotal_p").val(parseFloat(roundof).toFixed(2)); 
 
 }
-
+//END
 </script>
 @endpush

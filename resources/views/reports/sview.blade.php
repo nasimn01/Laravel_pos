@@ -11,31 +11,20 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="#">
-                                @csrf
+                            <form class="form" method="get" action="">
                                 <div class="row">
-                                    
-
-
                                     <div class="col-md-2 mt-2">
                                         <label for="fdate" class="float-end"><h6>{{__('From Date')}}</h6></label>
                                     </div>
                                     <div class="col-md-4">
                                         <input type="date" id="fdate" class="form-control" value="{{ old('fdate')}}" name="fdate">
                                     </div>
-
-
                                     <div class="col-md-2 mt-2">
                                         <label for="tdate" class="float-end"><h6>{{__('To Date')}}</h6></label>
                                     </div>
                                     <div class="col-md-4">
                                         <input type="date" id="tdate" class="form-control" value="{{ old('tdate')}}" name="tdate">
                                     </div>
-
-
-                                    
-
-
                                 </div>
                                 <div class="row m-4">
                                     <div class="col-6 d-flex justify-content-end">

@@ -37,9 +37,15 @@ class ReportController extends Controller
         return view('reports.pview',compact('data','suppliers'));
     }
 
-    public function stockreport()
+    public function stockreport(Request $request)
     {
-        $stock= DB::select("SELECT products.product_name,stocks.*,sum(stocks.quantity) as qty, AVG(stocks.unit_price) as avunitprice FROM `stocks` join products on products.id=stocks.product_id GROUP BY stocks.product_id");
+        $where=false;
+        if($request->fdate){
+            $tdate=$request->tdate?$request->tdate:$request->fdate;
+            $where=" where (date(stocks.`created_at`) BETWEEN '".$request->fdate."' and '".$tdate."') ";
+        }
+
+        $stock= DB::select("SELECT products.product_name,stocks.*,sum(stocks.quantity) as qty, AVG(stocks.unit_price) as avunitprice FROM `stocks` join products on products.id=stocks.product_id $where GROUP BY stocks.product_id");
         return view('reports.sview',compact('stock'));
     }
 
@@ -47,8 +53,6 @@ class ReportController extends Controller
 
     public function salesReport(Request $request)
     {
-        
-
         $data = Sales::where(company());
 
         if($request->fdate){
