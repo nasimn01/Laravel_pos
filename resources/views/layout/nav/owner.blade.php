@@ -112,12 +112,7 @@
                     <li class="py-1"><a href="{{route(currentUser().'.supplier.create')}}">{{__('Add New')}}</a></li>
                 </ul>
             </li>
-            <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'>{{__('Supplier Payment')}}</a>
-                <ul class="submenu">
-                    <li class="py-1"><a href="{{route(currentUser().'.customer.index')}}">{{__('List')}}</a></li>
-                    <li class="py-1"><a href="{{route(currentUser().'.customer.create')}}">{{__('Add New')}}</a></li>
-                </ul>
-            </li>
+            
 		</ul>
         
     </li>
@@ -133,12 +128,7 @@
                     <li class="py-1"><a href="{{route(currentUser().'.customer.create')}}">{{__('Add New')}}</a></li>
                 </ul>
             </li>
-            <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'>{{__('Customer Payment')}}</a>
-                <ul class="submenu">
-                    <li class="py-1"><a href="{{route(currentUser().'.customer.index')}}">{{__('List')}}</a></li>
-                    <li class="py-1"><a href="{{route(currentUser().'.customer.create')}}">{{__('Add New')}}</a></li>
-                </ul>
-            </li>
+            
 		</ul>
         
     </li>

@@ -153,8 +153,10 @@ class SupplierController extends Controller
      * @param  \App\Models\Suppliers\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(supplier $supplier)
+    public function destroy($id)
     {
-        //
+        $cat= supplier::findOrFail(encryptor('decrypt',$id));
+        $cat->delete();
+        return redirect()->back();
     }
 }

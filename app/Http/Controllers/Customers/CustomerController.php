@@ -151,8 +151,10 @@ class CustomerController extends Controller
      * @param  \App\Models\Customers\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(customer $customer)
+    public function destroy($id)
     {
-        //
+        $cat= customer::findOrFail(encryptor('decrypt',$id));
+        $cat->delete();
+        return redirect()->back();
     }
 }
