@@ -28,8 +28,8 @@ return new class extends Migration
             $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade');
             $table->unsignedBigInteger('district_id')->nullable()->index();
             $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
-            $table->string('post_code');
-            $table->string('address', 5000);
+            $table->string('post_code')->nullable();
+            $table->string('address', 5000)->nullable();
             $table->unsignedBigInteger('company_id')->nullable()->index();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->unsignedBigInteger('branch_id')->nullable()->index();
