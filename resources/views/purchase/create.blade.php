@@ -21,7 +21,7 @@
                             <div class="row">
                                 @if( currentUser()=='owner')
                                     <div class="col-md-2 mt-2">
-                                        <label for="branch_id" class="float-end" ><h6>Branches Name</h6></label>
+                                        <label for="branch_id" class="float-end" ><h6>Branches Name<span class="text-danger">*</span></h6></label>
                                     </div>
                                     <div class="col-md-4 form-group">
                                         <select required onchange="change_data(this.value)" class="form-control form-select" name="branch_id" id="branch_id">
@@ -43,7 +43,7 @@
                                 
                                     
                                 <div class="col-md-2 mt-2">
-                                    <label for="supplierName" class="float-end"><h6>Supplier</h6></label>
+                                    <label for="supplierName" class="float-end"><h6>Supplier<span class="text-danger">*</span></h6></label>
                                 </div>
                                 <div class="col-md-4">
                                     
@@ -63,7 +63,7 @@
 
 
                                 <div class="col-md-2 mt-2">
-                                    <label for="warehouse_id" class="float-end"><h6>Warehouse</h6></label>
+                                    <label for="warehouse_id" class="float-end"><h6>Warehouse<span class="text-danger">*</span></h6></label>
                                 </div>
                                 <div class="col-md-4">
                                     <select required class="form-control form-select" name="warehouse_id" id="warehouse_id">
