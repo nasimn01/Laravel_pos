@@ -16,10 +16,10 @@
                                 <div class="row">
                                     @if( currentUser()=='owner')
                                         <div class="col-md-2 mt-2">
-                                            <label for="branch_id" class="float-end" ><h6>{{__('From Branches')}}</h6></label>
+                                            <label for="branch_id" class="float-end" ><h6>{{__('From Branches')}}<span class="text-danger">*</span></h6></label>
                                         </div>
                                         <div class="col-md-4 form-group">
-                                            <select onchange="change_data(this.value)" class="form-control form-select" name="branch_id" id="branch_id">
+                                            <select required onchange="change_data(this.value)" class="form-control form-select" name="branch_id" id="branch_id">
                                             <option value="">Select Branches</option>
                                                 @forelse($branches as $b)
                                                     <option value="{{ $b->id }}" {{old('branch_id')==$b->id?'selected':''}}>{{ $b->name }}</option>
@@ -37,10 +37,10 @@
                                     @endif
 
                                     <div class="col-md-2 mt-2">
-                                        <label for="branch_idt" class="float-end" ><h6>{{__('To Branches')}}</h6></label>
+                                        <label for="branch_idt" class="float-end" ><h6>{{__('To Branches')}}<span class="text-danger">*</span></h6></label>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <select onchange="change_data_bt(this.value)" class="form-control form-select" id="branch_idt">
+                                        <select required onchange="change_data_bt(this.value)" class="form-control form-select" id="branch_idt">
                                         <option value="">Select Branches</option>
                                             @forelse($branches as $b)
                                                 <option value="{{ $b->id }}" {{old('branch_id')==$b->id?'selected':''}}>{{ $b->name }}</option>
@@ -54,10 +54,10 @@
                                     @endif
 
                                     <div class="col-md-2 mt-2">
-                                        <label for="warehouse_from" class="float-end"><h6>{{__('From Warehouse')}}</h6></label>
+                                        <label for="warehouse_from" class="float-end"><h6>{{__('From Warehouse')}}<span class="text-danger">*</span></h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="form-control form-select" name="warehouse_from" id="warehouse_id">
+                                        <select required class="form-control form-select" name="warehouse_from" id="warehouse_id">
                                         <option value="">Select Warehouse</option>
                                             @forelse($warehouses as $d)
                                                 <option class="brnch brnch{{$d->branch_id}}" value="{{$d->id}}" {{ old('warehouse_from')==$d->id?"selected":""}}> {{ $d->name}}</option>
@@ -69,10 +69,10 @@
 
 
                                     <div class="col-md-2 mt-2">
-                                        <label for="warehouse" class="float-end"><h6>{{__("To Warehouse")}}</h6></label>
+                                        <label for="warehouse" class="float-end"><h6>{{__("To Warehouse")}}<span class="text-danger">*</span></h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="form-control form-select" name="warehouse_to" id="warehouse_to">
+                                        <select required class="form-control form-select" name="warehouse_to" id="warehouse_to">
                                         <option value="">Select Warehouse</option>
                                             @forelse($warehouses as $d)
                                                 <option class="brncht brncht{{$d->branch_id}}" value="{{$d->id}}" {{ old('warehouse_to')==$d->id?"selected":""}}> {{ $d->name}}</option>
@@ -89,10 +89,10 @@
                                     
 
                                     <div class="col-md-2 mt-2">
-                                        <label for="date" class="float-end"><h6>{{__('Date')}}</h6></label>
+                                        <label for="date" class="float-end"><h6>{{__('Date')}}<span class="text-danger">*</span></h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="date" id="transfer_date" class="form-control" value="{{ old('transfer_date')}}" name="transfer_date">
+                                        <input type="date" id="transfer_date" class="form-control" value="{{ old('transfer_date')}}" name="transfer_date" required>
                                     </div>
 
                                 </div>
