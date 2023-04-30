@@ -19,7 +19,7 @@
                                         @if( currentUser()=='owner')
                                             <div class="col-md-4 col-12">
                                                 <div class="form-group">
-                                                    <label for="branch_id">{{__('Branches Name')}}</label>
+                                                    <label for="branch_id">{{__('Branches Name')}}<span class="text-danger">*</span></label>
                                                     <select class="form-control form-select" name="branch_id" id="branch_id">
                                                         @forelse($branches as $b)
                                                             <option value="{{ $b->id }}" {{old('branch_id')==$b->id?"selected":""}}>{{ $b->name }}</option>
@@ -27,8 +27,8 @@
                                                             <option value="">No branch found</option>
                                                         @endforelse
                                                     </select>
-                                                    @if($errors->has('supplierName'))
-                                                    <span class="text-danger"> {{ $errors->first('supplierName') }}</span>
+                                                    @if($errors->has('branch_id'))
+                                                    <span class="text-danger"> {{ $errors->first('branch_id') }}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -38,7 +38,7 @@
 
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="supplierName">{{__('Supplier Name')}}</label>
+                                            <label for="supplierName">{{__('Supplier Name')}}<span class="text-danger">*</span></label>
                                             <input type="text" id="supplierName" class="form-control" value="{{ old('supplierName')}}" name="supplierName">
                                             @if($errors->has('supplierName'))
                                             <span class="text-danger"> {{ $errors->first('supplierName') }}</span>
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="contact">{{__('Contact')}}</label>
+                                            <label for="contact">{{__('Contact')}}<span class="text-danger">*</span></label>
                                             <input type="text" id="contact" class="form-control" value="{{ old('contact')}}" name="contact">
                                             @if($errors->has('contact'))
                                             <span class="text-danger"> {{ $errors->first('contact') }}</span>
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="countryName">{{__('Country')}}</label>
+                                            <label for="countryName">{{__('Country')}}<span class="text-danger">*</span></label>
                                             <select onchange="show_division(this.value)" class="form-control form-select" name="countryName" id="countryName">
                                                 <option value="">Select Country</option>
                                                 @forelse($countries as $d)

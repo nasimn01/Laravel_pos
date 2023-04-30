@@ -14,10 +14,10 @@
                             <form class="form" method="post" action="{{route(currentUser().'.customer.store')}}">
                                 @csrf
                                 <div class="row">
-                                    @if( currentUser()=='owner')
+                                    {{-- @if( currentUser()=='owner')
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
-                                                <label for="branch_id">{{__('Branches Name')}}</label>
+                                                <label for="branch_id">{{__('Branches Name')}}<span class="text-danger">*</span></label>
                                                 <select class="form-control form-select" name="branch_id" id="branch_id">
                                                     @forelse($branches as $b)
                                                         <option value="{{ $b->id }}" {{old('branch_id')==$b->id?'selected':''}}>{{ $b->name }}</option>
@@ -25,19 +25,16 @@
                                                         <option value="">No branch found</option>
                                                     @endforelse
                                                 </select>
-                                                @if($errors->has('customerName'))
-                                                <span class="text-danger"> {{ $errors->first('customerName') }}</span>
-                                                @endif
                                             </div>
                                         </div>
                                     @else
                                         <input type="hidden" value="{{ branch()['branch_id']}}" name="branch_id">
-                                    @endif
+                                    @endif --}}
 
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="customerName">{{__('Customer Name')}}</label>
-                                            <input type="text" id="customerName" class="form-control" value="{{ old('customerName')}}" name="customerName">
+                                            <label for="customerName">{{__('Customer Name')}}<span class="text-danger">*</span></label>
+                                            <input type="text" id="customerName" class="form-control" value="{{ old('customerName')}}" name="customerName" required>
                                             @if($errors->has('customerName'))
                                             <span class="text-danger"> {{ $errors->first('customerName') }}</span>
                                             @endif
@@ -45,8 +42,8 @@
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="contact">{{__('Contact')}}</label>
-                                            <input type="text" id="contact" class="form-control" value="{{ old('contact')}}" name="contact">
+                                            <label for="contact">{{__('Contact')}}<span class="text-danger">*</span></label>
+                                            <input type="text" id="contact" class="form-control" value="{{ old('contact')}}" name="contact" required>
                                             @if($errors->has('contact'))
                                             <span class="text-danger"> {{ $errors->first('contact') }}</span>
                                             @endif
