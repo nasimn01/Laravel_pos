@@ -16,7 +16,7 @@
                                 @method('PATCH')
                                 <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$thana->id)}}">
                                 <div class="row">
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="upazila_id">Upazila<span class="text-danger">*</span></label>
                                             <select class="form-control form-select" name="upazila_id" id="upazila_id">
@@ -32,7 +32,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="thanaName">Thana Name<span class="text-danger">*</span></label>
                                             <input type="text" id="thanaName" class="form-control" value="{{ old('thanaName',$thana->name)}}" name="thanaName">
@@ -41,7 +41,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="thanaBn">Thana Bangla</label>
                                             <input type="text" id="thanaBn" class="form-control" value="{{ old('thanaBn',$thana->name_bn)}}" name="thanaBn">
