@@ -16,7 +16,7 @@
                                 @method('PATCH')
                                 <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$upazila->id)}}">
                                 <div class="row">
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="district_id">District<span class="text-danger">*</span></label>
                                             <select class="form-control form-select" name="district_id" id="district_id">
@@ -32,7 +32,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="upazilaName">Upazila Name<span class="text-danger">*</span></label>
                                             <input type="text" id="upazilaName" class="form-control" value="{{ old('upazilaName',$upazila->name)}}" name="upazilaName">
@@ -41,7 +41,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="upazilaBn">Upazila Bangla</label>
                                             <input type="text" id="upazilaBn" class="form-control" value="{{ old('upazilaBn',$upazila->name_bn)}}" name="upazilaBn">
