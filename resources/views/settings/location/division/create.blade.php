@@ -15,7 +15,7 @@
                                 @csrf
                                 <div class="row">
                                     
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="country_id">{{__('Country')}}<span class="text-danger">*</span></label>
                                             <select class="form-control form-select" name="country" id="country">
@@ -31,7 +31,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="divisionName">{{__('Division Name')}}<span class="text-danger">*</span></label>
                                             <input type="text" id="divisionName" class="form-control" value="{{ old('divisionName')}}" name="divisionName">
@@ -40,7 +40,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="divisionBn">{{__('Division Bangla')}}</label>
                                             <input type="text" id="divisionBn" class="form-control" value="{{ old('divisionBn')}}" name="divisionBn">
