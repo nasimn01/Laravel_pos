@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle',trans('Create Thanas'))
+@section('pageTitle',trans('Create Thana'))
 @section('pageSubTitle',trans('Create'))
 
 @section('content')
