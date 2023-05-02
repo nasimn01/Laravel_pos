@@ -15,7 +15,7 @@
                                 @csrf
                                 <div class="row">
                                     
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="division_id">Division<span class="text-danger">*</span></label>
                                             <select class="form-control form-select" name="division_id" id="division_id">
@@ -31,7 +31,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="districtName">District Name<span class="text-danger">*</span></label>
                                             <input type="text" id="districtName" class="form-control" value="{{ old('districtName')}}" name="districtName">
@@ -40,7 +40,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="districtBn">District Bangla</label>
                                             <input type="text" id="districtBn" class="form-control" value="{{ old('districtBn')}}" name="districtBn">
