@@ -85,7 +85,7 @@
                                         <label for="date" class="float-end"><h6>{{__('Date')}}<span class="text-danger">*</span></h6></label>
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="date" id="sales_date" class="form-control" value="{{ old('sales_date')}}" name="sales_date" required>
+                                        <input type="text" id="datepicker" class="form-control" value="{{ old('sales_date')}}" name="sales_date" placeholder="dd/mm/yyyy" required>
                                     </div>
 
 
