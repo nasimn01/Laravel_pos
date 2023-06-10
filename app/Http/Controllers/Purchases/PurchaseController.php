@@ -195,7 +195,7 @@ class PurchaseController extends Controller
      */
     public function edit(Purchase $purchase)
     {
-        //
+        
     }
 
     /**
