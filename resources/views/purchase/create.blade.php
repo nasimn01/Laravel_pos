@@ -421,5 +421,4 @@ function cal_grandtotl(){
 }
 
 </script>
-
 @endpush
