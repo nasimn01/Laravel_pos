@@ -14,7 +14,6 @@
                 <div>
                     <a class="float-end" href="{{route(currentUser().'.purchase.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                 </div>
-                <!-- table bordered -->
                 <div class="table-responsive">
                     <table class="table table-bordered mb-0">
                         <thead>
