@@ -11,6 +11,7 @@
 <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.svg') }}" type="image/x-icon">
 <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png') }}" type="image/png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     
 <link rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
 <script
@@ -22,7 +23,7 @@
 <body>
 <div id="auth">
     <div class="row h-100">
-        <div class="col-lg-6 offset-3 col-12">
+        <div class="col-lg-6 offset-lg-3 col-sm-12">
             <div id="auth-left">
                 <div class="auth-logo text-center">
                     <a href="#"><img src="{{ asset('assets/images/logo/logo1.svg')}}" alt="Logo"></a>
