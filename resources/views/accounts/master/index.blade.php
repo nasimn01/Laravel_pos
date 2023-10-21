@@ -52,7 +52,4 @@
             </div>
     </div>
 </section>
-<!-- Bordered table end -->
-
-
 @endsection
