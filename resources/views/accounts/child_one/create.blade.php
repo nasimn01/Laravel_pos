@@ -13,7 +13,6 @@
                         <form class="form" method="post" action="{{route(currentUser().'.child_one.store')}}">
                             @csrf
                             <div class="row">
-
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="sub_head">{{__('Sub Head')}}</label>

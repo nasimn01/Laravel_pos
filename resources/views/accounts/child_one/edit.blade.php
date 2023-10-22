@@ -15,9 +15,6 @@
                             @method('patch')
                             <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$child->id)}}">
                             <div class="row">
-                                
-
-                                
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="sub_head">{{__('Sub Head')}}</label>
