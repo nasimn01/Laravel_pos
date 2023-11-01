@@ -38,7 +38,6 @@
                                     <form id="form{{$d->id}}" action="{{route(currentUser().'.child_one.destroy',encryptor('encrypt',$d->id))}}" method="post">
                                         @csrf
                                         @method('delete')
-                                        
                                     </form>
                                 </td>
                             </tr>
