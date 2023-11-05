@@ -7,7 +7,6 @@
     <div class="row" id="table-bordered">
         <div class="col-12">
             <div class="card">
-                
                 @if(Session::has('response'))
                     {!!Session::get('response')['message']!!}
                 @endif

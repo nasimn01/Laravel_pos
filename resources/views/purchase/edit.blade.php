@@ -15,7 +15,6 @@
                             @method('patch')
                             <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$supplier->id)}}">
                             <div class="row">
-
                                     @if( currentUser()=='owner')
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
